@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompts Guide - WebAutomation Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1e3a8a;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1.1em;
+        }
+
+        nav {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        main {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        section {
+            margin-bottom: 50px;
+            scroll-margin-top: 100px;
+        }
+
+        h2 {
+            color: #1e40af;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #2563eb;
+            font-size: 1.6em;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #3b82f6;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .prompt-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .prompt-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .pattern-badge {
+            display: inline-block;
+            background: #ddd6fe;
+            color: #5b21b6;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .prompts-list {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .prompt-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9fafb;
+            border-radius: 6px;
+        }
+
+        .prompt-item::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .code-block .comment {
+            color: #94a3b8;
+        }
+
+        .code-block .keyword {
+            color: #f472b6;
+        }
+
+        .code-block .string {
+            color: #a78bfa;
+        }
+
+        .use-case-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .use-case-list li {
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .use-case-list li::before {
+            content: "→";
+            position: absolute;
+            left: -20px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .tip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .good-example {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        .bad-example {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .workflow-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .workflow-steps li {
+            counter-increment: step-counter;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8fafc;
+            border-left: 4px solid #667eea;
+            border-radius: 6px;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .workflow-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+
+        footer {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            background: #764ba2;
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            main {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        .interface-mockup {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .category-icon {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Prompts Guide</h1>
+            <p class="subtitle">Complete Guide for WebAutomation Framework - Common Web Actions Dataset</p>
+        </header>
+
+        <nav>
+            <div class="nav-grid">
+                <button class="nav-btn" onclick="scrollToSection('overview')">📋 Overview</button>
+                <button class="nav-btn" onclick="scrollToSection('where-to-use')">🎯 Where to Use</button>
+                <button class="nav-btn" onclick="scrollToSection('login')">🔐 Login</button>
+                <button class="nav-btn" onclick="scrollToSection('search')">🔍 Search</button>
+                <button class="nav-btn" onclick="scrollToSection('dropdowns')">📊 Dropdowns</button>
+                <button class="nav-btn" onclick="scrollToSection('checkboxes')">☑️ Checkboxes</button>
+                <button class="nav-btn" onclick="scrollToSection('uploads')">📤 File Uploads</button>
+                <button class="nav-btn" onclick="scrollToSection('modals')">💬 Modals</button>
+                <button class="nav-btn" onclick="scrollToSection('tabs')">🗂️ Tabs</button>
+                <button class="nav-btn" onclick="scrollToSection('alerts')">⚠️ Alerts</button>
+                <button class="nav-btn" onclick="scrollToSection('hover')">🖱️ Hover</button>
+                <button class="nav-btn" onclick="scrollToSection('validation')">✅ Validation</button>
+                <button class="nav-btn" onclick="scrollToSection('scroll')">📜 Scroll</button>
+                <button class="nav-btn" onclick="scrollToSection('ajax')">⚡ AJAX</button>
+                <button class="nav-btn" onclick="scrollToSection('tables')">📋 Tables</button>
+                <button class="nav-btn" onclick="scrollToSection('tips')">💡 Tips</button>
+                <button class="nav-btn" onclick="scrollToSection('how-to-use')">🔧 How to Use</button>
+                <button class="nav-btn" onclick="scrollToSection('examples')">🎯 Examples</button>
+            </div>
+        </nav>
+
+        <main>
+            <!-- OVERVIEW -->
+            <section id="overview">
+                <h2>📋 Overview</h2>
+                <div class="info-box">
+                    <p><strong>Purpose:</strong> This document explains how to use AI prompts in the WebAutomation project based on the trained actions in <code>common-web-actions-dataset.json</code>.</p>
+                    <p><strong>Usage:</strong> These prompts are used in the <strong>Generate Code</strong> section of the web interface to generate Selenium test automation code.</p>
+                </div>
+            </section>
+
+            <!-- WHERE TO USE -->
+            <section id="where-to-use">
+                <h2>🎯 Where to Use AI Prompts</h2>
+                
+                <h3>Generate Code Page (Main Usage Area)</h3>
+                
+                <div class="success-box">
+                    <p><strong>Location:</strong> Web Interface → Generate Code Tab</p>
+                    <p><strong>URL:</strong> <code>http://localhost:5001</code> → Click "Generate Code" in sidebar</p>
+                </div>
+
+                <h4>Features:</h4>
+                <ul class="use-case-list">
+                    <li>Text area for entering prompts</li>
+                    <li>Example prompt buttons for quick access</li>
+                    <li>AI-powered code generation</li>
+                    <li>Save prompts to account</li>
+                    <li>View prompt history</li>
+                    <li>Export generated code</li>
+                </ul>
+
+                <h4>Interface Elements:</h4>
+                <div class="interface-mockup">┌────────────────────────────────────────────────────┐
+│ ✨ Generate Test Code                             │
+├────────────────────────────────────────────────────┤
+│ [Example Prompts: Quick Click Buttons]            │
+│                                                    │
+│ ┌────────────────────────────────────────────┐   │
+│ │ Enter your test automation prompt:         │   │
+│ │ [Text Area]                                │   │
+│ └────────────────────────────────────────────┘   │
+│                                                    │
+│ [💾 Save Prompt] [📚 My Prompts] [🕐 History]    │
+│                                                    │
+│ [🚀 Generate Code Button]                         │
+└────────────────────────────────────────────────────┘</div>
+            </section>
+
+            <!-- LOGIN & AUTHENTICATION -->
+            <section id="login">
+                <h2><span class="category-icon">🔐</span>LOGIN & AUTHENTICATION</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Login Form</h4>
+                    <span class="pattern-badge">Pattern: form_submission</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"enter username and password and click login button"</div>
+                        <div class="prompt-item">"login with credentials testuser and password123"</div>
+                        <div class="prompt-item">"fill login form and submit"</div>
+                        <div class="prompt-item">"enter testuser in username field"</div>
+                        <div class="prompt-item">"enter password in password field"</div>
+                        <div class="prompt-item">"click login button"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Navigate to login page</span>
+driver.get(<span class="string">"https://example.com/login"</span>);
+
+<span class="comment">// Enter username</span>
+driver.findElement(By.id(<span class="string">"username"</span>)).sendKeys(<span class="string">"testuser"</span>);
+
+<span class="comment">// Enter password</span>
+driver.findElement(By.id(<span class="string">"password"</span>)).sendKeys(<span class="string">"password123"</span>);
+
+<span class="comment">// Click login button</span>
+driver.findElement(By.id(<span class="string">"loginBtn"</span>)).click();</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Testing login functionality</li>
+                        <li>User authentication flows</li>
+                        <li>Form submission scenarios</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SEARCH & NAVIGATION -->
+            <section id="search">
+                <h2><span class="category-icon">🔍</span>SEARCH & NAVIGATION</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Search Functionality</h4>
+                    <span class="pattern-badge">Pattern: search</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"search for selenium webdriver"</div>
+                        <div class="prompt-item">"enter search query and click search button"</div>
+                        <div class="prompt-item">"type in search box and submit"</div>
+                        <div class="prompt-item">"click search box and enter text"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Click search box</span>
+driver.findElement(By.id(<span class="string">"searchBox"</span>)).click();
+
+<span class="comment">// Enter search query</span>
+driver.findElement(By.id(<span class="string">"searchBox"</span>)).sendKeys(<span class="string">"selenium webdriver"</span>);
+
+<span class="comment">// Click search button</span>
+driver.findElement(By.cssSelector(<span class="string">"button[type='submit']"</span>)).click();</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Testing search features</li>
+                        <li>Query submission</li>
+                        <li>Filter/search bars</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- DROPDOWNS & SELECTIONS -->
+            <section id="dropdowns">
+                <h2><span class="category-icon">📊</span>DROPDOWNS & SELECTIONS</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Dropdown Selection</h4>
+                    <span class="pattern-badge">Pattern: dropdown_selection</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"select value from dropdown"</div>
+                        <div class="prompt-item">"select United States from country dropdown"</div>
+                        <div class="prompt-item">"click dropdown and select option"</div>
+                        <div class="prompt-item">"choose option from select menu"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Click dropdown</span>
+driver.findElement(By.id(<span class="string">"country"</span>)).click();
+
+<span class="comment">// Select option</span>
+Select select = <span class="keyword">new</span> Select(driver.findElement(By.id(<span class="string">"country"</span>)));
+select.selectByVisibleText(<span class="string">"United States"</span>);</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Form dropdowns (country, state, category)</li>
+                        <li>Filter selections</li>
+                        <li>Multi-option menus</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHECKBOXES & RADIO BUTTONS -->
+            <section id="checkboxes">
+                <h2><span class="category-icon">☑️</span>CHECKBOXES & RADIO BUTTONS</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Checkbox Selection</h4>
+                    <span class="pattern-badge">Pattern: checkbox_selection</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"select checkbox for terms and conditions"</div>
+                        <div class="prompt-item">"click terms checkbox"</div>
+                        <div class="prompt-item">"select multiple checkboxes"</div>
+                        <div class="prompt-item">"check newsletter subscription"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Select terms checkbox</span>
+driver.findElement(By.id(<span class="string">"terms"</span>)).click();
+
+<span class="comment">// Select newsletter checkbox</span>
+driver.findElement(By.id(<span class="string">"newsletter"</span>)).click();</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Terms & conditions acceptance</li>
+                        <li>Multi-select options</li>
+                        <li>Preference selections</li>
+                    </ul>
+                </div>
+
+                <div class="prompt-card">
+                    <h4>Action: Radio Button Selection</h4>
+                    <span class="pattern-badge">Pattern: radio_selection</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"select radio button for male"</div>
+                        <div class="prompt-item">"choose radio option"</div>
+                        <div class="prompt-item">"select gender male"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Select radio button</span>
+driver.findElement(By.id(<span class="string">"male"</span>)).click();</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Single-choice selections</li>
+                        <li>Gender/payment method options</li>
+                        <li>Yes/No questions</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FILE UPLOADS -->
+            <section id="uploads">
+                <h2><span class="category-icon">📤</span>FILE UPLOADS</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: File Upload</h4>
+                    <span class="pattern-badge">Pattern: file_upload</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"upload file from path"</div>
+                        <div class="prompt-item">"select file and click upload button"</div>
+                        <div class="prompt-item">"upload document file.pdf"</div>
+                        <div class="prompt-item">"send file path to upload input"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Send file path to file input</span>
+driver.findElement(By.id(<span class="string">"fileUpload"</span>)).sendKeys(<span class="string">"C:\\path\\to\\file.pdf"</span>);
+
+<span class="comment">// Click upload button</span>
+driver.findElement(By.id(<span class="string">"uploadBtn"</span>)).click();</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Document uploads</li>
+                        <li>Image/avatar uploads</li>
+                        <li>CSV/Excel file imports</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <strong>💡 Note:</strong> In this project, use the enhanced file upload with <code>src/resources/uploads/</code> directory:
+                        <div class="code-block">Prompt: "upload file resume.pdf"
+System resolves: src/resources/uploads/resume.pdf</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODAL DIALOGS -->
+            <section id="modals">
+                <h2><span class="category-icon">💬</span>MODAL DIALOGS</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Modal Dialog Interaction</h4>
+                    <span class="pattern-badge">Pattern: modal_interaction</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"open modal and enter text"</div>
+                        <div class="prompt-item">"click button to open modal and fill form"</div>
+                        <div class="prompt-item">"interact with popup dialog"</div>
+                        <div class="prompt-item">"wait for modal to appear and click confirm"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Open modal</span>
+driver.findElement(By.id(<span class="string">"openModal"</span>)).click();
+
+<span class="comment">// Wait for modal to appear</span>
+<span class="keyword">new</span> WebDriverWait(driver, Duration.ofSeconds(10))
+    .until(ExpectedConditions.visibilityOfElementLocated(By.id(<span class="string">"modal"</span>)));
+
+<span class="comment">// Enter text in modal</span>
+driver.findElement(By.id(<span class="string">"modalInput"</span>)).sendKeys(<span class="string">"modal text"</span>);
+
+<span class="comment">// Confirm</span>
+driver.findElement(By.id(<span class="string">"confirmBtn"</span>)).click();</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Popup confirmations</li>
+                        <li>Dialog forms</li>
+                        <li>Overlay interactions</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TAB & WINDOW MANAGEMENT -->
+            <section id="tabs">
+                <h2><span class="category-icon">🗂️</span>TAB & WINDOW MANAGEMENT</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Tab Navigation</h4>
+                    <span class="pattern-badge">Pattern: window_switching</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"open new tab and switch to it"</div>
+                        <div class="prompt-item">"click link to open new window"</div>
+                        <div class="prompt-item">"switch to new browser tab"</div>
+                        <div class="prompt-item">"handle multiple windows"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Click link to open new tab</span>
+driver.findElement(By.linkText(<span class="string">"Open New Tab"</span>)).click();
+
+<span class="comment">// Switch to new window</span>
+String originalWindow = driver.getWindowHandle();
+Set&lt;String&gt; handles = driver.getWindowHandles();
+<span class="keyword">for</span>(String handle : handles) {
+    <span class="keyword">if</span>(!handle.equals(originalWindow)) {
+        driver.switchTo().window(handle);
+    }
+}</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Multi-window applications</li>
+                        <li>External link testing</li>
+                        <li>Tab-based workflows</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ALERTS & JAVASCRIPT DIALOGS -->
+            <section id="alerts">
+                <h2><span class="category-icon">⚠️</span>ALERTS & JAVASCRIPT DIALOGS</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Alert Handling</h4>
+                    <span class="pattern-badge">Pattern: alert_handling</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"click button and accept alert"</div>
+                        <div class="prompt-item">"handle JavaScript alert"</div>
+                        <div class="prompt-item">"dismiss alert popup"</div>
+                        <div class="prompt-item">"accept browser alert"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Click button that triggers alert</span>
+driver.findElement(By.id(<span class="string">"alertBtn"</span>)).click();
+
+<span class="comment">// Handle alert</span>
+Alert alert = driver.switchTo().alert();
+alert.accept();</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>JavaScript alerts</li>
+                        <li>Confirmation dialogs</li>
+                        <li>Browser prompts</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- HOVER & MOUSE ACTIONS -->
+            <section id="hover">
+                <h2><span class="category-icon">🖱️</span>HOVER & MOUSE ACTIONS</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Hover Menu Navigation</h4>
+                    <span class="pattern-badge">Pattern: hover_navigation</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"hover over menu to reveal submenu"</div>
+                        <div class="prompt-item">"move mouse to menu and click submenu item"</div>
+                        <div class="prompt-item">"hover and click dropdown menu"</div>
+                        <div class="prompt-item">"mouse over element and select option"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Hover over menu</span>
+WebElement menu = driver.findElement(By.id(<span class="string">"mainMenu"</span>));
+<span class="keyword">new</span> Actions(driver).moveToElement(menu).perform();
+
+<span class="comment">// Wait for submenu</span>
+<span class="keyword">new</span> WebDriverWait(driver, Duration.ofSeconds(5))
+    .until(ExpectedConditions.visibilityOfElementLocated(By.id(<span class="string">"subMenu"</span>)));
+
+<span class="comment">// Click submenu item</span>
+driver.findElement(By.id(<span class="string">"subMenuItem"</span>)).click();</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Dropdown menus</li>
+                        <li>Tooltip interactions</li>
+                        <li>Hover-triggered elements</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FORM VALIDATION -->
+            <section id="validation">
+                <h2><span class="category-icon">✅</span>FORM VALIDATION</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Form Validation</h4>
+                    <span class="pattern-badge">Pattern: validation_check</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"submit form and verify error message"</div>
+                        <div class="prompt-item">"click submit and check validation"</div>
+                        <div class="prompt-item">"verify required field error"</div>
+                        <div class="prompt-item">"check form validation message"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Submit form</span>
+driver.findElement(By.id(<span class="string">"submitBtn"</span>)).click();
+
+<span class="comment">// Verify error message</span>
+String errorMsg = driver.findElement(By.id(<span class="string">"errorMessage"</span>)).getText();
+assert errorMsg.equals(<span class="string">"Please fill all required fields"</span>);</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Form validation testing</li>
+                        <li>Error message verification</li>
+                        <li>Required field checks</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SCROLL & VISIBILITY -->
+            <section id="scroll">
+                <h2><span class="category-icon">📜</span>SCROLL & VISIBILITY</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Scroll to Element</h4>
+                    <span class="pattern-badge">Pattern: scroll_interaction</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"scroll to footer element"</div>
+                        <div class="prompt-item">"scroll down to element and click"</div>
+                        <div class="prompt-item">"scroll into view and interact"</div>
+                        <div class="prompt-item">"scroll to bottom of page"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Scroll to element</span>
+WebElement element = driver.findElement(By.id(<span class="string">"footer"</span>));
+((JavascriptExecutor)driver).executeScript(<span class="string">"arguments[0].scrollIntoView(true);"</span>, element);
+
+<span class="comment">// Click element</span>
+driver.findElement(By.id(<span class="string">"footerLink"</span>)).click();</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Long pages</li>
+                        <li>Elements below fold</li>
+                        <li>Lazy-loaded content</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- DYNAMIC CONTENT & AJAX -->
+            <section id="ajax">
+                <h2><span class="category-icon">⚡</span>DYNAMIC CONTENT & AJAX</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Dynamic Content Wait</h4>
+                    <span class="pattern-badge">Pattern: ajax_wait</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"click button and wait for data to load"</div>
+                        <div class="prompt-item">"wait for ajax content"</div>
+                        <div class="prompt-item">"load data and verify rows appear"</div>
+                        <div class="prompt-item">"wait for dynamic content"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Trigger data load</span>
+driver.findElement(By.id(<span class="string">"loadDataBtn"</span>)).click();
+
+<span class="comment">// Wait for content</span>
+<span class="keyword">new</span> WebDriverWait(driver, Duration.ofSeconds(15))
+    .until(ExpectedConditions.presenceOfElementLocated(By.className(<span class="string">"dataRow"</span>)));
+
+<span class="comment">// Verify content loaded</span>
+List&lt;WebElement&gt; rows = driver.findElements(By.className(<span class="string">"dataRow"</span>));
+assert rows.size() &gt; 0;</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>AJAX loading</li>
+                        <li>Infinite scroll</li>
+                        <li>Lazy-loaded content</li>
+                        <li>API-driven UIs</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TABLE DATA -->
+            <section id="tables">
+                <h2><span class="category-icon">📋</span>TABLE DATA EXTRACTION</h2>
+                
+                <div class="prompt-card">
+                    <h4>Action: Table Data Extraction</h4>
+                    <span class="pattern-badge">Pattern: table_extraction</span>
+                    
+                    <h4>AI Prompts:</h4>
+                    <div class="prompts-list">
+                        <div class="prompt-item">"extract data from table"</div>
+                        <div class="prompt-item">"get all rows from data table"</div>
+                        <div class="prompt-item">"iterate through table cells"</div>
+                        <div class="prompt-item">"read table content"</div>
+                    </div>
+
+                    <h4>Generated Code Pattern:</h4>
+                    <div class="code-block"><span class="comment">// Find table</span>
+WebElement table = driver.findElement(By.id(<span class="string">"dataTable"</span>));
+
+<span class="comment">// Extract rows</span>
+List&lt;WebElement&gt; rows = table.findElements(By.tagName(<span class="string">"tr"</span>));
+<span class="keyword">for</span>(WebElement row : rows) {
+    List&lt;WebElement&gt; cells = row.findElements(By.tagName(<span class="string">"td"</span>));
+    <span class="comment">// Process cells</span>
+}</div>
+
+                    <h4>When to Use:</h4>
+                    <ul class="use-case-list">
+                        <li>Data verification</li>
+                        <li>Table parsing</li>
+                        <li>Report validation</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- PROMPT ENGINEERING TIPS -->
+            <section id="tips">
+                <h2><span class="category-icon">💡</span>PROMPT ENGINEERING TIPS</h2>
+                
+                <h3>Good vs Bad Prompts</h3>
+                
+                <div class="example-grid">
+                    <div>
+                        <h4 style="color: #10b981;">✅ Good Prompts (Specific & Clear)</h4>
+                        <div class="good-example">"enter username testuser and password secret123"</div>
+                        <div class="good-example">"select United States from country dropdown"</div>
+                        <div class="good-example">"click submit button and verify success message"</div>
+                        <div class="good-example">"wait for loading spinner to disappear"</div>
+                        <div class="good-example">"hover over Products menu and click Laptops submenu"</div>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: #ef4444;">❌ Poor Prompts (Vague & Ambiguous)</h4>
+                        <div class="bad-example">"do login"</div>
+                        <div class="bad-example">"select something"</div>
+                        <div class="bad-example">"click"</div>
+                        <div class="bad-example">"test the form"</div>
+                        <div class="bad-example">"check if it works"</div>
+                    </div>
+                </div>
+
+                <h3>Best Practices</h3>
+                
+                <div class="tip-grid">
+                    <div class="tip-card">
+                        <strong>1. Be Specific</strong>
+                        <p>Include element names, actions, and values</p>
+                        <div class="good-example">Good: "enter john@example.com in email field"</div>
+                        <div class="bad-example">Bad: "enter email"</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <strong>2. Use Action Verbs</strong>
+                        <p>click, enter, select, verify, wait, hover</p>
+                        <div class="good-example">Good: "click login button"</div>
+                        <div class="bad-example">Bad: "login button"</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <strong>3. Include Context</strong>
+                        <p>Mention element type (button, field, dropdown)</p>
+                        <div class="good-example">Good: "select USA from country dropdown"</div>
+                        <div class="bad-example">Bad: "select USA"</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <strong>4. Chain Related Actions</strong>
+                        <p>Combine steps logically</p>
+                        <div class="good-example">Good: "enter username and password then click submit"</div>
+                        <div class="bad-example">Bad: "username" (separate prompt for each field)</div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <strong>5. Specify Values</strong>
+                        <p>Include actual test data</p>
+                        <div class="good-example">Good: "enter testuser in username field"</div>
+                        <div class="bad-example">Bad: "enter username"</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HOW TO USE -->
+            <section id="how-to-use">
+                <h2><span class="category-icon">🔧</span>HOW TO USE IN THE PROJECT</h2>
+                
+                <h3>Step-by-Step Guide</h3>
+                
+                <ol class="workflow-steps">
+                    <li>
+                        <strong>Open Web Interface</strong>
+                        <p>Navigate to <code>http://localhost:5001</code></p>
+                    </li>
+                    <li>
+                        <strong>Navigate to Generate Code</strong>
+                        <p>Click "Generate Code" in the left sidebar or click the "Generate Code" tab</p>
+                    </li>
+                    <li>
+                        <strong>Choose a Prompt Method</strong>
+                        <p><strong>Option A:</strong> Use Example Buttons - Click predefined example buttons and modify if needed</p>
+                        <p><strong>Option B:</strong> Type Custom Prompt - Enter your prompt in the text area using natural language</p>
+                        <p><strong>Option C:</strong> Use Saved Prompts - Click "📚 My Prompts" button and select from previously saved prompts</p>
+                    </li>
+                    <li>
+                        <strong>Generate Code</strong>
+                        <p>Click "🚀 Generate Code" button and wait for AI to process (1-2 seconds)</p>
+                    </li>
+                    <li>
+                        <strong>Actions on Generated Code</strong>
+                        <div class="action-buttons">
+                            <button class="action-btn">📋 Copy to Clipboard</button>
+                            <button class="action-btn">🔍 Validate Code Syntax</button>
+                            <button class="action-btn">💾 Save to Snippets</button>
+                            <button class="action-btn">💾 Export to .java File</button>
+                            <button class="action-btn">▶️ Execute Test Immediately</button>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- QUICK REFERENCE TABLE -->
+            <section>
+                <h2>📊 Prompt Categories Quick Reference</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Example Prompt</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🔐 Login</td>
+                            <td><code>enter username and password</code></td>
+                            <td>Authentication forms</td>
+                        </tr>
+                        <tr>
+                            <td>🔍 Search</td>
+                            <td><code>search for selenium webdriver</code></td>
+                            <td>Search boxes</td>
+                        </tr>
+                        <tr>
+                            <td>📊 Dropdown</td>
+                            <td><code>select USA from country dropdown</code></td>
+                            <td>Select menus</td>
+                        </tr>
+                        <tr>
+                            <td>☑️ Checkbox</td>
+                            <td><code>click terms checkbox</code></td>
+                            <td>Agreement checkboxes</td>
+                        </tr>
+                        <tr>
+                            <td>🔘 Radio</td>
+                            <td><code>select male radio button</code></td>
+                            <td>Single choices</td>
+                        </tr>
+                        <tr>
+                            <td>📤 Upload</td>
+                            <td><code>upload file resume.pdf</code></td>
+                            <td>File uploads</td>
+                        </tr>
+                        <tr>
+                            <td>💬 Modal</td>
+                            <td><code>open modal and enter text</code></td>
+                            <td>Popup dialogs</td>
+                        </tr>
+                        <tr>
+                            <td>🗂️ Tabs</td>
+                            <td><code>switch to new tab</code></td>
+                            <td>Window management</td>
+                        </tr>
+                        <tr>
+                            <td>⚠️ Alert</td>
+                            <td><code>accept JavaScript alert</code></td>
+                            <td>Browser alerts</td>
+                        </tr>
+                        <tr>
+                            <td>🖱️ Hover</td>
+                            <td><code>hover over menu and click item</code></td>
+                            <td>Dropdown menus</td>
+                        </tr>
+                        <tr>
+                            <td>✅ Validation</td>
+                            <td><code>verify error message appears</code></td>
+                            <td>Form validation</td>
+                        </tr>
+                        <tr>
+                            <td>📜 Scroll</td>
+                            <td><code>scroll to footer and click link</code></td>
+                            <td>Long pages</td>
+                        </tr>
+                        <tr>
+                            <td>⚡ Wait</td>
+                            <td><code>wait for data to load</code></td>
+                            <td>AJAX content</td>
+                        </tr>
+                        <tr>
+                            <td>📋 Table</td>
+                            <td><code>extract data from table</code></td>
+                            <td>Data tables</td>
+                        </tr>
+                        <tr>
+                            <td>🧙 Wizard</td>
+                            <td><code>complete multi-step form</code></td>
+                            <td>Multi-page forms</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- REAL-WORLD EXAMPLES -->
+            <section id="examples">
+                <h2><span class="category-icon">🎯</span>REAL-WORLD EXAMPLES</h2>
+                
+                <div class="prompt-card">
+                    <h3>E-Commerce Checkout Flow</h3>
+                    <ol class="workflow-steps">
+                        <li>"search for laptop in search box"</li>
+                        <li>"click first product in results"</li>
+                        <li>"select quantity 2 from dropdown"</li>
+                        <li>"click add to cart button"</li>
+                        <li>"click proceed to checkout"</li>
+                        <li>"enter shipping address details"</li>
+                        <li>"select express shipping radio button"</li>
+                        <li>"enter credit card information"</li>
+                        <li>"click place order button"</li>
+                        <li>"verify order confirmation message"</li>
+                    </ol>
+                </div>
+
+                <div class="prompt-card">
+                    <h3>User Registration Flow</h3>
+                    <ol class="workflow-steps">
+                        <li>"navigate to registration page"</li>
+                        <li>"enter john in first name field"</li>
+                        <li>"enter doe in last name field"</li>
+                        <li>"enter john.doe@email.com in email field"</li>
+                        <li>"select USA from country dropdown"</li>
+                        <li>"click terms checkbox"</li>
+                        <li>"click newsletter checkbox"</li>
+                        <li>"click register button"</li>
+                        <li>"verify registration success message"</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- SUMMARY -->
+            <section>
+                <h2>📚 Summary</h2>
+                
+                <div class="info-box">
+                    <p><strong>Total Actions in Dataset:</strong> 14 major patterns</p>
+                    <p><strong>Total Prompts Listed:</strong> 100+ examples</p>
+                    <p><strong>Use Location:</strong> Generate Code page (Web UI)</p>
+                    <p><strong>Primary Purpose:</strong> AI-powered Selenium code generation</p>
+                    <p><strong>Supported Languages:</strong> Java (Selenium WebDriver)</p>
+                </div>
+                
+                <div class="success-box">
+                    <p><strong>💡 Tip:</strong> Use this guide as a reference when writing prompts in the <strong>Generate Code</strong> section to leverage the AI model's training on common web automation patterns!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <h2>🎉 Happy Testing with AI-Powered Automation!</h2>
+            <p style="margin-top: 10px; color: #64748b;">WebAutomation Framework - AI Prompts Guide</p>
+        </footer>
+    </div>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Highlight active section in navigation
+        const sections = document.querySelectorAll('section[id]');
+        const navBtns = document.querySelectorAll('.nav-btn');
+
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navBtns.forEach(btn => {
+                btn.style.opacity = '0.7';
+                if (btn.getAttribute('onclick').includes(current)) {
+                    btn.style.opacity = '1';
+                    btn.style.transform = 'scale(1.05)';
+                } else {
+                    btn.style.transform = 'scale(1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1757 @@
+# ALL DATASETS - COMPLETE PROMPTS REFERENCE
+
+**Generated:** November 27, 2025
+**Total Datasets:** 4
+**Total Prompts:** 1718
+
+---
+
+## Quick Statistics
+
+| Dataset | Prompts | Type |
+|---------|---------|------|
+| Common Web Actions | 39 | UI Prompts |
+| Selenium Methods | 99 | API Patterns |
+| Element Locators | 1 | API Patterns |
+| Sircon UI | 1579 | UI Prompts |
+
+---
+
+## Common Web Actions (39 Prompts)
+
+1. `accept alert`
+2. `click alert button`
+3. `click confirm button`
+4. `click country dropdown`
+5. `click footer link`
+6. `click load data button`
+7. `click newsletter checkbox`
+8. `click next button`
+9. `click open modal button`
+10. `click open new tab link`
+11. `click producer login button`
+12. `click search box`
+13. `click search button`
+14. `click submenu item`
+15. `click submit button`
+16. `click terms checkbox`
+17. `click upload button`
+18. `enter email in producer-email field`
+19. `enter password in producer-password field`
+20. `enter {FIRST_NAME} in first name field`
+21. `enter {LAST_NAME} in last name field`
+22. `enter {PHONE} in phone field`
+23. `enter {SEARCH_QUERY} in search box`
+24. `enter {TEXT} in modal input`
+25. `enter {USERNAME} in username field`
+26. `extract table rows`
+27. `find data table`
+28. `hover over main menu`
+29. `navigate to {URL}`
+30. `scroll to footer`
+31. `select United States from country dropdown`
+32. `select male radio button`
+33. `switch to new tab`
+34. `upload file {FILE_PATH}`
+35. `verify data rows exist`
+36. `verify error message`
+37. `wait for data to load`
+38. `wait for modal to appear`
+39. `wait for submenu to appear`
+
+---
+
+## Selenium Methods (99 Prompts)
+
+1. `Actions.click`
+2. `Actions.contextClick`
+3. `Actions.doubleClick`
+4. `Actions.dragAndDrop`
+5. `Actions.keyDown`
+6. `Actions.keyUp`
+7. `Actions.moveToElement`
+8. `Actions.sendKeys`
+9. `By.className`
+10. `By.cssSelector`
+11. `By.id`
+12. `By.linkText`
+13. `By.name`
+14. `By.partialLinkText`
+15. `By.tagName`
+16. `By.xpath`
+17. `Select.deselectAll`
+18. `Select.getFirstSelectedOption`
+19. `Select.getOptions`
+20. `Select.selectByIndex`
+21. `Select.selectByValue`
+22. `Select.selectByVisibleText`
+23. `TakesScreenshot.getScreenshotAs`
+24. `WebDriverWait`
+25. `addCookie`
+26. `afterAccept`
+27. `afterBack`
+28. `afterClear`
+29. `afterClick`
+30. `afterClose`
+31. `afterDismiss`
+32. `afterExecuteAsyncScript`
+33. `afterExecuteScript`
+34. `afterFindElement`
+35. `afterFindElements`
+36. `afterForward`
+37. `afterGet`
+38. `afterGetAttribute`
+39. `afterGetCssValue`
+40. `afterGetCurrentUrl`
+41. `afterGetTagName`
+42. `afterGetText`
+43. `afterGetTitle`
+44. `afterGetWindowHandle`
+45. `afterGetWindowHandles`
+46. `afterIsDisplayed`
+47. `afterIsEnabled`
+48. `afterIsSelected`
+49. `afterQuit`
+50. `afterRefresh`
+51. `afterSendKeys`
+52. `afterSubmit`
+53. `afterSwitchToAlert`
+54. `afterSwitchToFrame`
+55. `afterSwitchToParentFrame`
+56. `afterSwitchToWindow`
+57. `afterTo`
+58. `alertIsPresent`
+59. `beforeAccept`
+60. `beforeBack`
+61. `beforeClear`
+62. `beforeClick`
+63. `beforeClose`
+64. `beforeDismiss`
+65. `beforeExecuteAsyncScript`
+66. `beforeExecuteScript`
+67. `beforeFindElement`
+68. `beforeFindElements`
+69. `beforeForward`
+70. `beforeGet`
+71. `beforeGetAttribute`
+72. `beforeGetCssValue`
+73. `beforeGetCurrentUrl`
+74. `beforeGetTagName`
+75. `beforeGetText`
+76. `beforeGetTitle`
+77. `beforeGetWindowHandle`
+78. `beforeGetWindowHandles`
+79. `beforeIsDisplayed`
+80. `beforeIsEnabled`
+81. `beforeIsSelected`
+82. `beforeQuit`
+83. `beforeRefresh`
+84. `beforeSendKeys`
+85. `beforeSubmit`
+86. `beforeSwitchToAlert`
+87. `beforeSwitchToFrame`
+88. `beforeSwitchToParentFrame`
+89. `beforeSwitchToWindow`
+90. `beforeTo`
+91. `deleteAllCookies`
+92. `deleteCookie`
+93. `elementToBeClickable`
+94. `getCookieNamed`
+95. `getCookies`
+96. `implicitlyWait`
+97. `presenceOfElementLocated`
+98. `textToBePresentInElement`
+99. `visibilityOfElementLocated`
+
+---
+
+## Element Locators (1 Prompts)
+
+1. ` - `
+
+---
+
+## Sircon UI (1579 Prompts)
+
+1. `check if acq program widget is visible`
+2. `check if known element on is visible`
+3. `check if loading spinner is visible`
+4. `check if profile_ user name is visible`
+5. `check if result row is visible`
+6. `check if save is visible`
+7. `check if schedule state service down time success message is visible`
+8. `clear the table filter field`
+9. `click access management`
+10. `click account info tool search`
+11. `click account name radio`
+12. `click account name text box`
+13. `click add connection`
+14. `click add documents`
+15. `click add firm user`
+16. `click add user`
+17. `click advanced search`
+18. `click advisor first name`
+19. `click advisor last name`
+20. `click advisor search`
+21. `click agencyedge tools`
+22. `click assign roles continue`
+23. `click assign task`
+24. `click atid reviewer general comments`
+25. `click atid search email`
+26. `click atid submit business rules`
+27. `click atid submit search`
+28. `click cancel`
+29. `click change contact info`
+30. `click change email address modal save`
+31. `click collapse all`
+32. `click confirm activity continue`
+33. `click confirm activity dialog`
+34. `click confirm o a continue`
+35. `click continue`
+36. `click customer id text box`
+37. `click customer text box`
+38. `click cx tools`
+39. `click disclose new activity`
+40. `click disclosure summary`
+41. `click disclosures tab`
+42. `click dropdown menu`
+43. `click edit org account tool`
+44. `click edit pencil`
+45. `click edit user`
+46. `click edit user entity header dialog`
+47. `click ellipsis`
+48. `click email address`
+49. `click email address radio`
+50. `click email address text box`
+51. `click end activity comments`
+52. `click end activity continue`
+53. `click entities search panel`
+54. `click esignature`
+55. `click expand all`
+56. `click expand contract`
+57. `click external link arrow`
+58. `click finra tools`
+59. `click firm user roles`
+60. `click first name`
+61. `click framed transaction frame`
+62. `click g2 tools`
+63. `click get help signing in`
+64. `click gne tab`
+65. `click groups`
+66. `click last name`
+67. `click national producer number`
+68. `click new email address text box`
+69. `click nipr simulator`
+70. `click npn text box`
+71. `click oba radio`
+72. `click oba type continue`
+73. `click org profile menu`
+74. `click outside activity type continue`
+75. `click overlay ok`
+76. `click overview tab`
+77. `click pagination`
+78. `click pagination option to show fifty rows`
+79. `click password`
+80. `click pdb service tools`
+81. `click phone number`
+82. `click pm tools`
+83. `click primary`
+84. `click print license`
+85. `click px tools`
+86. `click reassign success ok`
+87. `click reassign task success`
+88. `click request associate confirmation`
+89. `click request associate confirmation dialog`
+90. `click resident license state`
+91. `click row ellipsis menu`
+92. `click save and exit`
+93. `click scheduler tools`
+94. `click search`
+95. `click search again`
+96. `click search by associate group type dropdown`
+97. `click search by value dropdown`
+98. `click search text box`
+99. `click send request to confirm`
+100. `click service error message`
+101. `click sip tools`
+102. `click sircon logo`
+103. `click state code select`
+104. `click submit`
+105. `click submit gne interview dialog ok`
+106. `click submit interview with decision dialog`
+107. `click subscriber id`
+108. `click subscribers`
+109. `click table row`
+110. `click task title`
+111. `click the #delete gne instance dialog .dialog body dialog`
+112. `click the about this consumer toggle button`
+113. `click the access management element`
+114. `click the account edit email address element`
+115. `click the account id text box input`
+116. `click the account info tool option element`
+117. `click the account info tool search button`
+118. `click the account name radio button`
+119. `click the account name text box input`
+120. `click the account reporting tool option element`
+121. `click the account settings header element`
+122. `click the account tab element`
+123. `click the account upgraded dialog box dialog`
+124. `click the acknowledge flagged items checkbox checkbox`
+125. `click the acq account id element`
+126. `click the acq conform dialog dialog`
+127. `click the acq dialog continue button`
+128. `click the acq program name element`
+129. `click the acq program success element`
+130. `click the acq program tool link`
+131. `click the acq report download button`
+132. `click the acq tab element`
+133. `click the action type rewind radio button`
+134. `click the active filter button`
+135. `click the activities tab element`
+136. `click the activity end date element`
+137. `click the activity history done button`
+138. `click the activity history menu menu`
+139. `click the activity history view details element`
+140. `click the activity name element`
+141. `click the activity reported date element`
+142. `click the activity request menu menu`
+143. `click the activity requests element`
+144. `click the add account adjustments link`
+145. `click the add c r d link`
+146. `click the add carrier link`
+147. `click the add connection enable securities checkbox checkbox`
+148. `click the add connection link`
+149. `click the add connection success dialog primary button`
+150. `click the add documents button`
+151. `click the add firm user button`
+152. `click the add log level button`
+153. `click the add log level modal add button`
+154. `click the add log level modal name text box input`
+155. `click the add producer segment link`
+156. `click the add relationship button`
+157. `click the add selected client button`
+158. `click the add stae service modal close button`
+159. `click the add state service button`
+160. `click the add user button`
+161. `click the add user element`
+162. `click the advanced search element`
+163. `click the advisor first name element`
+164. `click the advisor last name element`
+165. `click the advisor name link`
+166. `click the advisor search button`
+167. `click the agency get help signing in link`
+168. `click the agency migration tool option element`
+169. `click the agency referrer information tool option element`
+170. `click the agency reports tool option element`
+171. `click the agencyedge tools element`
+172. `click the all activities tab element`
+173. `click the all activity list element`
+174. `click the all appointments tab element`
+175. `click the all licenses button`
+176. `click the all licenses element`
+177. `click the already reported button`
+178. `click the already reported internal comments input`
+179. `click the amount text input`
+180. `click the apply adj btn lookup button`
+181. `click the apply adjustment link`
+182. `click the apply for a license link`
+183. `click the apply for license link`
+184. `click the apply for license loa link`
+185. `click the approve gne button`
+186. `click the approve oba button`
+187. `click the assign roles continue button`
+188. `click the assign specific person radio button`
+189. `click the assign task button`
+190. `click the assign task link`
+191. `click the assign to me radio button`
+192. `click the associate checkbox list checkbox`
+193. `click the associate group enabled check box checkbox`
+194. `click the associate groups enabled checkbox checkbox`
+195. `click the associate groups tool option element`
+196. `click the associated with other broker_ no element`
+197. `click the associated with other broker_ yes element`
+198. `click the associates tab element`
+199. `click the atid add group button`
+200. `click the atid benefit type dropdown`
+201. `click the atid category of gift dropdown`
+202. `click the atid client complaint disclosure details text`
+203. `click the atid confirm add agency capabilities button`
+204. `click the atid entertainment given threshold new element`
+205. `click the atid entertainment received threshold new element`
+206. `click the atid external group id input`
+207. `click the atid finra filing date input`
+208. `click the atid firm policy or wsp disclosure details text`
+209. `click the atid gift value input`
+210. `click the atid gifts given threshold new element`
+211. `click the atid gifts received threshold new element`
+212. `click the atid gne recpt or prvdr type dropdown`
+213. `click the atid group name input`
+214. `click the atid group role dropdown`
+215. `click the atid insurance oba title element`
+216. `click the atid litigation disclosure details text`
+217. `click the atid oba description element`
+218. `click the atid reviewer general comments element`
+219. `click the atid reviewer general comments input`
+220. `click the atid search email input`
+221. `click the atid securities issuer address.city element`
+222. `click the atid securities issuer address.line one element`
+223. `click the atid securities issuer address.line two element`
+224. `click the atid securities issuer address.postal code element`
+225. `click the atid securities issuer address.state code element`
+226. `click the atid securities issuer description element`
+227. `click the atid securities issuer name element`
+228. `click the atid submit add agency capabilities button`
+229. `click the atid submit business rules button`
+230. `click the atid submit gne thresholds button`
+231. `click the atid submit search button`
+232. `click the atid type of insurance element`
+233. `click the attestation check box checkbox`
+234. `click the attestations check box checkbox`
+235. `click the attested checkbox checkbox`
+236. `click the back button`
+237. `click the back ground investigation link`
+238. `click the back to dashboard button`
+239. `click the back to settings page link`
+240. `click the banking can conduct business yes element`
+241. `click the bi simulator link`
+242. `click the billing phone input`
+243. `click the billing summary month drop down dropdown`
+244. `click the billing summary tool option element`
+245. `click the billing summary year drop down dropdown`
+246. `click the board funds authority desc element`
+247. `click the board has funds authority yes element`
+248. `click the business rule submit button`
+249. `click the business rule tab element`
+250. `click the business tab element`
+251. `click the business units dropdown dropdown`
+252. `click the cancel button`
+253. `click the cancel email address change button`
+254. `click the cancel filing task without saving button`
+255. `click the cancel firm user request confirm button`
+256. `click the cancel overlay cancel without saving button`
+257. `click the cancel overlay save changes button`
+258. `click the card expiration date input`
+259. `click the carrier data lookup tool option element`
+260. `click the carrier usage reporting tool option element`
+261. `click the ce change button`
+262. `click the change contact info link`
+263. `click the change email address link`
+264. `click the change email address modal save button`
+265. `click the change email link`
+266. `click the change name link`
+267. `click the check status link`
+268. `click the clear payment profile link`
+269. `click the clear search button`
+270. `click the clear search element`
+271. `click the click related request element`
+272. `click the click tab five element`
+273. `click the click tab four element`
+274. `click the click tab one element`
+275. `click the click tab three element`
+276. `click the click tab two element`
+277. `click the client description element`
+278. `click the client overlap with current firm y e s element`
+279. `click the clients of firm yes element`
+280. `click the close button`
+281. `click the close communication history element`
+282. `click the close overlay button`
+283. `click the collapse all button`
+284. `click the combo box element`
+285. `click the comment text input`
+286. `click the communication history element`
+287. `click the company number input`
+288. `click the compensation button`
+289. `click the compensation tools element`
+290. `click the compliance analyst check box checkbox`
+291. `click the complied with firm policies_ no element`
+292. `click the complied with firm policies_ yes element`
+293. `click the complied with investment advisor rep policies_ no element`
+294. `click the complied with investment advisor rep policies_ yes element`
+295. `click the complied with public appearance policy_ yes element`
+296. `click the conf id input`
+297. `click the configure message center link`
+298. `click the confirm activity continue button`
+299. `click the confirm activity dialog dialog`
+300. `click the confirm activity_ no element`
+301. `click the confirm activity_ yes element`
+302. `click the confirm and continue button`
+303. `click the confirm email address element`
+304. `click the confirm new password element`
+305. `click the confirm o a continue button`
+306. `click the confirmation i d input`
+307. `click the confirmation id input`
+308. `click the connect button`
+309. `click the connection request task element`
+310. `click the connections tab search input`
+311. `click the contacts sub tab element`
+312. `click the continue button`
+313. `click the contract user program lookup tool option element`
+314. `click the copy from previous pages link`
+315. `click the crd element`
+316. `click the crd number input box input`
+317. `click the create account button`
+318. `click the credential management link`
+319. `click the cross mark icon element`
+320. `click the customer configuration element`
+321. `click the customer credentials option element`
+322. `click the customer id text box input`
+323. `click the customer text box input`
+324. `click the cx tools element`
+325. `click the date input`
+326. `click the deactivate success message element`
+327. `click the deactivate user link`
+328. `click the deactivate user request confirm button`
+329. `click the delete action button`
+330. `click the delete gne button`
+331. `click the delete gne dialog delete button`
+332. `click the delete state service modal save button`
+333. `click the delete task element`
+334. `click the delete task overlay confirm button`
+335. `click the description element`
+336. `click the dialog ok button`
+337. `click the dialog submit button`
+338. `click the disabling or account clean up radio button`
+339. `click the disclose new activity button`
+340. `click the disclose new gne element`
+341. `click the disclosure summary element`
+342. `click the disclosures tab element`
+343. `click the do not report button`
+344. `click the do not report internal comments input`
+345. `click the document sharing report tool option element`
+346. `click the download report element`
+347. `click the drill down button`
+348. `click the dropdown menu dropdown`
+349. `click the edit account first name element`
+350. `click the edit account info dropdown dropdown`
+351. `click the edit account info link`
+352. `click the edit carrier account tool option element`
+353. `click the edit configuration compliance step enable radio button`
+354. `click the edit configuration manager step enable radio button`
+355. `click the edit configuration submit button`
+356. `click the edit configuration supervisory principal step enable radio button`
+357. `click the edit link column link`
+358. `click the edit menu button`
+359. `click the edit org account tool link`
+360. `click the edit organization account element`
+361. `click the edit pencil element`
+362. `click the edit user button`
+363. `click the edit user dialog dialog`
+364. `click the edit user entity header dialog dialog`
+365. `click the edit user first name element`
+366. `click the edit user last name element`
+367. `click the edit user save button`
+368. `click the elipsus button`
+369. `click the ellipsis element`
+370. `click the ellipsis menu button`
+371. `click the ellipsis menu menu`
+372. `click the ellipsis menu option menu`
+373. `click the email address element`
+374. `click the email address input`
+375. `click the email address input text box input`
+376. `click the email address radio button`
+377. `click the email address text box input`
+378. `click the email input`
+379. `click the email preview over lay dialog close button`
+380. `click the email preview overlay dialog resend email button`
+381. `click the email text box input`
+382. `click the end activity comments element`
+383. `click the end activity continue button`
+384. `click the end activity date element`
+385. `click the end activity dialog dialog`
+386. `click the end activity element`
+387. `click the end activity ok button`
+388. `click the end connection button`
+389. `click the end connection confirm button`
+390. `click the end connection dialog dialog`
+391. `click the end connection dropdown dropdown`
+392. `click the end connection link`
+393. `click the end date calendar element`
+394. `click the entities search panel element`
+395. `click the esignature element`
+396. `click the exams tab element`
+397. `click the exempt reason element`
+398. `click the expand all button`
+399. `click the expand contract button`
+400. `click the external client radio button`
+401. `click the external link arrow link`
+402. `click the external organization element`
+403. `click the feature subscriptions tool option element`
+404. `click the feature toggles tool option element`
+405. `click the file name text box input`
+406. `click the file with f i n r a_ y e s element`
+407. `click the filter by drop down dropdown`
+408. `click the filter by dropdown button`
+409. `click the filter done button`
+410. `click the filter dropdown area attribute dropdown`
+411. `click the filter icon element`
+412. `click the filter inactive status element`
+413. `click the filter o k button`
+414. `click the filter title element`
+415. `click the finra api pipeline data option element`
+416. `click the finra config dialog dialog`
+417. `click the finra file history option element`
+418. `click the finra party data option element`
+419. `click the finra submission search option element`
+420. `click the finra tools element`
+421. `click the finra upload radio checkbox`
+422. `click the firm name element`
+423. `click the firm sign up option element`
+424. `click the firm user roles element`
+425. `click the firm user select dropdown dropdown`
+426. `click the first agent element`
+427. `click the first name element`
+428. `click the first name input`
+429. `click the force compensation sync button`
+430. `click the force compensation sync tool option element`
+431. `click the forgot password radio button`
+432. `click the forgot password tool option element`
+433. `click the framed transaction frame element`
+434. `click the full name text box input`
+435. `click the g2 customer id text box input`
+436. `click the g2 pdb alert publish audit option element`
+437. `click the g2 pdb alert publish manual refresh option element`
+438. `click the g2 pdb alert subscriptions option element`
+439. `click the g2 tools element`
+440. `click the generate schedules button`
+441. `click the get edit user confirmation ok button`
+442. `click the get help signing in link`
+443. `click the gift in excluded category_true element`
+444. `click the gifts and entertainment reported_ no element`
+445. `click the gifts and entertainment reported_ yes element`
+446. `click the global actions button`
+447. `click the gne advisor comments element`
+448. `click the gne attested element`
+449. `click the gne given search element`
+450. `click the gne given tab element`
+451. `click the gne received search element`
+452. `click the gne received tab element`
+453. `click the gne tab element`
+454. `click the go to consumer offsets option element`
+455. `click the goto my dashboard button`
+456. `click the group info tab element`
+457. `click the group options element`
+458. `click the groups link`
+459. `click the has client complaints_ no element`
+460. `click the has client complaints_ yes element`
+461. `click the has oba_no element`
+462. `click the has oba_yes element`
+463. `click the include completed checkbox checkbox`
+464. `click the informational text on account name search text`
+465. `click the insurance capability enabled checkbox checkbox`
+466. `click the insurance registered office yes element`
+467. `click the interview complete dialog ok button`
+468. `click the interview configuration tool option element`
+469. `click the investment related y e s element`
+470. `click the job name radio button`
+471. `click the kc login button`
+472. `click the key column header element`
+473. `click the last name element`
+474. `click the last name input`
+475. `click the leader checkbox checkbox`
+476. `click the leaders tab element`
+477. `click the learn more about cost centers link`
+478. `click the learn more about premium button`
+479. `click the learn more about premium link`
+480. `click the license category rows element`
+481. `click the license renewal link`
+482. `click the license renewals due element`
+483. `click the licenses tab element`
+484. `click the licenses tab search input`
+485. `click the list users button`
+486. `click the logout confirmation dialog button`
+487. `click the look up credentials button`
+488. `click the look up reference code option one element`
+489. `click the look up reference code tool option element`
+490. `click the lookup ce transcript link`
+491. `click the lookup license number link`
+492. `click the lookup pe transcript link`
+493. `click the lookup producer number link`
+494. `click the lookup submit button`
+495. `click the lost account radio button`
+496. `click the lost email radio button`
+497. `click the manage affiliations endorsements link`
+498. `click the manager workflow step on element`
+499. `click the mark exempt dialog dialog`
+500. `click the mark exempt element`
+501. `click the mask as complete button`
+502. `click the menu options menu`
+503. `click the method of reporting dropdown`
+504. `click the mortgage loan originator yes element`
+505. `click the most frequent sorting radio button`
+506. `click the name and address correct_ no element`
+507. `click the name and address correct_ yes element`
+508. `click the name link`
+509. `click the national producer number input`
+510. `click the need to report oba element`
+511. `click the need to report oba_ associate list element`
+512. `click the network id radio button`
+513. `click the network id text box input`
+514. `click the new email address text box input`
+515. `click the new oba radio button`
+516. `click the new p s t approval element`
+517. `click the new password element`
+518. `click the next page navigator element`
+519. `click the nipr alert tool option element`
+520. `click the nipr simulator element`
+521. `click the no radio button`
+522. `click the notification tab drop down dropdown`
+523. `click the notification tab ellipsis menu menu`
+524. `click the notification tab results section search button`
+525. `click the notification tab view email link`
+526. `click the npn text area text`
+527. `click the npn text box input`
+528. `click the oba edit button`
+529. `click the oba grid section element`
+530. `click the oba need disclosing checkbox checkbox`
+531. `click the oba radio button`
+532. `click the oba type continue button`
+533. `click the off set text box input`
+534. `click the old transaction search tools link`
+535. `click the options link`
+536. `click the org profile menu menu`
+537. `click the organization id column element`
+538. `click the organization id input`
+539. `click the organization id radio button`
+540. `click the organization management link`
+541. `click the outside activities tab element`
+542. `click the outside activity type continue button`
+543. `click the overlay ok button`
+544. `click the overview tab element`
+545. `click the packet id text area text`
+546. `click the packet id text box input`
+547. `click the packet id text radio button`
+548. `click the pagination element`
+549. `click the pagination option to show fifty rows element`
+550. `click the pagination option to show hundred rows element`
+551. `click the pagination option1 element`
+552. `click the pagination option2 element`
+553. `click the pagination option3 element`
+554. `click the pagination option4 element`
+555. `click the pagination to show fifty rows element`
+556. `click the partition text box input`
+557. `click the password input`
+558. `click the payment address line1 text box input`
+559. `click the payment city text box input`
+560. `click the payment credit card number text box input`
+561. `click the payment email text box input`
+562. `click the payment first name text box input`
+563. `click the payment iframe element`
+564. `click the payment last name text box input`
+565. `click the payment state dropdown dropdown`
+566. `click the payment submit button`
+567. `click the pdb alert file search option element`
+568. `click the pdb alert slice search option element`
+569. `click the pdb entity tool option element`
+570. `click the pdb service tools element`
+571. `click the personal investments correct_ no element`
+572. `click the personal investments correct_ yes element`
+573. `click the phone number input`
+574. `click the pm business rules tool element`
+575. `click the pm cache refresh tool element`
+576. `click the pm enhanced appointment profile tool element`
+577. `click the pm job schedules tool element`
+578. `click the pm jobs tool element`
+579. `click the pm sync dash board link`
+580. `click the pm sync dashboard tool element`
+581. `click the pm sync metrics link`
+582. `click the pm sync metrics tool element`
+583. `click the pm sync tool element`
+584. `click the pm tools element`
+585. `click the pm xml data viewer tool element`
+586. `click the primary button`
+587. `click the print license link`
+588. `click the processing date input`
+589. `click the producer data tool option element`
+590. `click the producer id text box input`
+591. `click the producer manager products radio button`
+592. `click the producer type drop down dropdown`
+593. `click the producer type element`
+594. `click the product logins link`
+595. `click the product population growth link`
+596. `click the profile edit name element`
+597. `click the profile edit resident license element`
+598. `click the profile menu menu`
+599. `click the property name column header element`
+600. `click the property name text box input`
+601. `click the pst radio button`
+602. `click the purge cassandra cache button`
+603. `click the px bulk request tool option element`
+604. `click the px job schedules tool option element`
+605. `click the px jobs tool option element`
+606. `click the px log levels option element`
+607. `click the px tools element`
+608. `click the px transaction info option element`
+609. `click the qq dialog ok button`
+610. `click the quick search result producer name link`
+611. `click the real estate buy sell property no element`
+612. `click the real estate property ownership yes element`
+613. `click the real estate solicit investors with others yes element`
+614. `click the real estate solicit investors yes element`
+615. `click the reason dropdown dropdown`
+616. `click the reassign success ok button`
+617. `click the reassign task success element`
+618. `click the receive other compensation_no element`
+619. `click the receive other compensation_yes element`
+620. `click the reconnect with individual link`
+621. `click the recovery email radio button`
+622. `click the reg type_ affiliated element`
+623. `click the reject gne button`
+624. `click the reject oba button`
+625. `click the relate subscriber link`
+626. `click the relationship info tool option element`
+627. `click the renew license link`
+628. `click the renew link`
+629. `click the report date element`
+630. `click the report date radio button`
+631. `click the report format csv radio button`
+632. `click the reporting link`
+633. `click the request associate confirmation dialog dialog`
+634. `click the request associate confirmation element`
+635. `click the request associate confirmation of all outside activities link`
+636. `click the request certification link`
+637. `click the request more info button`
+638. `click the request more info gne button`
+639. `click the request multiple associate confirmation element`
+640. `click the request pdb report option element`
+641. `click the request single associate confirmation element`
+642. `click the resend account request ok button`
+643. `click the resend activation email tool option element`
+644. `click the resend email button`
+645. `click the reset seearch form element`
+646. `click the resident license number input`
+647. `click the resident license state dropdown`
+648. `click the resident license state dropdown dropdown`
+649. `click the results section element`
+650. `click the return to associate acq dialog ok button`
+651. `click the return to associate button`
+652. `click the review and confirm button`
+653. `click the row ellipsis menu menu`
+654. `click the saml configuration option element`
+655. `click the save and exit button`
+656. `click the save button`
+657. `click the save exempt element`
+658. `click the save overlay ok button`
+659. `click the schedule exam element`
+660. `click the schedule state service down time tool option element`
+661. `click the scheduler tools element`
+662. `click the schedules results ellipsis menu menu`
+663. `click the search account button`
+664. `click the search advisor text box input`
+665. `click the search again link`
+666. `click the search all services button`
+667. `click the search approved course form element`
+668. `click the search approved courses link`
+669. `click the search approved providers form element`
+670. `click the search approved providers link`
+671. `click the search button`
+672. `click the search buttons button`
+673. `click the search by associate group type dropdown dropdown`
+674. `click the search by confirmation i d element`
+675. `click the search by email button`
+676. `click the search by user id text box input`
+677. `click the search by value dropdown dropdown`
+678. `click the search connections button`
+679. `click the search course offerings form element`
+680. `click the search course offerings link`
+681. `click the search crd element`
+682. `click the search email address element`
+683. `click the search email text box input`
+684. `click the search external client button`
+685. `click the search field cross button`
+686. `click the search first name element`
+687. `click the search inactive checkbox checkbox`
+688. `click the search input`
+689. `click the search last name element`
+690. `click the search leaders element`
+691. `click the search npn element`
+692. `click the search radio button`
+693. `click the search resident license state element`
+694. `click the search result element`
+695. `click the search schedule event tool option element`
+696. `click the search schedule tool option element`
+697. `click the search tab element`
+698. `click the search text box input`
+699. `click the search user id text box input`
+700. `click the search work queue input`
+701. `click the secondary email input`
+702. `click the securities internal user report element`
+703. `click the security admin role check box checkbox`
+704. `click the security element`
+705. `click the security questions radio button`
+706. `click the security roles element`
+707. `click the segment name element`
+708. `click the select external client button`
+709. `click the selected date input`
+710. `click the send email button`
+711. `click the send request to confirm button`
+712. `click the service error message element`
+713. `click the service name element`
+714. `click the service type drop down dropdown`
+715. `click the services link`
+716. `click the services tab element`
+717. `click the sftp management option element`
+718. `click the sign in button`
+719. `click the sign up now link`
+720. `click the signup for premium link`
+721. `click the single message radio button`
+722. `click the single subscriber management link`
+723. `click the sip tools element`
+724. `click the sircon logo element`
+725. `click the sircon pst correct checkbox_yes checkbox`
+726. `click the sso login tool option element`
+727. `click the start ac q button`
+728. `click the start acq program button`
+729. `click the start date calendar element`
+730. `click the start date date picker element`
+731. `click the start disclosure dialog dialog`
+732. `click the start task link`
+733. `click the state code select dropdown`
+734. `click the state column toggle element`
+735. `click the state drop down dropdown`
+736. `click the subject of litigation_ no element`
+737. `click the subject of litigation_ yes element`
+738. `click the submission ok button`
+739. `click the submit acq complete action dialog dialog`
+740. `click the submit acq dialog complete button`
+741. `click the submit acq interview more info dialog dialog`
+742. `click the submit bulk request button`
+743. `click the submit button`
+744. `click the submit changes modal button`
+745. `click the submit edit workflow element`
+746. `click the submit email change button`
+747. `click the submit gne interview dialog ok button`
+748. `click the submit interview with decision dialog dialog`
+749. `click the submit name change button`
+750. `click the submit resident license change button`
+751. `click the submit update activity dialog dialog`
+752. `click the submit update gne success dialog dialog`
+753. `click the subscriber id input`
+754. `click the subscriber id text box input`
+755. `click the subscriber management link`
+756. `click the subscriber rep admin link`
+757. `click the subscriber rep info link`
+758. `click the subscribers link`
+759. `click the subscribers tab element`
+760. `click the subscriptions options link`
+761. `click the supervirosy principal workflow on element`
+762. `click the switch menu button`
+763. `click the switch menu options menu`
+764. `click the table filter button`
+765. `click the table row element`
+766. `click the task assign to option element`
+767. `click the task details ellipsis menu menu`
+768. `click the task details link`
+769. `click the task dropdown toggle dropdown`
+770. `click the task row dropdown dropdown`
+771. `click the task row element`
+772. `click the task row menu menu`
+773. `click the task status value element`
+774. `click the task title desc element`
+775. `click the task title element`
+776. `click the tasks widget element`
+777. `click the tax prep po a role desc element`
+778. `click the tax prep po a role yes element`
+779. `click the template purge option element`
+780. `click the third party management link`
+781. `click the tool tip icon element`
+782. `click the topic name text box input`
+783. `click the transaction results element`
+784. `click the transaction search element`
+785. `click the transaction tools link`
+786. `click the type column header element`
+787. `click the type dropdown dropdown`
+788. `click the unassign all tasks confirm button`
+789. `click the unassign radio button`
+790. `click the understand state registrations required_ no element`
+791. `click the understand state registrations required_ yes element`
+792. `click the update activity continue button`
+793. `click the update activity dialog back button`
+794. `click the update activity dialog dialog`
+795. `click the update activity element`
+796. `click the update oba continue button`
+797. `click the update oba dialog ok button`
+798. `click the update roles ok button`
+799. `click the update transaction link`
+800. `click the update transactions response button`
+801. `click the updated personal investments checkbox checkbox`
+802. `click the upgrade to premium button`
+803. `click the us postal code input`
+804. `click the used inside info_ no element`
+805. `click the used inside info_ yes element`
+806. `click the user admin option element`
+807. `click the user drop down toggle dropdown`
+808. `click the user id radio button`
+809. `click the user id text box input`
+810. `click the user info option element`
+811. `click the user info tool link`
+812. `click the user ldap info tool option element`
+813. `click the user menu menu`
+814. `click the user options element`
+815. `click the user relation ship mapper tool option element`
+816. `click the user requested email change radio button`
+817. `click the user search by email element`
+818. `click the user type element`
+819. `click the username input`
+820. `click the users population type radio button`
+821. `click the validation error message header element`
+822. `click the validation errormessage body element`
+823. `click the value column header element`
+824. `click the view account info link`
+825. `click the view activities button`
+826. `click the view advisor oba dont save button`
+827. `click the view all actions button`
+828. `click the view all activity link`
+829. `click the view all licenses link`
+830. `click the view all oba for this advisor link`
+831. `click the view carrier request element`
+832. `click the view completed task link`
+833. `click the view completed tasks element`
+834. `click the view history table element`
+835. `click the view reports link`
+836. `click the view workflow details link`
+837. `click the view workflow details submit button`
+838. `click the vulnerability tracker tool element`
+839. `click the web eft password input box input`
+840. `click the web eft username input box input`
+841. `click the week visualization period radio button`
+842. `click the widget element`
+843. `click the withdraw connection confirm button`
+844. `click the withdraw connection link`
+845. `click the work flows config tab element`
+846. `click the work flows tab ellipsis menu menu`
+847. `click the work queue tab element`
+848. `click the workflow config edit element`
+849. `click the workflow content element`
+850. `click the workflow drop down dropdown`
+851. `click the workflow include completed checkbox checkbox`
+852. `click the workflow search button`
+853. `click the workflow step select dropdown dropdown`
+854. `click the workflow task row dropdown dropdown`
+855. `click the workflow type select dropdown dropdown`
+856. `click the workflows tab goal details link`
+857. `click the yes radio button`
+858. `click the yes represents g2 account element`
+859. `click transaction search`
+860. `click transaction tools`
+861. `click update activity`
+862. `click update activity dialog`
+863. `click update oba continue`
+864. `click user admin option`
+865. `click user options`
+866. `click validation error message header`
+867. `click validation errormessage body`
+868. `click view account info`
+869. `click view all oba for this advisor`
+870. `click view completed task`
+871. `click workflow task row dropdown`
+872. `enter text in add cost center field`
+873. `enter text in admin email address name text box field`
+874. `enter text in admin first name text box field`
+875. `enter text in admin last name text box field`
+876. `enter text in answer 1 field`
+877. `enter text in answer 2 field`
+878. `enter text in answer 3 field`
+879. `enter text in atid effective interval.start field`
+880. `enter text in atid hours during sec trading per month field`
+881. `enter text in atid hours per month field`
+882. `enter text in atid oba advisor comments field`
+883. `enter text in atid oba name field`
+884. `enter text in atid title related to oba field`
+885. `enter text in available appointment search field`
+886. `enter text in begin date field`
+887. `enter text in begin date fields field`
+888. `enter text in comment textbox field`
+889. `enter text in complete date begin date picker field`
+890. `enter text in complete date end date picker field`
+891. `enter text in cost center content field`
+892. `enter text in custom cost center field`
+893. `enter text in customer drop down field`
+894. `enter text in customer search result rows field`
+895. `enter text in delete state service menu option field`
+896. `enter text in download xml data field`
+897. `enter text in edit organization naic field`
+898. `enter text in edit organization name field`
+899. `enter text in edit saml configuration menu option field`
+900. `enter text in edit subscriber subscriber name field`
+901. `enter text in effective end date field`
+902. `enter text in effective start date field`
+903. `enter text in ellipsis menu field`
+904. `enter text in email address field`
+905. `enter text in email text body field`
+906. `enter text in end date field`
+907. `enter text in end date fields field`
+908. `enter text in enter new email message field`
+909. `enter text in first name field`
+910. `enter text in group id field`
+911. `enter text in group id type field`
+912. `enter text in last name field`
+913. `enter text in name field`
+914. `enter text in national producer number field`
+915. `enter text in npn field`
+916. `enter text in organization name field`
+917. `enter text in phone extension field`
+918. `enter text in phone number field`
+919. `enter text in pm subscriber id text box field`
+920. `enter text in producer data id field`
+921. `enter text in question 1 field`
+922. `enter text in question 2 field`
+923. `enter text in question 3 field`
+924. `enter text in quick search field`
+925. `enter text in quick search results popup field`
+926. `enter text in resident license number field`
+927. `enter text in resident license state field`
+928. `enter text in search advisor text box field`
+929. `enter text in search by dropdown field`
+930. `enter text in search field`
+931. `enter text in search firm user text box field`
+932. `enter text in search text box field`
+933. `enter text in search tools field`
+934. `enter text in search workqueue field`
+935. `enter text in security question one field`
+936. `enter text in security question three field`
+937. `enter text in security question two field`
+938. `enter text in ssn field`
+939. `enter text in state dropdown field`
+940. `enter text in state search result rows field`
+941. `enter text in subscriber i d field`
+942. `enter text in subscriber id text box field`
+943. `enter text in table filter field`
+944. `enter text in table search field`
+945. `enter text in table search text box field`
+946. `enter text in tin field`
+947. `enter text in username field`
+948. `enter {ACCOUNT_ID} in account name field`
+949. `enter {ACCOUNT_ID} in atid investment name field`
+950. `enter {ACCOUNT_ID} in atid investment type field`
+951. `enter {ACCOUNT_ID} in atid investment value field`
+952. `enter {ACCOUNT_ID} in atid number of shares field`
+953. `enter {ACCOUNT_ID} in atid oba address.city field`
+954. `enter {ACCOUNT_ID} in atid oba address.line one field`
+955. `enter {ACCOUNT_ID} in atid oba address.line two field`
+956. `enter {ACCOUNT_ID} in atid oba address.postal code field`
+957. `enter {ACCOUNT_ID} in atid oba address.state code field`
+958. `enter {ACCOUNT_ID} in atid oba phone field`
+959. `enter {ACCOUNT_ID} in atid reviewer general comments field`
+960. `enter {ACCOUNT_ID} in atid shares or ownership field`
+961. `enter {ADDRESS} in address line one field`
+962. `enter {ADDRESS} in address line two field`
+963. `enter {CITY} in city field`
+964. `enter {EMAIL} in email address field`
+965. `enter {NAME} in first name field`
+966. `enter {NAME} in last name field`
+967. `enter {NAME} in name field`
+968. `enter {NAME} in organization name field`
+969. `enter {PASSWORD} in confirm password field`
+970. `enter {PASSWORD} in password field`
+971. `enter {PHONE} in phone number field`
+972. `enter {STATE} in state field`
+973. `enter {STATE} in state select dropdown field`
+974. `enter {TEXT} in confirm f e i n number field`
+975. `enter {TEXT} in crd number field`
+976. `enter {TEXT} in ein field`
+977. `enter {TEXT} in fein number field`
+978. `enter {TEXT} in search value field`
+979. `enter {ZIPCODE} in zip code field`
+980. `get attribute from configure renewal reminders checkbox`
+981. `get attribute from first view user group checkbox`
+982. `get attribute from insurance licensee search`
+983. `get attribute from progress`
+984. `get attribute from progress icons`
+985. `get attribute from security roles`
+986. `get count of all side rail items`
+987. `get count of consumer group off set result row`
+988. `get count of consumer registry result row`
+989. `get count of edit pencil`
+990. `get count of error history table row count`
+991. `get count of individual result rows`
+992. `get count of invite tab table column header`
+993. `get count of kafka connector result row`
+994. `get count of ldap result rows`
+995. `get count of license row`
+996. `get count of mile stone table search result rows`
+997. `get count of packet field table`
+998. `get count of packet field table search result rows`
+999. `get count of search result row`
+1000. `get count of tab list`
+1001. `get count of table row`
+1002. `get count of time line table row count`
+1003. `get count of time line table search result rows`
+1004. `get count of user name list`
+1005. `get count of works f low info table row count`
+1006. `get text from account email address`
+1007. `get text from account info tool page header`
+1008. `get text from account information`
+1009. `get text from account name`
+1010. `get text from account pending header`
+1011. `get text from active tab`
+1012. `get text from activities`
+1013. `get text from add individual workflow content`
+1014. `get text from add log level success message`
+1015. `get text from add relationship modal to account id error message`
+1016. `get text from add relationship modal to principal type error message`
+1017. `get text from add relationship modal to user id error message`
+1018. `get text from advisor email`
+1019. `get text from advisor name`
+1020. `get text from advisor oba to report`
+1021. `get text from advisor reported oba`
+1022. `get text from advisor reported oba number`
+1023. `get text from advisor status`
+1024. `get text from advisor user name`
+1025. `get text from agency carrier title text`
+1026. `get text from alert error text`
+1027. `get text from all states table data`
+1028. `get text from assignee`
+1029. `get text from assignee value`
+1030. `get text from attempt error`
+1031. `get text from available appointments table rows`
+1032. `get text from basic info comment value`
+1033. `get text from basic info ein value`
+1034. `get text from basic info group code value`
+1035. `get text from basic info section`
+1036. `get text from basic info subscriber id value`
+1037. `get text from basic info subscriber name value`
+1038. `get text from bi vendor value`
+1039. `get text from billing details annual fee`
+1040. `get text from billing profile content`
+1041. `get text from billing table title`
+1042. `get text from body`
+1043. `get text from branded carrier intro`
+1044. `get text from branded logo`
+1045. `get text from business rule text box`
+1046. `get text from carrier`
+1047. `get text from carrier contact details`
+1048. `get text from carrier name`
+1049. `get text from carriers table`
+1050. `get text from ce resident state text`
+1051. `get text from ce widget`
+1052. `get text from communication history`
+1053. `get text from communication history contents`
+1054. `get text from communication preferences expiration`
+1055. `get text from confirm email address`
+1056. `get text from confirm new password`
+1057. `get text from confirm new password confirm`
+1058. `get text from connection request task`
+1059. `get text from connection request task title`
+1060. `get text from consumer registry first row`
+1061. `get text from contact info`
+1062. `get text from csv alert error text`
+1063. `get text from current changes content`
+1064. `get text from current outstanding account balance`
+1065. `get text from current password`
+1066. `get text from current work flow locks row`
+1067. `get text from customer text box`
+1068. `get text from dashboard page links`
+1069. `get text from default package type value`
+1070. `get text from details section ein value`
+1071. `get text from details section organization id value`
+1072. `get text from documents`
+1073. `get text from earned premium policy`
+1074. `get text from edit business rule diaglog description`
+1075. `get text from edit business rule dialog header`
+1076. `get text from edit carrier account details`
+1077. `get text from edit link column`
+1078. `get text from edit saml configuration dialog customer name`
+1079. `get text from edit subscriber default system code drop down values`
+1080. `get text from edit subscriber ein`
+1081. `get text from edit subscriber group code values`
+1082. `get text from edit subscriber statement delivery method drop down values`
+1083. `get text from edit user dialog box label`
+1084. `get text from edit user dialog box title`
+1085. `get text from email address`
+1086. `get text from email address changed successfully message content`
+1087. `get text from email address changed successfully message header`
+1088. `get text from email address modal information`
+1089. `get text from email address modal note`
+1090. `get text from email error`
+1091. `get text from email instructions`
+1092. `get text from email notifications content`
+1093. `get text from email preview caution body`
+1094. `get text from email preview caution header`
+1095. `get text from email resend success header`
+1096. `get text from email resend success message`
+1097. `get text from email sent body`
+1098. `get text from email sent header`
+1099. `get text from email validation`
+1100. `get text from end date`
+1101. `get text from error history message column`
+1102. `get text from error history resolved column`
+1103. `get text from error history service column`
+1104. `get text from error message`
+1105. `get text from feature subscription tool header`
+1106. `get text from firm association information text`
+1107. `get text from firm user status`
+1108. `get text from first filtered state table data`
+1109. `get text from first name`
+1110. `get text from first name error`
+1111. `get text from force compensation sync success message content`
+1112. `get text from forgot password header`
+1113. `get text from general info section`
+1114. `get text from get all oba grid items`
+1115. `get text from gne summary currency value`
+1116. `get text from gne table description`
+1117. `get text from groups column text`
+1118. `get text from has oba answer`
+1119. `get text from header`
+1120. `get text from hierarchy name column`
+1121. `get text from individual carrier title text`
+1122. `get text from individual name`
+1123. `get text from info message text`
+1124. `get text from info table`
+1125. `get text from ingest summary error`
+1126. `get text from instruction text`
+1127. `get text from instructions`
+1128. `get text from instructions body`
+1129. `get text from invite connection bar`
+1130. `get text from invite tab column header names`
+1131. `get text from invite tab only`
+1132. `get text from invoices content`
+1133. `get text from key column value`
+1134. `get text from last name`
+1135. `get text from last name error`
+1136. `get text from license info`
+1137. `get text from license list`
+1138. `get text from license renewals due content`
+1139. `get text from license widget`
+1140. `get text from license widget status codes`
+1141. `get text from licenses active count`
+1142. `get text from licenses inactive count`
+1143. `get text from list users table user id`
+1144. `get text from login info`
+1145. `get text from login panel`
+1146. `get text from lost account id confirmation message`
+1147. `get text from lost email error message`
+1148. `get text from lost email recovery message`
+1149. `get text from lost email reset message`
+1150. `get text from maestro goal tool instruction body`
+1151. `get text from maestro goal tool instruction set header`
+1152. `get text from maestro goal tool page header`
+1153. `get text from mile stone description column`
+1154. `get text from mile stone met column`
+1155. `get text from mile stone met date column`
+1156. `get text from modal error summary`
+1157. `get text from name validation`
+1158. `get text from navigation`
+1159. `get text from navigation category`
+1160. `get text from need to report oba`
+1161. `get text from need to report oba number`
+1162. `get text from no obas`
+1163. `get text from no obas number`
+1164. `get text from no results table text`
+1165. `get text from not certified`
+1166. `get text from not certified number`
+1167. `get text from notification tab email preview header`
+1168. `get text from notification tab only`
+1169. `get text from number of results`
+1170. `get text from oba certification widget`
+1171. `get text from oba certification widget certified number`
+1172. `get text from oba search results`
+1173. `get text from oba single step review compliance configuration`
+1174. `get text from oba single step review manager configuration`
+1175. `get text from oba single step review supervisory principal configuration`
+1176. `get text from oba tab message text`
+1177. `get text from oba three step review compliance step configuration`
+1178. `get text from oba three step review manager configuration`
+1179. `get text from oba three step review supervisory principal configuration`
+1180. `get text from oba type`
+1181. `get text from oba widget`
+1182. `get text from org relationship widget`
+1183. `get text from org relationship widget title`
+1184. `get text from organization contact information`
+1185. `get text from outstanding activities message activity`
+1186. `get text from outstanding activity message disclosure`
+1187. `get text from page content`
+1188. `get text from page header`
+1189. `get text from pagination count`
+1190. `get text from password expiration content`
+1191. `get text from payment form error`
+1192. `get text from pdb report tool page title`
+1193. `get text from pedge user payment profile id`
+1194. `get text from pending email change`
+1195. `get text from phone extension`
+1196. `get text from phone number`
+1197. `get text from pm sync dashboard title`
+1198. `get text from preview and send email content`
+1199. `get text from price change table title`
+1200. `get text from producer data demographics section`
+1201. `get text from producer express transinfo header`
+1202. `get text from producer npn`
+1203. `get text from product logins table row`
+1204. `get text from profile appointments table rows`
+1205. `get text from profile crd`
+1206. `get text from profile email`
+1207. `get text from profile firm associatoins`
+1208. `get text from profile manager groups`
+1209. `get text from profile name`
+1210. `get text from profile npn`
+1211. `get text from profile resident license number`
+1212. `get text from profile resident license state`
+1213. `get text from progress`
+1214. `get text from property name column`
+1215. `get text from property name text box`
+1216. `get text from property value column`
+1217. `get text from pst search results`
+1218. `get text from pst tab message text`
+1219. `get text from purge action success message content`
+1220. `get text from purge action success message header`
+1221. `get text from qq task not complete message`
+1222. `get text from question error message`
+1223. `get text from receive compensation answer`
+1224. `get text from recent activity`
+1225. `get text from recent activity widget`
+1226. `get text from renewal state`
+1227. `get text from report date`
+1228. `get text from report date rows`
+1229. `get text from request header`
+1230. `get text from reset password message`
+1231. `get text from resident license number`
+1232. `get text from resident license state`
+1233. `get text from resident state list`
+1234. `get text from resolved packet errors warning message`
+1235. `get text from result message`
+1236. `get text from result transtype`
+1237. `get text from rewind packet warning message`
+1238. `get text from role entity type column`
+1239. `get text from schedule detail modal schedule name`
+1240. `get text from schedule names`
+1241. `get text from search`
+1242. `get text from search agent found message`
+1243. `get text from search content`
+1244. `get text from search result`
+1245. `get text from search results`
+1246. `get text from section header`
+1247. `get text from securities features available info`
+1248. `get text from securities internal user reports page title`
+1249. `get text from services content`
+1250. `get text from sftp mgmt table title`
+1251. `get text from side rail`
+1252. `get text from side rail item`
+1253. `get text from start date`
+1254. `get text from state invoice id`
+1255. `get text from state service types`
+1256. `get text from status value`
+1257. `get text from subscriber id required message`
+1258. `get text from subscription comparison content`
+1259. `get text from subscription current level`
+1260. `get text from subscription side rail content`
+1261. `get text from subscription switch content`
+1262. `get text from subscription table title`
+1263. `get text from success message`
+1264. `get text from success message content`
+1265. `get text from success message header`
+1266. `get text from summary administrative details`
+1267. `get text from summary billing information`
+1268. `get text from summary for all states header`
+1269. `get text from summary for state header`
+1270. `get text from summary message`
+1271. `get text from summary of cancelled policies`
+1272. `get text from summary of new policies`
+1273. `get text from summary of renewed policies`
+1274. `get text from summary organization details`
+1275. `get text from supervision widget`
+1276. `get text from supervision widget_associate count`
+1277. `get text from supported products`
+1278. `get text from tab background investigation details`
+1279. `get text from tab basic details`
+1280. `get text from tab communication history details`
+1281. `get text from tab course completion details`
+1282. `get text from tab course details`
+1283. `get text from tab license details`
+1284. `get text from tab producer details`
+1285. `get text from tab provider details`
+1286. `get text from tab results details`
+1287. `get text from table contents`
+1288. `get text from table filter`
+1289. `get text from table search result rows`
+1290. `get text from table totals`
+1291. `get text from task details header text`
+1292. `get text from task status`
+1293. `get text from terminate packet warning message`
+1294. `get text from time line technical details column`
+1295. `get text from tool information`
+1296. `get text from tool instruction text`
+1297. `get text from top flag message`
+1298. `get text from top navigation menu links`
+1299. `get text from topic message search result row`
+1300. `get text from transdetails text`
+1301. `get text from transfer type value`
+1302. `get text from trigger name column`
+1303. `get text from type column values`
+1304. `get text from user email address`
+1305. `get text from user first last name`
+1306. `get text from user info name`
+1307. `get text from user permissions text`
+1308. `get text from user roles`
+1309. `get text from users`
+1310. `get text from validation error body`
+1311. `get text from validation error header`
+1312. `get text from validation error message`
+1313. `get text from validation error message header`
+1314. `get text from validation errormessage body`
+1315. `get text from validation message`
+1316. `get text from value column values`
+1317. `get text from widget`
+1318. `get text from widget content`
+1319. `get text from widget title`
+1320. `get text from workflow step value`
+1321. `get text from works flow info id column`
+1322. `get text from written premium policy`
+1323. `navigate to task title`
+1324. `navigate to tasks widget`
+1325. `retrieve alert summary from DashboardActivityPage`
+1326. `retrieve all table elements from AdminFirmUsersPage`
+1327. `retrieve atid subject of disclosure from GneSummaryPage`
+1328. `retrieve confirm gne submission from GneQuestionnairePage`
+1329. `retrieve document sharing dropdown from ProducerRulesPage`
+1330. `retrieve e and odocument requirement dropdown from ProducerRulesPage`
+1331. `retrieve e and opolicy management dropdown from ProducerRulesPage`
+1332. `retrieve firm user name from AdminFirmUsersPage`
+1333. `retrieve grid items from NetworkDisclosuresPage`
+1334. `retrieve last name text`
+1335. `retrieve name from NetworkPeoplePage`
+1336. `retrieve resident license number text`
+1337. `retrieve resident license state text`
+1338. `retrieve resident state from IndividualSignUpPage`
+1339. `retrieve role from HierarchiesPage`
+1340. `retrieve send request to confirm from AdvisorDisclosurePage`
+1341. `retrieve state from PinTransactionSummaryPage`
+1342. `retrieve status from NetworkPeoplePage`
+1343. `retrieve submit gne from GneQuestionnairePage`
+1344. `retrieve transtype from TransactionSearchPage`
+1345. `select None from electronic submit method checked dropdown`
+1346. `select None from preferred delivery method dropdown`
+1347. `select None from select license renewal reminder dropdown`
+1348. `select None from time frame drop down dropdown`
+1349. `type {ADDRESS} into address line one`
+1350. `type {CITY} into city`
+1351. `type {PHONE} into phone number`
+1352. `type {ZIPCODE} into zip code`
+1353. `verify account id radio is present`
+1354. `verify account info tool search is enabled`
+1355. `verify account information widget is present`
+1356. `verify account name radio is present`
+1357. `verify account reporting tool header is present`
+1358. `verify acq program widget is displayed`
+1359. `verify acq summary widget is present`
+1360. `verify acq widget is displayed`
+1361. `verify activities tab is displayed`
+1362. `verify add connection is displayed`
+1363. `verify add log level drop down is present`
+1364. `verify add log level modal add is present`
+1365. `verify add log level modal name text box is present`
+1366. `verify add relationship modal form is displayed`
+1367. `verify add state service modal title is displayed`
+1368. `verify add subscriber is present`
+1369. `verify additional authority is displayed`
+1370. `verify advanced balance account is displayed`
+1371. `verify advisor activity container is displayed`
+1372. `verify agency licenses label is present`
+1373. `verify agency licenses widget is present`
+1374. `verify agency quicklinks widget is present`
+1375. `verify agency referrer information page title is present`
+1376. `verify agency reports page title is present`
+1377. `verify all active vertafore users radio is displayed`
+1378. `verify all licenses is present`
+1379. `verify all table elements is displayed`
+1380. `verify app all activity list is displayed`
+1381. `verify apply for license is displayed`
+1382. `verify approve comments panel is displayed`
+1383. `verify associate group enabled check box is present`
+1384. `verify associate group tool header is present`
+1385. `verify associate groups tab is displayed`
+1386. `verify atid oba name is displayed`
+1387. `verify billing profile widget is present`
+1388. `verify billing summary tool header is present`
+1389. `verify bio graphic first name is displayed`
+1390. `verify biographic first name value is displayed`
+1391. `verify business details section is displayed`
+1392. `verify cancel is displayed`
+1393. `verify carrier agency dashboard widget is present`
+1394. `verify carrier logo image is displayed`
+1395. `verify carrier req milestone widget is displayed`
+1396. `verify carrier widget is displayed`
+1397. `verify carriers widget is displayed`
+1398. `verify ce change is displayed`
+1399. `verify ce widget is displayed`
+1400. `verify change contact info form is displayed`
+1401. `verify change name form is displayed`
+1402. `verify check status form is displayed`
+1403. `verify click related request is present`
+1404. `verify close is displayed`
+1405. `verify close packet is present`
+1406. `verify configure gne widget is present`
+1407. `verify configure oba widget is present`
+1408. `verify configure pst widget is present`
+1409. `verify confirm oba is displayed`
+1410. `verify connect to agent widget is present`
+1411. `verify connected license fee message is displayed`
+1412. `verify contact info widget is displayed`
+1413. `verify contact info widget is present`
+1414. `verify container is displayed`
+1415. `verify continuing education widget is displayed`
+1416. `verify course requirement is displayed`
+1417. `verify current work flow locks row is present`
+1418. `verify delete state service modal confirmation message is displayed`
+1419. `verify delete state service modal title is displayed`
+1420. `verify dialog box is present`
+1421. `verify disabling or account clean up radio is present`
+1422. `verify disclosure filing comments is displayed`
+1423. `verify disclosure summary is displayed`
+1424. `verify disclosures drp tab is present`
+1425. `verify disclosures tab is displayed`
+1426. `verify documents widget is displayed`
+1427. `verify download report is present`
+1428. `verify download xml data is enabled`
+1429. `verify earned premium view details is displayed`
+1430. `verify edit saml configuration dialog customer name is displayed`
+1431. `verify edit saml configuration dialog heading is displayed`
+1432. `verify education input option is displayed`
+1433. `verify education widget is displayed`
+1434. `verify enable crd tracking checkbox is displayed`
+1435. `verify enable license tracking checkbox is displayed`
+1436. `verify end activity dialog is displayed`
+1437. `verify end date calendar is present`
+1438. `verify entity disclosures is displayed`
+1439. `verify error history table is present`
+1440. `verify exams tab is present`
+1441. `verify find courses is displayed`
+1442. `verify framed transaction frame is displayed`
+1443. `verify from account id is present`
+1444. `verify from principal type is present`
+1445. `verify from user id is present`
+1446. `verify gne dashboard widget is present`
+1447. `verify gne report is present`
+1448. `verify gne summary value flag is present`
+1449. `verify gne tab is present`
+1450. `verify gne widget is displayed`
+1451. `verify groups is displayed`
+1452. `verify has flagged responses is displayed`
+1453. `verify historical work flow locks row is present`
+1454. `verify hold liability account is displayed`
+1455. `verify inactive connection message is displayed`
+1456. `verify job schedules week chart is present`
+1457. `verify known element on is displayed`
+1458. `verify learn more about premium is displayed`
+1459. `verify license menu container is displayed`
+1460. `verify license renewal criteria form is displayed`
+1461. `verify license renewal reminder preference is present`
+1462. `verify license renewals due is present`
+1463. `verify license widget is displayed`
+1464. `verify licenses tab is displayed`
+1465. `verify licenses tab npn is present`
+1466. `verify licenses widget is displayed`
+1467. `verify licensing widget is displayed`
+1468. `verify loading spinner is displayed`
+1469. `verify look up other info widget is displayed`
+1470. `verify lookup license number form is displayed`
+1471. `verify lookup npn number form is displayed`
+1472. `verify mile stone table search result rows is displayed`
+1473. `verify name is displayed`
+1474. `verify network id radio is present`
+1475. `verify next page navigator is present`
+1476. `verify no results is displayed`
+1477. `verify oba blurb label is displayed`
+1478. `verify oba certification widget is displayed`
+1479. `verify oba report is present`
+1480. `verify oba widget is displayed`
+1481. `verify org relationship widget is displayed`
+1482. `verify outside activities tab is present`
+1483. `verify over view table rows is displayed`
+1484. `verify overview tab is displayed`
+1485. `verify packet field table is displayed`
+1486. `verify page errors is present`
+1487. `verify pdb alert file search title is present`
+1488. `verify pdb alert slice search title is present`
+1489. `verify pending confirmation warning is displayed`
+1490. `verify pending liability account is displayed`
+1491. `verify print license form is displayed`
+1492. `verify producer data status is present`
+1493. `verify profile_ user name is displayed`
+1494. `verify pst report is present`
+1495. `verify purge action success message content is displayed`
+1496. `verify purge action success message header is displayed`
+1497. `verify quick links widget is displayed`
+1498. `verify recent activity widget is displayed`
+1499. `verify registrations report is present`
+1500. `verify regulatory quickquides widget is present`
+1501. `verify relationship table to type column is present`
+1502. `verify relationships table from account column is present`
+1503. `verify relationships table from type column is present`
+1504. `verify relationships table from user column is present`
+1505. `verify relationships table to account column is present`
+1506. `verify relationships table to user column is present`
+1507. `verify reportable events tab is present`
+1508. `verify request associate info message is displayed`
+1509. `verify request confirmation message is displayed`
+1510. `verify request letter of cert form is displayed`
+1511. `verify request more info comments panel is displayed`
+1512. `verify resend email is present`
+1513. `verify resend firm activation email panel header is present`
+1514. `verify resident license number is present`
+1515. `verify resident license state is present`
+1516. `verify resolve packet error is present`
+1517. `verify resolve packet errors section is present`
+1518. `verify result row is displayed`
+1519. `verify review and confirm is displayed`
+1520. `verify rewind packet is present`
+1521. `verify rewind packet section is present`
+1522. `verify save is displayed`
+1523. `verify schedule detail modal cancel is displayed`
+1524. `verify schedule detail modal schedule name is displayed`
+1525. `verify schedule state service down time success message is displayed`
+1526. `verify search again is displayed`
+1527. `verify search agent not found message is present`
+1528. `verify search is displayed`
+1529. `verify search is present`
+1530. `verify service type drop down is displayed`
+1531. `verify service type list is present`
+1532. `verify services tab is displayed`
+1533. `verify side rail is displayed`
+1534. `verify signup for premium is displayed`
+1535. `verify start date calendar is present`
+1536. `verify state code select is displayed`
+1537. `verify state drop down is displayed`
+1538. `verify state notices widget is present`
+1539. `verify state services widget is displayed`
+1540. `verify submission successful dialog is present`
+1541. `verify submit is present`
+1542. `verify submit update gne success dialog is present`
+1543. `verify subscriber id is present`
+1544. `verify subscriber id text box is present`
+1545. `verify supervision widget is displayed`
+1546. `verify sync overview table rows is displayed`
+1547. `verify terminate packet section is present`
+1548. `verify time line tab table is present`
+1549. `verify tin is present`
+1550. `verify to account id is present`
+1551. `verify to principal type drop down is present`
+1552. `verify to user id is present`
+1553. `verify unified header is displayed`
+1554. `verify update activity dialog is displayed`
+1555. `verify update contact info widget is displayed`
+1556. `verify upgrade to premium is displayed`
+1557. `verify user info section is displayed`
+1558. `verify user license expiration notification window is present`
+1559. `verify user name input is present`
+1560. `verify user requested email change radio is present`
+1561. `verify username is displayed`
+1562. `verify users chart is present`
+1563. `verify users created by veratfore radio is displayed`
+1564. `verify users created for vertafore radio is displayed`
+1565. `verify view all licenses is displayed`
+1566. `verify view my transcripts is displayed`
+1567. `verify widget is present`
+1568. `verify workqueue widget is displayed`
+1569. `verify works flow info table is present`
+1570. `verify written premium view details is displayed`
+1571. `wait for access denied error to be visible`
+1572. `wait for edit role access permissions dialog to be visible`
+1573. `wait for known element on to be visible`
+1574. `wait for profile name to be visible`
+1575. `wait for status value to be visible`
+1576. `wait for subscriber details to be visible`
+1577. `wait for table row to be visible`
+1578. `wait for task value to be visible`
+1579. `wait for workflow type column value to be visible`
+
+---
+

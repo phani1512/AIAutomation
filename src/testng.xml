@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Screenshot Generated Test Suite" parallel="false">
+    <test name="ScreenshotTest Tests">
+        <classes>
+            <class name="com.testing.tests.ScreenshotTestTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,1105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>System Documentation</title>
+    <style>
+        @media print {
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            color: #2563eb;
+            font-size: 24pt;
+            margin-top: 20pt;
+            margin-bottom: 12pt;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 8pt;
+        }
+        h2 {
+            color: #1e40af;
+            font-size: 18pt;
+            margin-top: 16pt;
+            margin-bottom: 10pt;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 6pt;
+        }
+        h3 {
+            color: #3b82f6;
+            font-size: 14pt;
+            margin-top: 12pt;
+            margin-bottom: 8pt;
+        }
+        pre {
+            background-color: #f3f4f6;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+            overflow-x: auto;
+            font-size: 9pt;
+        }
+        code {
+            background-color: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', Consolas, monospace;
+            font-size: 9pt;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 12pt 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #3b82f6;
+            color: white;
+            padding: 10pt;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            border: 1px solid #e5e7eb;
+            padding: 8pt;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        tr:hover {
+            background-color: #f3f4f6;
+        }
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .print-button:hover {
+            background: #1e40af;
+        }
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+        blockquote {
+            border-left: 4px solid #60a5fa;
+            padding-left: 16px;
+            margin-left: 0;
+            color: #6b7280;
+        }
+        ul, ol {
+            margin: 8pt 0;
+            padding-left: 24pt;
+        }
+        li {
+            margin: 4pt 0;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #e5e7eb;
+            margin: 20pt 0;
+        }
+    </style>
+    <script>
+        function printToPDF() {
+            window.print();
+        }
+    </script>
+</head>
+<body>
+    <button class="print-button" onclick="printToPDF()">📄 Save as PDF (Ctrl+P)</button>
+    <h1 id="web-automation-system-complete-documentation">Web Automation System - Complete Documentation</h1>
+<p><strong>Last Updated:</strong> November 23, 2025<br />
+<strong>Version:</strong> 2.0</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#system-overview">System Overview</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#technologies-used">Technologies Used</a></li>
+<li><a href="#frontend-details">Frontend Details</a></li>
+<li><a href="#backend-details">Backend Details</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#api-endpoints">API Endpoints</a></li>
+<li><a href="#data-flow">Data Flow</a></li>
+<li><a href="#storage">Storage</a></li>
+<li><a href="#setup--installation">Setup &amp; Installation</a></li>
+</ol>
+<hr />
+<h2 id="system-overview">System Overview</h2>
+<p>The Web Automation System is an AI-powered test automation platform that helps users record, generate, manage, and execute Selenium test cases. It combines machine learning with web automation to provide intelligent code generation and test management capabilities.</p>
+<h3 id="key-capabilities">Key Capabilities</h3>
+<ul>
+<li><strong>AI Code Generation</strong>: Generate Selenium test code using trained language models</li>
+<li><strong>Browser Recording</strong>: Record user interactions and convert them to test code</li>
+<li><strong>Test Management</strong>: Organize, execute, and manage test suites</li>
+<li><strong>Code Snippets</strong>: Save and reuse code snippets across projects</li>
+<li><strong>Live Browser Control</strong>: Execute tests in real-time with visual feedback</li>
+</ul>
+<hr />
+<h2 id="architecture">Architecture</h2>
+<h3 id="high-level-architecture">High-Level Architecture</h3>
+<pre class="codehilite"><code>┌─────────────────────────────────────────────────────────┐
+│                    Web Browser (Client)                  │
+│  ┌────────────────────────────────────────────────────┐ │
+│  │         Frontend (HTML/CSS/JavaScript)             │ │
+│  │  - Single Page Application (SPA)                   │ │
+│  │  - No frameworks (Vanilla JS)                      │ │
+│  │  - LocalStorage for client-side data               │ │
+│  └────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────┘
+                           ↕ HTTP/REST API
+┌─────────────────────────────────────────────────────────┐
+│              Backend Server (Python/Flask)               │
+│  ┌────────────────────────────────────────────────────┐ │
+│  │  Flask Application (api_server_improved.py)        │ │
+│  │  - REST API Endpoints                              │ │
+│  │  - Session Management                              │ │
+│  │  - Browser Control (Selenium WebDriver)            │ │
+│  └────────────────────────────────────────────────────┘ │
+│  ┌────────────────────────────────────────────────────┐ │
+│  │  AI Model (N-gram Language Model)                  │ │
+│  │  - Code Generation                                 │ │
+│  │  - Smart Locator Suggestions                       │ │
+│  │  - Action Recommendations                          │ │
+│  └────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────┘
+                           ↕
+┌─────────────────────────────────────────────────────────┐
+│              Selenium WebDriver (Chrome)                 │
+│  - Browser Automation                                   │
+│  - Test Execution                                       │
+│  - DOM Interaction                                      │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+
+<h3 id="component-interaction-flow">Component Interaction Flow</h3>
+<ol>
+<li><strong>User</strong> interacts with the web interface</li>
+<li><strong>Frontend</strong> sends HTTP requests to the backend API</li>
+<li><strong>Backend</strong> processes requests and uses AI model or Selenium</li>
+<li><strong>Response</strong> is sent back to frontend</li>
+<li><strong>Frontend</strong> updates UI and stores data in localStorage</li>
+</ol>
+<hr />
+<h2 id="technologies-used">Technologies Used</h2>
+<h3 id="frontend-technologies">Frontend Technologies</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HTML5</strong></td>
+<td>Latest</td>
+<td>Structure and markup</td>
+</tr>
+<tr>
+<td><strong>CSS3</strong></td>
+<td>Latest</td>
+<td>Styling and animations</td>
+</tr>
+<tr>
+<td><strong>JavaScript (ES6+)</strong></td>
+<td>Latest</td>
+<td>Application logic</td>
+</tr>
+<tr>
+<td><strong>Prism.js</strong></td>
+<td>Latest</td>
+<td>Syntax highlighting</td>
+</tr>
+<tr>
+<td><strong>LocalStorage API</strong></td>
+<td>Browser Native</td>
+<td>Client-side data persistence</td>
+</tr>
+<tr>
+<td><strong>Fetch API</strong></td>
+<td>Browser Native</td>
+<td>HTTP requests</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Frontend Characteristics:</strong>
+- ✅ No frontend frameworks (React, Vue, Angular)
+- ✅ Pure Vanilla JavaScript
+- ✅ CSS Custom Properties for theming
+- ✅ Responsive design with Flexbox/Grid
+- ✅ Dark mode support
+- ✅ Single-page application (SPA) architecture</p>
+<h3 id="backend-technologies">Backend Technologies</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Python</strong></td>
+<td>3.8+</td>
+<td>Primary programming language</td>
+</tr>
+<tr>
+<td><strong>Flask</strong></td>
+<td>2.x</td>
+<td>Web framework and REST API</td>
+</tr>
+<tr>
+<td><strong>Waitress</strong></td>
+<td>Latest</td>
+<td>Production WSGI server</td>
+</tr>
+<tr>
+<td><strong>Selenium WebDriver</strong></td>
+<td>4.x</td>
+<td>Browser automation</td>
+</tr>
+<tr>
+<td><strong>ChromeDriver</strong></td>
+<td>Latest</td>
+<td>Chrome browser control</td>
+</tr>
+<tr>
+<td><strong>Pickle</strong></td>
+<td>Built-in</td>
+<td>Model serialization</td>
+</tr>
+<tr>
+<td><strong>JSON</strong></td>
+<td>Built-in</td>
+<td>Data interchange format</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Backend Characteristics:</strong>
+- ✅ RESTful API architecture
+- ✅ Stateful session management
+- ✅ In-memory data storage
+- ✅ N-gram based language model
+- ✅ CORS enabled for localhost</p>
+<hr />
+<h2 id="frontend-details">Frontend Details</h2>
+<h3 id="file-structure">File Structure</h3>
+<pre class="codehilite"><code>src/main/resources/web/
+├── index.html              # Main application (5,249 lines)
+├── recorder-inject.js      # Browser recorder script
+└── README.md              # Web interface documentation
+</code></pre>
+
+<h3 id="indexhtml-structure">index.html - Structure</h3>
+<p><strong>Lines 1-1000: HTML Structure &amp; CSS Styles</strong>
+- Root variables for theming
+- Dark mode styles
+- Responsive layout
+- Custom scrollbars
+- Modal styles
+- Dashboard metrics cards
+- Navigation sidebar</p>
+<p><strong>Lines 1001-2000: HTML Content</strong>
+- Dashboard page (metrics, charts, activity)
+- Code Generator tab
+- Browser Control tab
+- Test Recorder tab
+- Test Suite Management tab
+- Test Runner Configuration tab
+- Code Snippet Library tab</p>
+<p><strong>Lines 2001-5249: JavaScript Application Logic</strong>
+- Global variables and configuration
+- Navigation functions
+- Dark mode toggle
+- Code generation functions
+- Browser control functions
+- Recording functions
+- Test suite management
+- Code snippet library
+- Data override modals
+- Test execution
+- Dashboard updates
+- Event listeners</p>
+<h3 id="frontend-features">Frontend Features</h3>
+<h4 id="1-navigation-system">1. Navigation System</h4>
+<pre class="codehilite"><code class="language-javascript">function navigateTo(page) {
+    // Hide all pages
+    // Show selected page
+    // Update sidebar active state
+    // Update URL hash
+}
+</code></pre>
+
+<h4 id="2-dark-mode-support">2. Dark Mode Support</h4>
+<pre class="codehilite"><code class="language-javascript">function toggleDarkMode() {
+    // Toggle dark-mode class on body
+    // Save preference to localStorage
+    // Update all UI elements dynamically
+}
+</code></pre>
+
+<h4 id="3-api-communication">3. API Communication</h4>
+<pre class="codehilite"><code class="language-javascript">const API_URL = 'http://localhost:5000';
+
+async function callAPI(endpoint, method, data) {
+    const response = await fetch(`${API_URL}${endpoint}`, {
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    return await response.json();
+}
+</code></pre>
+
+<h4 id="4-localstorage-management">4. LocalStorage Management</h4>
+<pre class="codehilite"><code class="language-javascript">// Code Snippets Storage
+localStorage.setItem('codeSnippets', JSON.stringify(snippets));
+const snippets = JSON.parse(localStorage.getItem('codeSnippets') || '[]');
+
+// Dark Mode Preference
+localStorage.setItem('darkMode', 'enabled');
+</code></pre>
+
+<hr />
+<h2 id="backend-details">Backend Details</h2>
+<h3 id="file-structure_1">File Structure</h3>
+<pre class="codehilite"><code>src/main/python/
+├── api_server_improved.py  # Main Flask application (1,518 lines)
+├── inference_improved.py   # AI model inference
+├── smart_locator_generator.py  # Locator suggestions
+└── browser_executor.py     # Browser automation
+</code></pre>
+
+<h3 id="api_server_improvedpy-structure">api_server_improved.py - Structure</h3>
+<p><strong>Lines 1-50: Imports and Configuration</strong></p>
+<pre class="codehilite"><code class="language-python">from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
+from selenium import webdriver
+import pickle
+import logging
+</code></pre>
+
+<p><strong>Lines 51-200: Flask App Setup</strong></p>
+<pre class="codehilite"><code class="language-python">app = Flask(__name__)
+CORS(app)  # Enable Cross-Origin Resource Sharing
+
+# Global variables
+generator = None  # AI model instance
+browser_manager = None  # Selenium browser instance
+recorded_sessions = {}  # In-memory test sessions
+active_session_id = None
+</code></pre>
+
+<p><strong>Lines 201-800: API Endpoints</strong>
+- Health check
+- Code generation
+- Locator suggestions
+- Action recommendations
+- Browser control
+- Recording endpoints
+- Test suite management</p>
+<p><strong>Lines 801-1518: Helper Functions &amp; Server Startup</strong>
+- Session management
+- Code generation logic
+- Browser initialization
+- Test execution
+- Server configuration</p>
+<h3 id="backend-architecture-patterns">Backend Architecture Patterns</h3>
+<h4 id="1-session-management">1. Session Management</h4>
+<pre class="codehilite"><code class="language-python">recorded_sessions = {
+    'session_id_123': {
+        'id': 'session_id_123',
+        'name': 'Login Test',
+        'url': 'https://example.com',
+        'module': 'Authentication',
+        'actions': [
+            {'type': 'click', 'element': '#login-btn', 'timestamp': 1234567890},
+            {'type': 'input', 'element': '#username', 'value': 'user@example.com'}
+        ],
+        'created_at': 1234567890,
+        'action_count': 2
+    }
+}
+</code></pre>
+
+<h4 id="2-browser-control">2. Browser Control</h4>
+<pre class="codehilite"><code class="language-python">class BrowserManager:
+    def __init__(self):
+        self.driver = None
+        self.is_initialized = False
+
+    def initialize(self):
+        options = webdriver.ChromeOptions()
+        options.add_argument('--start-maximized')
+        self.driver = webdriver.Chrome(options=options)
+        self.is_initialized = True
+
+    def execute_code(self, code):
+        # Execute Selenium code in browser
+        exec(code)
+</code></pre>
+
+<h4 id="3-ai-model-integration">3. AI Model Integration</h4>
+<pre class="codehilite"><code class="language-python">class ImprovedSeleniumGenerator:
+    def __init__(self, model_path):
+        with open(model_path, 'rb') as f:
+            self.model_data = pickle.load(f)
+        self.ngram_model = self.model_data['ngram_model']
+
+    def generate_code(self, prompt, max_length=150):
+        # Generate Selenium code using N-gram model
+        tokens = self.tokenize(prompt)
+        generated = self.predict_next_tokens(tokens, max_length)
+        return self.detokenize(generated)
+</code></pre>
+
+<hr />
+<h2 id="features">Features</h2>
+<h3 id="1-dashboard">1. Dashboard</h3>
+<p><strong>Purpose:</strong> Overview of system metrics and activity</p>
+<p><strong>Features:</strong>
+- Total requests/tests generated count
+- Tests passed/failed statistics
+- Recent test results timeline
+- Activity log
+- Quick access cards</p>
+<p><strong>Data Sources:</strong>
+- Frontend: localStorage for persistence
+- Backend: In-memory stats from test executions
+- Updates: Real-time after each test execution</p>
+<h3 id="2-code-generator">2. Code Generator</h3>
+<p><strong>Purpose:</strong> AI-powered Selenium code generation</p>
+<p><strong>Features:</strong>
+- Natural language prompt input
+- Multi-language support (Java, Python, JavaScript, C#)
+- Syntax highlighting
+- Copy to clipboard
+- Download generated code
+- Response time tracking</p>
+<p><strong>API Endpoint:</strong> <code>POST /generate</code></p>
+<p><strong>Request:</strong></p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;prompt&quot;: &quot;click login button&quot;,
+  &quot;language&quot;: &quot;java&quot;
+}
+</code></pre>
+
+<p><strong>Response:</strong></p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;code&quot;: &quot;driver.findElement(By.id(\&quot;login-btn\&quot;)).click();&quot;,
+  &quot;confidence&quot;: 0.85
+}
+</code></pre>
+
+<h3 id="3-browser-control">3. Browser Control</h3>
+<p><strong>Purpose:</strong> Execute code in live browser</p>
+<p><strong>Features:</strong>
+- Initialize browser session
+- Execute Selenium code
+- View execution results
+- Error handling
+- Close browser</p>
+<p><strong>API Endpoints:</strong>
+- <code>POST /browser/initialize</code> - Start Chrome browser
+- <code>POST /browser/execute</code> - Run Selenium code
+- <code>POST /browser/close</code> - Close browser</p>
+<p><strong>Workflow:</strong>
+1. User clicks "Initialize Browser"
+2. Backend starts ChromeDriver
+3. User enters/generates Selenium code
+4. User clicks "Execute in Browser"
+5. Code runs in live browser
+6. Results displayed in UI</p>
+<h3 id="4-test-recorder">4. Test Recorder</h3>
+<p><strong>Purpose:</strong> Record browser interactions as test steps</p>
+<p><strong>Features:</strong>
+- Module-based organization
+- URL navigation with script injection
+- Action recording (click, input, select, etc.)
+- Live action preview
+- Start new test in same browser
+- Stop recording (keeps browser open)</p>
+<p><strong>API Endpoints:</strong>
+- <code>POST /recorder/start</code> - Start recording session
+- <code>POST /recorder/navigate</code> - Navigate and inject recorder script
+- <code>POST /recorder/record-action</code> - Save recorded action
+- <code>POST /recorder/stop</code> - Stop recording
+- <code>POST /recorder/new-test</code> - Start new test in same browser</p>
+<p><strong>Workflow:</strong>
+1. User enters test name, URL, and module
+2. Clicks "Start Recording"
+3. Backend initializes browser and injects recorder script
+4. User interacts with website
+5. Actions are captured and sent to backend
+6. Actions displayed in real-time in UI
+7. User clicks "Stop Recording"
+8. Test session saved for later use</p>
+<p><strong>Module Support:</strong>
+- Organize tests by module (e.g., "Login", "Checkout", "Admin")
+- Filter tests by module
+- Autocomplete for existing modules</p>
+<h3 id="5-test-suite-management">5. Test Suite Management</h3>
+<p><strong>Purpose:</strong> Manage and execute recorded tests</p>
+<p><strong>Features:</strong>
+- View all recorded test cases
+- Module-based filtering
+- Select all / individual selection
+- Bulk delete with count
+- Individual test deletion
+- View generated test code
+- Execute individual tests
+- Execute entire test suite
+- Data override capabilities
+- Clear all tests</p>
+<p><strong>API Endpoints:</strong>
+- <code>GET /recorder/sessions</code> - List all test cases
+- <code>POST /recorder/generate-test</code> - Generate code from session
+- <code>POST /recorder/execute-test</code> - Execute single test
+- <code>POST /recorder/execute-suite</code> - Execute all tests
+- <code>POST /recorder/delete-session</code> - Delete specific test
+- <code>POST /recorder/clear-sessions</code> - Clear all tests</p>
+<p><strong>Test Case Structure:</strong></p>
+<pre class="codehilite"><code class="language-javascript">{
+  id: &quot;unique_session_id&quot;,
+  name: &quot;Login Test&quot;,
+  url: &quot;https://example.com/login&quot;,
+  module: &quot;Authentication&quot;,
+  actions: [...],
+  created_at: 1234567890,
+  action_count: 15
+}
+</code></pre>
+
+<p><strong>Selection Features:</strong>
+- Checkbox on each test card
+- "Select All" checkbox with indeterminate state
+- "Delete Selected (N)" button appears when tests selected
+- Dashboard count updates after deletion</p>
+<h3 id="6-code-snippet-library">6. Code Snippet Library</h3>
+<p><strong>Purpose:</strong> Save and organize reusable code snippets</p>
+<p><strong>Features:</strong>
+- Save snippets with metadata
+- Upload snippets from files (.java, .py, .js, .cs, .txt)
+- Language detection
+- Tag-based organization
+- Search and filter by language/tags
+- View snippet with syntax highlighting
+- Copy to clipboard
+- Select all / individual selection
+- Bulk delete
+- Use snippet (load into output)
+- Delete individual snippets</p>
+<p><strong>Storage:</strong> Browser localStorage (key: 'codeSnippets')</p>
+<p><strong>Snippet Structure:</strong></p>
+<pre class="codehilite"><code class="language-javascript">{
+  id: 1234567890,
+  title: &quot;Login Helper&quot;,
+  language: &quot;java&quot;,
+  tags: [&quot;selenium&quot;, &quot;login&quot;, &quot;helper&quot;],
+  description: &quot;Helper method for login functionality&quot;,
+  code: &quot;public void login(String user, String pass) {...}&quot;,
+  createdAt: &quot;2025-11-23T10:30:00.000Z&quot;,
+  date: &quot;11/23/2025, 10:30:00 AM&quot;
+}
+</code></pre>
+
+<p><strong>Selection Features:</strong>
+- Checkbox on each snippet card
+- "Select All" checkbox with indeterminate state
+- "Delete Selected (N)" button appears when snippets selected</p>
+<h3 id="7-test-runner-configuration">7. Test Runner Configuration</h3>
+<p><strong>Purpose:</strong> Configure test execution frameworks</p>
+<p><strong>Supported Frameworks:</strong>
+- <strong>JUnit</strong> (Java) - Maven-based execution
+- <strong>TestNG</strong> (Java) - Maven-based execution
+- <strong>pytest</strong> (Python) - Command-line execution
+- <strong>unittest</strong> (Python) - Built-in module
+- <strong>Jest</strong> (JavaScript) - npm-based execution
+- <strong>Mocha</strong> (JavaScript) - npm-based execution</p>
+<p><strong>Features:</strong>
+- Framework selection dropdown
+- Test file path input
+- Test method/function name input
+- Additional arguments input
+- Dynamic command generation
+- Setup instructions</p>
+<h3 id="8-data-override-modal">8. Data Override Modal</h3>
+<p><strong>Purpose:</strong> Customize test data before execution</p>
+<p><strong>Features:</strong>
+- Extract input fields from recorded actions
+- Override values for each input
+- Execute test with custom data
+- Validation and error handling</p>
+<p><strong>Workflow:</strong>
+1. User selects test to execute
+2. System extracts all input actions
+3. Modal shows form with current values
+4. User modifies values
+5. Test executes with new data</p>
+<hr />
+<h2 id="api-endpoints">API Endpoints</h2>
+<h3 id="complete-endpoint-reference">Complete Endpoint Reference</h3>
+<h4 id="health-status">Health &amp; Status</h4>
+<pre class="codehilite"><code>GET /health
+Response: { &quot;status&quot;: &quot;healthy&quot;, &quot;model_loaded&quot;: true }
+</code></pre>
+
+<h4 id="code-generation">Code Generation</h4>
+<pre class="codehilite"><code>POST /generate
+Request: { &quot;prompt&quot;: &quot;string&quot;, &quot;language&quot;: &quot;java|python|javascript|csharp&quot; }
+Response: { &quot;code&quot;: &quot;string&quot;, &quot;confidence&quot;: 0.85 }
+</code></pre>
+
+<h4 id="locator-suggestions">Locator Suggestions</h4>
+<pre class="codehilite"><code>POST /suggest-locator
+Request: { &quot;html&quot;: &quot;&lt;div id='test'&gt;...&lt;/div&gt;&quot; }
+Response: {
+  &quot;recommended_locators&quot;: [&quot;By.id('test')&quot;, &quot;By.cssSelector('#test')&quot;],
+  &quot;element_analysis&quot;: { &quot;has_id&quot;: true, &quot;has_name&quot;: false, &quot;has_class&quot;: false }
+}
+</code></pre>
+
+<h4 id="action-recommendations">Action Recommendations</h4>
+<pre class="codehilite"><code>POST /suggest-action
+Request: { &quot;element_type&quot;: &quot;button&quot;, &quot;context&quot;: &quot;login page&quot; }
+Response: { &quot;actions&quot;: [&quot;click()&quot;, &quot;submit()&quot;], &quot;recommended&quot;: &quot;click()&quot; }
+</code></pre>
+
+<h4 id="browser-control">Browser Control</h4>
+<pre class="codehilite"><code>POST /browser/initialize
+Response: { &quot;success&quot;: true, &quot;message&quot;: &quot;Browser initialized&quot; }
+
+POST /browser/execute
+Request: { &quot;code&quot;: &quot;driver.get('https://example.com')&quot; }
+Response: { &quot;success&quot;: true, &quot;result&quot;: &quot;...&quot; }
+
+POST /browser/close
+Response: { &quot;success&quot;: true, &quot;message&quot;: &quot;Browser closed&quot; }
+</code></pre>
+
+<h4 id="test-recording">Test Recording</h4>
+<pre class="codehilite"><code>POST /recorder/start
+Request: { &quot;name&quot;: &quot;string&quot;, &quot;url&quot;: &quot;string&quot;, &quot;module&quot;: &quot;string&quot; }
+Response: { &quot;success&quot;: true, &quot;session_id&quot;: &quot;string&quot; }
+
+POST /recorder/navigate
+Request: { &quot;session_id&quot;: &quot;string&quot;, &quot;url&quot;: &quot;string&quot; }
+Response: { &quot;success&quot;: true }
+
+POST /recorder/record-action
+Request: {
+  &quot;session_id&quot;: &quot;string&quot;,
+  &quot;action&quot;: { &quot;type&quot;: &quot;click&quot;, &quot;element&quot;: &quot;#btn&quot;, &quot;value&quot;: &quot;&quot; }
+}
+Response: { &quot;success&quot;: true }
+
+POST /recorder/stop
+Request: { &quot;session_id&quot;: &quot;string&quot; }
+Response: { &quot;success&quot;: true }
+
+POST /recorder/new-test
+Request: { &quot;name&quot;: &quot;string&quot;, &quot;url&quot;: &quot;string&quot;, &quot;module&quot;: &quot;string&quot; }
+Response: { &quot;success&quot;: true, &quot;session_id&quot;: &quot;string&quot; }
+</code></pre>
+
+<h4 id="test-suite-management">Test Suite Management</h4>
+<pre class="codehilite"><code>GET /recorder/sessions
+Response: { &quot;success&quot;: true, &quot;sessions&quot;: [...] }
+
+POST /recorder/generate-test
+Request: { &quot;session_id&quot;: &quot;string&quot;, &quot;test_name&quot;: &quot;string&quot; }
+Response: { &quot;success&quot;: true, &quot;code&quot;: &quot;string&quot; }
+
+POST /recorder/execute-test
+Request: { &quot;session_id&quot;: &quot;string&quot;, &quot;data_overrides&quot;: {...} }
+Response: { &quot;success&quot;: true, &quot;result&quot;: {...} }
+
+POST /recorder/execute-suite
+Request: { &quot;module&quot;: &quot;string&quot; }  // optional filter
+Response: { &quot;success&quot;: true, &quot;results&quot;: [...] }
+
+POST /recorder/delete-session
+Request: { &quot;session_id&quot;: &quot;string&quot; }
+Response: { &quot;success&quot;: true, &quot;message&quot;: &quot;Session deleted&quot; }
+
+POST /recorder/clear-sessions
+Response: { &quot;success&quot;: true, &quot;message&quot;: &quot;All sessions cleared&quot; }
+</code></pre>
+
+<hr />
+<h2 id="data-flow">Data Flow</h2>
+<h3 id="recording-flow">Recording Flow</h3>
+<pre class="codehilite"><code>User Browser
+    ↓ (1) Start Recording
+Backend (POST /recorder/start)
+    ↓ (2) Create session, Initialize browser
+Browser (Chrome via Selenium)
+    ↓ (3) Navigate to URL
+Backend (Inject recorder-inject.js)
+    ↓ (4) Script attached to page
+User Interaction (Click, Type, etc.)
+    ↓ (5) Event captured by injected script
+Backend (POST /recorder/record-action)
+    ↓ (6) Action saved to session
+Frontend
+    ↓ (7) Display action in real-time
+Repeat steps 5-7 for each action
+    ↓ (8) Stop Recording
+Backend (Session saved in memory)
+</code></pre>
+
+<h3 id="test-execution-flow">Test Execution Flow</h3>
+<pre class="codehilite"><code>User
+    ↓ (1) Click Execute Test
+Frontend (POST /recorder/execute-test)
+    ↓ (2) Send session_id + data_overrides
+Backend
+    ↓ (3) Fetch session from recorded_sessions
+    ↓ (4) Generate Selenium code from actions
+    ↓ (5) Apply data overrides
+    ↓ (6) Initialize browser
+Browser
+    ↓ (7) Execute generated code
+    ↓ (8) Capture screenshots/errors
+Backend
+    ↓ (9) Collect results
+Frontend
+    ↓ (10) Display results + update dashboard
+</code></pre>
+
+<h3 id="code-generation-flow">Code Generation Flow</h3>
+<pre class="codehilite"><code>User
+    ↓ (1) Enter prompt
+Frontend (POST /generate)
+    ↓ (2) Send prompt + language
+Backend
+    ↓ (3) Load AI model
+AI Model (N-gram)
+    ↓ (4) Tokenize prompt
+    ↓ (5) Generate tokens using N-gram probabilities
+    ↓ (6) Detokenize to code
+Backend
+    ↓ (7) Format code for target language
+Frontend
+    ↓ (8) Display with syntax highlighting
+</code></pre>
+
+<hr />
+<h2 id="storage">Storage</h2>
+<h3 id="backend-storage-in-memory">Backend Storage (In-Memory)</h3>
+<pre class="codehilite"><code class="language-python"># Session Storage
+recorded_sessions = {
+    'session_id': {
+        'id': 'string',
+        'name': 'string',
+        'url': 'string',
+        'module': 'string',
+        'actions': [],
+        'created_at': timestamp,
+        'action_count': int
+    }
+}
+
+# Browser Instance
+browser_manager = BrowserManager()
+
+# AI Model
+generator = ImprovedSeleniumGenerator(MODEL_PATH)
+</code></pre>
+
+<p><strong>Characteristics:</strong>
+- ❌ Data lost on server restart
+- ✅ Fast access
+- ✅ No database required
+- ⚠️ Limited to server memory</p>
+<h3 id="frontend-storage-localstorage">Frontend Storage (localStorage)</h3>
+<pre class="codehilite"><code class="language-javascript">// Code Snippets
+localStorage.setItem('codeSnippets', JSON.stringify([
+    {
+        id: 1234567890,
+        title: 'string',
+        language: 'java',
+        tags: ['tag1', 'tag2'],
+        description: 'string',
+        code: 'string',
+        createdAt: 'ISO date string',
+        date: 'locale date string'
+    }
+]));
+
+// Dark Mode Preference
+localStorage.setItem('darkMode', 'enabled|disabled');
+
+// User Stats (if needed)
+localStorage.setItem('userStats', JSON.stringify({
+    totalTests: 0,
+    lastVisit: 'date'
+}));
+</code></pre>
+
+<p><strong>Characteristics:</strong>
+- ✅ Persists across browser sessions
+- ✅ Domain-specific (localhost:5000)
+- ⚠️ ~5-10MB storage limit
+- ⚠️ Cleared when user clears browser data</p>
+<hr />
+<h2 id="setup-installation">Setup &amp; Installation</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<pre class="codehilite"><code class="language-bash"># Python 3.8 or higher
+python --version
+
+# Chrome Browser
+# ChromeDriver (matching Chrome version)
+</code></pre>
+
+<h3 id="backend-setup">Backend Setup</h3>
+<pre class="codehilite"><code class="language-bash"># 1. Install Python dependencies
+pip install flask flask-cors selenium waitress
+
+# 2. Ensure model file exists
+# selenium_ngram_model.pkl should be in project root
+
+# 3. Start server
+python src/main/python/api_server_improved.py
+
+# Server starts on http://localhost:5000
+</code></pre>
+
+<h3 id="frontend-access">Frontend Access</h3>
+<pre class="codehilite"><code class="language-bash"># Open browser and navigate to:
+http://localhost:5000
+
+# Or open index.html directly in browser
+# (Some features require backend server)
+</code></pre>
+
+<h3 id="configuration">Configuration</h3>
+<pre class="codehilite"><code class="language-python"># api_server_improved.py
+PORT = 5000
+HOST = '0.0.0.0'
+MODEL_PATH = 'selenium_ngram_model.pkl'
+
+# Enable CORS for development
+CORS(app)
+</code></pre>
+
+<hr />
+<h2 id="feature-summary-table">Feature Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Frontend Tech</th>
+<th>Backend Tech</th>
+<th>Storage</th>
+<th>APIs Used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dashboard</td>
+<td>HTML/CSS/JS</td>
+<td>-</td>
+<td>localStorage</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Code Generator</td>
+<td>JS/Fetch API</td>
+<td>Flask/AI Model</td>
+<td>-</td>
+<td>/generate</td>
+</tr>
+<tr>
+<td>Browser Control</td>
+<td>JS/Fetch API</td>
+<td>Flask/Selenium</td>
+<td>In-memory</td>
+<td>/browser/*</td>
+</tr>
+<tr>
+<td>Test Recorder</td>
+<td>JS/Fetch API</td>
+<td>Flask/Selenium</td>
+<td>In-memory</td>
+<td>/recorder/*</td>
+</tr>
+<tr>
+<td>Test Suite Mgmt</td>
+<td>JS/Fetch API</td>
+<td>Flask/Selenium</td>
+<td>In-memory</td>
+<td>/recorder/*</td>
+</tr>
+<tr>
+<td>Code Snippets</td>
+<td>JS/localStorage</td>
+<td>-</td>
+<td>localStorage</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Test Runner Config</td>
+<td>JS</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Dark Mode</td>
+<td>CSS/JS</td>
+<td>-</td>
+<td>localStorage</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="development-notes">Development Notes</h2>
+<h3 id="adding-new-features">Adding New Features</h3>
+<p><strong>Frontend:</strong>
+1. Add HTML structure to appropriate section in <code>index.html</code>
+2. Add CSS styles in <code>&lt;style&gt;</code> section
+3. Add JavaScript functions in <code>&lt;script&gt;</code> section
+4. Update navigation if needed</p>
+<p><strong>Backend:</strong>
+1. Add endpoint in <code>api_server_improved.py</code>
+2. Define route with <code>@app.route()</code>
+3. Implement handler function
+4. Return JSON response
+5. Update API documentation in startup message</p>
+<h3 id="code-style-guidelines">Code Style Guidelines</h3>
+<p><strong>Frontend:</strong>
+- Use <code>camelCase</code> for JavaScript variables/functions
+- Use <code>kebab-case</code> for CSS classes
+- Use template literals for HTML generation
+- Always use <code>const</code> or <code>let</code> (never <code>var</code>)</p>
+<p><strong>Backend:</strong>
+- Use <code>snake_case</code> for Python variables/functions
+- Use docstrings for all functions
+- Return consistent JSON structure: <code>{ "success": bool, "data": any, "error": string }</code>
+- Log important operations</p>
+<hr />
+<h2 id="security-considerations">Security Considerations</h2>
+<p>⚠️ <strong>This is a development tool - NOT production-ready</strong></p>
+<p><strong>Current Security Limitations:</strong>
+- No authentication/authorization
+- No input validation/sanitization
+- Eval/exec used for code execution
+- CORS fully open
+- No HTTPS
+- localStorage unencrypted
+- No rate limiting</p>
+<p><strong>For Production Use:</strong>
+- Add user authentication
+- Implement input validation
+- Use sandboxed code execution
+- Configure CORS properly
+- Enable HTTPS/SSL
+- Encrypt sensitive data
+- Add rate limiting
+- Use database instead of in-memory storage</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<p><strong>Issue:</strong> Browser doesn't open
+- Check ChromeDriver version matches Chrome
+- Ensure ChromeDriver is in PATH
+- Check Selenium version compatibility</p>
+<p><strong>Issue:</strong> 404 errors on API calls
+- Verify backend server is running
+- Check API_URL in frontend (should be http://localhost:5000)
+- Restart server after code changes</p>
+<p><strong>Issue:</strong> Code snippets not appearing
+- Open browser console (F12) for errors
+- Check localStorage is enabled
+- Verify snippet format is correct</p>
+<p><strong>Issue:</strong> Dark mode not working
+- Clear localStorage and retry
+- Check browser supports CSS custom properties
+- Refresh browser cache</p>
+<hr />
+<h2 id="performance-metrics">Performance Metrics</h2>
+<p><strong>Typical Response Times:</strong>
+- Code Generation: 500-2000ms
+- Browser Initialize: 2000-4000ms
+- Execute Code: 100-1000ms (depends on code complexity)
+- Record Action: &lt;100ms
+- Load Test Cases: &lt;200ms</p>
+<p><strong>Resource Usage:</strong>
+- Frontend: ~5-10MB (DOM + localStorage)
+- Backend: ~100-200MB (Python + Model + Browser)
+- Browser Instance: ~200-500MB (Chrome)</p>
+<hr />
+<h2 id="future-enhancements">Future Enhancements</h2>
+<p><strong>Planned Features:</strong>
+- [ ] Database integration (PostgreSQL/MongoDB)
+- [ ] User authentication and multi-user support
+- [ ] Test scheduling and CI/CD integration
+- [ ] Video recording of test execution
+- [ ] Better AI models (GPT integration)
+- [ ] Cloud deployment support
+- [ ] Mobile app testing support
+- [ ] API testing capabilities
+- [ ] Test analytics and reporting
+- [ ] Export tests to various formats (JUnit XML, Allure, etc.)</p>
+<hr />
+<h2 id="version-history">Version History</h2>
+<p><strong>v2.0 (2025-11-23)</strong>
+- ✅ Added module-based test organization
+- ✅ Added bulk delete for tests and snippets
+- ✅ Added checkbox selection for tests
+- ✅ Added code snippet upload from files
+- ✅ Fixed dark mode visibility issues
+- ✅ Added delete-session API endpoint
+- ✅ Improved error handling and logging</p>
+<p><strong>v1.0 (Initial Release)</strong>
+- ✅ Basic code generation
+- ✅ Browser control
+- ✅ Test recording
+- ✅ Test suite management
+- ✅ Code snippet library</p>
+<hr />
+<h2 id="credits-license">Credits &amp; License</h2>
+<p><strong>Technologies Used:</strong>
+- Flask (BSD License)
+- Selenium (Apache License 2.0)
+- Prism.js (MIT License)
+- Chrome/ChromeDriver (Google)</p>
+<p><strong>Model Training:</strong>
+- Custom N-gram model trained on Selenium documentation and examples</p>
+<hr />
+<p><strong>End of Documentation</strong></p>
+<p>For support or questions, please refer to the source code comments or consult the API endpoint documentation within the application.</p>
+</body>
+</html>

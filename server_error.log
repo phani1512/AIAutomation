@@ -1,0 +1,41 @@
+Loading model from C:\Users\valaboph\WebAutomation\selenium_ngram_model.pkl...
+[OK] Model loaded from C:\Users\valaboph\WebAutomation\selenium_ngram_model.pkl
+[OK] Model loaded successfully!
+  Vocabulary size: 935
+  Unique contexts: 3827
+
+
+
+============================================================
+≡ƒÜÇ Selenium SLM API Server (Improved + Browser Execution)
+============================================================
+≡ƒîÉ Web Interface:
+  http://localhost:5000
+
+≡ƒôí API Endpoints:
+  GET  /health              - Health check
+  POST /generate            - Generate code from prompt
+  POST /suggest-locator     - Suggest optimal locator
+  POST /suggest-action      - Suggest action for element
+
+≡ƒîÉ Browser Control:
+  POST /browser/initialize  - Initialize browser
+  POST /browser/execute     - Execute code in browser
+  GET  /browser/info        - Get current page info
+  POST /browser/screenshot  - Take screenshot
+  POST /browser/close       - Close browser
+
+Γ£¿ Features:
+  - Improved output cleaning
+  - Rule-based + AI hybrid suggestions
+  - Real browser execution
+  - Chrome/Firefox/Edge support
+============================================================
+
+ * Serving Flask app 'api_server_improved'
+ * Debug mode: off
+INFO:Selenium SLM:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.100:5000
+INFO:Selenium SLM:Press CTRL+C to quit

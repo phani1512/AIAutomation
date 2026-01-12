@@ -1,0 +1,452 @@
+[
+  {
+    "action": "Navigate to URL",
+    "description": "Navigate to a specific URL",
+    "steps": [
+      {
+        "step": 1,
+        "action": "navigate",
+        "code": "driver.get(\"{URL}\");",
+        "element_type": null,
+        "locator": null,
+        "prompt": "navigate to {URL}"
+      }
+    ],
+    "pattern_type": "navigation"
+  },
+  {
+    "action": "Enter Username",
+    "description": "Enter username in username field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.id(\"username\")).sendKeys(\"{USERNAME}\");",
+        "element_type": "input",
+        "locator": "By.id(\"username\")",
+        "value": "{USERNAME}",
+        "prompt": "enter {USERNAME} in username field"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  
+  {
+    "action": "Click Search Box",
+    "description": "Click search box to focus",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"searchBox\")).click();",
+        "element_type": "input",
+        "locator": "By.id(\"searchBox\")",
+        "prompt": "click search box"
+      }
+    ],
+    "pattern_type": "input_click"
+  },
+  {
+    "action": "Enter Search Query",
+    "description": "Enter search query in search box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.id(\"searchBox\")).sendKeys(\"{SEARCH_QUERY}\");",
+        "element_type": "input",
+        "locator": "By.id(\"searchBox\")",
+        "value": "{SEARCH_QUERY}",
+        "prompt": "enter {SEARCH_QUERY} in search box"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  {
+    "action": "Click Submit Button",
+    "description": "Click the submit button",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.cssSelector(\"button[type='submit']\")).click();",
+        "element_type": "button",
+        "locator": "By.cssSelector(\"button[type='submit']\")",
+        "prompt": "click submit button"
+      }
+    ],
+    "pattern_type": "button_click"
+  },
+  {
+    "action": "Dropdown Selection",
+    "description": "User selects option from dropdown menu",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"country\")).click();",
+        "element_type": "select",
+        "locator": "By.id(\"country\")",
+        "prompt": "click country dropdown"
+      },
+      {
+        "step": 2,
+        "action": "select",
+        "code": "new Select(driver.findElement(By.id(\"country\"))).selectByVisibleText(\"United States\");",
+        "element_type": "select",
+        "locator": "By.id(\"country\")",
+        "value": "United States",
+        "prompt": "select United States from country dropdown"
+      }
+    ],
+    "pattern_type": "dropdown_selection"
+  },
+  {
+    "action": "Checkbox Selection",
+    "description": "User selects multiple checkboxes",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"terms\")).click();",
+        "element_type": "checkbox",
+        "locator": "By.id(\"terms\")",
+        "prompt": "click terms checkbox"
+      },
+      {
+        "step": 2,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"newsletter\")).click();",
+        "element_type": "checkbox",
+        "locator": "By.id(\"newsletter\")",
+        "prompt": "click newsletter checkbox"
+      }
+    ],
+    "pattern_type": "checkbox_selection"
+  },
+  {
+    "action": "Radio Button Selection",
+    "description": "User selects radio button option",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"male\")).click();",
+        "element_type": "radio",
+        "locator": "By.id(\"male\")",
+        "prompt": "select male radio button"
+      }
+    ],
+    "pattern_type": "radio_selection"
+  },
+  {
+    "action": "File Upload",
+    "description": "User uploads a file",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.id(\"fileUpload\")).sendKeys(\"{FILE_PATH}\");",
+        "element_type": "input",
+        "locator": "By.id(\"fileUpload\")",
+        "value": "{FILE_PATH}",
+        "prompt": "upload file {FILE_PATH}"
+      },
+      {
+        "step": 2,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"uploadBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"uploadBtn\")",
+        "prompt": "click upload button"
+      }
+    ],
+    "pattern_type": "file_upload"
+  },
+  {
+    "action": "Modal Dialog Interaction",
+    "description": "User interacts with modal popup",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"openModal\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"openModal\")",
+        "prompt": "click open modal button"
+      },
+      {
+        "step": 2,
+        "action": "wait",
+        "code": "new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id(\"modal\")));",
+        "element_type": "div",
+        "locator": "By.id(\"modal\")",
+        "prompt": "wait for modal to appear"
+      },
+      {
+        "step": 3,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.id(\"modalInput\")).sendKeys(\"{TEXT}\");",
+        "element_type": "input",
+        "locator": "By.id(\"modalInput\")",
+        "value": "{TEXT}",
+        "prompt": "enter {TEXT} in modal input"
+      },
+      {
+        "step": 4,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"confirmBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"confirmBtn\")",
+        "prompt": "click confirm button"
+      }
+    ],
+    "pattern_type": "modal_interaction"
+  },
+  {
+    "action": "Tab Navigation",
+    "description": "User navigates between tabs",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.linkText(\"Open New Tab\")).click();",
+        "element_type": "a",
+        "locator": "By.linkText(\"Open New Tab\")",
+        "prompt": "click open new tab link"
+      },
+      {
+        "step": 2,
+        "action": "switch",
+        "code": "String originalWindow = driver.getWindowHandle(); Set<String> handles = driver.getWindowHandles(); for(String handle : handles) { if(!handle.equals(originalWindow)) { driver.switchTo().window(handle); } }",
+        "element_type": null,
+        "locator": null,
+        "prompt": "switch to new tab"
+      }
+    ],
+    "pattern_type": "window_switching"
+  },
+  {
+    "action": "Alert Handling",
+    "description": "User handles JavaScript alert",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"alertBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"alertBtn\")",
+        "prompt": "click alert button"
+      },
+      {
+        "step": 2,
+        "action": "alert",
+        "code": "Alert alert = driver.switchTo().alert(); alert.accept();",
+        "element_type": null,
+        "locator": null,
+        "prompt": "accept alert"
+      }
+    ],
+    "pattern_type": "alert_handling"
+  },
+  {
+    "action": "Hover Menu Navigation",
+    "description": "User hovers over menu to reveal submenu and clicks",
+    "steps": [
+      {
+        "step": 1,
+        "action": "hover",
+        "code": "WebElement menu = driver.findElement(By.id(\"mainMenu\")); new Actions(driver).moveToElement(menu).perform();",
+        "element_type": "div",
+        "locator": "By.id(\"mainMenu\")",
+        "prompt": "hover over main menu"
+      },
+      {
+        "step": 2,
+        "action": "wait",
+        "code": "new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.id(\"subMenu\")));",
+        "element_type": "div",
+        "locator": "By.id(\"subMenu\")",
+        "prompt": "wait for submenu to appear"
+      },
+      {
+        "step": 3,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"subMenuItem\")).click();",
+        "element_type": "a",
+        "locator": "By.id(\"subMenuItem\")",
+        "prompt": "click submenu item"
+      }
+    ],
+    "pattern_type": "hover_navigation"
+  },
+  {
+    "action": "Error Message Verification",
+    "description": "User verifies validation message",
+    "steps": [
+      {
+        "action": "verify",
+        "code": "String errorMsg = driver.findElement(By.id(\"errorMessage\")).getText(); assert errorMsg.equals(\"Please fill all required fields\");",
+        "element_type": "span",
+        "locator": "By.id(\"errorMessage\")",
+        "prompt": "verify error message"
+      }
+    ],
+    "pattern_type": "validation_check"
+  },
+  {
+    "action": "Scroll to Element",
+    "description": "User scrolls to element and interacts with it",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "WebElement element = driver.findElement(By.id(\"footer\")); ((JavascriptExecutor)driver).executeScript(\"arguments[0].scrollIntoView(true);\", element);",
+        "element_type": "div",
+        "locator": "By.id(\"footer\")",
+        "prompt": "scroll to footer"
+      },
+      {
+        "step": 2,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"footerLink\")).click();",
+        "element_type": "a",
+        "locator": "By.id(\"footerLink\")",
+        "prompt": "click footer link"
+      }
+    ],
+    "pattern_type": "scroll_interaction"
+  },
+  {
+    "action": "Dynamic Content Wait",
+    "description": "User waits for dynamic content to load",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"loadDataBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"loadDataBtn\")",
+        "prompt": "click load data button"
+      },
+      {
+        "step": 2,
+        "action": "wait",
+        "code": "new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.presenceOfElementLocated(By.className(\"dataRow\")));",
+        "element_type": "div",
+        "locator": "By.className(\"dataRow\")",
+        "prompt": "wait for data to load"
+      },
+      {
+        "step": 3,
+        "action": "verify",
+        "code": "List<WebElement> rows = driver.findElements(By.className(\"dataRow\")); assert rows.size() > 0;",
+        "element_type": "div",
+        "locator": "By.className(\"dataRow\")",
+        "prompt": "verify data rows exist"
+      }
+    ],
+    "pattern_type": "ajax_wait"
+  },
+  {
+    "action": "Table Data Extraction",
+    "description": "User extracts data from table",
+    "steps": [
+      {
+        "step": 1,
+        "action": "find",
+        "code": "WebElement table = driver.findElement(By.id(\"dataTable\"));",
+        "element_type": "table",
+        "locator": "By.id(\"dataTable\")",
+        "prompt": "find data table"
+      },
+      {
+        "step": 2,
+        "action": "extract",
+        "code": "List<WebElement> rows = table.findElements(By.tagName(\"tr\")); for(WebElement row : rows) { List<WebElement> cells = row.findElements(By.tagName(\"td\")); }",
+        "element_type": "tr",
+        "locator": "By.tagName(\"tr\")",
+        "prompt": "extract table rows"
+      }
+    ],
+    "pattern_type": "table_extraction"
+  },
+  {
+    "action": "Enter First Name",
+    "description": "Enter first name in firstName field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.name(\"firstName\")).sendKeys(\"{FIRST_NAME}\");",
+        "element_type": "input",
+        "locator": "By.name(\"firstName\")",
+        "value": "{FIRST_NAME}",
+        "prompt": "enter {FIRST_NAME} in first name field"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  {
+    "action": "Enter Last Name",
+    "description": "Enter last name in lastName field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.name(\"lastName\")).sendKeys(\"{LAST_NAME}\");",
+        "element_type": "input",
+        "locator": "By.name(\"lastName\")",
+        "value": "{LAST_NAME}",
+        "prompt": "enter {LAST_NAME} in last name field"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  {
+    "action": "Enter Phone Number",
+    "description": "Enter phone number in phone field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.name(\"phone\")).sendKeys(\"{PHONE}\");",
+        "element_type": "input",
+        "locator": "By.name(\"phone\")",
+        "value": "{PHONE}",
+        "prompt": "enter {PHONE} in phone field"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  {
+    "action": "Click Next Button",
+    "description": "Click the next button",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"nextBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"nextBtn\")",
+        "prompt": "click next button"
+      }
+    ],
+    "pattern_type": "button_click"
+  },
+  {
+    "action": "Click Submit Button ID",
+    "description": "Click the submit button with ID",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"submitBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"submitBtn\")",
+        "prompt": "click submit button ID"
+      }
+    ],
+    "pattern_type": "button_click"
+  }
+]

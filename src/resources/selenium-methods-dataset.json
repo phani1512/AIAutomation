@@ -1,0 +1,1100 @@
+[
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "beforeGet",
+    "signature": "void beforeGet(WebDriver driver, String url)",
+    "description": "Called before driver.get(url)",
+    "example": "driver.get(\"https://example.com\");",
+    "usage_pattern": "Navigate to URL",
+    "parameters": ["WebDriver driver", "String url"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "afterGet",
+    "signature": "void afterGet(WebDriver driver, String url)",
+    "description": "Called after driver.get(url) completes",
+    "example": "driver.get(\"https://example.com\");",
+    "usage_pattern": "Navigation completed",
+    "parameters": ["WebDriver driver", "String url"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "beforeGetCurrentUrl",
+    "signature": "void beforeGetCurrentUrl(WebDriver driver)",
+    "description": "Called before getting current URL",
+    "example": "String url = driver.getCurrentUrl();",
+    "usage_pattern": "Get current page URL",
+    "parameters": ["WebDriver driver"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "afterGetCurrentUrl",
+    "signature": "void afterGetCurrentUrl(String result, WebDriver driver)",
+    "description": "Called after getting current URL",
+    "example": "String url = driver.getCurrentUrl();",
+    "usage_pattern": "Current URL retrieved",
+    "parameters": ["String result", "WebDriver driver"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "beforeGetTitle",
+    "signature": "void beforeGetTitle(WebDriver driver)",
+    "description": "Called before getting page title",
+    "example": "String title = driver.getTitle();",
+    "usage_pattern": "Get page title",
+    "parameters": ["WebDriver driver"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "afterGetTitle",
+    "signature": "void afterGetTitle(WebDriver driver, String result)",
+    "description": "Called after getting page title",
+    "example": "String title = driver.getTitle();",
+    "usage_pattern": "Page title retrieved",
+    "parameters": ["WebDriver driver", "String result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "beforeBack",
+    "signature": "void beforeBack(WebDriver.Navigation navigation)",
+    "description": "Called before navigating back",
+    "example": "driver.navigate().back();",
+    "usage_pattern": "Navigate to previous page",
+    "parameters": ["WebDriver.Navigation navigation"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "afterBack",
+    "signature": "void afterBack(WebDriver.Navigation navigation)",
+    "description": "Called after navigating back",
+    "example": "driver.navigate().back();",
+    "usage_pattern": "Back navigation completed",
+    "parameters": ["WebDriver.Navigation navigation"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "beforeForward",
+    "signature": "void beforeForward(WebDriver.Navigation navigation)",
+    "description": "Called before navigating forward",
+    "example": "driver.navigate().forward();",
+    "usage_pattern": "Navigate to next page",
+    "parameters": ["WebDriver.Navigation navigation"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "afterForward",
+    "signature": "void afterForward(WebDriver.Navigation navigation)",
+    "description": "Called after navigating forward",
+    "example": "driver.navigate().forward();",
+    "usage_pattern": "Forward navigation completed",
+    "parameters": ["WebDriver.Navigation navigation"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "beforeRefresh",
+    "signature": "void beforeRefresh(WebDriver.Navigation navigation)",
+    "description": "Called before page refresh",
+    "example": "driver.navigate().refresh();",
+    "usage_pattern": "Refresh current page",
+    "parameters": ["WebDriver.Navigation navigation"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "afterRefresh",
+    "signature": "void afterRefresh(WebDriver.Navigation navigation)",
+    "description": "Called after page refresh",
+    "example": "driver.navigate().refresh();",
+    "usage_pattern": "Page refresh completed",
+    "parameters": ["WebDriver.Navigation navigation"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "beforeTo",
+    "signature": "void beforeTo(WebDriver.Navigation navigation, String url)",
+    "description": "Called before navigate().to(url)",
+    "example": "driver.navigate().to(\"https://example.com\");",
+    "usage_pattern": "Navigate to URL using Navigation",
+    "parameters": ["WebDriver.Navigation navigation", "String url"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_Navigation",
+    "method": "afterTo",
+    "signature": "void afterTo(WebDriver.Navigation navigation, String url)",
+    "description": "Called after navigate().to(url) completes",
+    "example": "driver.navigate().to(\"https://example.com\");",
+    "usage_pattern": "Navigation to URL completed",
+    "parameters": ["WebDriver.Navigation navigation", "String url"],
+    "action_type": "navigate"
+  },
+  {
+    "category": "WebDriverListener_ElementInteraction",
+    "method": "beforeClick",
+    "signature": "void beforeClick(WebElement element)",
+    "description": "Called before clicking an element",
+    "example": "element.click();",
+    "usage_pattern": "Click on button, link, or interactive element",
+    "parameters": ["WebElement element"],
+    "action_type": "click",
+    "locator_examples": ["By.id(\"submitBtn\")", "By.xpath(\"//button[@type='submit']\")", "By.cssSelector(\".btn-primary\")"]
+  },
+  {
+    "category": "WebDriverListener_ElementInteraction",
+    "method": "afterClick",
+    "signature": "void afterClick(WebElement element)",
+    "description": "Called after clicking an element",
+    "example": "element.click();",
+    "usage_pattern": "Click action completed",
+    "parameters": ["WebElement element"],
+    "action_type": "click"
+  },
+  {
+    "category": "WebDriverListener_ElementInteraction",
+    "method": "beforeSendKeys",
+    "signature": "void beforeSendKeys(WebElement element, CharSequence... keysToSend)",
+    "description": "Called before sending keys to element",
+    "example": "element.sendKeys(\"test@example.com\");",
+    "usage_pattern": "Type text into input field",
+    "parameters": ["WebElement element", "CharSequence... keysToSend"],
+    "action_type": "sendKeys",
+    "locator_examples": ["By.id(\"username\")", "By.name(\"email\")", "By.cssSelector(\"input[type='text']\")"]
+  },
+  {
+    "category": "WebDriverListener_ElementInteraction",
+    "method": "afterSendKeys",
+    "signature": "void afterSendKeys(WebElement element, CharSequence... keysToSend)",
+    "description": "Called after sending keys to element",
+    "example": "element.sendKeys(\"test@example.com\");",
+    "usage_pattern": "Text input completed",
+    "parameters": ["WebElement element", "CharSequence... keysToSend"],
+    "action_type": "sendKeys"
+  },
+  {
+    "category": "WebDriverListener_ElementInteraction",
+    "method": "beforeClear",
+    "signature": "void beforeClear(WebElement element)",
+    "description": "Called before clearing element text",
+    "example": "element.clear();",
+    "usage_pattern": "Clear input field content",
+    "parameters": ["WebElement element"],
+    "action_type": "clear"
+  },
+  {
+    "category": "WebDriverListener_ElementInteraction",
+    "method": "afterClear",
+    "signature": "void afterClear(WebElement element)",
+    "description": "Called after clearing element text",
+    "example": "element.clear();",
+    "usage_pattern": "Clear action completed",
+    "parameters": ["WebElement element"],
+    "action_type": "clear"
+  },
+  {
+    "category": "WebDriverListener_ElementInteraction",
+    "method": "beforeSubmit",
+    "signature": "void beforeSubmit(WebElement element)",
+    "description": "Called before submitting a form",
+    "example": "element.submit();",
+    "usage_pattern": "Submit form element",
+    "parameters": ["WebElement element"],
+    "action_type": "submit"
+  },
+  {
+    "category": "WebDriverListener_ElementInteraction",
+    "method": "afterSubmit",
+    "signature": "void afterSubmit(WebElement element)",
+    "description": "Called after submitting a form",
+    "example": "element.submit();",
+    "usage_pattern": "Form submission completed",
+    "parameters": ["WebElement element"],
+    "action_type": "submit"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "beforeGetText",
+    "signature": "void beforeGetText(WebElement element)",
+    "description": "Called before getting element text",
+    "example": "String text = element.getText();",
+    "usage_pattern": "Get visible text from element",
+    "parameters": ["WebElement element"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "afterGetText",
+    "signature": "void afterGetText(WebElement element, String result)",
+    "description": "Called after getting element text",
+    "example": "String text = element.getText();",
+    "usage_pattern": "Element text retrieved",
+    "parameters": ["WebElement element", "String result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "beforeGetAttribute",
+    "signature": "void beforeGetAttribute(WebElement element, String name)",
+    "description": "Called before getting element attribute",
+    "example": "String value = element.getAttribute(\"value\");",
+    "usage_pattern": "Get attribute value from element",
+    "parameters": ["WebElement element", "String name"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "afterGetAttribute",
+    "signature": "void afterGetAttribute(WebElement element, String name, String result)",
+    "description": "Called after getting element attribute",
+    "example": "String value = element.getAttribute(\"value\");",
+    "usage_pattern": "Attribute value retrieved",
+    "parameters": ["WebElement element", "String name", "String result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "beforeIsDisplayed",
+    "signature": "void beforeIsDisplayed(WebElement element)",
+    "description": "Called before checking if element is displayed",
+    "example": "boolean visible = element.isDisplayed();",
+    "usage_pattern": "Check element visibility",
+    "parameters": ["WebElement element"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "afterIsDisplayed",
+    "signature": "void afterIsDisplayed(WebElement element, boolean result)",
+    "description": "Called after checking if element is displayed",
+    "example": "boolean visible = element.isDisplayed();",
+    "usage_pattern": "Visibility check completed",
+    "parameters": ["WebElement element", "boolean result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "beforeIsEnabled",
+    "signature": "void beforeIsEnabled(WebElement element)",
+    "description": "Called before checking if element is enabled",
+    "example": "boolean enabled = element.isEnabled();",
+    "usage_pattern": "Check if element is enabled",
+    "parameters": ["WebElement element"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "afterIsEnabled",
+    "signature": "void afterIsEnabled(WebElement element, boolean result)",
+    "description": "Called after checking if element is enabled",
+    "example": "boolean enabled = element.isEnabled();",
+    "usage_pattern": "Enabled check completed",
+    "parameters": ["WebElement element", "boolean result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "beforeIsSelected",
+    "signature": "void beforeIsSelected(WebElement element)",
+    "description": "Called before checking if element is selected",
+    "example": "boolean selected = element.isSelected();",
+    "usage_pattern": "Check checkbox/radio button selection",
+    "parameters": ["WebElement element"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "afterIsSelected",
+    "signature": "void afterIsSelected(WebElement element, boolean result)",
+    "description": "Called after checking if element is selected",
+    "example": "boolean selected = element.isSelected();",
+    "usage_pattern": "Selection check completed",
+    "parameters": ["WebElement element", "boolean result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "beforeGetTagName",
+    "signature": "void beforeGetTagName(WebElement element)",
+    "description": "Called before getting element tag name",
+    "example": "String tag = element.getTagName();",
+    "usage_pattern": "Get HTML tag name",
+    "parameters": ["WebElement element"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "afterGetTagName",
+    "signature": "void afterGetTagName(WebElement element, String result)",
+    "description": "Called after getting element tag name",
+    "example": "String tag = element.getTagName();",
+    "usage_pattern": "Tag name retrieved",
+    "parameters": ["WebElement element", "String result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "beforeGetCssValue",
+    "signature": "void beforeGetCssValue(WebElement element, String propertyName)",
+    "description": "Called before getting CSS property value",
+    "example": "String color = element.getCssValue(\"color\");",
+    "usage_pattern": "Get CSS property value",
+    "parameters": ["WebElement element", "String propertyName"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_ElementQuery",
+    "method": "afterGetCssValue",
+    "signature": "void afterGetCssValue(WebElement element, String propertyName, String result)",
+    "description": "Called after getting CSS property value",
+    "example": "String color = element.getCssValue(\"color\");",
+    "usage_pattern": "CSS value retrieved",
+    "parameters": ["WebElement element", "String propertyName", "String result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_FindElement",
+    "method": "beforeFindElement",
+    "signature": "void beforeFindElement(WebDriver driver, By locator)",
+    "description": "Called before finding single element",
+    "example": "WebElement element = driver.findElement(By.id(\"username\"));",
+    "usage_pattern": "Locate element on page",
+    "parameters": ["WebDriver driver", "By locator"],
+    "action_type": "find",
+    "locator_types": ["By.id", "By.name", "By.className", "By.tagName", "By.linkText", "By.partialLinkText", "By.xpath", "By.cssSelector"]
+  },
+  {
+    "category": "WebDriverListener_FindElement",
+    "method": "afterFindElement",
+    "signature": "void afterFindElement(WebDriver driver, By locator, WebElement result)",
+    "description": "Called after finding single element",
+    "example": "WebElement element = driver.findElement(By.id(\"username\"));",
+    "usage_pattern": "Element located",
+    "parameters": ["WebDriver driver", "By locator", "WebElement result"],
+    "action_type": "find"
+  },
+  {
+    "category": "WebDriverListener_FindElement",
+    "method": "beforeFindElements",
+    "signature": "void beforeFindElements(WebDriver driver, By locator)",
+    "description": "Called before finding multiple elements",
+    "example": "List<WebElement> elements = driver.findElements(By.className(\"item\"));",
+    "usage_pattern": "Locate multiple elements",
+    "parameters": ["WebDriver driver", "By locator"],
+    "action_type": "find"
+  },
+  {
+    "category": "WebDriverListener_FindElement",
+    "method": "afterFindElements",
+    "signature": "void afterFindElements(WebDriver driver, By locator, List<WebElement> result)",
+    "description": "Called after finding multiple elements",
+    "example": "List<WebElement> elements = driver.findElements(By.className(\"item\"));",
+    "usage_pattern": "Multiple elements located",
+    "parameters": ["WebDriver driver", "By locator", "List<WebElement> result"],
+    "action_type": "find"
+  },
+  {
+    "category": "WebDriverListener_FindElement",
+    "method": "beforeFindElement",
+    "signature": "void beforeFindElement(WebElement element, By locator)",
+    "description": "Called before finding child element",
+    "example": "WebElement child = parent.findElement(By.tagName(\"input\"));",
+    "usage_pattern": "Find element within parent element",
+    "parameters": ["WebElement element", "By locator"],
+    "action_type": "find"
+  },
+  {
+    "category": "WebDriverListener_FindElement",
+    "method": "afterFindElement",
+    "signature": "void afterFindElement(WebElement element, By locator, WebElement result)",
+    "description": "Called after finding child element",
+    "example": "WebElement child = parent.findElement(By.tagName(\"input\"));",
+    "usage_pattern": "Child element located",
+    "parameters": ["WebElement element", "By locator", "WebElement result"],
+    "action_type": "find"
+  },
+  {
+    "category": "WebDriverListener_FindElement",
+    "method": "beforeFindElements",
+    "signature": "void beforeFindElements(WebElement element, By locator)",
+    "description": "Called before finding multiple child elements",
+    "example": "List<WebElement> children = parent.findElements(By.tagName(\"li\"));",
+    "usage_pattern": "Find multiple elements within parent",
+    "parameters": ["WebElement element", "By locator"],
+    "action_type": "find"
+  },
+  {
+    "category": "WebDriverListener_FindElement",
+    "method": "afterFindElements",
+    "signature": "void afterFindElements(WebElement element, By locator, List<WebElement> result)",
+    "description": "Called after finding multiple child elements",
+    "example": "List<WebElement> children = parent.findElements(By.tagName(\"li\"));",
+    "usage_pattern": "Multiple child elements located",
+    "parameters": ["WebElement element", "By locator", "List<WebElement> result"],
+    "action_type": "find"
+  },
+  {
+    "category": "WebDriverListener_WindowManagement",
+    "method": "beforeGetWindowHandle",
+    "signature": "void beforeGetWindowHandle(WebDriver driver)",
+    "description": "Called before getting current window handle",
+    "example": "String handle = driver.getWindowHandle();",
+    "usage_pattern": "Get current window identifier",
+    "parameters": ["WebDriver driver"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_WindowManagement",
+    "method": "afterGetWindowHandle",
+    "signature": "void afterGetWindowHandle(WebDriver driver, String result)",
+    "description": "Called after getting current window handle",
+    "example": "String handle = driver.getWindowHandle();",
+    "usage_pattern": "Window handle retrieved",
+    "parameters": ["WebDriver driver", "String result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_WindowManagement",
+    "method": "beforeGetWindowHandles",
+    "signature": "void beforeGetWindowHandles(WebDriver driver)",
+    "description": "Called before getting all window handles",
+    "example": "Set<String> handles = driver.getWindowHandles();",
+    "usage_pattern": "Get all open window identifiers",
+    "parameters": ["WebDriver driver"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_WindowManagement",
+    "method": "afterGetWindowHandles",
+    "signature": "void afterGetWindowHandles(WebDriver driver, Set<String> result)",
+    "description": "Called after getting all window handles",
+    "example": "Set<String> handles = driver.getWindowHandles();",
+    "usage_pattern": "All window handles retrieved",
+    "parameters": ["WebDriver driver", "Set<String> result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_WindowManagement",
+    "method": "beforeSwitchToWindow",
+    "signature": "void beforeSwitchTo(WebDriver driver, String windowName)",
+    "description": "Called before switching to window",
+    "example": "driver.switchTo().window(handle);",
+    "usage_pattern": "Switch to different window/tab",
+    "parameters": ["WebDriver driver", "String windowName"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_WindowManagement",
+    "method": "afterSwitchToWindow",
+    "signature": "void afterSwitchTo(WebDriver driver, String windowName)",
+    "description": "Called after switching to window",
+    "example": "driver.switchTo().window(handle);",
+    "usage_pattern": "Window switch completed",
+    "parameters": ["WebDriver driver", "String windowName"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_FrameManagement",
+    "method": "beforeSwitchToFrame",
+    "signature": "void beforeSwitchTo(WebDriver driver, int frameIndex)",
+    "description": "Called before switching to frame by index",
+    "example": "driver.switchTo().frame(0);",
+    "usage_pattern": "Switch to iframe by index",
+    "parameters": ["WebDriver driver", "int frameIndex"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_FrameManagement",
+    "method": "afterSwitchToFrame",
+    "signature": "void afterSwitchTo(WebDriver driver, int frameIndex)",
+    "description": "Called after switching to frame by index",
+    "example": "driver.switchTo().frame(0);",
+    "usage_pattern": "Frame switch completed",
+    "parameters": ["WebDriver driver", "int frameIndex"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_FrameManagement",
+    "method": "beforeSwitchToFrame",
+    "signature": "void beforeSwitchTo(WebDriver driver, String frameName)",
+    "description": "Called before switching to frame by name/id",
+    "example": "driver.switchTo().frame(\"contentFrame\");",
+    "usage_pattern": "Switch to iframe by name or id",
+    "parameters": ["WebDriver driver", "String frameName"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_FrameManagement",
+    "method": "afterSwitchToFrame",
+    "signature": "void afterSwitchTo(WebDriver driver, String frameName)",
+    "description": "Called after switching to frame by name/id",
+    "example": "driver.switchTo().frame(\"contentFrame\");",
+    "usage_pattern": "Frame switch completed",
+    "parameters": ["WebDriver driver", "String frameName"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_FrameManagement",
+    "method": "beforeSwitchToFrame",
+    "signature": "void beforeSwitchTo(WebDriver driver, WebElement frameElement)",
+    "description": "Called before switching to frame by element",
+    "example": "driver.switchTo().frame(frameElement);",
+    "usage_pattern": "Switch to iframe by WebElement",
+    "parameters": ["WebDriver driver", "WebElement frameElement"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_FrameManagement",
+    "method": "afterSwitchToFrame",
+    "signature": "void afterSwitchTo(WebDriver driver, WebElement frameElement)",
+    "description": "Called after switching to frame by element",
+    "example": "driver.switchTo().frame(frameElement);",
+    "usage_pattern": "Frame switch completed",
+    "parameters": ["WebDriver driver", "WebElement frameElement"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_FrameManagement",
+    "method": "beforeSwitchToParentFrame",
+    "signature": "void beforeSwitchToParentFrame(WebDriver.TargetLocator targetLocator)",
+    "description": "Called before switching to parent frame",
+    "example": "driver.switchTo().parentFrame();",
+    "usage_pattern": "Switch to parent frame",
+    "parameters": ["WebDriver.TargetLocator targetLocator"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_FrameManagement",
+    "method": "afterSwitchToParentFrame",
+    "signature": "void afterSwitchToParentFrame(WebDriver.TargetLocator targetLocator)",
+    "description": "Called after switching to parent frame",
+    "example": "driver.switchTo().parentFrame();",
+    "usage_pattern": "Parent frame switch completed",
+    "parameters": ["WebDriver.TargetLocator targetLocator"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "beforeSwitchToAlert",
+    "signature": "void beforeSwitchTo(WebDriver driver)",
+    "description": "Called before switching to alert",
+    "example": "Alert alert = driver.switchTo().alert();",
+    "usage_pattern": "Switch to alert dialog",
+    "parameters": ["WebDriver driver"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "afterSwitchToAlert",
+    "signature": "void afterSwitchTo(WebDriver driver, Alert alert)",
+    "description": "Called after switching to alert",
+    "example": "Alert alert = driver.switchTo().alert();",
+    "usage_pattern": "Alert switch completed",
+    "parameters": ["WebDriver driver", "Alert alert"],
+    "action_type": "switch"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "beforeAccept",
+    "signature": "void beforeAccept(Alert alert)",
+    "description": "Called before accepting alert",
+    "example": "alert.accept();",
+    "usage_pattern": "Accept alert/confirmation dialog",
+    "parameters": ["Alert alert"],
+    "action_type": "alert"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "afterAccept",
+    "signature": "void afterAccept(Alert alert)",
+    "description": "Called after accepting alert",
+    "example": "alert.accept();",
+    "usage_pattern": "Alert accepted",
+    "parameters": ["Alert alert"],
+    "action_type": "alert"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "beforeDismiss",
+    "signature": "void beforeDismiss(Alert alert)",
+    "description": "Called before dismissing alert",
+    "example": "alert.dismiss();",
+    "usage_pattern": "Dismiss/cancel alert dialog",
+    "parameters": ["Alert alert"],
+    "action_type": "alert"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "afterDismiss",
+    "signature": "void afterDismiss(Alert alert)",
+    "description": "Called after dismissing alert",
+    "example": "alert.dismiss();",
+    "usage_pattern": "Alert dismissed",
+    "parameters": ["Alert alert"],
+    "action_type": "alert"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "beforeGetText",
+    "signature": "void beforeGetText(Alert alert)",
+    "description": "Called before getting alert text",
+    "example": "String text = alert.getText();",
+    "usage_pattern": "Get alert message",
+    "parameters": ["Alert alert"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "afterGetText",
+    "signature": "void afterGetText(Alert alert, String result)",
+    "description": "Called after getting alert text",
+    "example": "String text = alert.getText();",
+    "usage_pattern": "Alert text retrieved",
+    "parameters": ["Alert alert", "String result"],
+    "action_type": "query"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "beforeSendKeys",
+    "signature": "void beforeSendKeys(Alert alert, String text)",
+    "description": "Called before sending text to alert prompt",
+    "example": "alert.sendKeys(\"input text\");",
+    "usage_pattern": "Type into alert prompt",
+    "parameters": ["Alert alert", "String text"],
+    "action_type": "sendKeys"
+  },
+  {
+    "category": "WebDriverListener_AlertHandling",
+    "method": "afterSendKeys",
+    "signature": "void afterSendKeys(Alert alert, String text)",
+    "description": "Called after sending text to alert prompt",
+    "example": "alert.sendKeys(\"input text\");",
+    "usage_pattern": "Text sent to alert",
+    "parameters": ["Alert alert", "String text"],
+    "action_type": "sendKeys"
+  },
+  {
+    "category": "WebDriverListener_Scripts",
+    "method": "beforeExecuteScript",
+    "signature": "void beforeExecuteScript(WebDriver driver, String script, Object[] args)",
+    "description": "Called before executing JavaScript",
+    "example": "driver.executeScript(\"return document.title;\");",
+    "usage_pattern": "Execute JavaScript code",
+    "parameters": ["WebDriver driver", "String script", "Object[] args"],
+    "action_type": "script"
+  },
+  {
+    "category": "WebDriverListener_Scripts",
+    "method": "afterExecuteScript",
+    "signature": "void afterExecuteScript(WebDriver driver, String script, Object[] args, Object result)",
+    "description": "Called after executing JavaScript",
+    "example": "driver.executeScript(\"return document.title;\");",
+    "usage_pattern": "JavaScript execution completed",
+    "parameters": ["WebDriver driver", "String script", "Object[] args", "Object result"],
+    "action_type": "script"
+  },
+  {
+    "category": "WebDriverListener_Scripts",
+    "method": "beforeExecuteAsyncScript",
+    "signature": "void beforeExecuteAsyncScript(WebDriver driver, String script, Object[] args)",
+    "description": "Called before executing async JavaScript",
+    "example": "driver.executeAsyncScript(\"var callback = arguments[arguments.length - 1]; callback();\");",
+    "usage_pattern": "Execute asynchronous JavaScript",
+    "parameters": ["WebDriver driver", "String script", "Object[] args"],
+    "action_type": "script"
+  },
+  {
+    "category": "WebDriverListener_Scripts",
+    "method": "afterExecuteAsyncScript",
+    "signature": "void afterExecuteAsyncScript(WebDriver driver, String script, Object[] args, Object result)",
+    "description": "Called after executing async JavaScript",
+    "example": "driver.executeAsyncScript(\"var callback = arguments[arguments.length - 1]; callback();\");",
+    "usage_pattern": "Async JavaScript execution completed",
+    "parameters": ["WebDriver driver", "String script", "Object[] args", "Object result"],
+    "action_type": "script"
+  },
+  {
+    "category": "WebDriverListener_SessionManagement",
+    "method": "beforeQuit",
+    "signature": "void beforeQuit(WebDriver driver)",
+    "description": "Called before closing browser and ending session",
+    "example": "driver.quit();",
+    "usage_pattern": "Close all browser windows and end session",
+    "parameters": ["WebDriver driver"],
+    "action_type": "session"
+  },
+  {
+    "category": "WebDriverListener_SessionManagement",
+    "method": "afterQuit",
+    "signature": "void afterQuit(WebDriver driver)",
+    "description": "Called after closing browser and ending session",
+    "example": "driver.quit();",
+    "usage_pattern": "Session ended",
+    "parameters": ["WebDriver driver"],
+    "action_type": "session"
+  },
+  {
+    "category": "WebDriverListener_SessionManagement",
+    "method": "beforeClose",
+    "signature": "void beforeClose(WebDriver driver)",
+    "description": "Called before closing current window",
+    "example": "driver.close();",
+    "usage_pattern": "Close current browser window",
+    "parameters": ["WebDriver driver"],
+    "action_type": "session"
+  },
+  {
+    "category": "WebDriverListener_SessionManagement",
+    "method": "afterClose",
+    "signature": "void afterClose(WebDriver driver)",
+    "description": "Called after closing current window",
+    "example": "driver.close();",
+    "usage_pattern": "Window closed",
+    "parameters": ["WebDriver driver"],
+    "action_type": "session"
+  },
+  {
+    "category": "Locators_ById",
+    "method": "By.id",
+    "signature": "By By.id(String id)",
+    "description": "Locate element by id attribute",
+    "example": "driver.findElement(By.id(\"username\"));",
+    "usage_pattern": "Most reliable locator when id is unique",
+    "html_example": "<input id=\"username\" type=\"text\">",
+    "action_type": "locator"
+  },
+  {
+    "category": "Locators_ByName",
+    "method": "By.name",
+    "signature": "By By.name(String name)",
+    "description": "Locate element by name attribute",
+    "example": "driver.findElement(By.name(\"email\"));",
+    "usage_pattern": "Common for form elements",
+    "html_example": "<input name=\"email\" type=\"email\">",
+    "action_type": "locator"
+  },
+  {
+    "category": "Locators_ByClassName",
+    "method": "By.className",
+    "signature": "By By.className(String className)",
+    "description": "Locate element by CSS class name",
+    "example": "driver.findElement(By.className(\"btn-primary\"));",
+    "usage_pattern": "Locate by single class name",
+    "html_example": "<button class=\"btn btn-primary\">Submit</button>",
+    "action_type": "locator"
+  },
+  {
+    "category": "Locators_ByTagName",
+    "method": "By.tagName",
+    "signature": "By By.tagName(String tagName)",
+    "description": "Locate element by HTML tag name",
+    "example": "driver.findElements(By.tagName(\"input\"));",
+    "usage_pattern": "Find all elements of specific tag type",
+    "html_example": "<input>, <button>, <div>, etc.",
+    "action_type": "locator"
+  },
+  {
+    "category": "Locators_ByLinkText",
+    "method": "By.linkText",
+    "signature": "By By.linkText(String linkText)",
+    "description": "Locate link by exact visible text",
+    "example": "driver.findElement(By.linkText(\"Click Here\"));",
+    "usage_pattern": "Locate anchor tags by exact text",
+    "html_example": "<a href=\"/page\">Click Here</a>",
+    "action_type": "locator"
+  },
+  {
+    "category": "Locators_ByPartialLinkText",
+    "method": "By.partialLinkText",
+    "signature": "By By.partialLinkText(String partialLinkText)",
+    "description": "Locate link by partial visible text",
+    "example": "driver.findElement(By.partialLinkText(\"Click\"));",
+    "usage_pattern": "Locate anchor tags by partial text match",
+    "html_example": "<a href=\"/page\">Click Here</a>",
+    "action_type": "locator"
+  },
+  {
+    "category": "Locators_ByCssSelector",
+    "method": "By.cssSelector",
+    "signature": "By By.cssSelector(String cssSelector)",
+    "description": "Locate element using CSS selector",
+    "example": "driver.findElement(By.cssSelector(\"input[type='password']\"));",
+    "usage_pattern": "Flexible locator using CSS syntax",
+    "examples": [
+      "By.cssSelector(\"#id\")",
+      "By.cssSelector(\".class\")",
+      "By.cssSelector(\"input[name='username']\")",
+      "By.cssSelector(\"div > p\")",
+      "By.cssSelector(\"button.btn.primary\")"
+    ],
+    "action_type": "locator"
+  },
+  {
+    "category": "Locators_ByXPath",
+    "method": "By.xpath",
+    "signature": "By By.xpath(String xpathExpression)",
+    "description": "Locate element using XPath expression",
+    "example": "driver.findElement(By.xpath(\"//input[@id='username']\"));",
+    "usage_pattern": "Most powerful locator, can traverse DOM",
+    "examples": [
+      "By.xpath(\"//input[@id='username']\")",
+      "By.xpath(\"//button[text()='Submit']\")",
+      "By.xpath(\"//div[@class='container']//input\")",
+      "By.xpath(\"(//input[@type='text'])[1]\")",
+      "By.xpath(\"//input[contains(@class, 'form-control')]\")"
+    ],
+    "action_type": "locator"
+  },
+  {
+    "category": "Waits_Implicit",
+    "method": "implicitlyWait",
+    "signature": "void implicitlyWait(Duration timeout)",
+    "description": "Set global wait time for element location",
+    "example": "driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));",
+    "usage_pattern": "Wait up to specified time for elements to appear",
+    "action_type": "wait"
+  },
+  {
+    "category": "Waits_Explicit",
+    "method": "WebDriverWait",
+    "signature": "WebDriverWait(WebDriver driver, Duration timeout)",
+    "description": "Create explicit wait instance",
+    "example": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));",
+    "usage_pattern": "Wait for specific conditions",
+    "action_type": "wait"
+  },
+  {
+    "category": "Waits_ExpectedConditions",
+    "method": "visibilityOfElementLocated",
+    "signature": "ExpectedCondition<WebElement> visibilityOfElementLocated(By locator)",
+    "description": "Wait until element is visible",
+    "example": "wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(\"element\")));",
+    "usage_pattern": "Wait for element to be visible on page",
+    "action_type": "wait"
+  },
+  {
+    "category": "Waits_ExpectedConditions",
+    "method": "elementToBeClickable",
+    "signature": "ExpectedCondition<WebElement> elementToBeClickable(By locator)",
+    "description": "Wait until element is clickable",
+    "example": "wait.until(ExpectedConditions.elementToBeClickable(By.id(\"submit\")));",
+    "usage_pattern": "Wait for element to be visible and enabled",
+    "action_type": "wait"
+  },
+  {
+    "category": "Waits_ExpectedConditions",
+    "method": "presenceOfElementLocated",
+    "signature": "ExpectedCondition<WebElement> presenceOfElementLocated(By locator)",
+    "description": "Wait until element is present in DOM",
+    "example": "wait.until(ExpectedConditions.presenceOfElementLocated(By.id(\"element\")));",
+    "usage_pattern": "Wait for element in DOM (may not be visible)",
+    "action_type": "wait"
+  },
+  {
+    "category": "Waits_ExpectedConditions",
+    "method": "textToBePresentInElement",
+    "signature": "ExpectedCondition<Boolean> textToBePresentInElement(By locator, String text)",
+    "description": "Wait until specific text appears in element",
+    "example": "wait.until(ExpectedConditions.textToBePresentInElement(By.id(\"msg\"), \"Success\"));",
+    "usage_pattern": "Wait for text to appear in element",
+    "action_type": "wait"
+  },
+  {
+    "category": "Waits_ExpectedConditions",
+    "method": "alertIsPresent",
+    "signature": "ExpectedCondition<Alert> alertIsPresent()",
+    "description": "Wait until alert is present",
+    "example": "wait.until(ExpectedConditions.alertIsPresent());",
+    "usage_pattern": "Wait for alert dialog to appear",
+    "action_type": "wait"
+  },
+  {
+    "category": "Actions_Class",
+    "method": "Actions.click",
+    "signature": "Actions click(WebElement element)",
+    "description": "Advanced click action",
+    "example": "new Actions(driver).click(element).perform();",
+    "usage_pattern": "Perform click with Actions class",
+    "action_type": "action"
+  },
+  {
+    "category": "Actions_Class",
+    "method": "Actions.doubleClick",
+    "signature": "Actions doubleClick(WebElement element)",
+    "description": "Double-click on element",
+    "example": "new Actions(driver).doubleClick(element).perform();",
+    "usage_pattern": "Perform double-click action",
+    "action_type": "action"
+  },
+  {
+    "category": "Actions_Class",
+    "method": "Actions.contextClick",
+    "signature": "Actions contextClick(WebElement element)",
+    "description": "Right-click on element",
+    "example": "new Actions(driver).contextClick(element).perform();",
+    "usage_pattern": "Perform right-click/context menu action",
+    "action_type": "action"
+  },
+  {
+    "category": "Actions_Class",
+    "method": "Actions.moveToElement",
+    "signature": "Actions moveToElement(WebElement element)",
+    "description": "Move mouse to element (hover)",
+    "example": "new Actions(driver).moveToElement(element).perform();",
+    "usage_pattern": "Hover over element",
+    "action_type": "action"
+  },
+  {
+    "category": "Actions_Class",
+    "method": "Actions.dragAndDrop",
+    "signature": "Actions dragAndDrop(WebElement source, WebElement target)",
+    "description": "Drag element and drop on target",
+    "example": "new Actions(driver).dragAndDrop(sourceElement, targetElement).perform();",
+    "usage_pattern": "Drag and drop element",
+    "action_type": "action"
+  },
+  {
+    "category": "Actions_Class",
+    "method": "Actions.sendKeys",
+    "signature": "Actions sendKeys(CharSequence... keys)",
+    "description": "Send keys to active element",
+    "example": "new Actions(driver).sendKeys(Keys.ENTER).perform();",
+    "usage_pattern": "Send keyboard input",
+    "action_type": "action"
+  },
+  {
+    "category": "Actions_Class",
+    "method": "Actions.keyDown",
+    "signature": "Actions keyDown(CharSequence key)",
+    "description": "Press and hold key",
+    "example": "new Actions(driver).keyDown(Keys.CONTROL).sendKeys(\"a\").keyUp(Keys.CONTROL).perform();",
+    "usage_pattern": "Press modifier key",
+    "action_type": "action"
+  },
+  {
+    "category": "Actions_Class",
+    "method": "Actions.keyUp",
+    "signature": "Actions keyUp(CharSequence key)",
+    "description": "Release key",
+    "example": "new Actions(driver).keyUp(Keys.SHIFT).perform();",
+    "usage_pattern": "Release modifier key",
+    "action_type": "action"
+  },
+  {
+    "category": "Select_Class",
+    "method": "Select.selectByVisibleText",
+    "signature": "void selectByVisibleText(String text)",
+    "description": "Select dropdown option by visible text",
+    "example": "new Select(element).selectByVisibleText(\"Option 1\");",
+    "usage_pattern": "Select dropdown by text",
+    "action_type": "select"
+  },
+  {
+    "category": "Select_Class",
+    "method": "Select.selectByValue",
+    "signature": "void selectByValue(String value)",
+    "description": "Select dropdown option by value attribute",
+    "example": "new Select(element).selectByValue(\"value1\");",
+    "usage_pattern": "Select dropdown by value",
+    "action_type": "select"
+  },
+  {
+    "category": "Select_Class",
+    "method": "Select.selectByIndex",
+    "signature": "void selectByIndex(int index)",
+    "description": "Select dropdown option by index",
+    "example": "new Select(element).selectByIndex(0);",
+    "usage_pattern": "Select dropdown by index",
+    "action_type": "select"
+  },
+  {
+    "category": "Select_Class",
+    "method": "Select.deselectAll",
+    "signature": "void deselectAll()",
+    "description": "Deselect all options in multi-select",
+    "example": "new Select(element).deselectAll();",
+    "usage_pattern": "Clear all selections",
+    "action_type": "select"
+  },
+  {
+    "category": "Select_Class",
+    "method": "Select.getOptions",
+    "signature": "List<WebElement> getOptions()",
+    "description": "Get all dropdown options",
+    "example": "List<WebElement> options = new Select(element).getOptions();",
+    "usage_pattern": "Retrieve all dropdown options",
+    "action_type": "select"
+  },
+  {
+    "category": "Select_Class",
+    "method": "Select.getFirstSelectedOption",
+    "signature": "WebElement getFirstSelectedOption()",
+    "description": "Get currently selected option",
+    "example": "WebElement selected = new Select(element).getFirstSelectedOption();",
+    "usage_pattern": "Get selected dropdown option",
+    "action_type": "select"
+  },
+  {
+    "category": "Screenshots",
+    "method": "TakesScreenshot.getScreenshotAs",
+    "signature": "X getScreenshotAs(OutputType<X> target)",
+    "description": "Capture screenshot",
+    "example": "File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);",
+    "usage_pattern": "Take screenshot of current page",
+    "action_type": "screenshot"
+  },
+  {
+    "category": "Cookies",
+    "method": "addCookie",
+    "signature": "void addCookie(Cookie cookie)",
+    "description": "Add cookie to browser",
+    "example": "driver.manage().addCookie(new Cookie(\"name\", \"value\"));",
+    "usage_pattern": "Add cookie to session",
+    "action_type": "cookie"
+  },
+  {
+    "category": "Cookies",
+    "method": "getCookieNamed",
+    "signature": "Cookie getCookieNamed(String name)",
+    "description": "Get specific cookie",
+    "example": "Cookie cookie = driver.manage().getCookieNamed(\"sessionId\");",
+    "usage_pattern": "Retrieve cookie by name",
+    "action_type": "cookie"
+  },
+  {
+    "category": "Cookies",
+    "method": "getCookies",
+    "signature": "Set<Cookie> getCookies()",
+    "description": "Get all cookies",
+    "example": "Set<Cookie> cookies = driver.manage().getCookies();",
+    "usage_pattern": "Retrieve all cookies",
+    "action_type": "cookie"
+  },
+  {
+    "category": "Cookies",
+    "method": "deleteCookie",
+    "signature": "void deleteCookie(Cookie cookie)",
+    "description": "Delete specific cookie",
+    "example": "driver.manage().deleteCookie(cookie);",
+    "usage_pattern": "Remove cookie from session",
+    "action_type": "cookie"
+  },
+  {
+    "category": "Cookies",
+    "method": "deleteAllCookies",
+    "signature": "void deleteAllCookies()",
+    "description": "Delete all cookies",
+    "example": "driver.manage().deleteAllCookies();",
+    "usage_pattern": "Clear all cookies",
+    "action_type": "cookie"
+  }
+]

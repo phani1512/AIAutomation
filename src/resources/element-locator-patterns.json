@@ -1,0 +1,249 @@
+[
+  {
+    "html": "<input id=\"username\" type=\"text\" name=\"user\" class=\"form-control\" placeholder=\"Enter username\">",
+    "element_type": "input",
+    "locator_options": [
+      { "locator": "By.id(\"username\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.name(\"user\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.className(\"form-control\")", "priority": 3, "reliability": "low" },
+      { "locator": "By.cssSelector(\"input[type='text']\")", "priority": 4, "reliability": "medium" },
+      { "locator": "By.xpath(\"//input[@id='username']\")", "priority": 5, "reliability": "high" }
+    ],
+    "recommended_action": "sendKeys",
+    "action_example": "driver.findElement(By.id(\"username\")).sendKeys(\"testuser\");"
+  },
+  {
+    "html": "<button id=\"submitBtn\" type=\"submit\" class=\"btn btn-primary\">Submit</button>",
+    "element_type": "button",
+    "locator_options": [
+      { "locator": "By.id(\"submitBtn\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.cssSelector(\"button[type='submit']\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.className(\"btn-primary\")", "priority": 3, "reliability": "low" },
+      { "locator": "By.xpath(\"//button[text()='Submit']\")", "priority": 4, "reliability": "medium" }
+    ],
+    "recommended_action": "click",
+    "action_example": "driver.findElement(By.id(\"submitBtn\")).click();"
+  },
+  {
+    "html": "<a href=\"/login\" class=\"nav-link\" id=\"loginLink\">Login</a>",
+    "element_type": "link",
+    "locator_options": [
+      { "locator": "By.id(\"loginLink\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.linkText(\"Login\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.partialLinkText(\"Log\")", "priority": 3, "reliability": "medium" },
+      { "locator": "By.cssSelector(\"a[href='/login']\")", "priority": 4, "reliability": "medium" },
+      { "locator": "By.xpath(\"//a[text()='Login']\")", "priority": 5, "reliability": "high" }
+    ],
+    "recommended_action": "click",
+    "action_example": "driver.findElement(By.id(\"loginLink\")).click();"
+  },
+  {
+    "html": "<select id=\"country\" name=\"countrySelect\" class=\"form-select\"><option value=\"us\">United States</option><option value=\"uk\">United Kingdom</option></select>",
+    "element_type": "select",
+    "locator_options": [
+      { "locator": "By.id(\"country\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.name(\"countrySelect\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.className(\"form-select\")", "priority": 3, "reliability": "low" },
+      { "locator": "By.xpath(\"//select[@id='country']\")", "priority": 4, "reliability": "high" }
+    ],
+    "recommended_action": "select",
+    "action_example": "new Select(driver.findElement(By.id(\"country\"))).selectByVisibleText(\"United States\");"
+  },
+  {
+    "html": "<input type=\"checkbox\" id=\"terms\" name=\"acceptTerms\" value=\"yes\">",
+    "element_type": "checkbox",
+    "locator_options": [
+      { "locator": "By.id(\"terms\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.name(\"acceptTerms\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.cssSelector(\"input[type='checkbox']\")", "priority": 3, "reliability": "low" },
+      { "locator": "By.xpath(\"//input[@type='checkbox' and @id='terms']\")", "priority": 4, "reliability": "high" }
+    ],
+    "recommended_action": "click",
+    "action_example": "driver.findElement(By.id(\"terms\")).click();"
+  },
+  {
+    "html": "<input type=\"radio\" id=\"male\" name=\"gender\" value=\"male\">",
+    "element_type": "radio",
+    "locator_options": [
+      { "locator": "By.id(\"male\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.cssSelector(\"input[type='radio'][value='male']\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.xpath(\"//input[@type='radio' and @value='male']\")", "priority": 3, "reliability": "medium" }
+    ],
+    "recommended_action": "click",
+    "action_example": "driver.findElement(By.id(\"male\")).click();"
+  },
+  {
+    "html": "<textarea id=\"comments\" name=\"userComments\" rows=\"4\" cols=\"50\" placeholder=\"Enter your comments\"></textarea>",
+    "element_type": "textarea",
+    "locator_options": [
+      { "locator": "By.id(\"comments\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.name(\"userComments\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.tagName(\"textarea\")", "priority": 3, "reliability": "low" },
+      { "locator": "By.xpath(\"//textarea[@id='comments']\")", "priority": 4, "reliability": "high" }
+    ],
+    "recommended_action": "sendKeys",
+    "action_example": "driver.findElement(By.id(\"comments\")).sendKeys(\"This is a comment\");"
+  },
+  {
+    "html": "<div id=\"errorMessage\" class=\"alert alert-danger\">Invalid credentials</div>",
+    "element_type": "div",
+    "locator_options": [
+      { "locator": "By.id(\"errorMessage\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.className(\"alert-danger\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.cssSelector(\".alert.alert-danger\")", "priority": 3, "reliability": "medium" },
+      { "locator": "By.xpath(\"//div[@id='errorMessage']\")", "priority": 4, "reliability": "high" }
+    ],
+    "recommended_action": "getText",
+    "action_example": "String error = driver.findElement(By.id(\"errorMessage\")).getText();"
+  },
+  {
+    "html": "<span class=\"price\" data-value=\"99.99\">$99.99</span>",
+    "element_type": "span",
+    "locator_options": [
+      { "locator": "By.className(\"price\")", "priority": 1, "reliability": "medium" },
+      { "locator": "By.cssSelector(\"span[data-value='99.99']\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.xpath(\"//span[@class='price']\")", "priority": 3, "reliability": "medium" }
+    ],
+    "recommended_action": "getText",
+    "action_example": "String price = driver.findElement(By.className(\"price\")).getText();"
+  },
+  {
+    "html": "<img src=\"/images/logo.png\" alt=\"Company Logo\" id=\"logo\" class=\"logo-img\">",
+    "element_type": "img",
+    "locator_options": [
+      { "locator": "By.id(\"logo\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.className(\"logo-img\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.cssSelector(\"img[alt='Company Logo']\")", "priority": 3, "reliability": "medium" },
+      { "locator": "By.xpath(\"//img[@id='logo']\")", "priority": 4, "reliability": "high" }
+    ],
+    "recommended_action": "getAttribute",
+    "action_example": "String src = driver.findElement(By.id(\"logo\")).getAttribute(\"src\");"
+  },
+  {
+    "html": "<table id=\"dataTable\" class=\"table table-striped\"><tr><th>Name</th><th>Email</th></tr><tr><td>John Doe</td><td>john@example.com</td></tr></table>",
+    "element_type": "table",
+    "locator_options": [
+      { "locator": "By.id(\"dataTable\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.className(\"table-striped\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.tagName(\"table\")", "priority": 3, "reliability": "low" },
+      { "locator": "By.xpath(\"//table[@id='dataTable']\")", "priority": 4, "reliability": "high" }
+    ],
+    "recommended_action": "findElements",
+    "action_example": "List<WebElement> rows = driver.findElement(By.id(\"dataTable\")).findElements(By.tagName(\"tr\"));"
+  },
+  {
+    "html": "<ul id=\"menu\" class=\"nav-menu\"><li><a href=\"/home\">Home</a></li><li><a href=\"/about\">About</a></li></ul>",
+    "element_type": "ul",
+    "locator_options": [
+      { "locator": "By.id(\"menu\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.className(\"nav-menu\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.tagName(\"ul\")", "priority": 3, "reliability": "low" },
+      { "locator": "By.xpath(\"//ul[@id='menu']\")", "priority": 4, "reliability": "high" }
+    ],
+    "recommended_action": "findElements",
+    "action_example": "List<WebElement> menuItems = driver.findElement(By.id(\"menu\")).findElements(By.tagName(\"li\"));"
+  },
+  {
+    "html": "<input type=\"file\" id=\"fileUpload\" name=\"file\" accept=\".pdf,.doc\">",
+    "element_type": "file_input",
+    "locator_options": [
+      { "locator": "By.id(\"fileUpload\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.name(\"file\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.cssSelector(\"input[type='file']\")", "priority": 3, "reliability": "medium" },
+      { "locator": "By.xpath(\"//input[@type='file']\")", "priority": 4, "reliability": "medium" }
+    ],
+    "recommended_action": "sendKeys",
+    "action_example": "driver.findElement(By.id(\"fileUpload\")).sendKeys(\"C:\\\\path\\\\to\\\\file.pdf\");"
+  },
+  {
+    "html": "<form id=\"loginForm\" action=\"/login\" method=\"post\"><input type=\"text\" name=\"username\"><input type=\"password\" name=\"password\"><button type=\"submit\">Login</button></form>",
+    "element_type": "form",
+    "locator_options": [
+      { "locator": "By.id(\"loginForm\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.cssSelector(\"form[action='/login']\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.tagName(\"form\")", "priority": 3, "reliability": "low" },
+      { "locator": "By.xpath(\"//form[@id='loginForm']\")", "priority": 4, "reliability": "high" }
+    ],
+    "recommended_action": "submit",
+    "action_example": "driver.findElement(By.id(\"loginForm\")).submit();"
+  },
+  {
+    "html": "<iframe id=\"contentFrame\" src=\"/content\" name=\"mainContent\" width=\"100%\" height=\"500\"></iframe>",
+    "element_type": "iframe",
+    "locator_options": [
+      { "locator": "By.id(\"contentFrame\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.name(\"mainContent\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.tagName(\"iframe\")", "priority": 3, "reliability": "low" },
+      { "locator": "By.xpath(\"//iframe[@id='contentFrame']\")", "priority": 4, "reliability": "high" }
+    ],
+    "recommended_action": "switchTo",
+    "action_example": "driver.switchTo().frame(driver.findElement(By.id(\"contentFrame\")));"
+  },
+  {
+    "html": "<div class=\"modal\" id=\"confirmModal\" style=\"display:none\"><div class=\"modal-content\"><button id=\"confirmBtn\">Confirm</button></div></div>",
+    "element_type": "modal",
+    "locator_options": [
+      { "locator": "By.id(\"confirmModal\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.className(\"modal\")", "priority": 2, "reliability": "low" },
+      { "locator": "By.xpath(\"//div[@id='confirmModal']\")", "priority": 3, "reliability": "high" }
+    ],
+    "recommended_action": "click",
+    "action_example": "new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id(\"confirmModal\"))); driver.findElement(By.id(\"confirmBtn\")).click();"
+  },
+  {
+    "html": "<input type=\"search\" id=\"searchInput\" name=\"q\" placeholder=\"Search...\" class=\"search-box\">",
+    "element_type": "search",
+    "locator_options": [
+      { "locator": "By.id(\"searchInput\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.name(\"q\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.className(\"search-box\")", "priority": 3, "reliability": "medium" },
+      { "locator": "By.cssSelector(\"input[type='search']\")", "priority": 4, "reliability": "medium" }
+    ],
+    "recommended_action": "sendKeys",
+    "action_example": "driver.findElement(By.id(\"searchInput\")).sendKeys(\"search query\");"
+  },
+  {
+    "html": "<input type=\"date\" id=\"birthDate\" name=\"dob\" min=\"1900-01-01\" max=\"2024-12-31\">",
+    "element_type": "date",
+    "locator_options": [
+      { "locator": "By.id(\"birthDate\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.name(\"dob\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.cssSelector(\"input[type='date']\")", "priority": 3, "reliability": "medium" }
+    ],
+    "recommended_action": "sendKeys",
+    "action_example": "driver.findElement(By.id(\"birthDate\")).sendKeys(\"01/01/2000\");"
+  },
+  {
+    "html": "<button class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">Options <span class=\"caret\"></span></button>",
+    "element_type": "dropdown_button",
+    "locator_options": [
+      { "locator": "By.className(\"dropdown-toggle\")", "priority": 1, "reliability": "medium" },
+      { "locator": "By.cssSelector(\"button[data-toggle='dropdown']\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.xpath(\"//button[contains(text(),'Options')]\")", "priority": 3, "reliability": "medium" }
+    ],
+    "recommended_action": "click",
+    "action_example": "driver.findElement(By.className(\"dropdown-toggle\")).click();"
+  },
+  {
+    "html": "<div class=\"tooltip\" data-tooltip=\"This is a tooltip\">Hover me</div>",
+    "element_type": "tooltip",
+    "locator_options": [
+      { "locator": "By.className(\"tooltip\")", "priority": 1, "reliability": "medium" },
+      { "locator": "By.cssSelector(\"div[data-tooltip]\")", "priority": 2, "reliability": "medium" },
+      { "locator": "By.xpath(\"//div[@class='tooltip']\")", "priority": 3, "reliability": "medium" }
+    ],
+    "recommended_action": "hover",
+    "action_example": "WebElement tooltip = driver.findElement(By.className(\"tooltip\")); new Actions(driver).moveToElement(tooltip).perform();"
+  },
+  {
+    "html": "<input type=\"email\" id=\"emailInput\" name=\"email\" required pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$\">",
+    "element_type": "email",
+    "locator_options": [
+      { "locator": "By.id(\"emailInput\")", "priority": 1, "reliability": "high" },
+      { "locator": "By.name(\"email\")", "priority": 2, "reliability": "high" },
+      { "locator": "By.cssSelector(\"input[type='email']\")", "priority": 3, "reliability": "medium" }
+    ],
+    "recommended_action": "sendKeys",
+    "action_example": "driver.findElement(By.id(\"emailInput\")).sendKeys(\"user@example.com\");"
+  }
+]

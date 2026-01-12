@@ -1,0 +1,616 @@
+/**
+ * Enhanced Professional UI Styles
+ * Overlays on top of existing styles without breaking functionality
+ * Version: 1.0
+ */
+
+/* ============================================================================
+   ENHANCED LAYOUT & SPACING
+   ============================================================================ */
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ============================================================================
+   ENHANCED SIDEBAR
+   ============================================================================ */
+
+#sidebar {
+    background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%) !important;
+    box-shadow: 4px 0 20px rgba(99, 102, 241, 0.15) !important;
+    border-right: none !important;
+}
+
+#sidebar .nav-item {
+    margin: 0.25rem 0.75rem;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#sidebar .nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+#sidebar .nav-item:hover::before {
+    left: 100%;
+}
+
+#sidebar .nav-item:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateX(4px);
+}
+
+#sidebar .nav-item.active {
+    background: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+#sidebar .nav-item.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: white;
+    border-radius: 0 4px 4px 0;
+}
+
+/* ============================================================================
+   ENHANCED CARDS
+   ============================================================================ */
+
+.card, .content-card {
+    border: 1px solid var(--border-color);
+    border-radius: 16px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12) !important;
+    border-color: var(--primary-light);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* ============================================================================
+   ENHANCED BUTTONS
+   ============================================================================ */
+
+.btn {
+    border-radius: 10px !important;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Primary Button Enhanced */
+.btn-primary, button[style*="linear-gradient"] {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+}
+
+/* Success Button Enhanced */
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+}
+
+/* Danger Button Enhanced */
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+}
+
+/* ============================================================================
+   ENHANCED INPUTS & FORMS
+   ============================================================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+textarea,
+select {
+    border-radius: 10px !important;
+    border: 2px solid var(--border-color) !important;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+    outline: none !important;
+}
+
+/* ============================================================================
+   ENHANCED TABLES
+   ============================================================================ */
+
+table {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+thead tr {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+tbody tr {
+    transition: background 0.2s;
+}
+
+tbody tr:hover {
+    background: rgba(99, 102, 241, 0.04);
+}
+
+/* ============================================================================
+   ENHANCED CODE BLOCKS
+   ============================================================================ */
+
+pre[class*="language-"] {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid var(--border-color);
+}
+
+code[class*="language-"] {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ============================================================================
+   ENHANCED TABS
+   ============================================================================ */
+
+.tab-button {
+    border-radius: 10px 10px 0 0;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.tab-button.active::after {
+    transform: scaleX(1);
+}
+
+.tab-button:hover {
+    background: rgba(99, 102, 241, 0.08);
+}
+
+/* ============================================================================
+   ENHANCED NOTIFICATIONS
+   ============================================================================ */
+
+#notification {
+    border-radius: 12px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ============================================================================
+   ENHANCED LOADING SPINNER
+   ============================================================================ */
+
+#loadingSpinner {
+    backdrop-filter: blur(8px);
+    background: rgba(15, 23, 42, 0.6) !important;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.3em;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================================================
+   ENHANCED PROGRESS BARS
+   ============================================================================ */
+
+.progress {
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg-tertiary);
+    height: 8px;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================================
+   ENHANCED BADGES
+   ============================================================================ */
+
+.badge {
+    border-radius: 6px;
+    padding: 0.35em 0.75em;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.025em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.badge-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.badge-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.badge-warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.badge-info {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+/* ============================================================================
+   ENHANCED MODALS
+   ============================================================================ */
+
+.modal-content {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 16px 16px 0 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+/* ============================================================================
+   ENHANCED DROPDOWN
+   ============================================================================ */
+
+.dropdown-menu {
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+}
+
+.dropdown-item {
+    border-radius: 8px;
+    transition: all 0.2s;
+    margin: 2px 0;
+}
+
+.dropdown-item:hover {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+}
+
+/* ============================================================================
+   ENHANCED SCROLLBAR
+   ============================================================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+    border: 2px solid var(--bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--primary-dark), var(--primary));
+}
+
+/* ============================================================================
+   ENHANCED ANIMATIONS
+   ============================================================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================================================
+   ENHANCED RECORDER CONTROLS
+   ============================================================================ */
+
+#recorderControls {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(99, 102, 241, 0.3) !important;
+}
+
+#recordingStatus {
+    border-radius: 10px !important;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 1rem !important;
+    font-weight: 500;
+}
+
+/* ============================================================================
+   ENHANCED SEMANTIC ANALYSIS
+   ============================================================================ */
+
+#semanticIntentDisplay {
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border: 2px solid rgba(99, 102, 241, 0.2);
+    padding: 1.5rem;
+}
+
+.suggestion-checkbox {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 6px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+/* ============================================================================
+   ENHANCED TEST CASES LIST
+   ============================================================================ */
+
+.test-case-item {
+    border-radius: 12px;
+    transition: all 0.2s;
+    border: 1px solid var(--border-color);
+    margin-bottom: 0.75rem;
+}
+
+.test-case-item:hover {
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+    border-color: var(--primary-light);
+    transform: translateX(4px);
+}
+
+/* ============================================================================
+   ENHANCED STATUS INDICATORS
+   ============================================================================ */
+
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.status-success {
+    background: var(--success);
+    box-shadow: 0 0 8px var(--success);
+}
+
+.status-error {
+    background: var(--error);
+    box-shadow: 0 0 8px var(--error);
+}
+
+.status-warning {
+    background: var(--warning);
+    box-shadow: 0 0 8px var(--warning);
+}
+
+/* ============================================================================
+   ENHANCED TOOLTIPS
+   ============================================================================ */
+
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    padding: 0.5rem 0.75rem;
+    background: rgba(15, 23, 42, 0.95);
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 1000;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    #sidebar {
+        width: 60px;
+    }
+    
+    #sidebar .nav-item span {
+        display: none;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+@media print {
+    #sidebar,
+    #recorderControls,
+    .btn,
+    #loadingSpinner {
+        display: none !important;
+    }
+    
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #000;
+    }
+}
