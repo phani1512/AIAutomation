@@ -1,0 +1,64 @@
+{
+  "inputs_count": 3,
+  "inputs": [
+    {
+      "type": "input",
+      "x": 454,
+      "y": 72,
+      "width": 123,
+      "height": 20,
+      "center_x": 515,
+      "center_y": 82,
+      "area": 2460,
+      "aspect_ratio": 6.15,
+      "method": "bordered"
+    },
+    {
+      "type": "input",
+      "x": 349,
+      "y": 785,
+      "width": 107,
+      "height": 16,
+      "center_x": 402,
+      "center_y": 793,
+      "area": 1712,
+      "aspect_ratio": 6.69,
+      "method": "uniform"
+    },
+    {
+      "type": "input",
+      "x": 625,
+      "y": 823,
+      "width": 136,
+      "height": 18,
+      "center_x": 693,
+      "center_y": 832,
+      "area": 2448,
+      "aspect_ratio": 7.56,
+      "method": "bordered"
+    }
+  ],
+  "buttons_count": 1,
+  "buttons": [
+    {
+      "type": "button",
+      "x": 408,
+      "y": 502,
+      "width": 250,
+      "height": 48,
+      "center_x": 533,
+      "center_y": 526,
+      "color": [
+        43,
+        108,
+        238
+      ],
+      "area": 12000,
+      "aspect_ratio": 5.21,
+      "color_variance": 91.06758720048393,
+      "text": "",
+      "text_confidence": 0,
+      "ocr_classification": "text"
+    }
+  ]
+}

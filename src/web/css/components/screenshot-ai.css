@@ -1,0 +1,371 @@
+/* Screenshot AI Component Styles */
+
+/* Upload Area */
+.upload-area-screenshot {
+    border: 3px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-secondary);
+    margin: 20px 0;
+    position: relative;
+}
+
+.upload-area-screenshot:hover {
+    border-color: var(--primary);
+    background: var(--bg-tertiary);
+    transform: translateY(-2px);
+}
+
+.upload-area-screenshot.drag-over {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-style: solid;
+}
+
+/* Screenshot Preview */
+#screenshotPreviewContainer {
+    display: none;
+    text-align: center;
+    margin: 20px 0;
+    animation: fadeIn 0.3s ease;
+}
+
+#screenshotPreview {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+#screenshotPreview:hover {
+    transform: scale(1.02);
+}
+
+/* Screenshot Stats Container */
+#screenshotStatsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.screenshot-stat-card {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    padding: 20px;
+    border-radius: var(--radius);
+    color: white;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.screenshot-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.screenshot-stat-value {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.screenshot-stat-label {
+    font-size: 0.85em;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* Screenshot Elements Container */
+#screenshotElementsContainer {
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+/* Element Card */
+.element-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.element-card:hover {
+    border-color: var(--primary);
+    background: var(--card-hover);
+    transform: translateX(4px);
+    box-shadow: var(--shadow);
+}
+
+.element-card .element-type {
+    display: inline-block;
+    padding: 4px 12px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.element-card .element-text {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.element-card .element-locators {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.element-locator-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.8em;
+    font-family: 'Courier New', monospace;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.element-locator-chip:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.element-locator-chip i {
+    font-size: 0.9em;
+}
+
+/* Configuration Options */
+.config-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.config-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.config-option:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--primary);
+}
+
+.config-option input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.config-option label {
+    flex: 1;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Language Selector */
+.language-selector {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.language-selector button {
+    flex: 1;
+    padding: 12px 24px;
+    border: 2px solid var(--border-color);
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.language-selector button:hover {
+    border-color: var(--primary);
+    background: var(--bg-tertiary);
+}
+
+.language-selector button.active {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Test Data Results */
+#testDataResults {
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+}
+
+#testDataResults pre {
+    background: var(--bg-secondary);
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    line-height: 1.6;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+/* Generated Code Section */
+#generatedCodeScreenshot {
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+}
+
+#generatedCodeScreenshot pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9em;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* POM Code Section */
+#pomCodeSection {
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+}
+
+#pomCodeSection pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+/* Action Buttons */
+.screenshot-actions {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.screenshot-actions .btn {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Loading State */
+.screenshot-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    gap: 16px;
+}
+
+.screenshot-loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.screenshot-loading-text {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Empty State */
+.screenshot-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.screenshot-empty-state i {
+    font-size: 4em;
+    opacity: 0.3;
+    margin-bottom: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .config-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .language-selector {
+        flex-direction: column;
+    }
+    
+    .screenshot-actions {
+        flex-direction: column;
+    }
+    
+    .screenshot-actions .btn {
+        width: 100%;
+    }
+    
+    #screenshotStatsContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Accessibility */
+.upload-area-screenshot:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.element-card:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}

@@ -51,65 +51,75 @@ class TestFileManager:
             return self._save_python_suite(test_suite, test_name)
     
     def _save_java_suite(self, test_suite: Dict, test_name: str) -> Dict:
-        """Save Java test suite to proper Maven structure."""
+        """Save comprehensive Java test suite to proper Maven structure."""
         
         saved_files = {}
         
         # Create directories
         pages_dir = self.java_base / 'pages'
         tests_dir = self.java_base / 'tests'
-        data_dir = self.java_base / 'data'
         
         pages_dir.mkdir(parents=True, exist_ok=True)
         tests_dir.mkdir(parents=True, exist_ok=True)
-        data_dir.mkdir(parents=True, exist_ok=True)
         
-        # Save Page Object
-        page_file = pages_dir / f"{test_name}Page.java"
-        with open(page_file, 'w', encoding='utf-8') as f:
-            f.write(test_suite['page_object'])
-        saved_files['page_object'] = str(page_file)
-        logger.info(f"[FILE-MGR] ✓ Saved Page Object: {page_file}")
+        # Save Page Object Model (only if POM is used)
+        if test_suite.get('has_pom', False) and test_suite.get('page_object'):
+            page_file = pages_dir / f"{test_name}Page.java"
+            with open(page_file, 'w', encoding='utf-8') as f:
+                f.write(test_suite['page_object'])
+            saved_files['page_object'] = str(page_file)
+            logger.info(f"[FILE-MGR] ✓ Saved Page Object: {page_file}")
+        else:
+            logger.info(f"[FILE-MGR] ⊘ Skipping Page Object (Simple tests without POM)")
         
-        # Save Test Class
+        # Save Main Test Class (15+ test cases)
         test_file = tests_dir / f"{test_name}Test.java"
         with open(test_file, 'w', encoding='utf-8') as f:
             f.write(test_suite['test_class'])
         saved_files['test_class'] = str(test_file)
         logger.info(f"[FILE-MGR] ✓ Saved Test Class: {test_file}")
         
-        # Save Data Provider
-        if test_suite.get('data_provider'):
-            data_file = data_dir / "TestDataProvider.java"
-            with open(data_file, 'w', encoding='utf-8') as f:
-                f.write(test_suite['data_provider'])
-            saved_files['data_provider'] = str(data_file)
-            logger.info(f"[FILE-MGR] ✓ Saved Data Provider: {data_file}")
+        # Save Data Provider Class
+        if test_suite.get('data_provider_class'):
+            data_provider_file = tests_dir / f"{test_name}TestDataProvider.java"
+            with open(data_provider_file, 'w', encoding='utf-8') as f:
+                f.write(test_suite['data_provider_class'])
+            saved_files['data_provider'] = str(data_provider_file)
+            logger.info(f"[FILE-MGR] ✓ Saved Data Provider: {data_provider_file}")
         
-        # Generate TestNG suite XML
-        suite_xml = self._generate_testng_xml(test_name)
-        xml_file = self.workspace_root / 'testng.xml'
-        with open(xml_file, 'w', encoding='utf-8') as f:
-            f.write(suite_xml)
-        saved_files['testng_xml'] = str(xml_file)
-        logger.info(f"[FILE-MGR] ✓ Saved TestNG XML: {xml_file}")
+        # Save Data-Driven Test Class
+        if test_suite.get('data_driven_test_class'):
+            data_driven_file = tests_dir / f"{test_name}TestWithDataProvider.java"
+            with open(data_driven_file, 'w', encoding='utf-8') as f:
+                f.write(test_suite['data_driven_test_class'])
+            saved_files['data_driven_test'] = str(data_driven_file)
+            logger.info(f"[FILE-MGR] ✓ Saved Data-Driven Test: {data_driven_file}")
         
-        # Generate run script
-        run_script = self._generate_java_run_script(test_name)
-        script_file = self.workspace_root / 'run_tests.bat'
-        with open(script_file, 'w', encoding='utf-8') as f:
-            f.write(run_script)
-        saved_files['run_script'] = str(script_file)
-        logger.info(f"[FILE-MGR] ✓ Saved Run Script: {script_file}")
+        # Save TestNG XML Configuration
+        if test_suite.get('testng_xml'):
+            xml_file = self.workspace_root / f'testng-{test_name.lower()}.xml'
+            with open(xml_file, 'w', encoding='utf-8') as f:
+                f.write(test_suite['testng_xml'])
+            saved_files['testng_xml'] = str(xml_file)
+            logger.info(f"[FILE-MGR] ✓ Saved TestNG XML: {xml_file}")
+        
+        # Save README Documentation
+        if test_suite.get('readme'):
+            readme_file = self.workspace_root / f'README_{test_name.upper()}_TESTS.md'
+            with open(readme_file, 'w', encoding='utf-8') as f:
+                f.write(test_suite['readme'])
+            saved_files['readme'] = str(readme_file)
+            logger.info(f"[FILE-MGR] ✓ Saved README: {readme_file}")
         
         return {
             'status': 'success',
             'files': saved_files,
+            'files_count': len(saved_files),
             'test_count': test_suite.get('test_count', 0),
             'ready_to_run': True,
             'execution': {
-                'command': 'mvn test',
-                'alternative': f'run_tests.bat',
+                'command': f'mvn test -DsuiteXmlFile=testng-{test_name.lower()}.xml',
+                'alternative': f'mvn test -Dtest={test_name}Test',
                 'ide': f'Right-click {test_name}Test.java -> Run as TestNG Test'
             },
             'message': f'✅ {len(saved_files)} files saved. Tests ready to execute!'
@@ -155,23 +165,15 @@ class TestFileManager:
         saved_files['requirements'] = str(req_file)
         logger.info(f"[FILE-MGR] ✓ Saved Requirements: {req_file}")
         
-        # Generate run script
-        run_script = self._generate_python_run_script(test_name)
-        script_file = self.workspace_root / 'run_tests.ps1'
-        with open(script_file, 'w', encoding='utf-8') as f:
-            f.write(run_script)
-        saved_files['run_script'] = str(script_file)
-        logger.info(f"[FILE-MGR] ✓ Saved Run Script: {script_file}")
-        
         return {
             'status': 'success',
             'files': saved_files,
+            'files_count': len(saved_files),
             'test_count': test_suite.get('test_count', 0),
             'ready_to_run': True,
             'execution': {
                 'command': f'pytest tests/test_{test_name.lower()}.py -v',
-                'alternative': f'powershell ./run_tests.ps1',
-                'ide': f'Right-click test_{test_name.lower()}.py -> Run pytest'
+                'alternative': 'pytest'
             },
             'message': f'✅ {len(saved_files)} files saved. Tests ready to execute!'
         }

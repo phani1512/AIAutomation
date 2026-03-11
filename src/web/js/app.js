@@ -4,14 +4,16 @@
 // Initialize on page load
 window.addEventListener('load', async function() {
     await checkAuthentication();
-    checkConnection();
-    pageFullyLoaded = true;
+    if (typeof window.checkConnection === 'function') {
+        window.checkConnection();
+    }
+    window.pageFullyLoaded = true;
     
     // Add delay before enabling login to prevent browser auto-submit
     setTimeout(() => {
-        loginFormReady = true;
+        window.loginFormReady = true;
         console.log('[APP] Login form ready for user interaction');
-    }, 1000);
+    }, 500);
 });
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -24,26 +26,19 @@ window.addEventListener('DOMContentLoaded', () => {
         // Ctrl+Alt+S to stop recording
         if (e.ctrlKey && e.altKey && e.key === 's') {
             e.preventDefault();
-            if (isRecording && currentSessionId) {
-                stopRecording();
+            // Check if stopRecording function exists and call it
+            if (typeof window.stopRecording === 'function') {
+                window.stopRecording();
             }
         }
     });
     
     // Show dashboard by default or load from URL hash
     const hash = window.location.hash.substring(1);
-    if (hash && document.getElementById(hash + 'Page')) {
+    if (hash) {
         navigateTo(hash);
-    } else {
-        document.getElementById('dashboardPage').classList.add('active');
-        const dashboardNav = document.querySelector('.nav-item[onclick*="dashboard"]');
-        if (dashboardNav) dashboardNav.classList.add('active');
     }
-    
-    // Update dashboard initially
-    updateDashboardStats();
-    updateRecentTestResults();
-    updateActivityTimeline();
+    // Note: Dashboard will be loaded automatically after login via showMainApp()
     
     // Load test cases to populate dashboard
     loadTestCases();

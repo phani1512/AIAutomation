@@ -1,22 +1,71 @@
 // Dashboard Statistics and UI
 
-const stats = {
-    totalRequests: 0,
-    totalTime: 0,
-    totalTokens: 0,
-    testResults: []
-};
+// Load stats from localStorage or initialize with defaults
+function loadStats() {
+    const savedStats = localStorage.getItem('dashboardStats');
+    if (savedStats) {
+        try {
+            const parsed = JSON.parse(savedStats);
+            return {
+                totalRequests: parsed.totalRequests || 0,
+                totalTime: parsed.totalTime || 0,
+                totalTokens: parsed.totalTokens || 0,
+                testResults: parsed.testResults || []
+            };
+        } catch (e) {
+            console.error('[Dashboard] Error loading stats:', e);
+            return {
+                totalRequests: 0,
+                totalTime: 0,
+                totalTokens: 0,
+                testResults: []
+            };
+        }
+    }
+    return {
+        totalRequests: 0,
+        totalTime: 0,
+        totalTokens: 0,
+        testResults: []
+    };
+}
+
+// Save stats to localStorage
+function saveStats() {
+    try {
+        localStorage.setItem('dashboardStats', JSON.stringify(stats));
+    } catch (e) {
+        console.error('[Dashboard] Error saving stats:', e);
+    }
+}
+
+const stats = loadStats();
 
 function updateDashboardStats() {
-    document.getElementById('dashboardTotalRequests').textContent = stats.totalRequests;
-    document.getElementById('dashboardAvgTime').textContent = stats.totalTime > 0 ? 
-        Math.round(stats.totalTime / stats.totalRequests) + 'ms' : '0ms';
+    const totalRequestsEl = document.getElementById('dashboardTotalRequests');
+    const avgTimeEl = document.getElementById('dashboardAvgTime');
+    const passedEl = document.getElementById('testsPassedCount');
+    const failedEl = document.getElementById('testsFailedCount');
+    
+    if (totalRequestsEl) {
+        totalRequestsEl.textContent = stats.totalRequests;
+    }
+    
+    if (avgTimeEl) {
+        avgTimeEl.textContent = stats.totalTime > 0 ? 
+            Math.round(stats.totalTime / stats.totalRequests) + 'ms' : '0ms';
+    }
     
     const passed = stats.testResults.filter(r => r.status === 'passed').length;
     const failed = stats.testResults.filter(r => r.status === 'failed').length;
     
-    document.getElementById('testsPassedCount').textContent = passed;
-    document.getElementById('testsFailedCount').textContent = failed;
+    if (passedEl) {
+        passedEl.textContent = passed;
+    }
+    
+    if (failedEl) {
+        failedEl.textContent = failed;
+    }
 }
 
 function addTestResult(name, status, duration, details = '') {
@@ -33,11 +82,17 @@ function addTestResult(name, status, duration, details = '') {
         stats.testResults = stats.testResults.slice(0, 10);
     }
     
+    // Save to localStorage
+    saveStats();
+    
     const passed = stats.testResults.filter(r => r.status === 'passed').length;
     const failed = stats.testResults.filter(r => r.status === 'failed').length;
     
-    document.getElementById('testsPassedCount').textContent = passed;
-    document.getElementById('testsFailedCount').textContent = failed;
+    const passedCountEl = document.getElementById('testsPassedCount');
+    const failedCountEl = document.getElementById('testsFailedCount');
+    
+    if (passedCountEl) passedCountEl.textContent = passed;
+    if (failedCountEl) failedCountEl.textContent = failed;
     
     updateRecentTestResults();
     updateActivityTimeline();
@@ -45,6 +100,7 @@ function addTestResult(name, status, duration, details = '') {
 
 function updateRecentTestResults() {
     const container = document.getElementById('recentTestResults');
+    if (!container) return;
     
     if (stats.testResults.length === 0) {
         container.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--text-secondary);">No test results yet. Start generating and running tests!</div>';
@@ -72,6 +128,7 @@ function updateRecentTestResults() {
 
 function updateActivityTimeline() {
     const container = document.getElementById('activityTimeline');
+    if (!container) return;
     
     if (stats.testResults.length === 0) {
         container.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--text-secondary);">Your activity will appear here</div>';
@@ -88,4 +145,30 @@ function updateActivityTimeline() {
             <div style="color: var(--text-tertiary); font-size: 0.9em;">${result.duration}ms</div>
         </div>
     `).join('');
+}
+
+// Expose functions and stats to window object
+window.stats = stats;
+window.updateDashboardStats = updateDashboardStats;
+window.addTestResult = addTestResult;
+window.updateRecentTestResults = updateRecentTestResults;
+window.updateActivityTimeline = updateActivityTimeline;
+window.saveStats = saveStats;
+
+// Initialize dashboard on load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+            updateDashboardStats();
+            updateRecentTestResults();
+            updateActivityTimeline();
+        }, 100);
+    });
+} else {
+    // DOM already loaded
+    setTimeout(() => {
+        updateDashboardStats();
+        updateRecentTestResults();
+        updateActivityTimeline();
+    }, 100);
 }

@@ -1,0 +1,42 @@
+<!-- Semantic Analysis Page -->
+<section id="semanticPage" class="page-section">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px 20px 20px;">
+        <div class="card">
+            <h3 class="section-header">🧠 Semantic Test Analysis</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">Analyze test intent and get AI-powered suggestions for comprehensive test scenarios including negative tests, boundary cases, and edge cases.</p>
+            
+            <div class="form-group">
+                <label for="semanticSessionSelect">Select Test Session:</label>
+                <select id="semanticSessionSelect" onchange="onSemanticSessionChange()" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                    <option value="">-- Select a recorded test session --</option>
+                </select>
+            </div>
+            
+            <div style="display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; align-items: center;">
+                <button class="btn" onclick="loadSemanticAnalysis()" style="padding: 10px 20px; font-size: 0.9em; flex: 0 0 auto; width: auto;">
+                    🔍 Analyze Intent
+                </button>
+                <button class="btn" onclick="generateSuggestions()" style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); padding: 10px 20px; font-size: 0.9em; flex: 0 0 auto; width: auto;">
+                    💡 Get Suggestions
+                </button>
+                <button class="btn" onclick="refreshSemanticSessions()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 10px 20px; font-size: 0.9em; flex: 0 0 auto; width: auto;">
+                    🔄 Refresh Sessions
+                </button>
+                <button class="btn" onclick="clearSemanticAnalysis()" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); padding: 10px 20px; font-size: 0.9em; flex: 0 0 auto; width: auto;">
+                    🗑️ Clear Analysis
+                </button>
+            </div>
+            
+            <div id="semanticIntentDisplay" style="display: none; margin-top: 20px;"></div>
+        </div>
+        
+        <div class="card" style="margin-top: 20px;">
+            <h3 class="section-header">💡 Suggested Test Scenarios</h3>
+            <div id="semanticSuggestionsDisplay">
+                <div style="padding: 40px; text-align: center; color: var(--text-secondary);">
+                    Select a test session and click "Get Suggestions" to see AI-generated test scenarios
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

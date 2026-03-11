@@ -1,0 +1,102 @@
+<!-- Test Suite Page -->
+<section id="testcasesPage" class="page-section">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px 20px 20px;">
+        <div class="section-row">
+            <div class="card">
+                <h3 class="section-header">📋 Test Suite Management</h3>
+                
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="moduleFilter">Filter by Module:</label>
+                    <select id="moduleFilter" onchange="filterTestsByModule()">
+                        <option value="">All Modules</option>
+                    </select>
+                </div>
+                
+                <div style="display: flex; gap: 10px; margin-bottom: 15px; align-items: center; padding: 10px; background: var(--bg-secondary); border-radius: 6px;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" id="selectAllTests" onchange="toggleSelectAllTests()" style="cursor: pointer; width: 18px; height: 18px;">
+                        <span style="color: var(--text-primary); font-weight: 500;">Select All</span>
+                    </label>
+                    <button id="deleteSelectedTestsBtn" class="btn" onclick="deleteSelectedTests()" style="background: var(--error); display: none; margin-left: auto;">
+                        🗑️ Delete Selected
+                    </button>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <button class="btn" onclick="loadTestCases()" style="flex: 1;">
+                        🔄 Refresh
+                    </button>
+                    <button class="btn" onclick="executeTestSuite()" style="background: #10b981; flex: 1;">
+                        ▶️ Execute
+                    </button>
+                    <button class="btn" onclick="clearTestSuite()" style="background: #ef4444; flex: 1;">
+                        🗑️ Clear All
+                    </button>
+                </div>
+
+                <div id="testCasesList" style="max-height: 400px; overflow-y: auto;">
+                    <div style="padding: 20px; text-align: center; color: var(--text-secondary);">
+                        No test cases yet. Use the Recorder to create tests!
+                    </div>
+                </div>
+
+                <!-- Currently Executing Test Indicator -->
+                <div id="currentlyExecutingTest" style="margin-top: 15px; display: none; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="spinner" style="width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; flex-shrink: 0;"></div>
+                        <div style="color: white; font-weight: 600; font-size: 1.05em; flex: 1; overflow: hidden;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="flex-shrink: 0;">▶ Executing Test:</span>
+                                <span id="currentExecutingTestName" style="font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="executionResults" style="margin-top: 20px; display: none;">
+                    <h4 style="color: #667eea; margin-bottom: 10px;">Execution Results:</h4>
+                    <div id="executionResultsList" style="background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 15px; max-height: 200px; overflow-y: auto;">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" id="testSuiteCodeViewer">
+                <h3 class="section-header">📄 Generated Test Code</h3>
+                <div style="margin-bottom: 15px;">
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <button class="btn" onclick="copyTestSuiteCode()" id="copyTestSuiteBtn" style="display: none; flex: 1;">
+                            📋 Copy Code
+                        </button>
+                        <button class="btn" onclick="exportTestSuiteCode()" id="exportTestSuiteBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
+                            💾 Export
+                        </button>
+                        <button class="btn" onclick="saveTestSuiteSnippet()" id="saveTestSuiteSnippetBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            💾 Save as Snippet
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="testSuiteCodeContainer" style="background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 0; max-height: 450px; overflow: auto;">
+                    <pre style="margin: 0; padding: 20px;"><code id="testSuiteCodeContent" class="language-java" style="display: block; white-space: pre-wrap; word-wrap: break-word; color: var(--text-secondary); font-size: 0.9em;">Select a test case from the list to view its code here...</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div id="testSuiteCodeEditor" style="display: none; margin-top: 20px;">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 class="section-header">✏️ Edit Test Code</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn" onclick="saveEditedTestCode()" style="background: #10b981;">
+                            ✅ Save Changes
+                        </button>
+                        <button class="btn" onclick="cancelEditTestCode()" style="background: #6b7280;">
+                            ❌ Cancel
+                        </button>
+                    </div>
+                </div>
+                <textarea id="testSuiteCodeEditArea" style="width: 100%; min-height: 400px; padding: 15px; border: 2px solid var(--border-color); border-radius: 8px; background: var(--input-bg); color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 0.9em; resize: vertical;"></textarea>
+            </div>
+        </div>
+    </div>
+</section>

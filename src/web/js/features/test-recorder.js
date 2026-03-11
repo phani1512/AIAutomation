@@ -1,9 +1,15 @@
 // Test Recorder Features
 
-let isRecording = false;
-let currentSessionId = null;
-let recordedActions = [];
-let pollingIntervalId = null;
+// Use window for global state so it's accessible across modules
+if (!window.recorderState) {
+    window.recorderState = {
+        isRecording: false,
+        currentSessionId: null,
+        recordedActions: [],
+        pollingIntervalId: null,
+        liveMonitor: null  // RecorderLiveMonitor instance
+    };
+}
 
 async function startRecording() {
     // Close any sticky popup before starting recording
@@ -48,16 +54,96 @@ async function startRecording() {
             isRecording = true;
             recordedActions = [];
             
-            document.getElementById('startRecordBtn').style.display = 'none';
-            document.getElementById('stopRecordBtn').style.display = 'inline-block';
-            document.getElementById('newTestBtn').style.display = 'none';
+            const startBtn = document.getElementById('startRecordBtn');
+            const stopBtn = document.getElementById('stopRecordBtn');
+            const newBtn = document.getElementById('newTestBtn');
+            const actionsContainer = document.getElementById('recordedActionsContainer');
             
-            showRecordingStatus(`🔴 Recording started! Session ID: ${currentSessionId.substring(0, 8)}...`);
+            if (startBtn) startBtn.style.display = 'none';
+            if (stopBtn) stopBtn.style.display = 'inline-block';
+            if (newBtn) newBtn.style.display = 'none';
+            if (actionsContainer) actionsContainer.style.display = 'block';
             
-            document.getElementById('recordedActionsContainer').style.display = 'block';
-            updateRecordedActionsList();
+            showRecordingStatus(`✅ Session ${currentSessionId} created! Now initializing browser...`);
             
-            startPollingActions();
+            // Initialize browser
+            try {
+                const browserResp = await fetch(`${API_URL}/browser/initialize`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ browser: 'chrome', headless: false })
+                });
+
+                if (browserResp.ok) {
+                    showRecordingStatus('🔴 Browser initialized. Navigating to: ' + url);
+                    
+                    // Wait a moment for browser to be ready
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    // Navigate to URL and inject recorder
+                    const navResp = await fetch(`${API_URL}/recorder/navigate`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            url: url,
+                            session_id: currentSessionId
+                        })
+                    });
+                    
+                    console.log('Navigate response status:', navResp.status);
+                    
+                    if (navResp.ok) {
+                        const navData = await navResp.json();
+                        console.log('Navigate data:', navData);
+                        if (navData.success) {
+                            showRecordingStatus('🔴 Recording in progress! Interact with the browser to record actions.');
+                            
+                            // Auto-focus browser window
+                            setTimeout(() => {
+                                bringBrowserToFront().catch(err => {
+                                    console.warn('Could not auto-focus browser:', err);
+                                });
+                            }, 1000);
+                            
+                            // Initialize live monitoring
+                            if (window.RecorderLiveMonitor) {
+                                const liveStatusPanel = document.getElementById('recorderLiveStatusPanel');
+                                if (liveStatusPanel) {
+                                    liveStatusPanel.style.display = 'block';
+                                }
+                                
+                                window.recorderState.liveMonitor = new RecorderLiveMonitor();
+                                window.recorderState.liveMonitor.start(currentSessionId);
+                                console.log('✅ Live monitoring started for session:', currentSessionId);
+                            } else {
+                                console.warn('⚠️ RecorderLiveMonitor class not found - live monitoring disabled');
+                            }
+                        } else {
+                            showRecordingStatus('⚠️ Navigation failed: ' + (navData.error || 'Unknown error'));
+                        }
+                    } else {
+                        const errorText = await navResp.text();
+                        console.error('Navigation error response:', errorText);
+                        let errorData;
+                        try {
+                            errorData = JSON.parse(errorText);
+                        } catch (e) {
+                            errorData = { error: errorText || 'Unknown error' };
+                        }
+                        console.error('Navigation error:', errorData);
+                        showRecordingStatus('⚠️ Navigation request failed: ' + (errorData.error || `HTTP ${navResp.status}`));
+                    }
+                    
+                    // Poll for recorded actions
+                    startPollingActions();
+                    updateRecordedActionsList();
+                } else {
+                    showRecordingStatus('⚠️ Session created but browser failed to initialize.');
+                }
+            } catch (browserError) {
+                console.error('Browser initialization error:', browserError);
+                showRecordingStatus('⚠️ Session created but browser initialization failed: ' + browserError.message);
+            }
         } else {
             alert('Failed to start recording: ' + data.error);
         }
@@ -92,6 +178,12 @@ function startPollingActions() {
                     console.log(`Actions updated: ${recordedActions.length} -> ${newActions.length}`);
                     recordedActions = newActions;
                     updateRecordedActionsList();
+                    
+                    // Show notification for new actions
+                    const newCount = newActions.length - recordedActions.length;
+                    if (newCount > 0 && typeof showNotification === 'function') {
+                        showNotification(`✅ Captured ${newCount} new action${newCount > 1 ? 's' : ''}`);
+                    }
                 }
             }
         } catch (error) {
@@ -109,12 +201,44 @@ function startPollingActions() {
 function updateRecordedActionsList() {
     const listElement = document.getElementById('recordedActionsList');
     
+    // Update action counter badge in recording status
+    const actionCounter = document.getElementById('actionCounter');
+    if (actionCounter) {
+        actionCounter.textContent = recordedActions.length + ' action' + (recordedActions.length !== 1 ? 's' : '');
+    }
+    
+    // Update live panel action count
+    const liveActionCount = document.getElementById('liveActionCount');
+    if (liveActionCount) {
+        liveActionCount.textContent = recordedActions.length;
+        // Add animation effect
+        liveActionCount.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+            liveActionCount.style.transform = 'scale(1)';
+        }, 200);
+    }
+    
+    // Update dashboard stats
+    if (typeof window.stats !== 'undefined') {
+        window.stats.totalRequests = recordedActions.length;
+        // Save stats to localStorage
+        if (typeof window.saveStats === 'function') {
+            window.saveStats();
+        }
+        if (typeof window.updateDashboardStats === 'function') {
+            window.updateDashboardStats();
+        }
+    }
+    
     if (recordedActions.length === 0) {
-        listElement.innerHTML = '<div style="padding: 15px; color: var(--text-secondary); text-align: center;">No actions recorded yet. Interact with the webpage...</div>';
+        if (listElement) {
+            listElement.innerHTML = '<div style="padding: 15px; color: var(--text-secondary); text-align: center;">No actions recorded yet. Interact with the webpage...</div>';
+        }
         return;
     }
     
-    listElement.innerHTML = recordedActions.map((action, index) => {
+    if (listElement) {
+        listElement.innerHTML = recordedActions.map((action, index) => {
         const icons = {
             'click': '🖱️',
             'input': '⌨️',
@@ -125,9 +249,30 @@ function updateRecordedActionsList() {
         };
         
         const icon = icons[action.action_type] || '✅';
-        const elementInfo = action.element ? 
-            (action.element.id || action.element.name || action.element.tagName || 'Unknown') : 
-            'Page';
+        
+        // Build better element description with text/label
+        let elementInfo = 'Unknown';
+        if (action.element) {
+            const elem = action.element;
+            // Priority: text content > aria-label > title > id > name > tagName
+            if (elem.text && elem.text.length > 0) {
+                elementInfo = `${elem.tagName.toUpperCase()} "${elem.text.substring(0, 30)}${elem.text.length > 30 ? '...' : ''}"`;
+            } else if (elem.innerText && elem.innerText.length > 0) {
+                elementInfo = `${elem.tagName.toUpperCase()} "${elem.innerText.substring(0, 30)}${elem.innerText.length > 30 ? '...' : ''}"`;
+            } else if (elem.ariaLabel) {
+                elementInfo = `${elem.tagName.toUpperCase()} [${elem.ariaLabel}]`;
+            } else if (elem.title) {
+                elementInfo = `${elem.tagName.toUpperCase()} [${elem.title}]`;
+            } else if (elem.id) {
+                elementInfo = `${elem.tagName.toUpperCase()} #${elem.id}`;
+            } else if (elem.name) {
+                elementInfo = `${elem.tagName.toUpperCase()} name="${elem.name}"`;
+            } else {
+                elementInfo = elem.tagName.toUpperCase();
+            }
+        } else if (action.url) {
+            elementInfo = 'Page';
+        }
         
         return `
         <div style="padding: 10px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
@@ -139,7 +284,8 @@ function updateRecordedActionsList() {
             <span style="color: var(--text-tertiary); font-size: 0.85em;">Step ${action.step || index + 1}</span>
         </div>
         `;
-    }).join('');
+        }).join('');
+    }
 }
 
 async function stopRecording() {
@@ -164,6 +310,18 @@ async function stopRecording() {
                 pollingIntervalId = null;
             }
             
+            // Stop live monitoring
+            if (window.recorderState.liveMonitor) {
+                window.recorderState.liveMonitor.stop();
+                window.recorderState.liveMonitor = null;
+                console.log('✅ Live monitoring stopped');
+                
+                const liveStatusPanel = document.getElementById('recorderLiveStatusPanel');
+                if (liveStatusPanel) {
+                    liveStatusPanel.style.display = 'none';
+                }
+            }
+            
             isRecording = false;
             
             try {
@@ -177,9 +335,13 @@ async function stopRecording() {
                 console.error('Error fetching final actions:', err);
             }
             
-            document.getElementById('startRecordBtn').style.display = 'none';
-            document.getElementById('stopRecordBtn').style.display = 'none';
-            document.getElementById('newTestBtn').style.display = 'inline-block';
+            const startBtn1 = document.getElementById('startRecordBtn');
+            const stopBtn1 = document.getElementById('stopRecordBtn');
+            const newBtn1 = document.getElementById('newTestBtn');
+            
+            if (startBtn1) startBtn1.style.display = 'none';
+            if (stopBtn1) stopBtn1.style.display = 'none';
+            if (newBtn1) newBtn1.style.display = 'inline-block';
             
             showRecordingStatus('✅ Recording stopped. ' + recordedActions.length + ' actions captured. Click "Generate Test Code" to export.');
         } else {
@@ -224,13 +386,18 @@ async function startNewTestCase() {
             isRecording = true;
             recordedActions = [];
             
-            document.getElementById('startRecordBtn').style.display = 'none';
-            document.getElementById('stopRecordBtn').style.display = 'inline-block';
-            document.getElementById('newTestBtn').style.display = 'none';
+            const startBtn2 = document.getElementById('startRecordBtn');
+            const stopBtn2 = document.getElementById('stopRecordBtn');
+            const newBtn2 = document.getElementById('newTestBtn');
+            const actionsContainer2 = document.getElementById('recordedActionsContainer');
+            
+            if (startBtn2) startBtn2.style.display = 'none';
+            if (stopBtn2) stopBtn2.style.display = 'inline-block';
+            if (newBtn2) newBtn2.style.display = 'none';
             
             showRecordingStatus(`🔴 New test case "${testName}" started! Recording in progress...`);
             
-            document.getElementById('recordedActionsContainer').style.display = 'block';
+            if (actionsContainer2) actionsContainer2.style.display = 'block';
             updateRecordedActionsList();
             
             startPollingActions();
@@ -276,16 +443,23 @@ async function generateTestFromRecording() {
                 Prism.highlightElement(recorderOutputCode);
             }
             
-            document.getElementById('editRecorderBtn').style.display = 'inline-block';
-            document.getElementById('copyRecorderBtn').style.display = 'inline-block';
-            document.getElementById('exportRecorderBtn').style.display = 'inline-block';
-            document.getElementById('saveRecorderSnippetBtn').style.display = 'inline-block';
+            const editBtn = document.getElementById('editRecorderBtn');
+            const copyBtn = document.getElementById('copyRecorderBtn');
+            const exportBtn = document.getElementById('exportRecorderBtn');
+            const saveBtn = document.getElementById('saveRecorderSnippetBtn');
+            
+            if (editBtn) editBtn.style.display = 'inline-block';
+            if (copyBtn) copyBtn.style.display = 'inline-block';
+            if (exportBtn) exportBtn.style.display = 'inline-block';
+            if (saveBtn) saveBtn.style.display = 'inline-block';
             
             window.lastRecorderCode = data.code;
             window.lastRecorderSessionId = currentSessionId;
             window.lastRecorderLanguage = language;
             
-            document.getElementById('executeTestSection').style.display = 'block';
+            const executeSection = document.getElementById('executeTestSection');
+            if (executeSection) executeSection.style.display = 'block';
+            
             showRecordingStatus(`✅ Test code generated successfully in ${language.toUpperCase()}!`);
             
             setTimeout(() => loadTestCases(), 500);
@@ -409,7 +583,40 @@ function cancelRecorderEdit() {
     viewer.style.display = 'block';
 }
 
-// Expose functions to window object
+async function bringBrowserToFront() {
+    try {
+        const response = await fetch(`${API_URL}/browser/focus`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+                console.log('✅ Browser window brought to front');
+                showNotification('🪟 Browser focused');
+            } else {
+                console.warn('⚠️ Browser focus failed:', data.error);
+            }
+        } else {
+            console.error('Failed to focus browser:', response.status);
+        }
+    } catch (error) {
+        console.error('Error focusing browser:', error);
+    }
+}
+
+// Expose functions and variables to window object
+Object.defineProperty(window, 'isRecording', {
+    get: () => window.recorderState.isRecording,
+    set: (value) => { window.recorderState.isRecording = value; }
+});
+
+Object.defineProperty(window, 'currentSessionId', {
+    get: () => window.recorderState.currentSessionId,
+    set: (value) => { window.recorderState.currentSessionId = value; }
+});
+
 window.startRecording = startRecording;
 window.stopRecording = stopRecording;
 window.startNewTestCase = startNewTestCase;
@@ -420,3 +627,4 @@ window.cancelRecorderEdit = cancelRecorderEdit;
 window.copyRecorderOutput = copyRecorderOutput;
 window.exportRecorderCode = exportRecorderCode;
 window.saveRecorderSnippet = saveRecorderSnippet;
+window.bringBrowserToFront = bringBrowserToFront;

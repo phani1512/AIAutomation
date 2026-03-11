@@ -1,0 +1,118 @@
+<!-- Enhanced Recorder Live Status Panel -->
+<!-- This is a modular component - keeps main index clean -->
+
+<div id="recorderLiveStatusPanel" style="display: none; margin-top: 15px; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    
+    <!-- Header with Browser Control -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span id="browserVisibilityIndicator" style="font-size: 1.2em;" title="Browser status">🟢</span>
+            <span style="color: white; font-weight: 600; font-size: 1.1em;">🔴 Live Recording</span>
+        </div>
+        <button onclick="bringBrowserToFront()" class="btn" style="padding: 6px 12px; font-size: 0.85em; background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+            🪟 Focus Browser
+        </button>
+    </div>
+
+    <!-- Live Stats Grid -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
+        
+        <!-- Action Count -->
+        <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 8px; text-align: center;">
+            <div style="color: rgba(255,255,255,0.8); font-size: 0.85em; margin-bottom: 4px;">Actions</div>
+            <div id="liveActionCount" style="color: white; font-size: 1.8em; font-weight: bold; transition: transform 0.2s;">0</div>
+        </div>
+
+        <!-- Tab Count -->
+        <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 8px; text-align: center;">
+            <div style="color: rgba(255,255,255,0.8); font-size: 0.85em; margin-bottom: 4px;">Browser</div>
+            <div id="liveTabCount" style="color: white; font-size: 1.1em; font-weight: 600; padding: 4px 8px; background: rgba(255,255,255,0.1); border-radius: 6px; display: inline-block;">1 tab</div>
+        </div>
+
+        <!-- Session Time -->
+        <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 8px; text-align: center;">
+            <div style="color: rgba(255,255,255,0.8); font-size: 0.85em; margin-bottom: 4px;">Duration</div>
+            <div id="liveSessionTime" style="color: white; font-size: 1.1em; font-weight: 600;">00:00</div>
+        </div>
+    </div>
+
+    <!-- Current URL Display -->
+    <div style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; margin-bottom: 10px;">
+        <div style="color: rgba(255,255,255,0.8); font-size: 0.85em; margin-bottom: 4px;">Current Page:</div>
+        <div id="liveRecorderUrl" style="color: white; font-size: 0.95em; font-family: 'JetBrains Mono', monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="">
+            Loading...
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div style="display: flex; gap: 8px;">
+        <button onclick="pauseRecording()" id="pauseRecordingBtn" class="btn" style="flex: 1; padding: 8px; font-size: 0.9em; background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+            ⏸️ Pause
+        </button>
+        <button onclick="resumeRecording()" id="resumeRecordingBtn" class="btn" style="flex: 1; padding: 8px; font-size: 0.9em; background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); display: none;">
+            ▶️ Resume
+        </button>
+    </div>
+
+    <!-- Pulse Animation -->
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+    </style>
+</div>
+
+<script>
+// Initialize session timer
+let sessionStartTime = null;
+let sessionTimerInterval = null;
+
+function startSessionTimer() {
+    sessionStartTime = Date.now();
+    sessionTimerInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - sessionStartTime) / 1000);
+        const minutes = Math.floor(elapsed / 60);
+        const seconds = elapsed % 60;
+        const timeDisplay = document.getElementById('liveSessionTime');
+        if (timeDisplay) {
+            timeDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+    }, 1000);
+}
+
+function stopSessionTimer() {
+    if (sessionTimerInterval) {
+        clearInterval(sessionTimerInterval);
+        sessionTimerInterval = null;
+        sessionStartTime = null;
+    }
+}
+
+// Bring browser to front
+async function bringBrowserToFront() {
+    if (window.liveMonitor) {
+        const success = await window.liveMonitor.bringBrowserToFront();
+        if (success) {
+            showRecordingStatus('✅ Browser window focused');
+        } else {
+            showRecordingStatus('⚠️ Could not focus browser window');
+        }
+    }
+}
+
+// Pause/Resume recording
+function pauseRecording() {
+    // TO DO: Implement pause functionality via API
+    document.getElementById('pauseRecordingBtn').style.display = 'none';
+    document.getElementById('resumeRecordingBtn').style.display = 'inline-block';
+    showRecordingStatus('⏸️ Recording paused');
+}
+
+function resumeRecording() {
+    // TO DO: Implement resume functionality via API
+    document.getElementById('pauseRecordingBtn').style.display = 'inline-block';
+    document.getElementById('resumeRecordingBtn').style.display = 'none';
+    showRecordingStatus('▶️ Recording resumed');
+}
+</script>

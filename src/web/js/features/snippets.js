@@ -101,6 +101,11 @@ function loadSnippets() {
     const snippets = JSON.parse(localStorage.getItem('codeSnippets') || '[]');
     const listDiv = document.getElementById('snippetsList');
     
+    if (!listDiv) {
+        console.warn('[Snippets] snippetsList element not found - page may not be loaded');
+        return;
+    }
+    
     if (snippets.length === 0) {
         listDiv.innerHTML = `
             <div style="padding: 20px; text-align: center; color: var(--text-secondary);">

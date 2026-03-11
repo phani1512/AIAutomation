@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Sircon Login Test Suite" parallel="tests" thread-count="3">
+    
+    <test name="Login Page Validation Tests">
+        <classes>
+            <class name="com.sircon.tests.LoginTest">
+                <methods>
+                    <include name="testLoginPageDisplayed"/>
+                    <include name="testSuccessfulLogin"/>
+                    <include name="testLoginWithInvalidEmail"/>
+                    <include name="testLoginWithInvalidPassword"/>
+                    <include name="testLoginWithEmptyEmail"/>
+                    <include name="testLoginWithEmptyPassword"/>
+                    <include name="testLoginWithEmptyFields"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Login Navigation Tests">
+        <classes>
+            <class name="com.sircon.tests.LoginTest">
+                <methods>
+                    <include name="testForgotPasswordLink"/>
+                    <include name="testSignUpLink"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Login Field Validation Tests">
+        <classes>
+            <class name="com.sircon.tests.LoginTest">
+                <methods>
+                    <include name="testEmailFieldAcceptsValidFormat"/>
+                    <include name="testPasswordFieldMasksInput"/>
+                    <include name="testClearFields"/>
+                    <include name="testSpecialCharactersInPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Login Security Tests">
+        <classes>
+            <class name="com.sircon.tests.LoginTest">
+                <methods>
+                    <include name="testSQLInjectionAttempt"/>
+                    <include name="testXSSAttempt"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <test name="Data-Driven Login Tests">
+        <classes>
+            <class name="com.sircon.tests.LoginTestWithDataProvider"/>
+        </classes>
+    </test>
+    
+</suite>

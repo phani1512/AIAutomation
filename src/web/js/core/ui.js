@@ -1,7 +1,11 @@
 // UI Helper Functions
 
 function showLoading(show) {
-    document.getElementById('loading').classList.toggle('active', show);
+    const loadingElement = document.getElementById('loading');
+    if (loadingElement) {
+        loadingElement.classList.toggle('active', show);
+    }
+    
     document.querySelectorAll('.btn').forEach(btn => {
         btn.disabled = show;
     });
@@ -37,5 +41,29 @@ function escapeHtml(text) {
 }
 
 function setPrompt(text) {
-    document.getElementById('promptInput').value = text;
+    const promptInput = document.getElementById('promptInput');
+    if (promptInput) {
+        promptInput.value = text;
+    }
 }
+
+// Safely set element style (handles null elements from dynamic page loading)
+function safeSetStyle(elementId, property, value) {
+    const element = document.getElementById(elementId);
+    if (element && element.style) {
+        element.style[property] = value;
+    }
+}
+
+// Safely set element display style
+function safeSetDisplay(elementId, displayValue) {
+    safeSetStyle(elementId, 'display', displayValue);
+}
+
+// Expose functions to window object
+window.showLoading = showLoading;
+window.showNotification = showNotification;
+window.escapeHtml = escapeHtml;
+window.setPrompt = setPrompt;
+window.safeSetStyle = safeSetStyle;
+window.safeSetDisplay = safeSetDisplay;

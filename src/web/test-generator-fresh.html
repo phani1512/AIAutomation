@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Screenshot Test - Cache Bypass</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f0f0f0; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        h1 { color: #333; }
+        .section { margin: 20px 0; padding: 15px; background: #f9f9f9; border-left: 4px solid #007bff; }
+        .button { background: #007bff; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .button:hover { background: #0056b3; }
+        #fileInput { margin: 10px 0; }
+        #result { margin-top: 20px; padding: 15px; background: #fff; border: 1px solid #ddd; border-radius: 4px; }
+        pre { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 4px; overflow-x: auto; max-height: 600px; }
+        .success { color: #28a745; font-weight: bold; }
+        .error { color: #dc3545; font-weight: bold; }
+        .info { color: #17a2b8; }
+        .stats { display: flex; gap: 20px; margin: 10px 0; }
+        .stat-box { background: #e9ecef; padding: 10px; border-radius: 4px; flex: 1; text-align: center; }
+        .stat-value { font-size: 24px; font-weight: bold; color: #007bff; }
+        .stat-label { font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Screenshot Test Generator - Cache Bypass Mode</h1>
+        
+        <div class="section">
+            <h2>Upload SIRCON Login Screenshot</h2>
+            <input type="file" id="fileInput" accept="image/*">
+            <button class="button" onclick="generateCode()">Generate Code (Cache Bypass)</button>
+        </div>
+        
+        <div class="section">
+            <h2>Generation Status</h2>
+            <div id="status">Waiting for screenshot upload...</div>
+            <div class="stats" id="stats" style="display:none;">
+                <div class="stat-box">
+                    <div class="stat-value" id="testCount">0</div>
+                    <div class="stat-label">Test Cases</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="inputCount">0</div>
+                    <div class="stat-label">Input Fields</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="buttonCount">0</div>
+                    <div class="stat-label">Buttons</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="testType">-</div>
+                    <div class="stat-label">Test Type</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Detected Labels (Should show "Email" and "Password")</h2>
+            <div id="labels"></div>
+        </div>
+        
+        <div class="section">
+            <h2>Generated Code</h2>
+            <div id="result"></div>
+        </div>
+    </div>
+    
+    <script>
+        async function generateCode() {
+            const fileInput = document.getElementById('fileInput');
+            const status = document.getElementById('status');
+            const result = document.getElementById('result');
+            const labels = document.getElementById('labels');
+            const stats = document.getElementById('stats');
+            
+            if (!fileInput.files.length) {
+                status.innerHTML = '<span class="error">Please select a screenshot first!</span>';
+                return;
+            }
+            
+            status.innerHTML = '<span class="info">Reading screenshot...</span>';
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = async function(e) {
+                const base64 = e.target.result.split(',')[1];
+                
+                status.innerHTML = '<span class="info">Calling API with cache-busting...</span>';
+                
+                try {
+                    // CRITICAL: Add cache-busting timestamp to force fresh request
+                    const cacheBuster = Date.now();
+                    const response = await fetch('http://localhost:5002/screenshot/analyze?t=' + cacheBuster, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Cache-Control': 'no-cache, no-store, must-revalidate',
+                            'Pragma': 'no-cache',
+                            'Expires': '0'
+                        },
+                        cache: 'no-store',  // Force no cache
+                        body: JSON.stringify({
+                            screenshot: base64,
+                            intent: 'Login page test',
+                            language: 'java',
+                            test_name: 'LoginPageTest'
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Show stats
+                    stats.style.display = 'flex';
+                    document.getElementById('testCount').textContent = data.test_suite?.test_count || 0;
+                    document.getElementById('inputCount').textContent = data.summary?.inputs_count || 0;
+                    document.getElementById('buttonCount').textContent = data.summary?.buttons_count || 0;
+                    
+                    // Show detected labels
+                    const inputs = data.elements?.inputs || [];
+                    let labelsHTML = '<ul>';
+                    inputs.forEach((inp, idx) => {
+                        const label = inp.label || 'NO LABEL';
+                        const isPassword = label.toLowerCase().includes('password');
+                        const isEmail = label.toLowerCase().includes('email');
+                        const styleClass = (isPassword || isEmail) ? 'success' : 'error';
+                        labelsHTML += `<li>Input ${idx}: <span class="${styleClass}">${label}</span></li>`;
+                    });
+                    labelsHTML += '</ul>';
+                    labels.innerHTML = labelsHTML;
+                    
+                    // Determine test type from labels
+                    const hasPassword = inputs.some(inp => (inp.label || '').toLowerCase().includes('password'));
+                    const hasEmail = inputs.some(inp => (inp.label || '').toLowerCase().includes('email'));
+                    const testType = hasPassword ? 'LOGIN' : (inputs.length >= 4 ? 'FORM' : 'GENERIC');
+                    document.getElementById('testType').textContent = testType;
+                    
+                    // Show generated code
+                    const code = data.test_suite?.test_class || 'No code generated';
+                    
+                    // Check code quality
+                    const hasSmartIds = code.includes('By.id(');
+                    const hasBadXPaths = code.includes('@placeholder=\'&)\'') || code.includes('@placeholder=\'Input');
+                    const hasLoginTests = code.includes('testSuccessfulLogin');
+                    const hasFormTests = code.includes('testFormSubmissionWithValidData');
+                    
+                    let qualityHTML = '<div><strong>Code Quality Check:</strong><ul>';
+                    qualityHTML += `<li>Smart ID locators: <span class="${hasSmartIds ? 'success' : 'error'}">${hasSmartIds ? '✓ YES' : '✗ NO'}</span></li>`;
+                    qualityHTML += `<li>Bad placeholder XPaths: <span class="${hasBadXPaths ? 'error' : 'success'}">${hasBadXPaths ? '✗ YES (BAD)' : '✓ NO'}</span></li>`;
+                    qualityHTML += `<li>Login-specific tests: <span class="${hasLoginTests ? 'success' : 'error'}">${hasLoginTests ? '✓ YES' : '✗ NO'}</span></li>`;
+                    qualityHTML += `<li>Generic form tests: <span class="${hasFormTests ? 'error' : 'success'}">${hasFormTests ? '✗ YES (WRONG)' : '✓ NO'}</span></li>`;
+                    qualityHTML += '</ul></div>';
+                    
+                    result.innerHTML = qualityHTML + '<pre>' + escapeHtml(code) + '</pre>';
+                    
+                    if (hasPassword && hasLoginTests && hasSmartIds && !hasBadXPaths) {
+                        status.innerHTML = '<span class="success">✓✓✓ SUCCESS! Perfect login test code generated!</span>';
+                    } else if (!hasPassword) {
+                        status.innerHTML = '<span class="error">✗ ISSUE: "Password" label not detected. Check server logs.</span>';
+                    } else if (!hasLoginTests) {
+                        status.innerHTML = '<span class="error">✗ ISSUE: Generated form tests instead of login tests.</span>';
+                    } else {
+                        status.innerHTML = '<span class="error">✗ ISSUE: Code generated but quality problems detected.</span>';
+                    }
+                    
+                } catch (error) {
+                    status.innerHTML = '<span class="error">Error: ' + error.message + '</span>';
+                    result.innerHTML = '<pre>Error details:\n' + error.stack + '</pre>';
+                }
+            };
+            
+            reader.readAsDataURL(file);
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

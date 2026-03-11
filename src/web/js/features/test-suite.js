@@ -26,6 +26,12 @@ async function loadTestCases() {
 
 function populateModuleFilter(sessions) {
     const moduleFilter = document.getElementById('moduleFilter');
+    
+    if (!moduleFilter) {
+        console.warn('[Test Suite] moduleFilter element not found - page may not be loaded');
+        return;
+    }
+    
     const modules = new Set();
     
     sessions.forEach(session => {
@@ -46,6 +52,12 @@ function populateModuleFilter(sessions) {
 
 function populateModulesList(sessions) {
     const modulesList = document.getElementById('modulesList');
+    
+    if (!modulesList) {
+        console.warn('[Test Suite] modulesList element not found - page may not be loaded');
+        return;
+    }
+    
     const modules = new Set();
     
     sessions.forEach(session => {
@@ -83,6 +95,11 @@ function filterTestsByModule() {
 
 function displayTestCases(sessions) {
     const listDiv = document.getElementById('testCasesList');
+    
+    if (!listDiv) {
+        console.warn('[Test Suite] testCasesList element not found - page may not be loaded');
+        return;
+    }
     
     if (sessions.length === 0) {
         listDiv.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-secondary);">No test cases yet. Use the Recorder tab to create your first test!</div>';
@@ -386,19 +403,28 @@ async function deleteSingleTest(sessionId) {
 
 function updateDashboardFromTestSuite(sessions) {
     const totalTests = sessions.length;
-    document.getElementById('dashboardTotalRequests').textContent = totalTests;
+    
+    // Safely update dashboard element if it exists
+    const dashboardTotalEl = document.getElementById('dashboardTotalRequests');
+    if (dashboardTotalEl) {
+        dashboardTotalEl.textContent = totalTests;
+    }
     
     // Update stats object
-    if (typeof stats !== 'undefined') {
-        stats.totalRequests = totalTests;
+    if (typeof window.stats !== 'undefined') {
+        window.stats.totalRequests = totalTests;
+        // Save stats to localStorage
+        if (typeof window.saveStats === 'function') {
+            window.saveStats();
+        }
     }
 }
 
 function updateDashboardWithExecutionResults(suiteData) {
     // Update test results with execution status
-    if (typeof stats !== 'undefined' && suiteData.results) {
+    if (typeof window.stats !== 'undefined' && suiteData.results) {
         suiteData.results.forEach(result => {
-            let testResult = stats.testResults.find(r => r.name === result.test_name);
+            let testResult = window.stats.testResults.find(r => r.name === result.test_name);
             
             if (testResult) {
                 testResult.status = result.passed ? 'passed' : 'failed';
@@ -407,7 +433,7 @@ function updateDashboardWithExecutionResults(suiteData) {
                     `Failed at step ${result.steps_executed}/${result.total_steps}${result.error ? ': ' + result.error : ''}`;
                 testResult.timestamp = new Date().toLocaleString();
             } else {
-                stats.testResults.unshift({
+                window.stats.testResults.unshift({
                     name: result.test_name,
                     status: result.passed ? 'passed' : 'failed',
                     duration: 0,
@@ -419,18 +445,23 @@ function updateDashboardWithExecutionResults(suiteData) {
             }
         });
         
-        if (stats.testResults.length > 10) {
-            stats.testResults = stats.testResults.slice(0, 10);
+        if (window.stats.testResults.length > 10) {
+            window.stats.testResults = window.stats.testResults.slice(0, 10);
         }
         
-        if (typeof updateDashboardStats === 'function') {
-            updateDashboardStats();
+        // Save stats to localStorage
+        if (typeof window.saveStats === 'function') {
+            window.saveStats();
         }
-        if (typeof updateRecentTestResults === 'function') {
-            updateRecentTestResults();
+        
+        if (typeof window.updateDashboardStats === 'function') {
+            window.updateDashboardStats();
         }
-        if (typeof updateActivityTimeline === 'function') {
-            updateActivityTimeline();
+        if (typeof window.updateRecentTestResults === 'function') {
+            window.updateRecentTestResults();
+        }
+        if (typeof window.updateActivityTimeline === 'function') {
+            window.updateActivityTimeline();
         }
     }
 }
@@ -547,11 +578,13 @@ async function clearTestSuite() {
             if (executionResults) executionResults.style.display = 'none';
             
             // Reset dashboard metrics
-            document.getElementById('dashboardTotalRequests').textContent = '0';
-            if (typeof stats !== 'undefined') {
-                stats.testResults = [];
-                if (typeof updateRecentTestResults === 'function') updateRecentTestResults();
-                if (typeof updateActivityTimeline === 'function') updateActivityTimeline();
+            const dashboardTotalEl = document.getElementById('dashboardTotalRequests');
+            if (dashboardTotalEl) dashboardTotalEl.textContent = '0';
+            
+            if (typeof window.stats !== 'undefined') {
+                window.stats.testResults = [];
+                if (typeof window.updateRecentTestResults === 'function') window.updateRecentTestResults();
+                if (typeof window.updateActivityTimeline === 'function') window.updateActivityTimeline();
             }
         } else {
             alert('❌ Failed to clear test cases: ' + data.error);

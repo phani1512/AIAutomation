@@ -1,0 +1,96 @@
+<!-- Generate Code Page -->
+<section id="generatePage" class="page-section">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 20px;">
+        <!-- Row 1: Code Generation and Output -->
+        <div class="section-row">
+            <!-- Left: Code Generation -->
+            <div class="card">
+                <h2><span class="icon">✨</span> Generate Test Code</h2>
+                
+                <div id="generateTab" class="tab-content active">
+                    <div class="example-prompts">
+                        <button class="example-btn" onclick="setPrompt('click login button')">Login Button</button>
+                        <button class="example-btn" onclick="setPrompt('enter username in input field')">Enter Username</button>
+                        <button class="example-btn" onclick="setPrompt('select value from dropdown')">Select Dropdown</button>
+                        <button class="example-btn" onclick="setPrompt('verify page title')">Verify Title</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="promptInput">Enter your test automation prompt:</label>
+                        <textarea id="promptInput" placeholder="Example: click submit button and verify success message"></textarea>
+                        <div style="display: flex; gap: 10px; margin-top: 10px; align-items: center;">
+                            <label for="languageSelector" style="color: var(--text-primary); font-weight: 500;">Language:</label>
+                            <select id="languageSelector" style="flex: 1; padding: 8px; background: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <option value="java">Java</option>
+                                <option value="python">Python</option>
+                                <option value="javascript">JavaScript</option>
+                                <option value="csharp">C#</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="generateCode()">
+                        🚀 Generate Code
+                    </button>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 10px; color: #666;">Generating...</p>
+                </div>
+            </div>
+
+            <!-- Right: Output -->
+            <div class="card">
+                <h2><span class="icon">📝</span> Generated Output</h2>
+                
+                <div class="result-box" id="resultBox">
+                    <pre><code id="resultContent" class="language-java">Your generated code will appear here...</code></pre>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="copy-btn" onclick="copyResult()" id="copyBtn" style="display: none; flex: 1;">
+                        📋 Copy to Clipboard
+                    </button>
+                    <button class="copy-btn" onclick="validateCode()" id="validateBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        🔍 Validate Code
+                    </button>
+                    <button class="copy-btn" onclick="saveToSnippets()" id="saveSnippetBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                        💾 Save to Snippets
+                    </button>
+                    <button class="copy-btn" onclick="exportCode()" id="exportBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        💾 Export to File
+                    </button>
+                </div>
+
+                <div id="validationResults" style="display: none; margin-top: 15px; padding: 15px; border-radius: 8px; background: var(--bg-secondary); border: 2px solid var(--border-color);">
+                    <h3 style="color: var(--text-primary); margin-bottom: 10px; font-size: 16px;">🔍 Validation Results</h3>
+                    <div id="validationContent"></div>
+                </div>
+
+                <div id="executeTestSection" style="display: none; margin-top: 15px;">
+                    <button class="btn" onclick="executeCurrentTest()" style="background: #10b981;">
+                        ▶️ Execute This Test
+                    </button>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalRequests">0</div>
+                        <div class="stat-label">Total Requests</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="tokensGenerated">0</div>
+                        <div class="stat-label">Tokens Generated</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="avgTime">0ms</div>
+                        <div class="stat-label">Avg Response Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

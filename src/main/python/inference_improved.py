@@ -898,7 +898,7 @@ element.click();"""
         # For buttons and clickable elements, prioritize text-based locators
         elif element_type.lower() == 'button' or action == 'click':
             text = attributes.get('innerText') or attributes.get('text', '')
-            text = text.strip()
+            text = text.strip() if text else ''
             if text:
                 # Use normalize-space(.) to handle whitespace and nested text elements (e.g., <button><span>Text</span></button>)
                 locators.append(f'By.xpath("//{element_type.lower()}[contains(normalize-space(.), \\"{text}\\")]")')

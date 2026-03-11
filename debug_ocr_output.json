@@ -1,0 +1,294 @@
+{
+  "image_shape": "(857, 1877, 3)",
+  "text_regions_count": 16,
+  "text_regions": [
+    {
+      "text": "Sircon",
+      "confidence": 90.0,
+      "bbox": [
+        430,
+        35,
+        107,
+        29
+      ],
+      "x": 430,
+      "y": 35,
+      "width": 107,
+      "height": 29,
+      "center_x": 483,
+      "center_y": 49,
+      "word_count": 1,
+      "element_type": "text"
+    },
+    {
+      "text": "ResourcesY Support Product Login",
+      "confidence": 83.25,
+      "bbox": [
+        859,
+        44,
+        682,
+        18
+      ],
+      "x": 859,
+      "y": 44,
+      "width": 682,
+      "height": 18,
+      "center_x": 1200,
+      "center_y": 53,
+      "word_count": 4,
+      "element_type": "button"
+    },
+    {
+      "text": "Test Environment",
+      "confidence": 87.0,
+      "bbox": [
+        412,
+        73,
+        163,
+        17
+      ],
+      "x": 412,
+      "y": 73,
+      "width": 163,
+      "height": 17,
+      "center_x": 493,
+      "center_y": 81,
+      "word_count": 2,
+      "element_type": "text"
+    },
+    {
+      "text": "Product Login",
+      "confidence": 95.0,
+      "bbox": [
+        355,
+        110,
+        355,
+        54
+      ],
+      "x": 355,
+      "y": 110,
+      "width": 355,
+      "height": 54,
+      "center_x": 532,
+      "center_y": 137,
+      "word_count": 2,
+      "element_type": "button"
+    },
+    {
+      "text": "Individual Accounts Business Accounts",
+      "confidence": 95.0,
+      "bbox": [
+        400,
+        273,
+        602,
+        23
+      ],
+      "x": 400,
+      "y": 273,
+      "width": 602,
+      "height": 23,
+      "center_x": 701,
+      "center_y": 284,
+      "word_count": 4,
+      "element_type": "text"
+    },
+    {
+      "text": "Individual Licensees, including Agents,",
+      "confidence": 95.75,
+      "bbox": [
+        967,
+        370,
+        459,
+        23
+      ],
+      "x": 967,
+      "y": 370,
+      "width": 459,
+      "height": 23,
+      "center_x": 1196,
+      "center_y": 381,
+      "word_count": 4,
+      "element_type": "text"
+    },
+    {
+      "text": "Producers, Adjusters, CSRs and more",
+      "confidence": 95.4,
+      "bbox": [
+        967,
+        401,
+        438,
+        23
+      ],
+      "x": 967,
+      "y": 401,
+      "width": 438,
+      "height": 23,
+      "center_x": 1186,
+      "center_y": 412,
+      "word_count": 5,
+      "element_type": "text"
+    },
+    {
+      "text": "Password",
+      "confidence": 95.0,
+      "bbox": [
+        409,
+        428,
+        78,
+        13
+      ],
+      "x": 409,
+      "y": 428,
+      "width": 78,
+      "height": 13,
+      "center_x": 448,
+      "center_y": 434,
+      "word_count": 1,
+      "element_type": "label"
+    },
+    {
+      "text": "Log in to Sircon for to track and manage your",
+      "confidence": 92.3,
+      "bbox": [
+        967,
+        444,
+        478,
+        17
+      ],
+      "x": 967,
+      "y": 444,
+      "width": 478,
+      "height": 17,
+      "center_x": 1206,
+      "center_y": 452,
+      "word_count": 10,
+      "element_type": "text"
+    },
+    {
+      "text": "own licenses and CE requirements.",
+      "confidence": 93.4,
+      "bbox": [
+        966,
+        470,
+        293,
+        17
+      ],
+      "x": 966,
+      "y": 470,
+      "width": 293,
+      "height": 17,
+      "center_x": 1112,
+      "center_y": 478,
+      "word_count": 5,
+      "element_type": "text"
+    },
+    {
+      "text": "No account? Sign up now or Leam More",
+      "confidence": 94.0,
+      "bbox": [
+        967,
+        514,
+        340,
+        17
+      ],
+      "x": 967,
+      "y": 514,
+      "width": 340,
+      "height": 17,
+      "center_x": 1137,
+      "center_y": 522,
+      "word_count": 8,
+      "element_type": "button"
+    },
+    {
+      "text": "Having trouble accessing your account? Get Help Signing In",
+      "confidence": 95.77777777777777,
+      "bbox": [
+        409,
+        572,
+        510,
+        17
+      ],
+      "x": 409,
+      "y": 572,
+      "width": 510,
+      "height": 17,
+      "center_x": 664,
+      "center_y": 580,
+      "word_count": 9,
+      "element_type": "link"
+    },
+    {
+      "text": "Other ways to get help: Search Help Topics or Contact Support",
+      "confidence": 95.9090909090909,
+      "bbox": [
+        679,
+        645,
+        532,
+        17
+      ],
+      "x": 679,
+      "y": 645,
+      "width": 532,
+      "height": 17,
+      "center_x": 945,
+      "center_y": 653,
+      "word_count": 11,
+      "element_type": "button"
+    },
+    {
+      "text": "NEWS & EVENTS,",
+      "confidence": 87.0,
+      "bbox": [
+        940,
+        754,
+        127,
+        13
+      ],
+      "x": 940,
+      "y": 754,
+      "width": 127,
+      "height": 13,
+      "center_x": 1003,
+      "center_y": 760,
+      "word_count": 3,
+      "element_type": "text"
+    },
+    {
+      "text": "‘Client Support Services Press Releases",
+      "confidence": 93.6,
+      "bbox": [
+        625,
+        791,
+        432,
+        17
+      ],
+      "x": 625,
+      "y": 791,
+      "width": 432,
+      "height": 17,
+      "center_x": 841,
+      "center_y": 799,
+      "word_count": 5,
+      "element_type": "link"
+    },
+    {
+      "text": "Individuals’ Implementation Services’ Resource Library;",
+      "confidence": 80.6,
+      "bbox": [
+        352,
+        819,
+        961,
+        25
+      ],
+      "x": 352,
+      "y": 819,
+      "width": 961,
+      "height": 25,
+      "center_x": 832,
+      "center_y": 831,
+      "word_count": 5,
+      "element_type": "text"
+    }
+  ]
+}

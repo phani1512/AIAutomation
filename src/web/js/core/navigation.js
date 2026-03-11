@@ -1,23 +1,89 @@
 // Navigation Functions
 
-function navigateTo(page) {
-    // Hide all pages
+// Page loader cache
+const pageCache = {};
+
+async function loadPage(pageName) {
+    // Check cache first
+    if (pageCache[pageName]) {
+        console.log(`[PAGE LOADER] Loading ${pageName} from cache`);
+        return pageCache[pageName];
+    }
+    
+    try {
+        console.log(`[PAGE LOADER] Fetching ${pageName} from server`);
+        const response = await fetch(`/web/pages/${pageName}.html`);
+        if (!response.ok) {
+            throw new Error(`Failed to load page: ${response.status}`);
+        }
+        const html = await response.text();
+        pageCache[pageName] = html;
+        return html;
+    } catch (error) {
+        console.error(`[PAGE LOADER] Error loading ${pageName}:`, error);
+        return `<div style="padding: 40px; text-align: center; color: var(--error);">
+            <h3>⚠️ Failed to load page</h3>
+            <p>Could not load ${pageName}. Please check your connection and try again.</p>
+        </div>`;
+    }
+}
+
+async function navigateTo(page) {
+    // Page name mapping
+    const pageFileMap = {
+        'dashboard': 'dashboard',
+        'generate': 'generate-code',
+        'locator': 'locator-suggestions',
+        'action': 'action-suggestions',
+        'recorder': 'test-recorder',
+        'browser': 'browser-control',
+        'semantic': 'semantic-analysis',
+        'testcases': 'test-suite',
+        'snippets': 'code-snippets',
+        'screenshot': 'screenshot-ai',
+        'testrunner': 'test-runner'
+    };
+    
+    const pageFileName = pageFileMap[page];
+    if (!pageFileName) {
+        console.error(`[NAVIGATION] Unknown page: ${page}`);
+        return;
+    }
+    
+    // Load page content
+    const pageContent = await loadPage(pageFileName);
+    
+    // Get or create page container
+    const pageContainerId = 'pageContentContainer';
+    let container = document.getElementById(pageContainerId);
+    if (!container) {
+        // Create container if it doesn't exist
+        const mainContent = document.querySelector('.main-content');
+        container = document.createElement('div');
+        container.id = pageContainerId;
+        mainContent.appendChild(container);
+    }
+    
+    // Insert page content
+    container.innerHTML = pageContent;
+    
+    // Hide all pages (legacy cleanup)
     document.querySelectorAll('.page-section').forEach(section => {
         section.classList.remove('active');
-        section.style.display = '';
+        section.style.display = 'none';
     });
+    
+    // Show the newly loaded page
+    const loadedPage = container.querySelector('.page-section');
+    if (loadedPage) {
+        loadedPage.classList.add('active');
+        loadedPage.style.display = 'block';
+    }
     
     // Remove active class from all nav items
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
     });
-    
-    // Show selected page
-    const pageId = page + 'Page';
-    const pageElement = document.getElementById(pageId);
-    if (pageElement) {
-        pageElement.classList.add('active');
-    }
     
     // Highlight active nav item
     const navItems = document.querySelectorAll('.nav-item');
@@ -38,7 +104,9 @@ function navigateTo(page) {
         'browser': 'Browser Control',
         'semantic': 'Semantic Analysis',
         'testcases': 'Test Suite',
-        'snippets': 'Code Snippets'
+        'snippets': 'Code Snippets',
+        'screenshot': 'Screenshot AI',
+        'testrunner': 'Test Runner'
     };
     const titleElement = document.getElementById('currentPageTitle');
     if (titleElement && pageTitles[page]) {
@@ -49,21 +117,53 @@ function navigateTo(page) {
     window.location.hash = page;
     
     // Load data for specific pages
-    if (page === 'semantic') {
-        refreshSemanticSessions();
+    if (page === 'dashboard') {
+        // Initialize dashboard stats when navigating to dashboard
+        setTimeout(() => {
+            if (typeof window.updateDashboardStats === 'function') {
+                window.updateDashboardStats();
+            }
+            if (typeof window.updateRecentTestResults === 'function') {
+                window.updateRecentTestResults();
+            }
+            if (typeof window.updateActivityTimeline === 'function') {
+                window.updateActivityTimeline();
+            }
+        }, 100);
+    } else if (page === 'semantic') {
+        setTimeout(() => refreshSemanticSessions(), 100);
     } else if (page === 'testcases') {
-        loadTestCases();
+        setTimeout(() => loadTestCases(), 100);
+    }
+    
+    // Re-apply syntax highlighting if Prism is available
+    if (window.Prism) {
+        Prism.highlightAll();
     }
     
     // Close sidebar on mobile
     if (window.innerWidth <= 1024) {
         document.querySelector('.sidebar').classList.remove('mobile-open');
     }
+    
+    console.log(`[NAVIGATION] Navigated to ${page} (${pageFileName})`);
 }
 
 function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('mobile-open');
+    console.log('[NAVIGATION] toggleSidebar called');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+    const toggleIcon = document.getElementById('toggleIcon');
+    
+    sidebar.classList.toggle('collapsed');
+    mainContent.classList.toggle('expanded');
+    
+    // Change arrow direction
+    if (sidebar.classList.contains('collapsed')) {
+        toggleIcon.textContent = '▶'; // Right arrow when collapsed
+    } else {
+        toggleIcon.textContent = '◀'; // Left arrow when expanded
+    }
 }
 
 // Dark mode toggle
@@ -118,3 +218,4 @@ window.navigateTo = navigateTo;
 window.toggleSidebar = toggleSidebar;
 window.toggleDarkMode = toggleDarkMode;
 window.switchTab = switchTab;
+window.loadDarkModePreference = loadDarkModePreference;

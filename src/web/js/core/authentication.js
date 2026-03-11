@@ -2,114 +2,119 @@
 
 let pageFullyLoaded = false;
 let loginFormReady = false;
-let userClickedLogin = false;
 
+// Check authentication on page load
 async function checkAuthentication() {
     const token = localStorage.getItem('session_token');
-    const loginPage = document.getElementById('loginPage');
-    const appContainer = document.getElementById('appContainer');
+    console.log('[AUTH] Checking authentication, token:', token ? 'exists' : 'none');
     
-    if (!token) {
-        if (loginPage) {
-            loginPage.classList.add('show');
-        }
-        if (appContainer) {
-            appContainer.classList.add('hidden');
-        }
-        return;
-    }
-    
-    try {
-        const response = await fetch(`${API_URL}/auth/verify`, {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': token
+    if (token) {
+        try {
+            const response = await fetch(`${API_URL}/auth/check`, {
+                headers: { 'Authorization': token },
+                credentials: 'include'
+            });
+            
+            const data = await response.json();
+            console.log('[AUTH] Server response:', data);
+            
+            if (data.authenticated) {
+                console.log('[AUTH] User authenticated, showing main app');
+                localStorage.setItem('username', data.username);
+                localStorage.setItem('email', data.email || '');
+                showMainApp();
+            } else {
+                // Session expired
+                console.log('[AUTH] Session expired, showing login');
+                localStorage.removeItem('session_token');
+                localStorage.removeItem('username');
+                localStorage.removeItem('email');
+                showLoginPage();
             }
-        });
-        
-        const data = await response.json();
-        
-        if (data.valid) {
-            if (loginPage) {
-                loginPage.classList.remove('show');
-            }
-            if (appContainer) {
-                appContainer.classList.remove('hidden');
-            }
-            updateUserInterface();
-        } else {
-            localStorage.removeItem('session_token');
-            localStorage.removeItem('username');
-            localStorage.removeItem('email');
-            if (loginPage) {
-                loginPage.classList.add('show');
-            }
-            if (appContainer) {
-                appContainer.classList.add('hidden');
-            }
+        } catch (error) {
+            console.error('[AUTH] Check error:', error);
+            showLoginPage();
         }
-    } catch (error) {
-        console.error('Auth verification error:', error);
-        if (loginPage) {
-            loginPage.classList.add('show');
-        }
-        if (appContainer) {
-            appContainer.classList.add('hidden');
-        }
+    } else {
+        console.log('[AUTH] No token found, showing login page');
+        showLoginPage();
     }
 }
+
+function showLoginPage() {
+    console.log('[UI] Showing login page');
+    document.getElementById('loginPage').style.display = 'flex';
+    document.getElementById('appContainer').style.display = 'none';
+}
+
+function showMainApp() {
+    console.log('[UI] Showing main app');
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('appContainer').style.display = 'flex';
+    updateUserInterface();
+    
+    // Load dashboard page and initialize stats after successful login
+    if (typeof navigateTo === 'function') {
+        setTimeout(() => {
+            navigateTo('dashboard');
+        }, 100);
+    }
+}
+
+// Make variables available globally
+window.pageFullyLoaded = pageFullyLoaded;
+window.loginFormReady = loginFormReady;
+window.userClickedLogin = false;
 
 async function handleLogin(event) {
     event.preventDefault();
     
-    const username = document.getElementById('loginPageUsername').value;
-    const password = document.getElementById('loginPagePassword').value;
+    console.log('[LOGIN] Form submitted. Ready:', window.loginFormReady, 'UserClicked:', window.userClickedLogin);
     
-    if (!username || !password) {
-        showNotification('❌ Please enter username and password');
+    // Prevent auto-submit - require explicit user action
+    if (!window.loginFormReady) {
+        console.log('[LOGIN] Form not ready yet, ignoring submit');
         return;
     }
     
-    showLoading(true);
+    if (!window.userClickedLogin) {
+        console.log('[LOGIN] Form auto-submitted by browser, ignoring');
+        return;
+    }
+    
+    window.userClickedLogin = false; // Reset flag
+    
+    const username = document.getElementById('loginPageUsername').value.trim();
+    const password = document.getElementById('loginPagePassword').value;
+    
+    if (!username || !password) {
+        alert('Please enter both username and password');
+        return;
+    }
     
     try {
         const response = await fetch(`${API_URL}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({ username, password })
         });
         
         const data = await response.json();
         
         if (data.success) {
-            localStorage.setItem('session_token', data.token);
-            localStorage.setItem('username', username);
-            if (data.email) localStorage.setItem('email', data.email);
+            localStorage.setItem('session_token', data.session_token);
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('email', data.email || '');
             
-            console.log('[AUTH] Login successful, hiding login page and showing app');
-            const loginPage = document.getElementById('loginPage');
-            const appContainer = document.getElementById('appContainer');
-            
-            if (loginPage) {
-                loginPage.classList.remove('show');
-                console.log('[AUTH] Removed show class from loginPage');
-            }
-            if (appContainer) {
-                appContainer.classList.remove('hidden');
-                console.log('[AUTH] Removed hidden class from appContainer');
-            }
-            
-            updateUserInterface();
-            showNotification('✅ Login successful!');
-            navigateTo('dashboard');
+            showMainApp();
+            showNotification('✅ Welcome back, ' + data.username + '!');
         } else {
-            showNotification('❌ ' + (data.message || 'Login failed'));
+            alert(data.error || 'Login failed');
         }
     } catch (error) {
-        showNotification('❌ Login error: ' + error.message);
-    } finally {
-        showLoading(false);
+        console.error('Login error:', error);
+        alert('Login failed. Please check if the server is running.');
     }
 }
 

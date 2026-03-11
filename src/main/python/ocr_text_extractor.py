@@ -260,6 +260,10 @@ class OCRTextExtractor:
             'text': full_text,
             'confidence': sum(w['confidence'] for w in words) / len(words),
             'bbox': (min_x, min_y, max_x - min_x, max_y - min_y),
+            'x': min_x,
+            'y': min_y,
+            'width': max_x - min_x,
+            'height': max_y - min_y,
             'center_x': (min_x + max_x) // 2,
             'center_y': (min_y + max_y) // 2,
             'word_count': len(words),
@@ -277,17 +281,31 @@ class OCRTextExtractor:
         Returns:
             Enhanced element with text info
         """
-        bbox = (element['x'], element['y'], element['width'], element['height'])
-        ocr_result = self.extract_text_from_region(image, bbox)
-        
-        element['text'] = ocr_result['text']
-        element['text_confidence'] = ocr_result['confidence']
-        element['ocr_classification'] = ocr_result['element_type']
-        
-        # Generate better ID suggestions based on text
-        if ocr_result['text']:
-            element['suggested_id'] = self._text_to_id(ocr_result['text'])
-            element['suggested_name'] = self._text_to_name(ocr_result['text'])
+        try:
+            # Validate element has required keys
+            required_keys = ['x', 'y', 'width', 'height']
+            missing_keys = [k for k in required_keys if k not in element]
+            if missing_keys:
+                logger.warning(f"[OCR] Element missing keys: {missing_keys}. Element: {element}")
+                element['text'] = ''
+                element['text_confidence'] = 0
+                return element
+            
+            bbox = (element['x'], element['y'], element['width'], element['height'])
+            ocr_result = self.extract_text_from_region(image, bbox)
+            
+            element['text'] = ocr_result['text']
+            element['text_confidence'] = ocr_result['confidence']
+            element['ocr_classification'] = ocr_result['element_type']
+            
+            # Generate better ID suggestions based on text
+            if ocr_result['text']:
+                element['suggested_id'] = self._text_to_id(ocr_result['text'])
+                element['suggested_name'] = self._text_to_name(ocr_result['text'])
+        except Exception as e:
+            logger.error(f"[OCR] enhance_element_with_text failed: {e}. Element keys: {list(element.keys())}")
+            element['text'] = ''
+            element['text_confidence'] = 0
         
         return element
     
@@ -308,7 +326,7 @@ class OCRTextExtractor:
         return clean or 'element'
     
     def find_text_near_element(self, element: Dict, all_text_regions: List[Dict], 
-                               max_distance: int = 50) -> Optional[Dict]:
+                               max_distance: int = None) -> Optional[Dict]:
         """
         Find text label near an element (typically input fields).
         
@@ -323,20 +341,45 @@ class OCRTextExtractor:
         elem_center_x = element.get('center_x', element['x'] + element['width'] // 2)
         elem_center_y = element.get('center_y', element['y'] + element['height'] // 2)
         
+        # UNIVERSAL: Dynamic search radius based on element size
+        if max_distance is None:
+            # Scale search radius with element dimensions
+            elem_size = max(element.get('width', 100), element.get('height', 30))
+            max_distance = min(250, max(100, int(elem_size * 2)))  # 2x element size, 100-250px range
+        
         nearest = None
-        min_distance = float('inf')
+        min_priority_score = float('inf')
         
         for text_region in all_text_regions:
-            # Calculate distance
-            dx = text_region['center_x'] - elem_center_x
-            dy = text_region['center_y'] - elem_center_y
+            # Calculate distance from text center to element center
+            text_center_x = text_region.get('center_x', text_region['x'] + text_region.get('width', 0) // 2)
+            text_center_y = text_region.get('center_y', text_region['y'] + text_region.get('height', 0) // 2)
+            
+            dx = text_center_x - elem_center_x
+            dy = text_center_y - elem_center_y
             distance = (dx**2 + dy**2) ** 0.5
             
-            # Prefer labels above or to the left
-            if distance < min_distance and distance <= max_distance:
-                # Check if text is above (dy < 0) or left (dx < 0)
-                if dy < 0 or (abs(dy) < 20 and dx < 0):
-                    min_distance = distance
+            # UNIVERSAL: Accept labels anywhere within radius, smart prioritization
+            if distance <= max_distance:
+                # Calculate priority score (lower is better)
+                priority_score = distance
+                
+                # PRIORITY 1: Directly above (typical for form labels)
+                if dy < 0 and abs(dx) < element.get('width', 100) * 0.3:
+                    priority_score *= 0.6  # 40% bonus
+                # PRIORITY 2: Above but offset (also common)
+                elif dy < 0:
+                    priority_score *= 0.8  # 20% bonus
+                # PRIORITY 3: To the left (inline labels)
+                elif abs(dy) < 40 and dx < 0:
+                    priority_score *= 0.85  # 15% bonus
+                # PRIORITY 4: Above-right or above-left (wide forms)
+                elif dy < 0 and abs(dx) < element.get('width', 100):
+                    priority_score *= 0.9  # 10% bonus
+                # ACCEPT: Anything else within radius (fallback)
+                
+                if priority_score < min_priority_score:
+                    min_priority_score = priority_score
                     nearest = text_region
         
         return nearest

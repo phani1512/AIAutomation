@@ -1,7 +1,13 @@
 // Code Generation Features
 
 async function generateCode() {
-    const prompt = document.getElementById('promptInput').value.trim();
+    const promptInput = document.getElementById('promptInput');
+    if (!promptInput) {
+        console.error('Prompt input element not found - page may not be loaded yet');
+        return;
+    }
+    
+    const prompt = promptInput.value.trim();
     if (!prompt) {
         alert('Please enter a prompt');
         return;
@@ -30,6 +36,11 @@ async function generateCode() {
 
 function displayResult(text, timeMs, tokens = 0) {
     const codeElement = document.getElementById('resultContent');
+    if (!codeElement) {
+        console.error('Result content element not found - page may not be loaded yet');
+        return;
+    }
+    
     codeElement.textContent = text;
     
     // Detect language and apply syntax highlighting
@@ -48,51 +59,106 @@ function displayResult(text, timeMs, tokens = 0) {
         Prism.highlightElement(codeElement);
     }
     
-    document.getElementById('copyBtn').style.display = 'block';
-    document.getElementById('validateBtn').style.display = 'block';
-    document.getElementById('saveSnippetBtn').style.display = 'block';
-    document.getElementById('exportBtn').style.display = 'block';
-    document.getElementById('validationResults').style.display = 'none';
+    // Safely update button visibility (elements might not be loaded yet)
+    const copyBtn = document.getElementById('copyBtn');
+    const validateBtn = document.getElementById('validateBtn');
+    const saveSnippetBtn = document.getElementById('saveSnippetBtn');
+    const exportBtn = document.getElementById('exportBtn');
+    const validationResults = document.getElementById('validationResults');
+    
+    if (copyBtn) copyBtn.style.display = 'block';
+    if (validateBtn) validateBtn.style.display = 'block';
+    if (saveSnippetBtn) saveSnippetBtn.style.display = 'block';
+    if (exportBtn) exportBtn.style.display = 'block';
+    if (validationResults) validationResults.style.display = 'none';
     
     // Update stats
-    stats.totalRequests++;
-    stats.totalTokens += tokens;
-    stats.totalTime += timeMs;
+    window.stats.totalRequests++;
+    window.stats.totalTokens += tokens;
+    window.stats.totalTime += timeMs;
     
-    const prompt = document.getElementById('promptInput').value.trim();
-    addTestResult(
-        prompt.substring(0, 50) + (prompt.length > 50 ? '...' : ''),
-        'pending',
-        timeMs,
-        `Code generated in ${language}`
-    );
+    // Save stats to localStorage
+    if (typeof window.saveStats === 'function') {
+        window.saveStats();
+    }
     
-    updateDashboardStats();
+    // Update main stats display (safely in case elements aren't loaded)
+    const totalRequestsEl = document.getElementById('totalRequests');
+    const tokensGeneratedEl = document.getElementById('tokensGenerated');
+    const avgTimeEl = document.getElementById('avgTime');
+    
+    if (totalRequestsEl) totalRequestsEl.textContent = window.stats.totalRequests;
+    if (tokensGeneratedEl) tokensGeneratedEl.textContent = window.stats.totalTokens;
+    if (avgTimeEl) {
+        avgTimeEl.textContent = window.stats.totalTime > 0 ? 
+            Math.round(window.stats.totalTime / window.stats.totalRequests) + 'ms' : '0ms';
+    }
+    
+    const promptInput = document.getElementById('promptInput');
+    const prompt = promptInput ? promptInput.value.trim() : 'Test';
+    
+    if (typeof window.addTestResult === 'function') {
+        window.addTestResult(
+            prompt.substring(0, 50) + (prompt.length > 50 ? '...' : ''),
+            'pending',
+            timeMs,
+            `Code generated in ${language}`
+        );
+    }
+    
+    if (typeof window.updateDashboardStats === 'function') {
+        window.updateDashboardStats();
+    }
 }
 
 function displayError(message) {
-    document.getElementById('resultContent').textContent = `Error: ${message}`;
-    document.getElementById('copyBtn').style.display = 'none';
-    document.getElementById('validateBtn').style.display = 'none';
-    document.getElementById('saveSnippetBtn').style.display = 'none';
-    document.getElementById('exportBtn').style.display = 'none';
-    document.getElementById('validationResults').style.display = 'none';
+    const resultContent = document.getElementById('resultContent');
+    if (resultContent) {
+        resultContent.textContent = `Error: ${message}`;
+    }
+    
+    // Safely hide buttons (elements might not be loaded yet)
+    const copyBtn = document.getElementById('copyBtn');
+    const validateBtn = document.getElementById('validateBtn');
+    const saveSnippetBtn = document.getElementById('saveSnippetBtn');
+    const exportBtn = document.getElementById('exportBtn');
+    const validationResults = document.getElementById('validationResults');
+    
+    if (copyBtn) copyBtn.style.display = 'none';
+    if (validateBtn) validateBtn.style.display = 'none';
+    if (saveSnippetBtn) saveSnippetBtn.style.display = 'none';
+    if (exportBtn) exportBtn.style.display = 'none';
+    if (validationResults) validationResults.style.display = 'none';
 }
 
 function copyResult() {
-    const text = document.getElementById('resultContent').textContent;
+    const resultContent = document.getElementById('resultContent');
+    if (!resultContent) {
+        console.error('Result content element not found');
+        return;
+    }
+    
+    const text = resultContent.textContent;
     navigator.clipboard.writeText(text).then(() => {
         const btn = document.getElementById('copyBtn');
-        const originalText = btn.textContent;
-        btn.textContent = '✅ Copied!';
-        setTimeout(() => {
-            btn.textContent = originalText;
-        }, 2000);
+        if (btn) {
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Copied!';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+        }
     });
 }
 
 function exportCode() {
-    const code = document.getElementById('resultContent').textContent;
+    const resultContent = document.getElementById('resultContent');
+    if (!resultContent) {
+        console.error('Result content element not found');
+        return;
+    }
+    
+    const code = resultContent.textContent;
     
     let extension = '.java';
     let filename = 'GeneratedTest';
@@ -141,9 +207,18 @@ function exportCode() {
 }
 
 function downloadCodeFile() {
-    const filename = document.getElementById('exportFilename').value.trim();
-    const extension = document.getElementById('exportExtension').value;
-    const code = document.getElementById('resultContent').textContent;
+    const filenameInput = document.getElementById('exportFilename');
+    const extensionSelect = document.getElementById('exportExtension');
+    const resultContent = document.getElementById('resultContent');
+    
+    if (!filenameInput || !extensionSelect || !resultContent) {
+        console.error('Required elements not found');
+        return;
+    }
+    
+    const filename = filenameInput.value.trim();
+    const extension = extensionSelect.value;
+    const code = resultContent.textContent;
     
     if (!filename) {
         alert('Please enter a filename');
@@ -165,7 +240,13 @@ function downloadCodeFile() {
 }
 
 function saveToSnippets() {
-    const code = document.getElementById('resultContent').textContent;
+    const resultContent = document.getElementById('resultContent');
+    if (!resultContent) {
+        console.error('Result content element not found');
+        return;
+    }
+    
+    const code = resultContent.textContent;
     if (!code || code === 'Your generated code will appear here...') {
         alert('No code to save');
         return;
@@ -176,6 +257,9 @@ function saveToSnippets() {
 
 // Expose functions to window object for inline onclick handlers
 window.generateCode = generateCode;
+window.displayResult = displayResult;
+window.displayError = displayError;
 window.copyResult = copyResult;
 window.exportCode = exportCode;
+window.downloadCodeFile = downloadCodeFile;
 window.saveToSnippets = saveToSnippets;

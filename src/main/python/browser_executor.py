@@ -629,11 +629,12 @@ class BrowserExecutor:
             return {'error': 'Browser not initialized'}
         
         try:
-            # Get the path to the recorder script
+            # Get the path to the recorder script (correct path)
             script_path = os.path.join(
-                os.path.dirname(__file__), 
-                '..', 'resources', 'web', 'recorder-inject.js'
+                os.path.dirname(os.path.dirname(__file__)),  # Go up to src/main
+                '..', 'web', 'recorder-inject.js'  # Then to src/web
             )
+            script_path = os.path.normpath(script_path)  # Normalize the path
             
             if os.path.exists(script_path):
                 with open(script_path, 'r', encoding='utf-8') as f:
@@ -641,11 +642,11 @@ class BrowserExecutor:
                 
                 # Inject the script
                 self.driver.execute_script(script_content)
-                logger.info("[OK] Recorder script injected successfully")
+                logger.info(f"[OK] Recorder script injected successfully from {script_path}")
                 return {'success': True, 'message': 'Recorder script injected'}
             else:
                 logger.warning(f"[WARNING] Recorder script not found at {script_path}")
-                return {'error': 'Recorder script file not found'}
+                return {'error': f'Recorder script file not found at {script_path}'}
                 
         except Exception as e:
             logger.error(f"[ERROR] Failed to inject recorder script: {str(e)}")
@@ -685,6 +686,34 @@ class BrowserExecutor:
             
         except Exception as e:
             logger.error(f"[ERROR] Failed to stop recording: {str(e)}")
+            return {'error': str(e)}
+    
+    def focus_window(self):
+        """Bring browser window to front."""
+        if not self.driver:
+            return {'error': 'Browser not initialized'}
+        
+        try:
+            # Switch to current window to give it focus
+            self.driver.switch_to.window(self.driver.current_window_handle)
+            
+            # Try to maximize window (brings it to front on most systems)
+            try:
+                self.driver.maximize_window()
+            except:
+                pass
+            
+            # Execute JavaScript to request focus
+            try:
+                self.driver.execute_script("window.focus();")
+            except:
+                pass
+            
+            logger.info("[OK] Browser window focused")
+            return {'success': True, 'message': 'Browser focused'}
+            
+        except Exception as e:
+            logger.error(f"[ERROR] Failed to focus browser: {str(e)}")
             return {'error': str(e)}
     
     def close(self):

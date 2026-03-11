@@ -20,6 +20,23 @@
     
     // Expose isRecording to window for external checks
     window.isRecording = false;
+    
+    // Intercept window.open to record new window/tab navigation
+    const originalWindowOpen = window.open;
+    window.open = function(...args) {
+        const url = args[0];
+        const target = args[1] || '_blank';
+        
+        if (isRecording) {
+            console.log(`[Recorder] 🪟 New window/tab opened: ${url}`);
+            
+            // Record the action using document.body as the element since it's a window-level action
+            recordAction('navigate', document.body, `window.open("${url}", "${target}")`);
+        }
+        
+        // Call the original window.open
+        return originalWindowOpen.apply(this, args);
+    };
 
     // Helper function to get element info
     function getElementInfo(element) {
@@ -121,6 +138,16 @@
             }
         } catch (error) {
             console.error('[Recorder] ❌ Error recording action:', error);
+            
+            // Provide specific error messages
+            if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+                console.error('[Recorder] 💥 Network error: Cannot connect to recorder API at', API_URL);
+                console.error('[Recorder] ⚠️ Make sure the API server is running on http://localhost:5002');
+            } else if (error.message.includes('CORS')) {
+                console.error('[Recorder] 🚫 CORS error: The API server needs to allow cross-origin requests');
+            } else {
+                console.error('[Recorder] Error details:', error.message);
+            }
         }
     }
 
@@ -256,11 +283,60 @@
         if (!isRecording || isPaused) return;
         const target = e.target;
         if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+            console.log('[Recorder] 🎯 Focus entered input:', {
+                tag: target.tagName,
+                type: target.type,
+                id: target.id,
+                name: target.name,
+                class: target.className,
+                value: target.value
+            });
             activeInputElement = target;
             // Store the initial value when user enters the field
             if (!lastInputValues.has(target)) {
                 lastInputValues.set(target, target.value || '');
             }
+        }
+    }, true);
+    
+    // Track typing in input fields (backup mechanism for sites that prevent focusout)
+    let inputDebounceTimers = new Map();
+    document.addEventListener('input', function(e) {
+        if (!isRecording || isPaused) return;
+        
+        const target = e.target;
+        
+        if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+            console.log('[Recorder] ⌨️ Input event detected:', {
+                tag: target.tagName,
+                type: target.type,
+                value: target.value
+            });
+            
+            // Clear any existing debounce timer for this element
+            if (inputDebounceTimers.has(target)) {
+                clearTimeout(inputDebounceTimers.get(target));
+            }
+            
+            // Set a new debounce timer - record after 1 second of no typing
+            const timer = setTimeout(() => {
+                if (!isRecording) return;
+                
+                const currentValue = target.value.trim();
+                const lastValue = lastInputValues.get(target) || '';
+                const elementKey = `${target.id || target.name || target.className}_${currentValue}`;
+                
+                if (currentValue && currentValue !== lastValue && !inputRecordedForElement.has(elementKey)) {
+                    console.log('[Recorder] 📝 Recording input (via input event):', currentValue);
+                    recordAction('click_and_input', target, currentValue);
+                    lastInputValues.set(target, currentValue);
+                    inputRecordedForElement.add(elementKey);
+                }
+                
+                inputDebounceTimers.delete(target);
+            }, 1000); // Wait 1 second after user stops typing
+            
+            inputDebounceTimers.set(target, timer);
         }
     }, true);
 
@@ -271,6 +347,11 @@
         const target = e.target;
         
         if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+            console.log('[Recorder] 👋 Focus left input:', {
+                tag: target.tagName,
+                type: target.type,
+                value: target.value
+            });
             // Only process if this is the active element
             if (activeInputElement !== target) {
                 return;
@@ -313,9 +394,20 @@
 
     // Capture click events
     document.addEventListener('click', function(e) {
-        if (!isRecording || isPaused) return;
-        
         const target = e.target;
+        
+        // Log ALL clicks for debugging (before early returns)
+        console.log('[Recorder] 🖱️ CLICK:', target.tagName, 
+                    'ID:', target.id || '(none)', 
+                    'Class:', target.className || '(none)',
+                    'Text:', target.textContent?.substring(0, 30) || '(none)',
+                    'Recording:', isRecording, 
+                    'Paused:', isPaused);
+        
+        if (!isRecording || isPaused) {
+            console.log('[Recorder] ⏸️ Click ignored - not recording');
+            return;
+        }
         
         console.log('[Recorder] Click detected on:', target.tagName, 'ID:', target.id, 'Class:', target.className);
         
@@ -469,7 +561,7 @@
         }
         
         // Only record clicks on interactive elements
-        const interactiveElements = ['BUTTON', 'A', 'SELECT', 'OPTION'];
+        const interactiveElements = ['BUTTON', 'A', 'SELECT', 'OPTION', 'I', 'SVG', 'IMG'];
         const isInteractive = interactiveElements.includes(target.tagName) ||
                             target.onclick !== null ||
                             target.getAttribute('onclick') !== null ||
@@ -480,6 +572,8 @@
                             target.classList.contains('btn') ||
                             target.classList.contains('button') ||
                             target.classList.contains('clickable') ||
+                            target.classList.contains('icon') ||
+                            target.classList.contains('glyphicon') ||
                             target.hasAttribute('data-toggle') ||
                             target.hasAttribute('data-target') ||
                             target.hasAttribute('data-dismiss') ||
@@ -488,7 +582,29 @@
                             target.closest('[onclick]') !== null ||
                             target.closest('[role="button"]') !== null ||
                             target.closest('[role="link"]') !== null ||
-                            target.closest('[role="tab"]') !== null;
+                            target.closest('[role="tab"]') !== null ||
+                            // Better detection: if parent is clickable, icon clicks count
+                            (target.parentElement && (
+                                target.parentElement.tagName === 'BUTTON' ||
+                                target.parentElement.tagName === 'A' ||
+                                target.parentElement.classList.contains('btn') ||
+                                target.parentElement.classList.contains('button') ||
+                                target.parentElement.role === 'button'
+                            ));
+        
+        // Log interactive check details
+        console.log('[Recorder] 🔍 Interactive check:', {
+            tagName: target.tagName,
+            isInArray: interactiveElements.includes(target.tagName),
+            hasOnclick: target.onclick !== null || target.getAttribute('onclick') !== null,
+            role: target.role,
+            classes: target.className,
+            parentTag: target.parentElement?.tagName,
+            parentClasses: target.parentElement?.className,
+            closestButton: target.closest('button') !== null,
+            closestLink: target.closest('a') !== null,
+            isInteractive: isInteractive
+        });
         
         // Skip clicks on non-interactive elements
         if (!isInteractive) {
@@ -525,8 +641,21 @@
             return; // Don't record as a regular click
         }
 
-        console.log('[Recorder] ✅ Recording click on:', target.tagName, target.id || target.className);
-        recordAction('click', target);
+        // If clicked on an icon/SVG/img inside a button/link, use the parent as the target
+        let clickTarget = target;
+        if ((target.tagName === 'I' || target.tagName === 'SVG' || target.tagName === 'IMG' || target.tagName === 'SPAN') &&
+            target.parentElement && 
+            (target.parentElement.tagName === 'BUTTON' || 
+             target.parentElement.tagName === 'A' ||
+             target.parentElement.classList.contains('btn') ||
+             target.parentElement.role === 'button')) {
+            clickTarget = target.parentElement;
+            console.log('[Recorder] ✅ Recording click on icon parent:', clickTarget.tagName, clickTarget.id || clickTarget.className);
+        } else {
+            console.log('[Recorder] ✅ Recording click on:', target.tagName, target.id || target.className);
+        }
+        
+        recordAction('click', clickTarget);
     }, true);
 
     // Special handler for date picker interactions
@@ -955,7 +1084,18 @@
         createRecorderControls();
         startMessageObserver();
         startDateInputMonitoring(); // Start monitoring date inputs
-        console.log('[Recorder] Started capturing user actions and messages');
+        
+        console.log('='.repeat(60));
+        console.log('[Recorder] ✅ RECORDING STARTED');
+        console.log('[Recorder] Recording state:', {
+            isRecording: isRecording,
+            apiUrl: API_URL,
+            pageUrl: window.location.href,
+            eventListeners: 'focusin, focusout, input, click, change, submit'
+        });
+        console.log('[Recorder] 📝 Interact with the page - all actions will be captured');
+        console.log('[Recorder] 🔍 Check console for "🎯", "⌨️", "👋", "📝" emojis to see events');
+        console.log('='.repeat(60));
     };
 
     // Stop recording

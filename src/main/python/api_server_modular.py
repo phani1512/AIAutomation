@@ -8,6 +8,7 @@ import io
 import time
 import logging
 import traceback
+import importlib
 
 # Configure UTF-8 encoding for Windows console
 if sys.platform == 'win32':
@@ -31,7 +32,18 @@ import code_generator
 import browser_handler
 import test_executor
 from url_monitor import URLMonitor
-from semantic_analyzer import get_analyzer
+# Use optimized semantic analyzer for better performance
+from semantic_analyzer_optimized import get_analyzer
+
+# FORCE RELOAD screenshot modules to pick up code changes
+import screenshot_handler_enhanced
+import visual_element_detector
+import multimodal_generator
+importlib.reload(visual_element_detector)
+importlib.reload(multimodal_generator)
+importlib.reload(screenshot_handler_enhanced)
+logging.info("[INIT] Reloaded screenshot modules to pick up latest code changes")
+
 from screenshot_handler_enhanced import screenshot_bp
 
 app = Flask(__name__)
@@ -91,7 +103,7 @@ def index():
     timestamp = str(int(time.time()))
     print(f"[DEBUG] Index route called with timestamp={timestamp}")
     try:
-        html_path = os.path.join(WEB_DIR, 'index.html')
+        html_path = os.path.join(WEB_DIR, 'index-new.html')  # Serve index-new.html
         with open(html_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
         
@@ -387,6 +399,18 @@ def close_browser():
     browser_executor = None
     return result
 
+@app.route('/browser/focus', methods=['POST'])
+def browser_focus():
+    """Bring browser window to front."""
+    global browser_executor
+    if not browser_executor or not browser_executor.driver:
+        return jsonify({'success': False, 'error': 'Browser not initialized'}), 400
+    
+    result = browser_executor.focus_window()
+    if 'error' in result:
+        return jsonify({'success': False, 'error': result['error']}), 500
+    return jsonify(result)
+
 # ==================== Recorder Endpoints ====================
 
 @app.route('/recorder/start', methods=['POST'])
@@ -452,6 +476,85 @@ def get_sessions():
 @app.route('/recorder/session/<session_id>', methods=['GET'])
 def get_session_details(session_id):
     return recorder_handler.get_session_details(session_id)
+
+@app.route('/recorder/browser-status/<session_id>', methods=['GET'])
+def get_browser_status(session_id):
+    """Get live browser status for recorder monitoring."""
+    try:
+        # Verify session exists
+        if session_id not in recorder_handler.recorded_sessions:
+            return jsonify({
+                'success': False,
+                'error': 'Session not found'
+            }), 404
+        
+        # Get browser state
+        if not browser_executor or not browser_executor.driver:
+            return jsonify({
+                'success': False,
+                'error': 'Browser not initialized'
+            }), 503
+        
+        # Get current URL
+        current_url = browser_executor.driver.current_url
+        
+        # Get tab count
+        tab_count = len(browser_executor.driver.window_handles)
+        
+        # Get action count
+        session = recorder_handler.recorded_sessions[session_id]
+        action_count = len(session.get('actions', []))
+        
+        # Check if browser is visible (basic check - window exists)
+        browser_visible = True  # Assume visible if driver exists
+        try:
+            browser_executor.driver.title  # Will fail if browser closed
+        except:
+            browser_visible = False
+        
+        return jsonify({
+            'success': True,
+            'current_url': current_url,
+            'tab_count': tab_count,
+            'action_count': action_count,
+            'browser_visible': browser_visible
+        })
+    
+    except Exception as e:
+        logging.error(f"[BROWSER-STATUS] Error: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/recorder/focus-browser', methods=['POST'])
+def focus_browser():
+    """Bring browser window to front."""
+    try:
+        if not browser_executor or not browser_executor.driver:
+            return jsonify({
+                'success': False,
+                'error': 'Browser not initialized'
+            }), 503
+        
+        # Switch to current window and maximize
+        current_handle = browser_executor.driver.current_window_handle
+        browser_executor.driver.switch_to.window(current_handle)
+        browser_executor.driver.maximize_window()
+        
+        logging.info("[BROWSER-FOCUS] Browser window brought to front")
+        
+        return jsonify({
+            'success': True,
+            'message': 'Browser window focused'
+        })
+    
+    except Exception as e:
+        logging.error(f"[BROWSER-FOCUS] Error: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 @app.route('/recorder/save-generated-test', methods=['POST'])
 def save_generated_test():
@@ -573,7 +676,31 @@ def suggest_scenarios():
         }), 200
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
+@app.route('/semantic/cache-stats', methods=['GET'])
+def semantic_cache_stats():
+    """Get semantic analyzer cache statistics."""
+    try:
+        analyzer = get_analyzer()
+        cache_info = analyzer.get_cache_info()
+        return jsonify({
+            'success': True,
+            'cache': cache_info
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 
+@app.route('/semantic/clear-cache', methods=['POST'])
+def semantic_clear_cache():
+    """Clear semantic analyzer cache."""
+    try:
+        analyzer = get_analyzer()
+        analyzer.clear_cache()
+        return jsonify({
+            'success': True,
+            'message': 'Cache cleared successfully'
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 # ==================== Test Execution Endpoints ====================
 
 @app.route('/recorder/execute-test', methods=['POST'])
@@ -620,6 +747,8 @@ if __name__ == '__main__':
     print("\n[SEMANTIC] Analysis:")
     print("  POST /semantic/analyze-intent    - Analyze test intent")
     print("  POST /semantic/suggest-scenarios - Suggest test scenarios")
+    print("  GET  /semantic/cache-stats       - View cache statistics")
+    print("  POST /semantic/clear-cache       - Clear cache")
     print("\n[SCREENSHOT] Multi-modal AI:")
     print("  POST /screenshot/analyze        - Detect elements from screenshot")
     print("  POST /screenshot/generate-code  - Generate test from screenshot")

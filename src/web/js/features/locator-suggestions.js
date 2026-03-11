@@ -59,14 +59,18 @@ function displayLocatorResult(text, timeMs) {
         Prism.highlightElement(codeElement);
     }
     
-    document.getElementById('copyLocatorBtn').style.display = 'block';
-    document.getElementById('saveLocatorSnippetBtn').style.display = 'block';
+    const copyBtn = document.getElementById('copyLocatorBtn');
+    const saveBtn = document.getElementById('saveLocatorSnippetBtn');
+    if (copyBtn) copyBtn.style.display = 'block';
+    if (saveBtn) saveBtn.style.display = 'block';
 }
 
 function displayLocatorError(message) {
     document.getElementById('locatorResultContent').textContent = `Error: ${message}`;
-    document.getElementById('copyLocatorBtn').style.display = 'none';
-    document.getElementById('saveLocatorSnippetBtn').style.display = 'none';
+    const copyBtn = document.getElementById('copyLocatorBtn');
+    const saveBtn = document.getElementById('saveLocatorSnippetBtn');
+    if (copyBtn) copyBtn.style.display = 'none';
+    if (saveBtn) saveBtn.style.display = 'none';
 }
 
 function copyLocatorResult() {

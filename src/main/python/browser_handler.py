@@ -71,6 +71,14 @@ def navigate_and_inject(browser_executor, web_dir, url_monitor):
                 browser_executor.driver.execute_script("window.startRecorderCapture();")
                 logging.info("Started recorder capture")
                 
+                # Initialize window handle tracking
+                try:
+                    url_monitor.last_window_handle = browser_executor.driver.current_window_handle
+                    url_monitor.last_window_count = len(browser_executor.driver.window_handles)
+                    logging.info(f"[Recorder] Initialized with {url_monitor.last_window_count} window(s)")
+                except:
+                    pass
+                
                 # Start URL monitoring to persist recorder across page navigations
                 url_monitor.start()
                 logging.info("Started URL monitoring for recorder persistence")

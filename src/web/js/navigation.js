@@ -33,6 +33,17 @@ function navigateTo(page) {
         refreshSemanticSessions();
     } else if (page === 'testcases') {
         loadTestCases();
+    } else if (page === 'dashboard') {
+        // Update dashboard stats when navigating to dashboard
+        if (typeof window.updateDashboardStats === 'function') {
+            window.updateDashboardStats();
+        }
+        if (typeof window.updateRecentTestResults === 'function') {
+            window.updateRecentTestResults();
+        }
+        if (typeof window.updateActivityTimeline === 'function') {
+            window.updateActivityTimeline();
+        }
     }
     
     // Update URL hash

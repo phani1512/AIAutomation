@@ -1,0 +1,50 @@
+<!-- Action Suggestions Page -->
+<section id="actionPage" class="page-section">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 20px;">
+        <div class="section-row">
+            <div class="card">
+                <h3 class="section-header">💡 Action Suggestions</h3>
+                <div id="actionTab" class="tab-content">
+                    <div class="form-group">
+                        <label for="elementType">Element Type:</label>
+                        <select id="elementType">
+                            <option value="button">Button</option>
+                            <option value="input">Input Field</option>
+                            <option value="link">Link</option>
+                            <option value="dropdown">Dropdown</option>
+                            <option value="checkbox">Checkbox</option>
+                            <option value="radio">Radio Button</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contextInput">Context (optional):</label>
+                        <input type="text" id="contextInput" placeholder="e.g., login form, navigation menu">
+                    </div>
+
+                    <button class="btn" onclick="suggestAction()">
+                        💡 Suggest Actions
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Output -->
+            <div class="card">
+                <h3 class="section-header">📝 Suggested Actions</h3>
+                
+                <div class="result-box" id="actionResultBox">
+                    <pre><code id="actionResultContent" class="language-java">Your suggested actions will appear here...</code></pre>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="copy-btn" onclick="copyActionResult()" id="copyActionBtn" style="display: none; flex: 1;">
+                        📋 Copy to Clipboard
+                    </button>
+                    <button class="copy-btn" onclick="saveActionToSnippets()" id="saveActionSnippetBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                        💾 Save to Snippets
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

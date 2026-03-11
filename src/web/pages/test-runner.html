@@ -1,0 +1,56 @@
+<!-- Test Runner Page -->
+<section id="testrunnerPage" class="page-section">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px 20px 20px;">
+        <div class="card">
+            <h3 class="section-header">▶️ Test Runner</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label for="testRunner">Select Test Runner:</label>
+                    <select id="testRunner" onchange="updateTestRunnerConfig()">
+                        <option value="junit">JUnit (Java)</option>
+                        <option value="testng">TestNG (Java)</option>
+                        <option value="pytest">pytest (Python)</option>
+                        <option value="unittest">unittest (Python)</option>
+                        <option value="jest">Jest (JavaScript)</option>
+                        <option value="mocha">Mocha (JavaScript)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="testFilePath">Test File Path:</label>
+                    <input type="text" id="testFilePath" placeholder="e.g., src/test/java/TestClass.java" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                </div>
+
+                <div class="form-group">
+                    <label for="testMethod">Test Method/Function (optional):</label>
+                    <input type="text" id="testMethod" placeholder="e.g., testLogin" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                </div>
+
+                <div class="form-group">
+                    <label for="runnerArgs">Additional Arguments (optional):</label>
+                    <input type="text" id="runnerArgs" placeholder="e.g., -v --html=report.html" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin: 15px 0;">
+                <button class="btn" onclick="runTestWithRunner()" style="flex: 1;">
+                    ▶️ Run Test
+                </button>
+                <button class="btn" onclick="generateRunCommand()" style="flex: 1; background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
+                    📋 Generate Command
+                </button>
+            </div>
+
+            <div id="testRunnerConfig" style="background: var(--bg-secondary); border: 2px solid var(--border-color); border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                <strong style="color: var(--text-primary);">Configuration:</strong>
+                <pre id="runnerConfigText" style="margin-top: 10px; padding: 10px; background: var(--result-bg); border-radius: 6px; overflow-x: auto; font-size: 0.9em; color: var(--text-primary);"></pre>
+            </div>
+
+            <div id="testRunnerResults" style="display: none; background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 15px;">
+                <h4 style="color: var(--text-primary); margin-bottom: 10px;">Test Execution Results:</h4>
+                <div id="testRunnerOutput" style="font-family: 'JetBrains Mono', monospace; white-space: pre-wrap; font-size: 0.9em; color: var(--text-primary);"></div>
+            </div>
+        </div>
+    </div>
+</section>

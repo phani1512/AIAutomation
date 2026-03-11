@@ -1,0 +1,154 @@
+<!-- Test Recorder Page -->
+<section id="recorderPage" class="page-section">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px 20px 20px;">
+        <div class="section-row">
+            <div class="card">
+                <h3 class="section-header">🎬 Test Recorder</h3>
+                <div id="recorderTab" class="tab-content">
+                    <div class="form-group">
+                        <label for="recordingName">Test Name:</label>
+                        <input type="text" id="recordingName" placeholder="My Login Test">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recordingModule">Module:</label>
+                        <input type="text" id="recordingModule" placeholder="Login Module" list="modulesList">
+                        <datalist id="modulesList">
+                            <!-- Existing modules will be populated here -->
+                        </datalist>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recordingUrl">Starting URL:</label>
+                        <input type="text" id="recordingUrl" placeholder="https://example.com">
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <button class="btn" onclick="startRecording()" id="startRecordBtn">
+                            🔴 Start Recording
+                        </button>
+                        <button class="btn" onclick="stopRecording()" id="stopRecordBtn" style="background: #ef4444; display: none;">
+                            ⏹️ Stop Recording
+                        </button>
+                        <button class="btn" onclick="startNewTestCase()" id="newTestBtn" style="background: #10b981; display: none;">
+                            ➕ New Test Case
+                        </button>
+                    </div>
+
+                    <div id="recordingStatus" style="margin-bottom: 15px; padding: 10px; background: #f3f4f6; border-radius: 6px; display: none;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <strong>Recording Status:</strong>
+                            <div id="actionCounter" style="background: #667eea; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; font-weight: 600;">0 actions</div>
+                        </div>
+                        <div id="recordingStatusText"></div>
+                        <div style="margin-top: 8px; padding: 8px; background: rgba(99, 126, 234, 0.1); border-radius: 4px; font-size: 0.85em;">
+                            💡 <strong>Keyboard Shortcuts:</strong> <kbd>Ctrl+Alt+S</kbd> Stop Recording
+                        </div>
+                    </div>
+
+                    <!-- Live Recording Status Panel (Enhanced) -->
+                    <div id="recorderLiveStatusPanel" style="display: none; margin-bottom: 15px; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        
+                        <!-- Header with Browser Control -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span id="browserVisibilityIndicator" style="font-size: 1.2em;" title="Browser status">🟢</span>
+                                <span style="color: white; font-weight: 600; font-size: 1.1em;">🔴 Live Recording</span>
+                            </div>
+                            <button onclick="bringBrowserToFront()" class="btn" style="padding: 6px 12px; font-size: 0.85em; background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                                🪟 Focus Browser
+                            </button>
+                        </div>
+
+                        <!-- Live Stats Grid -->
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
+                            
+                            <!-- Action Count -->
+                            <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 8px; text-align: center;">
+                                <div style="color: rgba(255,255,255,0.8); font-size: 0.85em; margin-bottom: 4px;">Actions</div>
+                                <div id="liveActionCount" style="color: white; font-size: 1.8em; font-weight: bold; transition: transform 0.2s;">0</div>
+                            </div>
+
+                            <!-- Tab Count -->
+                            <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 8px; text-align: center;">
+                                <div style="color: rgba(255,255,255,0.8); font-size: 0.85em; margin-bottom: 4px;">Browser</div>
+                                <div id="liveTabCount" style="color: white; font-size: 1.1em; font-weight: 600; padding: 4px 8px; background: rgba(255,255,255,0.1); border-radius: 6px; display: inline-block;">1 tab</div>
+                            </div>
+
+                            <!-- Session Time -->
+                            <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 8px; text-align: center;">
+                                <div style="color: rgba(255,255,255,0.8); font-size: 0.85em; margin-bottom: 4px;">Duration</div>
+                                <div id="liveSessionTime" style="color: white; font-size: 1.1em; font-weight: 600;">00:00</div>
+                            </div>
+                        </div>
+
+                        <!-- Current URL Display -->
+                        <div style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px;">
+                            <div style="color: rgba(255,255,255,0.8); font-size: 0.85em; margin-bottom: 4px;">Current Page:</div>
+                            <div id="liveRecorderUrl" style="color: white; font-size: 0.95em; font-family: 'JetBrains Mono', monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="">
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="recordedActionsContainer" style="display: none;">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">Recorded Actions:</h4>
+                        <div id="recordedActionsList" style="max-height: 200px; overflow-y: auto; background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 10px;">
+                            <!-- Actions will be listed here -->
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 10px; align-items: center;">
+                            <label style="color: var(--text-primary); font-weight: 500;">Language:</label>
+                            <select id="codeLanguageSelector" style="flex: 1; padding: 8px; background: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+                                <option value="python">Python (pytest)</option>
+                                <option value="java">Java (TestNG)</option>
+                            </select>
+                            <button class="btn" onclick="generateTestFromRecording()" style="flex: 2;">
+                                🚀 Generate Test Code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Generated Output for Recorder -->
+            <div class="card">
+                <h3 class="section-header">📝 Generated Output</h3>
+                <div style="margin-bottom: 15px;">
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn" onclick="editRecorderOutput()" id="editRecorderBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                            ✏️ Edit Code
+                        </button>
+                        <button class="btn" onclick="copyRecorderOutput()" id="copyRecorderBtn" style="display: none; flex: 1;">
+                            📋 Copy Code
+                        </button>
+                        <button class="btn" onclick="exportRecorderCode()" id="exportRecorderBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
+                            💾 Export
+                        </button>
+                        <button class="btn" onclick="saveRecorderSnippet()" id="saveRecorderSnippetBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            💾 Save Snippet
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="recorderOutputContainer" style="background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 0; max-height: 500px; overflow: auto;">
+                    <pre style="margin: 0; padding: 20px;"><code id="recorderOutputCode" class="language-java" style="display: block; white-space: pre-wrap; word-wrap: break-word; color: var(--text-secondary); font-size: 0.9em;">Record actions and generate test code to see output here...</code></pre>
+                </div>
+                
+                <div id="recorderCodeEditor" style="display: none; margin-top: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="color: var(--text-primary); margin: 0;">✏️ Edit Generated Code</h4>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn" onclick="saveRecorderEditedCode()" style="background: #10b981;">
+                                ✅ Save Changes
+                            </button>
+                            <button class="btn" onclick="cancelRecorderEdit()" style="background: #6b7280;">
+                                ❌ Cancel
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="recorderCodeEditArea" style="width: 100%; min-height: 400px; padding: 15px; border: 2px solid var(--border-color); border-radius: 8px; background: var(--input-bg); color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 0.9em; resize: vertical;"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

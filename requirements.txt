@@ -10,7 +10,7 @@ flask-cors>=4.0.0
 # Multi-modal AI - Screenshot Analysis
 opencv-python>=4.8.1
 pillow>=10.1.0
-pytesseract>=0.3.10
+pytesseract>=0.3.10  # Optional: Enhanced text extraction (requires Tesseract-OCR binary)
 
 # Browser Automation
 selenium>=4.15.0

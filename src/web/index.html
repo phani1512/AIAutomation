@@ -11,14 +11,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-    <!-- Enhanced Professional UI Styles -->
+    
+    <!-- Modular CSS Architecture -->
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/layout.css" rel="stylesheet" />
+    <link href="css/components/cards.css" rel="stylesheet" />
+    <link href="css/components/forms.css" rel="stylesheet" />
+    <link href="css/components/modals.css" rel="stylesheet" />
+    <link href="css/components/screenshot-ai.css" rel="stylesheet" />
     <link href="css/enhanced-ui.css" rel="stylesheet" />
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --secondary: #8b5cf6;
+        /* Minimal inline styles for app container */
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .app-container.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage">
+        <div class="login-container">
+            <div class="login-header">
             --accent: #ec4899;
             --success: #10b981;
             --warning: #f59e0b;

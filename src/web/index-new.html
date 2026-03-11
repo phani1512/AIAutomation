@@ -3,716 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Test Automation Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>🤖 AI Test Automation Studio v3.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #8b5cf6;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --info: #3b82f6;
-            
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --bg-tertiary: #f3f4f6;
-            --card-bg: #ffffff;
-            --card-hover: #f8f9fa;
-            
-            --text-primary: #111827;
-            --text-secondary: #6b7280;
-            --text-tertiary: #9ca3af;
-            
-            --border-color: #e5e7eb;
-            --border-hover: #d1d5db;
-            
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        body.dark-mode {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --card-bg: #1e293b;
-            --card-hover: #334155;
-            
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-tertiary: #94a3b8;
-            
-            --border-color: #334155;
-            --border-hover: #475569;
-            
-            --input-bg: #1e293b;
-            --result-bg: #1e293b;
-            --stat-bg: #1e293b;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        /* Login Page Styles */
-        #loginPage {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .login-container {
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: var(--shadow-xl);
-            padding: 48px;
-            width: 100%;
-            max-width: 440px;
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .login-logo {
-            font-size: 72px;
-            margin-bottom: 16px;
-        }
-
-        .login-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .login-subtitle {
-            font-size: 16px;
-            color: var(--text-secondary);
-        }
-
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .login-input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .login-label {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 14px;
-        }
-
-        .login-input {
-            padding: 14px 16px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            font-size: 15px;
-            font-family: inherit;
-            transition: all 0.2s;
-        }
-
-        .login-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: var(--bg-primary);
-        }
-
-        .login-button {
-            padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 8px;
-        }
-
-        .login-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .login-footer {
-            text-align: center;
-            margin-top: 24px;
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        .login-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .login-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Main App Container */
-        #appContainer {
-            display: none;
-            min-height: 100vh;
-        }
-
-        /* Top Header */
-        .top-header {
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 16px 28px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .app-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .app-logo-icon {
-            font-size: 32px;
-        }
-
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            font-size: 13px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #9ca3af;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .status-dot.connected {
-            background: #10b981;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .theme-toggle {
-            padding: 8px 16px;
-            background: var(--bg-secondary);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: transform 0.2s;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            padding: 6px 12px 6px 6px;
-            border-radius: 8px;
-            transition: background 0.2s;
-        }
-
-        .user-profile:hover {
-            background: var(--bg-secondary);
-        }
-
-        .user-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        /* Main Layout */
-        .main-layout {
-            display: flex;
-            min-height: calc(100vh - 72px);
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 280px;
-            background: var(--card-bg);
-            border-right: 1px solid var(--border-color);
-            padding: 24px 16px;
-            overflow-y: auto;
-        }
-
-        .nav-section {
-            margin-bottom: 32px;
-        }
-
-        .nav-section-title {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-tertiary);
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-            padding: 0 12px;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            border-radius: 10px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-bottom: 4px;
-            font-weight: 500;
-        }
-
-        .nav-item:hover {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-        }
-
-        .nav-item.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .nav-icon {
-            font-size: 20px;
-            width: 24px;
-            text-align: center;
-        }
-
-        /* Content Area */
-        .content-area {
-            flex: 1;
-            padding: 32px;
-            overflow-y: auto;
-            max-height: calc(100vh - 72px);
-        }
-
-        .page-section {
-            display: none;
-        }
-
-        .page-section.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .page-header {
-            margin-bottom: 32px;
-        }
-
-        .page-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .page-description {
-            font-size: 16px;
-            color: var(--text-secondary);
-        }
-
-        /* Card Component */
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            margin-bottom: 24px;
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        /* Grid Layout */
-        .grid {
-            display: grid;
-            gap: 24px;
-        }
-
-        .grid-cols-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .grid-cols-4 {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        /* Stats Cards */
-        .stat-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .stat-icon.primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .stat-icon.success {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .stat-icon.warning {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-        }
-
-        .stat-icon.error {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        /* Form Controls */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .form-input,
-        .form-textarea,
-        .form-select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            font-size: 15px;
-            font-family: inherit;
-            transition: all 0.2s;
-        }
-
-        .form-input:focus,
-        .form-textarea:focus,
-        .form-select:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: var(--bg-primary);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 12px 24px;
-            border-radius: 10px;
-            border: none;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: inherit;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-success {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-        }
-
-        .btn-success:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
-        }
-
-        .btn-warning {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-        }
-
-        .btn-error {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border: 2px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--border-hover);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Code Block */
-        .code-output {
-            background: var(--bg-tertiary);
-            border-radius: 12px;
-            padding: 20px;
-            overflow-x: auto;
-            border: 1px solid var(--border-color);
-        }
-
-        pre[class*="language-"] {
-            margin: 0;
-            border-radius: 8px;
-        }
-
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 20px;
-            backdrop-filter: blur(4px);
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 32px;
-            max-width: 600px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-xl);
-        }
-
-        /* Loading Spinner */
-        #loading {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--card-bg);
-            padding: 32px 48px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-xl);
-            z-index: 2000;
-        }
-
-        #loading.active {
-            display: block;
-        }
-
-        .spinner {
-            border: 4px solid var(--border-color);
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 16px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .grid-cols-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                position: fixed;
-                left: -280px;
-                top: 72px;
-                height: calc(100vh - 72px);
-                z-index: 90;
-                transition: left 0.3s;
-            }
-
-            .sidebar.mobile-open {
-                left: 0;
-            }
-
-            .grid-cols-2,
-            .grid-cols-3,
-            .grid-cols-4 {
-                grid-template-columns: 1fr;
-            }
-
-            .content-area {
-                padding: 20px;
-            }
-
-            .page-title {
-                font-size: 24px;
-            }
-        }
-    </style>
+    
+    <!-- Modular CSS Architecture -->
+    <link rel="stylesheet" href="/web/css/base.css">
+    <link rel="stylesheet" href="/web/css/layout.css">
+    <link rel="stylesheet" href="/web/css/components/cards.css">
+    <link rel="stylesheet" href="/web/css/components/forms.css">
+    <link rel="stylesheet" href="/web/css/components/modals.css">
+    <link rel="stylesheet" href="/web/css/components/screenshot-ai.css">
+    <link rel="stylesheet" href="/web/css/styles.css">
 </head>
 <body>
     <!-- Login Page -->
-    <div id="loginPage">
+    <div id="loginPage" style="display: flex;">
         <div class="login-container">
             <div class="login-header">
                 <div class="login-logo">🤖</div>
@@ -720,32 +31,32 @@
                 <p class="login-subtitle">Sign in to access your testing workspace</p>
             </div>
             
-            <form id="loginForm" class="login-form" onsubmit="handleLogin(event)">
+            <form id="loginForm" class="login-form" onsubmit="handleLogin(event)" autocomplete="off">
                 <div class="login-input-group">
-                    <label class="login-label" for="loginPageUsername">Username</label>
+                    <label class="login-label" for="loginUsername">Username</label>
                     <input 
                         type="text" 
                         id="loginPageUsername" 
                         class="login-input" 
                         placeholder="Enter your username"
                         required
-                        autocomplete="username"
+                        autocomplete="off"
                     />
                 </div>
                 
                 <div class="login-input-group">
-                    <label class="login-label" for="loginPagePassword">Password</label>
+                    <label class="login-label" for="loginPassword">Password</label>
                     <input 
                         type="password" 
                         id="loginPagePassword" 
                         class="login-input" 
                         placeholder="Enter your password"
                         required
-                        autocomplete="current-password"
+                        autocomplete="off"
                     />
                 </div>
                 
-                <button type="submit" class="login-button" onclick="userClickedLogin = true;">
+                <button type="submit" class="login-button" onclick="window.userClickedLogin = true;">
                     🔐 Sign In
                 </button>
             </form>
@@ -758,599 +69,122 @@
     </div>
 
     <!-- Main App Container -->
-    <div id="appContainer">
-        <!-- Top Header -->
-        <header class="top-header">
-            <div class="header-left">
-                <div class="app-logo">
-                    <span class="app-logo-icon">🤖</span>
-                    <span>AI Test Studio</span>
-                </div>
-                
-                <div class="status-indicator">
-                    <div class="status-dot" id="statusDot"></div>
-                    <span id="statusText">Connecting...</span>
-                </div>
-                <div style="font-size: 11px; color: var(--text-tertiary);" id="modelInfo"></div>
-            </div>
-            
-            <div class="header-right">
-                <button class="theme-toggle" onclick="toggleDarkMode()" id="darkModeSlider">🌙</button>
-                
-                <button id="loginBtn" class="btn btn-primary" onclick="showLoginModal()">
-                    🔐 Login
-                </button>
-                
-                <div id="userProfileSection" style="display: none;">
-                    <div class="user-profile" onclick="showUserMenu()">
-                        <div class="user-avatar" id="userAvatar">U</div>
-                        <span id="userName" style="font-weight: 600; color: var(--text-primary);">User</span>
+    <div id="appContainer" class="app-container" style="display: none;">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar" id="sidebar">
+                <!-- Logo Section -->
+                <div class="logo">
+                    <div class="logo-icon">🤖</div>
+                    <div class="logo-text">
+                        <div class="logo-title">Selenium SLM</div>
+                        <div class="logo-subtitle">Test Automation</div>
                     </div>
                 </div>
-            </div>
-        </header>
 
-        <!-- Main Layout -->
-        <div class="main-layout">
-            <!-- Sidebar Navigation -->
-            <aside class="sidebar">
                 <nav>
                     <div class="nav-section">
-                        <div class="nav-section-title">Overview</div>
+                        <div class="nav-title">Main</div>
                         <div class="nav-item active" onclick="navigateTo('dashboard')">
                             <span class="nav-icon">📊</span>
                             <span>Dashboard</span>
                         </div>
+                        <div class="nav-item" onclick="navigateTo('generate')">
+                            <span class="nav-icon">✨</span>
+                            <span>Generate Code</span>
+                        </div>
                     </div>
 
                     <div class="nav-section">
-                        <div class="nav-section-title">Test Generation</div>
-                        <div class="nav-item" onclick="navigateTo('generate')">
-                            <span class="nav-icon">⚡</span>
-                            <span>Generate Code</span>
-                        </div>
+                        <div class="nav-title">Tools</div>
                         <div class="nav-item" onclick="navigateTo('locator')">
                             <span class="nav-icon">🎯</span>
                             <span>Locator Suggestions</span>
                         </div>
                         <div class="nav-item" onclick="navigateTo('action')">
-                            <span class="nav-icon">🔧</span>
+                            <span class="nav-icon">💡</span>
                             <span>Action Suggestions</span>
-                        </div>
-                    </div>
-
-                    <div class="nav-section">
-                        <div class="nav-section-title">Automation</div>
-                        <div class="nav-item" onclick="navigateTo('recorder')">
-                            <span class="nav-icon">🔴</span>
-                            <span>Test Recorder</span>
                         </div>
                         <div class="nav-item" onclick="navigateTo('browser')">
                             <span class="nav-icon">🌐</span>
                             <span>Browser Control</span>
                         </div>
+                        <div class="nav-item" onclick="navigateTo('recorder')">
+                            <span class="nav-icon">🎬</span>
+                            <span>Test Recorder</span>
+                        </div>
                         <div class="nav-item" onclick="navigateTo('semantic')">
                             <span class="nav-icon">🧠</span>
                             <span>Semantic Analysis</span>
                         </div>
+                        <div class="nav-item" onclick="navigateTo('screenshot')">
+                            <span class="nav-icon">📸</span>
+                            <span>Screenshot AI</span>
+                        </div>
                     </div>
 
                     <div class="nav-section">
-                        <div class="nav-section-title">Management</div>
+                        <div class="nav-title">Library</div>
+                        <div class="nav-item" onclick="navigateTo('snippets')">
+                            <span class="nav-icon">📚</span>
+                            <span>Code Snippets</span>
+                        </div>
                         <div class="nav-item" onclick="navigateTo('testcases')">
                             <span class="nav-icon">📋</span>
                             <span>Test Suite</span>
                         </div>
-                        <div class="nav-item" onclick="navigateTo('snippets')">
-                            <span class="nav-icon">💾</span>
-                            <span>Code Snippets</span>
+                        <div class="nav-item" onclick="navigateTo('testrunner')">
+                            <span class="nav-icon">▶️</span>
+                            <span>Test Runner</span>
                         </div>
                     </div>
                 </nav>
-            </aside>
 
-            <!-- Content Area -->
-            <main class="content-area">
-                <!-- Dashboard Page -->
-                <section id="dashboardPage" class="page-section active">
-                    <div class="page-header">
-                        <h1 class="page-title">Dashboard</h1>
-                        <p class="page-description">Overview of your test automation activities</p>
-                    </div>
-
-                    <div class="grid grid-cols-4">
-                        <div class="stat-card">
-                            <div class="stat-icon primary">⚡</div>
-                            <div class="stat-value" id="dashboardTotalRequests">0</div>
-                            <div class="stat-label">Total Tests Generated</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon success">✅</div>
-                            <div class="stat-value" id="testsPassedCount">0</div>
-                            <div class="stat-label">Tests Passed</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon error">❌</div>
-                            <div class="stat-value" id="testsFailedCount">0</div>
-                            <div class="stat-label">Tests Failed</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon warning">⏱️</div>
-                            <div class="stat-value" id="dashboardAvgTime">0ms</div>
-                            <div class="stat-label">Avg. Response Time</div>
+                <!-- User Profile in Sidebar -->
+                <div id="userProfileSidebar" style="display: none; margin-top: auto; margin-bottom: 12px; padding: 16px; background: rgba(255, 255, 255, 0.1); border-radius: var(--radius); border: 1px solid rgba(255, 255, 255, 0.15);">
+                    <div style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="showUserMenu()">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.25); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1em;" id="userAvatarSidebar">U</div>
+                        <div style="flex: 1;">
+                            <div style="color: white; font-weight: 600; font-size: 0.95em;" id="userNameSidebar">User</div>
+                            <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.75em;">View Profile</div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="grid grid-cols-2">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">📈 Recent Test Results</h3>
-                            </div>
-                            <div id="recentTestResults">
-                                <div style="padding: 40px; text-align: center; color: var(--text-secondary);">
-                                    No test results yet. Start generating and running tests!
-                                </div>
-                            </div>
-                        </div>
+                <!-- Login Button in Sidebar -->
+                <button id="loginBtnSidebar" class="btn" onclick="showLoginModal()" style="margin-top: auto; margin-bottom: 12px; width: 100%; padding: 12px; font-size: 0.9em; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.25); color: white;">
+                    👤 Login
+                </button>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">📅 Activity Timeline</h3>
-                            </div>
-                            <div id="activityTimeline">
-                                <div style="padding: 40px; text-align: center; color: var(--text-secondary);">
-                                    Your activity will appear here
-                                </div>
-                            </div>
-                        </div>
+                <!-- Dark Mode Toggle in Sidebar -->
+                <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+                    <div class="toggle-content">
+                        <span id="darkModeSlider">🌙</span>
+                        <span style="font-size: 13px;">Dark Mode</span>
                     </div>
-                </section>
+                </div>
 
-                <!-- Generate Code Page -->
-                <section id="generatePage" class="page-section">
-                    <div class="page-header">
-                        <h1 class="page-title">⚡ Generate Test Code</h1>
-                        <p class="page-description">AI-powered test code generation</p>
+                <!-- Toggle Sidebar Icon -->
+                <div id="toggleSidebarBtn" onclick="toggleSidebar()" style="width: 100%; margin-bottom: 12px; text-align: center; cursor: pointer; font-size: 1.5em; color: rgba(255, 255, 255, 0.8); padding: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">
+                    <span id="toggleIcon">◀</span>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <!-- Status Bar -->
+                <div class="status-bar" style="background: transparent; padding: 16px 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; border: none; box-shadow: none;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="status-dot" id="statusDot"></div>
+                        <span class="status-text" id="statusText" style="font-size: 0.9em; color: var(--text-primary);">Checking connection...</span>
+                        <span class="status-text" id="modelInfo" style="font-size: 0.75em; color: var(--text-secondary);"></span>
                     </div>
+                </div>
 
-                    <div class="card">
-                        <div class="form-group">
-                            <label class="form-label">Test Prompt</label>
-                            <textarea 
-                                id="promptInput" 
-                                class="form-textarea" 
-                                placeholder="Describe your test scenario (e.g., 'Create a Selenium test that logs into Gmail, composes an email, and sends it')"
-                            ></textarea>
-                        </div>
-                        
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                            <button class="btn btn-primary" onclick="generateCode()">⚡ Generate Code</button>
-                            <button class="btn btn-secondary" onclick="validateCode()">✅ Validate</button>
-                            <button class="btn btn-secondary" onclick="copyResult()" id="copyBtn" style="display: none;">📋 Copy</button>
-                            <button class="btn btn-secondary" onclick="exportCode()" id="exportBtn" style="display: none;">💾 Export</button>
-                            <button class="btn btn-secondary" onclick="saveToSnippets()" id="saveSnippetBtn" style="display: none;">💾 Save to Snippets</button>
-                        </div>
-                    </div>
-
-                    <div class="card" id="validationResults" style="display: none;">
-                        <h3 class="card-title">✅ Validation Results</h3>
-                        <div id="validationContent"></div>
-                    </div>
-
-                    <div class="card">
-                        <h3 class="card-title">💻 Generated Code</h3>
-                        <div class="code-output">
-                            <pre><code id="resultContent" class="language-java">Your generated code will appear here...</code></pre>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Locator Suggestions Page -->
-                <section id="locatorPage" class="page-section">
-                    <div class="page-header">
-                        <h1 class="page-title">🎯 Locator Suggestions</h1>
-                        <p class="page-description">Smart element locator generation</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="form-group">
-                            <label class="form-label">HTML Element</label>
-                            <textarea 
-                                id="htmlInput" 
-                                class="form-textarea" 
-                                placeholder="Paste your HTML element here..."
-                            ></textarea>
-                        </div>
-                        
-                        <button class="btn btn-primary" onclick="suggestLocator()">🎯 Get Locators</button>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">📌 Suggested Locators</h3>
-                            <div class="card-actions">
-                                <button class="btn btn-secondary" onclick="copyLocatorResult()" id="copyLocatorBtn" style="display: none;">📋 Copy</button>
-                                <button class="btn btn-secondary" onclick="saveLocatorToSnippets()" id="saveLocatorSnippetBtn" style="display: none;">💾 Save</button>
-                            </div>
-                        </div>
-                        <div class="code-output">
-                            <pre><code id="locatorResultContent" class="language-java">Locator suggestions will appear here...</code></pre>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Action Suggestions Page -->
-                <section id="actionPage" class="page-section">
-                    <div class="page-header">
-                        <h1 class="page-title">🔧 Action Suggestions</h1>
-                        <p class="page-description">AI-powered action recommendations</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="grid grid-cols-2">
-                            <div class="form-group">
-                                <label class="form-label">Element Type</label>
-                                <select id="elementType" class="form-select">
-                                    <option value="button">Button</option>
-                                    <option value="input">Input Field</option>
-                                    <option value="link">Link</option>
-                                    <option value="dropdown">Dropdown</option>
-                                    <option value="checkbox">Checkbox</option>
-                                    <option value="radio">Radio Button</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Context (Optional)</label>
-                                <input 
-                                    type="text" 
-                                    id="contextInput" 
-                                    class="form-input" 
-                                    placeholder="e.g., login page, checkout form"
-                                />
-                            </div>
-                        </div>
-                        
-                        <button class="btn btn-primary" onclick="suggestAction()">🔧 Get Suggestions</button>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">💡 Suggested Actions</h3>
-                            <div class="card-actions">
-                                <button class="btn btn-secondary" onclick="copyActionResult()" id="copyActionBtn" style="display: none;">📋 Copy</button>
-                                <button class="btn btn-secondary" onclick="saveActionToSnippets()" id="saveActionSnippetBtn" style="display: none;">💾 Save</button>
-                            </div>
-                        </div>
-                        <div class="code-output">
-                            <pre><code id="actionResultContent" class="language-java">Action suggestions will appear here...</code></pre>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Test Recorder Page -->
-                <section id="recorderPage" class="page-section">
-                    <div class="page-header">
-                        <h1 class="page-title">🔴 Test Recorder</h1>
-                        <p class="page-description">Record browser interactions and generate tests</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="grid grid-cols-2">
-                            <div class="form-group">
-                                <label class="form-label">Test Name</label>
-                                <input 
-                                    type="text" 
-                                    id="recordingName" 
-                                    class="form-input" 
-                                    placeholder="Enter test name"
-                                />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Module Name</label>
-                                <input 
-                                    type="text" 
-                                    id="recordingModule" 
-                                    class="form-input" 
-                                    placeholder="Enter module name"
-                                    list="modulesList"
-                                />
-                                <datalist id="modulesList"></datalist>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">URL</label>
-                            <input 
-                                type="url" 
-                                id="recordingUrl" 
-                                class="form-input" 
-                                placeholder="https://example.com"
-                            />
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Code Language</label>
-                            <select id="codeLanguageSelector" class="form-select">
-                                <option value="python">Python</option>
-                                <option value="java">Java</option>
-                            </select>
-                        </div>
-
-                        <div style="display: flex; gap: 12px;">
-                            <button class="btn btn-error" onclick="startRecording()" id="startRecordBtn">🔴 Start Recording</button>
-                            <button class="btn btn-warning" onclick="stopRecording()" id="stopRecordBtn" style="display: none;">⏹️ Stop Recording</button>
-                            <button class="btn btn-success" onclick="startNewTestCase()" id="newTestBtn" style="display: none;">➕ New Test Case</button>
-                            <button class="btn btn-primary" onclick="generateTestFromRecording()">⚡ Generate Test Code</button>
-                        </div>
-
-                        <div id="recordingStatus" style="display: none; margin-top: 20px; padding: 16px; background: var(--bg-secondary); border-radius: 12px;">
-                            <div id="recordingStatusText"></div>
-                        </div>
-                    </div>
-
-                    <div class="card" id="recordedActionsContainer" style="display: none;">
-                        <h3 class="card-title">📝 Recorded Actions (<span id="actionCounter">0</span>)</h3>
-                        <div id="recordedActionsList" style="max-height: 300px; overflow-y: auto;"></div>
-                    </div>
-
-                    <div class="card">
-                        <h3 class="card-title">💻 Generated Test Code</h3>
-                        
-                        <!-- Code Viewer -->
-                        <div id="recorderOutputContainer">
-                            <div class="code-output">
-                                <pre><code id="recorderOutputCode" class="language-java">Generated code will appear here...</code></pre>
-                            </div>
-                            
-                            <div style="display: flex; gap: 12px; margin-top: 16px;">
-                                <button class="btn btn-secondary" onclick="editRecorderOutput()" id="editRecorderBtn" style="display: none;">✏️ Edit</button>
-                                <button class="btn btn-secondary" onclick="copyRecorderOutput()" id="copyRecorderBtn" style="display: none;">📋 Copy</button>
-                                <button class="btn btn-secondary" onclick="exportRecorderCode()" id="exportRecorderBtn" style="display: none;">💾 Export</button>
-                                <button class="btn btn-secondary" onclick="saveRecorderSnippet()" id="saveRecorderSnippetBtn" style="display: none;">💾 Save Snippet</button>
-                            </div>
-                        </div>
-
-                        <!-- Code Editor -->
-                        <div id="recorderCodeEditor" style="display: none;">
-                            <textarea id="recorderCodeEditArea" class="form-textarea" style="min-height: 400px; font-family: 'JetBrains Mono', monospace;"></textarea>
-                            
-                            <div style="display: flex; gap: 12px; margin-top: 16px;">
-                                <button class="btn btn-success" onclick="saveRecorderEditedCode()">💾 Save Changes</button>
-                                <button class="btn btn-secondary" onclick="cancelRecorderEdit()">❌ Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Browser Control Page -->
-                <section id="browserPage" class="page-section">
-                    <div class="page-header">
-                        <h1 class="page-title">🌐 Browser Control</h1>
-                        <p class="page-description">Execute tests in real browser</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="grid grid-cols-2">
-                            <div class="form-group">
-                                <label class="form-label">Browser Type</label>
-                                <select id="browserType" class="form-select">
-                                    <option value="chrome">Chrome</option>
-                                    <option value="firefox">Firefox</option>
-                                    <option value="edge">Edge</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" style="display: flex; align-items: center; gap: 8px;">
-                                    <input type="checkbox" id="headlessMode" />
-                                    Headless Mode
-                                </label>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; gap: 12px;">
-                            <button class="btn btn-success" onclick="initializeBrowser()" id="initBrowserBtn">🚀 Initialize Browser</button>
-                            <button class="btn btn-error" onclick="closeBrowser()">❌ Close Browser</button>
-                        </div>
-
-                        <div id="browserStatus" style="display: none; margin-top: 20px; padding: 16px; background: var(--bg-secondary); border-radius: 12px;">
-                            <div id="browserStatusText"></div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="form-group">
-                            <label class="form-label">URL</label>
-                            <input 
-                                type="url" 
-                                id="browserUrl" 
-                                class="form-input" 
-                                placeholder="https://example.com"
-                            />
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Test Prompt</label>
-                            <textarea 
-                                id="browserPrompt" 
-                                class="form-textarea" 
-                                placeholder="Describe what you want to test..."
-                            ></textarea>
-                        </div>
-
-                        <button class="btn btn-primary" onclick="executeInBrowser()">▶️ Execute Test</button>
-                    </div>
-                </section>
-
-                <!-- Semantic Analysis Page -->
-                <section id="semanticPage" class="page-section">
-                    <div class="page-header">
-                        <h1 class="page-title">🧠 Semantic Analysis</h1>
-                        <p class="page-description">AI-powered test scenario suggestions</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="form-group">
-                            <label class="form-label">Select Test Session</label>
-                            <select id="semanticSessionSelect" class="form-select" onchange="onSemanticSessionChange()">
-                                <option value="">Select a session...</option>
-                            </select>
-                        </div>
-
-                        <div style="display: flex; gap: 12px;">
-                            <button class="btn btn-primary" onclick="loadSemanticAnalysis()">🧠 Analyze Intent</button>
-                            <button class="btn btn-success" onclick="generateSuggestions()">💡 Get Suggestions</button>
-                            <button class="btn btn-secondary" onclick="refreshSemanticSessions()">🔄 Refresh</button>
-                            <button class="btn btn-secondary" onclick="clearSemanticAnalysis()">🗑️ Clear</button>
-                        </div>
-
-                        <div id="semanticIntentDisplay" style="display: none; margin-top: 20px;"></div>
-                    </div>
-
-                    <div class="card">
-                        <h3 class="card-title">💡 Test Suggestions</h3>
-                        <div id="semanticSuggestionsDisplay">
-                            <div style="padding: 40px; text-align: center; color: var(--text-secondary);">
-                                Select a test session and click "Get Suggestions" to see AI-generated test scenarios
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Test Suite Page -->
-                <section id="testcasesPage" class="page-section">
-                    <div class="page-header">
-                        <h1 class="page-title">📋 Test Suite</h1>
-                        <p class="page-description">Manage and execute your test cases</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="grid grid-cols-2">
-                            <div class="form-group">
-                                <label class="form-label">Filter by Module</label>
-                                <select id="moduleFilter" class="form-select" onchange="filterTestsByModule()">
-                                    <option value="">All Modules</option>
-                                </select>
-                            </div>
-                            
-                            <div style="display: flex; gap: 12px; align-items: flex-end;">
-                                <button class="btn btn-success" onclick="executeTestSuite()">▶️ Run Tests</button>
-                                <button class="btn btn-error" onclick="deleteSelectedTests()" id="deleteSelectedTestsBtn" style="display: none;">🗑️ Delete Selected</button>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 16px;">
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                <input type="checkbox" id="selectAllTests" onchange="toggleSelectAllTests()" />
-                                <span style="font-weight: 600;">Select All</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2">
-                        <div>
-                            <div class="card">
-                                <h3 class="card-title">📝 Test Cases</h3>
-                                <div id="testCasesList" style="max-height: 600px; overflow-y: auto;"></div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">💻 Test Code</h3>
-                                    <div class="card-actions">
-                                        <button class="btn btn-secondary" onclick="editTestSuiteCode()" style="display: none;" id="editTestSuiteBtn">✏️ Edit</button>
-                                        <button class="btn btn-secondary" onclick="copyTestSuiteCode()" style="display: none;" id="copyTestSuiteBtn">📋 Copy</button>
-                                        <button class="btn btn-secondary" onclick="exportTestSuiteCode()" style="display: none;" id="exportTestSuiteBtn">💾 Export</button>
-                                        <button class="btn btn-secondary" onclick="saveTestSuiteSnippet()" style="display: none;" id="saveTestSuiteSnippetBtn">💾 Save</button>
-                                    </div>
-                                </div>
-
-                                <!-- Code Viewer -->
-                                <div id="testSuiteCodeViewer">
-                                    <div class="code-output">
-                                        <pre><code id="testSuiteCodeContent" class="language-java">Select a test case from the list to view its code here...</code></pre>
-                                    </div>
-                                </div>
-
-                                <!-- Code Editor -->
-                                <div id="testSuiteCodeEditor" style="display: none;">
-                                    <textarea id="testSuiteCodeEditArea" class="form-textarea" style="min-height: 400px; font-family: 'JetBrains Mono', monospace;"></textarea>
-                                    
-                                    <div style="display: flex; gap: 12px; margin-top: 16px;">
-                                        <button class="btn btn-success" onclick="saveEditedTestCode()">💾 Save Changes</button>
-                                        <button class="btn btn-secondary" onclick="cancelEditTestCode()">❌ Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card" id="executionResults" style="display: none;">
-                                <h3 class="card-title">📊 Execution Results</h3>
-                                <div id="currentlyExecutingTest" style="display: none; padding: 16px; background: var(--bg-secondary); border-radius: 12px; margin-bottom: 16px;">
-                                    <div style="font-weight: 600;">⏳ Executing: <span id="currentExecutingTestName"></span></div>
-                                </div>
-                                <div id="executionResultsList"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card" id="executeTestSection" style="display: none;">
-                        <h3 class="card-title">▶️ Execute Test</h3>
-                        <button class="btn btn-success" onclick="executeCurrentTest()">▶️ Run This Test</button>
-                    </div>
-                </section>
-
-                <!-- Code Snippets Page -->
-                <section id="snippetsPage" class="page-section">
-                    <div class="page-header">
-                        <h1 class="page-title">💾 Code Snippets</h1>
-                        <p class="page-description">Your saved code snippet library</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="grid grid-cols-2">
-                            <div class="form-group">
-                                <input 
-                                    type="text" 
-                                    id="snippetSearch" 
-                                    class="form-input" 
-                                    placeholder="Search snippets..."
-                                    oninput="filterSnippets()"
-                                />
-                            </div>
-                            
-                            <div class="form-group">
-                                <select id="snippetFilter" class="form-select" onchange="filterSnippets()">
-                                    <option value="all">All Languages</option>
-                                    <option value="java">Java</option>
-                                    <option value="python">Python</option>
-                                    <option value="javascript">JavaScript</option>
-                                    <option value="csharp">C#</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; gap: 12px;">
-                            <button class="btn btn-primary" onclick="showAddSnippetModal()">➕ Add Snippet</button>
-                            <button class="btn btn-error" onclick="deleteSelectedSnippets()" id="deleteSelectedBtn" style="display: none;">🗑️ Delete Selected</button>
-                        </div>
-
-                        <div style="margin-top: 16px;">
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                <input type="checkbox" id="selectAllSnippets" onchange="toggleSelectAllSnippets()" />
-                                <span style="font-weight: 600;">Select All</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div id="snippetsList"></div>
-                </section>
-            </main>
-        </div>
-    </div>
+                <!-- Dynamic Page Content Container -->
+                <div id="pageContentContainer">
+                    <!-- Pages will be dynamically loaded here -->
+                </div>
+            </div>
 
     <!-- Loading Spinner -->
     <div id="loading">
@@ -1365,6 +199,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
 
+    <!-- Global Configuration -->
+    <script>
+        const API_URL = 'http://localhost:5002';
+    </script>
+
     <!-- Core Modules - Load First -->
     <script src="/web/js/core/api.js"></script>
     <script src="/web/js/core/ui.js"></script>
@@ -1378,13 +217,54 @@
     <script src="/web/js/features/locator-suggestions.js"></script>
     <script src="/web/js/features/action-suggestions.js"></script>
     <script src="/web/js/features/test-recorder.js"></script>
+    <script src="/web/js/features/recorder-live-monitor.js"></script>
     <script src="/web/js/features/test-suite.js"></script>
     <script src="/web/js/features/browser-control.js"></script>
     <script src="/web/js/features/semantic-analysis.js"></script>
     <script src="/web/js/features/snippets.js"></script>
+    <script src="/web/js/features/screenshot-ai.js"></script>
+    <script src="/web/js/utils.js"></script>
 
     <!-- Main Application Initialization - Load Last -->
     <script src="/web/js/app.js"></script>
+    
+    <!-- Live Recorder Panel Helper Functions -->
+    <script>
+        // Bring browser window to front
+        async function bringBrowserToFront() {
+            if (window.recorderState && window.recorderState.liveMonitor) {
+                const success = await window.recorderState.liveMonitor.bringBrowserToFront();
+                if (success) {
+                    showRecordingStatus('✅ Browser window focused');
+                } else {
+                    showRecordingStatus('⚠️ Could not focus browser window');
+                }
+            } else {
+                console.warn('⚠️ Live monitor not initialized');
+            }
+        }
+    </script>
+    
+    <!-- Ensure critical functions are available -->
+    <script>
+        // Verify toggleSidebar is loaded
+        console.log('[INIT] toggleSidebar available:', typeof window.toggleSidebar);
+        if (typeof window.toggleSidebar === 'undefined') {
+            console.error('[ERROR] toggleSidebar not loaded, creating fallback');
+            window.toggleSidebar = function() {
+                const sidebar = document.getElementById('sidebar');
+                const mainContent = document.querySelector('.main-content');
+                const toggleIcon = document.getElementById('toggleIcon');
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+                if (sidebar.classList.contains('collapsed')) {
+                    toggleIcon.textContent = '▶';
+                } else {
+                    toggleIcon.textContent = '◀';
+                }
+            };
+        }
+    </script>
 
     <!-- Custom Prism theme adjustments -->
     <style>

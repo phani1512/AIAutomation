@@ -1,5 +1,5 @@
 // API Configuration and Helper Functions
-const API_URL = 'http://localhost:5002';
+// API_URL is defined in index-new.html inline script
 
 // Helper function for authenticated API calls
 async function authenticatedFetch(url, options = {}) {
@@ -42,14 +42,9 @@ async function checkConnection() {
         const data = await response.json();
         
         if (data.status === 'healthy') {
-            const statusElement = document.getElementById('apiStatus');
-            const dotElement = document.querySelector('.status-dot');
-            if (statusElement) {
-                statusElement.textContent = 'Connected';
-            }
-            if (dotElement) {
-                dotElement.classList.add('connected');
-            }
+            document.getElementById('statusDot').classList.add('connected');
+            document.getElementById('statusText').textContent = 'Connected to SLM API';
+            document.getElementById('modelInfo').textContent = `Model: ${data.model}`;
         } else {
             showConnectionError();
         }
@@ -58,17 +53,18 @@ async function checkConnection() {
     }
 }
 
-function showConnectionError() {
-    const statusElement = document.getElementById('apiStatus');
-    const dotElement = document.querySelector('.status-dot');
-    if (statusElement) {
-        statusElement.textContent = 'Disconnected';
-    }
-    if (dotElement) {
-        dotElement.classList.add('error');
-        dotElement.classList.remove('connected');
-    }
-}
-
 // Alias for backward compatibility
 const checkHealth = checkConnection;
+
+function showConnectionError() {
+    document.getElementById('statusDot').classList.add('error');
+    document.getElementById('statusText').textContent = 'API Server Not Running';
+    document.getElementById('modelInfo').textContent = 'Please start: python src/main/python/api_server_modular.py';
+}
+
+// Expose functions and constants to window object
+window.API_URL = API_URL;
+window.authenticatedFetch = authenticatedFetch;
+window.checkConnection = checkConnection;
+window.checkHealth = checkHealth;
+window.showConnectionError = showConnectionError;

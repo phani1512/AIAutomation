@@ -118,8 +118,22 @@ def generate_test_code(recorded_sessions):
         try:
             # Use AI to generate semantic test code
             import inference_improved
+            import os
+            # Get the model path relative to the project root
+            # From src/main/python/code_generator.py, go up 3 levels to project root
+            current_file = os.path.abspath(__file__)
+            project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_file))))
+            model_path = os.path.join(project_root, 'selenium_ngram_model.pkl')
+            
+            # Verify the model file exists before trying to load it
+            if not os.path.exists(model_path):
+                logging.warning(f"[SEMANTIC] Model file not found at {model_path}, falling back to standard generation")
+                is_semantic_test = False
+                return _generate_python_code(session, test_name) if language == 'python' else _generate_java_code(session, test_name)
+            
+            logging.info(f"[SEMANTIC] Loading model from: {model_path}")
             generator = inference_improved.ImprovedSeleniumGenerator(
-                model_path='C:\\Users\\valaboph\\WebAutomation\\selenium_ngram_model.pkl',
+                model_path=model_path,
                 silent=True
             )
             

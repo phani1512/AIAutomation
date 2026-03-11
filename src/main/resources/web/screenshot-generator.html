@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screenshot-Based Test Generator</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Screenshot-Based Test Generator v2.1</title>
     <style>
         * {
             margin: 0;
@@ -238,13 +241,48 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        .features-banner {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.9em;
+            text-align: center;
+        }
+        
+        .feature-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin: 0 5px;
+            font-size: 0.85em;
+        }
+        
+        .button-description {
+            font-size: 0.75em;
+            color: #64748b;
+            margin-top: 5px;
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <h2 class="section-header">📸 Screenshot-Based Test Generator</h2>
-            <p style="color: #64748b; margin-bottom: 20px;">Upload a screenshot and generate automated test code using AI visual analysis</p>
+            <h2 class="section-header">📸 Professional Screenshot Test Generator</h2>
+            <p style="color: #64748b; margin-bottom: 10px;">Upload a screenshot and generate production-ready test automation code</p>
+            <p style="color: #94a3b8; font-size: 0.8em; margin-bottom: 10px;">v2.1 - Updated Feb 3, 2026 | Clear cache (Ctrl+Shift+R) if issues occur</p>
+            
+            <div class="features-banner">
+                🎯 <strong>Professional Features:</strong>
+                <span class="feature-badge">📝 OCR Text Extraction</span>
+                <span class="feature-badge">📦 Generate POM</span>
+                <span class="feature-badge">🔢 Test Data</span>
+                <span class="feature-badge">🎯 Smart Locators</span>
+            </div>
 
             <div class="upload-area" id="uploadArea">
                 <div class="upload-text">📁 Drop screenshot here</div>
@@ -268,10 +306,18 @@
                 </div>
             </div>
 
-            <div>
-                <button class="btn btn-primary" onclick="analyzeScreenshot()">🔍 Analyze Screenshot</button>
-                <button class="btn btn-primary" onclick="generateCode()">⚡ Generate Test Code</button>
-                <button class="btn btn-secondary" onclick="resetForm()">🔄 Reset</button>
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary" onclick="analyzeScreenshot()" style="width: 100%; margin-bottom: 10px;">
+                    🔍 Analyze Screenshot
+                    <span class="button-description">Detect elements & show statistics (no code generation)</span>
+                </button>
+                <button class="btn btn-primary" onclick="generateCode()" style="width: 100%; margin-bottom: 10px;">
+                    ⚡ Generate Complete Test Suite
+                    <span class="button-description">Generate full test code (Test Class + Page Object + Data)</span>
+                </button>
+                <button class="btn btn-secondary" onclick="resetForm()" style="width: 100%;">
+                    🔄 Reset Form
+                </button>
             </div>
 
             <div class="loading" id="loadingIndicator">
@@ -335,16 +381,37 @@
         });
 
         function handleFileUpload(file) {
+            console.log('[UPLOAD] New screenshot uploaded, clearing previous results');
+            
+            // Clear previous results when new screenshot is uploaded
+            const analysisResults = document.getElementById('analysisResults');
+            if (analysisResults) analysisResults.style.display = 'none';
+            
+            const codeResults = document.getElementById('codeResults');
+            if (codeResults) codeResults.style.display = 'none';
+            
+            const statsContainer = document.getElementById('statsContainer');
+            if (statsContainer) statsContainer.innerHTML = '';
+            
+            const elementsContainer = document.getElementById('elementsContainer');
+            if (elementsContainer) elementsContainer.innerHTML = '';
+            
+            const generatedCode = document.getElementById('generatedCode');
+            if (generatedCode) generatedCode.textContent = '';
+            
             const reader = new FileReader();
             reader.onload = (e) => {
                 currentScreenshot = e.target.result;
                 screenshotPreview.src = currentScreenshot;
                 document.getElementById('previewContainer').style.display = 'block';
+                console.log('[UPLOAD] Screenshot loaded successfully');
             };
             reader.readAsDataURL(file);
         }
 
         async function analyzeScreenshot() {
+            console.log('[DEBUG] analyzeScreenshot called');
+            
             if (!currentScreenshot) {
                 alert('Please upload a screenshot first');
                 return;
@@ -352,22 +419,44 @@
 
             const loading = document.getElementById('loadingIndicator');
             loading.classList.add('active');
+            
+            // Clear previous analysis results before loading new ones
+            const statsContainer = document.getElementById('statsContainer');
+            if (statsContainer) statsContainer.innerHTML = '';
+            
+            const elementsContainer = document.getElementById('elementsContainer');
+            if (elementsContainer) elementsContainer.innerHTML = '';
+            
             document.getElementById('analysisResults').style.display = 'none';
 
             try {
+                console.log('[DEBUG] Sending request to server...');
                 const response = await fetch('http://localhost:5002/screenshot/analyze', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         screenshot: currentScreenshot,
-                        intent: document.getElementById('testIntent').value
+                        intent: document.getElementById('testIntent').value,
+                        language: 'java',
+                        auto_save: false  // Don't auto-save from web UI
                     })
                 });
 
+                console.log('[DEBUG] Response status:', response.status);
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('[DEBUG] Error response:', errorData);
+                    throw new Error(errorData.error || `Server error: ${response.status}`);
+                }
+
                 const data = await response.json();
+                console.log('[DEBUG] Success response:', JSON.stringify(data, null, 2));
+                console.log('[DEBUG] Calling displayAnalysis with:', data);
                 displayAnalysis(data);
             } catch (error) {
-                console.error('Analysis error:', error);
+                console.error('[DEBUG] Analysis error:', error);
+                console.error('[DEBUG] Error stack:', error.stack);
                 alert('Error analyzing screenshot: ' + error.message);
             } finally {
                 loading.classList.remove('active');
@@ -375,45 +464,125 @@
         }
 
         function displayAnalysis(data) {
-            document.getElementById('analysisResults').style.display = 'block';
+            console.log('[DEBUG] displayAnalysis called');
             
-            const statsContainer = document.getElementById('statsContainer');
+            // Ultra-safe validation
+            try {
+                if (!data) {
+                    throw new Error('Response data is null or undefined');
+                }
+                
+                if (typeof data !== 'object') {
+                    throw new Error('Response data is not an object: ' + typeof data);
+                }
+                
+                if (data.error) {
+                    throw new Error('Server error: ' + data.error);
+                }
+                
+                console.log('[DEBUG] Data received:', JSON.stringify(data).substring(0, 200));
+                document.getElementById('analysisResults').style.display = 'block';
+                
+                // Defensive extraction with extensive validation
+                const totalElements = Number(data.total_elements) || 0;
+                const elements = (data.elements && typeof data.elements === 'object') ? data.elements : {};
+                const buttons = (elements.buttons && Array.isArray(elements.buttons)) ? elements.buttons : [];
+                const inputs = (elements.inputs && Array.isArray(elements.inputs)) ? elements.inputs : [];
+                
+                console.log('[DEBUG] Parsed:', { totalElements, buttonsCount: buttons.length, inputsCount: inputs.length });
+                
+                const statsContainer = document.getElementById('statsContainer');
+                if (!statsContainer) {
+                    throw new Error('statsContainer element not found in DOM');
+                }
+            
             statsContainer.innerHTML = `
                 <div class="stat-card">
-                    <div class="stat-value">${data.total_elements || 0}</div>
+                    <div class="stat-value">${totalElements}</div>
                     <div class="stat-label">Total Elements</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">${(data.elements?.buttons || []).length}</div>
+                    <div class="stat-value">${buttons.length}</div>
                     <div class="stat-label">Buttons</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">${(data.elements?.inputs || []).length}</div>
+                    <div class="stat-value">${inputs.length}</div>
                     <div class="stat-label">Input Fields</div>
                 </div>
             `;
 
             const container = document.getElementById('elementsContainer');
+            console.log('[DEBUG] elementsContainer element:', container);
+            
+            if (!container) {
+                console.error('[DEBUG] elementsContainer element not found!');
+                alert('Error: UI element "elementsContainer" not found');
+                return;
+            }
+            
             container.innerHTML = '<h4 style="margin-top: 20px; color: #334155;">Detected Elements</h4>';
             
             const grid = document.createElement('div');
             grid.className = 'elements-grid';
 
-            if (data.suggested_actions && data.suggested_actions.length > 0) {
-                data.suggested_actions.forEach((action, idx) => {
-                    const card = document.createElement('div');
-                    card.className = 'element-card';
-                    card.innerHTML = `
-                        <h4>Step ${idx + 1}</h4>
-                        <p><strong>Action:</strong> ${action.action}</p>
-                        <p><strong>Element:</strong> ${action.element_type}</p>
-                        <p>${action.description || ''}</p>
-                    `;
-                    grid.appendChild(card);
-                });
+            // Show buttons
+            if (buttons.length > 0) {
+                console.log('[DEBUG] Processing', buttons.length, 'buttons');
+                try {
+                    buttons.forEach((btn, idx) => {
+                        console.log('[DEBUG] Processing button', idx, ':', btn);
+                        const card = document.createElement('div');
+                        card.className = 'element-card';
+                        const btnText = btn.text || btn.suggested_name || `Button ${idx + 1}`;
+                        const locators = Array.isArray(btn.locator_strategies) ? btn.locator_strategies : [];
+                        const primaryLocator = locators.length > 0 ? locators[0].type : 'N/A';
+                        
+                        card.innerHTML = `
+                            <h4>🔘 ${btnText}</h4>
+                            <p><strong>Type:</strong> Button</p>
+                            <p><strong>Locator:</strong> ${primaryLocator}</p>
+                            <p><strong>Position:</strong> (${btn.x || 0}, ${btn.y || 0})</p>
+                        `;
+                        grid.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error('[DEBUG] Error processing buttons:', error);
+                }
+            }
+
+            // Show inputs
+            if (inputs.length > 0) {
+                console.log('[DEBUG] Processing', inputs.length, 'inputs');
+                try {
+                    inputs.forEach((inp, idx) => {
+                        console.log('[DEBUG] Processing input', idx, ':', inp);
+                        const card = document.createElement('div');
+                        card.className = 'element-card';
+                        const label = inp.label || inp.suggested_name || `Input ${idx + 1}`;
+                        const locators = Array.isArray(inp.locator_strategies) ? inp.locator_strategies : [];
+                        const primaryLocator = locators.length > 0 ? locators[0].type : 'N/A';
+                        
+                        card.innerHTML = `
+                            <h4>📝 ${label}</h4>
+                            <p><strong>Type:</strong> Input Field</p>
+                            <p><strong>Locator:</strong> ${primaryLocator}</p>
+                            <p><strong>Position:</strong> (${inp.x || 0}, ${inp.y || 0})</p>
+                        `;
+                        grid.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error('[DEBUG] Error processing inputs:', error);
+                }
+            }
+
+            // If no elements detected
+            if (buttons.length === 0 && inputs.length === 0) {
+                console.log('[DEBUG] No elements detected');
+                grid.innerHTML = '<p style="color: #64748b;">No UI elements detected. Try a clearer screenshot.</p>';
             }
 
             container.appendChild(grid);
+            console.log('[DEBUG] displayAnalysis completed successfully');
         }
 
         async function generateCode() {
@@ -424,6 +593,18 @@
 
             const loading = document.getElementById('loadingIndicator');
             loading.classList.add('active');
+            
+            // Clear previous generated code before loading new code
+            const generatedCode = document.getElementById('generatedCode');
+            if (generatedCode) generatedCode.textContent = '';
+            
+            // Clear previous analysis results
+            const statsContainer = document.getElementById('statsContainer');
+            if (statsContainer) statsContainer.innerHTML = '';
+            
+            const elementsContainer = document.getElementById('elementsContainer');
+            if (elementsContainer) elementsContainer.innerHTML = '';
+            
             document.getElementById('codeResults').style.display = 'none';
 
             try {
@@ -437,13 +618,28 @@
                     })
                 });
 
-                const data = await response.json();
-                document.getElementById('generatedCode').textContent = data.code;
-                document.getElementById('codeResults').style.display = 'block';
-                
-                if (data.analysis) {
-                    displayAnalysis(data.analysis);
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || `Server error: ${response.status}`);
                 }
+
+                const data = await response.json();
+                console.log('Code generation response:', data);
+                
+                // Extract test code from test_suite object
+                const testCode = data.test_suite?.test_class || data.code || null;
+                
+                if (testCode) {
+                    document.getElementById('generatedCode').textContent = testCode;
+                    document.getElementById('codeResults').style.display = 'block';
+                    console.log('[SUCCESS] Test code displayed successfully');
+                } else {
+                    console.error('[ERROR] No test code found in response:', data);
+                    throw new Error('No test code generated in response');
+                }
+                
+                // Display analysis results if available
+                displayAnalysis(data);
             } catch (error) {
                 console.error('Code generation error:', error);
                 alert('Error generating code: ' + error.message);
@@ -453,14 +649,44 @@
         }
 
         function resetForm() {
+            console.log('[RESET] Clearing all form data and results');
             currentScreenshot = null;
-            document.getElementById('screenshotPreview').src = '';
-            document.getElementById('previewContainer').style.display = 'none';
-            document.getElementById('testIntent').value = '';
-            document.getElementById('testName').value = '';
-            document.getElementById('analysisResults').style.display = 'none';
-            document.getElementById('codeResults').style.display = 'none';
-            screenshotInput.value = '';
+            
+            // Clear preview
+            const previewImg = document.getElementById('screenshotPreview');
+            if (previewImg) previewImg.src = '';
+            
+            const previewContainer = document.getElementById('previewContainer');
+            if (previewContainer) previewContainer.style.display = 'none';
+            
+            // Clear form inputs
+            const testIntent = document.getElementById('testIntent');
+            if (testIntent) testIntent.value = '';
+            
+            const testName = document.getElementById('testName');
+            if (testName) testName.value = '';
+            
+            // Clear analysis results
+            const analysisResults = document.getElementById('analysisResults');
+            if (analysisResults) analysisResults.style.display = 'none';
+            
+            const statsContainer = document.getElementById('statsContainer');
+            if (statsContainer) statsContainer.innerHTML = '';
+            
+            const elementsContainer = document.getElementById('elementsContainer');
+            if (elementsContainer) elementsContainer.innerHTML = '';
+            
+            // Clear code results
+            const codeResults = document.getElementById('codeResults');
+            if (codeResults) codeResults.style.display = 'none';
+            
+            const generatedCode = document.getElementById('generatedCode');
+            if (generatedCode) generatedCode.textContent = '';
+            
+            // Clear file input
+            if (screenshotInput) screenshotInput.value = '';
+            
+            console.log('[RESET] Form reset complete');
         }
 
         function copyCode() {
