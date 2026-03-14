@@ -144,7 +144,14 @@ class RecorderLiveMonitor {
         this.lastActionCount = 0;
         this.lastUrl = '';
         this.lastTabCount = 0;
-        console.log('[Live Monitor] Stopped');
+        
+        // Reset UI displays
+        const timeDisplay = document.getElementById('liveSessionTime');
+        if (timeDisplay) {
+            timeDisplay.textContent = '00:00';
+        }
+        
+        console.log('[Live Monitor] Stopped - timer reset to 00:00');
     }
 
     updateSessionTimer() {

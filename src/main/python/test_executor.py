@@ -235,6 +235,8 @@ def _resolve_file_path(file_path):
 
 def execute_test(browser_executor_class, recorded_sessions):
     """Execute a single test case."""
+    start_time = time.time()  # Track execution duration
+    
     try:
         session_id = request.json.get('session_id')
         data_overrides = request.json.get('data_overrides', {})
@@ -270,6 +272,27 @@ def execute_test(browser_executor_class, recorded_sessions):
         browser_executor.driver.get(session['url'])
         time.sleep(3)
         
+        # Close sticky popup after page load with explicit wait
+        try:
+            logging.info("[TEST EXECUTE] Checking for sticky popup...")
+            popup_result = browser_executor.driver.execute_script("""
+                var stickyClose = document.getElementById('sticky-close');
+                if (stickyClose && stickyClose.offsetParent !== null) {
+                    stickyClose.click();
+                    // Wait for popup to actually disappear
+                    var startTime = Date.now();
+                    while (stickyClose.offsetParent !== null && (Date.now() - startTime) < 2000) {
+                        // Busy wait for popup to disappear (max 2 seconds)
+                    }
+                    return stickyClose.offsetParent === null ? 'Popup closed and hidden' : 'Popup clicked but still visible';
+                }
+                return 'No visible popup found';
+            """)
+            logging.info(f"[TEST EXECUTE] Popup handling: {popup_result}")
+            time.sleep(1)
+        except Exception as e:
+            logging.info(f"[TEST EXECUTE] No popup to close: {str(e)}")
+        
         # Execute each action
         steps_executed = 0
         total_steps = len(session['actions'])
@@ -277,6 +300,25 @@ def execute_test(browser_executor_class, recorded_sessions):
         for action in session['actions']:
             step_num = action['step']
             action_type = action['action_type']
+            
+            # Close popup before EVERY action (silent - don't fail if already closed)
+            try:
+                popup_closed = browser_executor.driver.execute_script("""
+                    try {
+                        var popup = document.getElementById('sticky-close');
+                        if (popup && popup.offsetParent !== null) {
+                            popup.click();
+                            return 'closed';
+                        }
+                        return 'already_closed';
+                    } catch(e) {
+                        return 'no_popup';
+                    }
+                """)
+                if popup_closed == 'closed':
+                    logging.info(f"[STEP {step_num}] Closed popup before action")
+            except Exception as e:
+                logging.debug(f"[STEP {step_num}] Popup close skipped: {str(e)}")
             
             logging.info(f"[STEP {step_num}] Executing: {action_type}")
             
@@ -290,6 +332,27 @@ def execute_test(browser_executor_class, recorded_sessions):
             # Get locator
             locator_str = action.get('suggested_locator', '')
             
+            # Handle scroll action separately (no element locator needed)
+            if action_type == 'scroll':
+                try:
+                    import json
+                    scroll_data = json.loads(value) if value else {}
+                    scroll_x = scroll_data.get('x', 0)
+                    scroll_y = scroll_data.get('y', 0)
+                    
+                    logging.info(f"[SCROLL] Scrolling to position: x={scroll_x}, y={scroll_y}")
+                    browser_executor.driver.execute_script(f"window.scrollTo({scroll_x}, {scroll_y});")
+                    time.sleep(0.5)  # Brief pause after scroll
+                    steps_executed += 1
+                except Exception as e:
+                    logging.error(f"[SCROLL] Step {step_num} failed: {str(e)}")
+                    return jsonify({
+                        'success': False,
+                        'error': f"Step {step_num} failed: {str(e)}",
+                        'step': step_num
+                    }), 400
+                continue
+            
             if action_type != 'verify_message' and locator_str:
                 # Parse locator
                 by_type, by_value = _parse_locator(locator_str)
@@ -298,24 +361,98 @@ def execute_test(browser_executor_class, recorded_sessions):
                     wait = WebDriverWait(browser_executor.driver, 30)
                     
                     if action_type == 'click':
-                        element = wait.until(EC.element_to_be_clickable((by_type, by_value)))
-                        element.click()
-                        time.sleep(2)  # Wait for page transition/AJAX
+                        # Always scroll element into view for reliable clicking
+                        try:
+                            element = wait.until(EC.presence_of_element_located((by_type, by_value)))
+                            # Scroll to center of viewport
+                            browser_executor.driver.execute_script("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", element)
+                            time.sleep(0.5)
+                            # Wait for element to be clickable and click
+                            element = wait.until(EC.element_to_be_clickable((by_type, by_value)))
+                            element.click()
+                            time.sleep(2)
+                        except Exception as e:
+                            error_msg = str(e)
+                            # If click is intercepted by sticky popup, close it and retry (environmental issue)
+                            if 'click intercepted' in error_msg.lower():
+                                logging.warning(f"[CLICK] Click intercepted by popup, closing it")
+                                try:
+                                    browser_executor.driver.execute_script("""
+                                        var stickyClose = document.getElementById('sticky-close');
+                                        if (stickyClose) {
+                                            stickyClose.click();
+                                            stickyClose.remove();
+                                        }
+                                    """)
+                                    time.sleep(0.5)
+                                    logging.info("[CLICK] Popup closed, retrying click")
+                                except:
+                                    pass
+                                # Retry after closing popup
+                                element = wait.until(EC.element_to_be_clickable((by_type, by_value)))
+                                element.click()
+                                time.sleep(2)
+                            else:
+                                # Other error, just re-raise
+                                raise
                     elif action_type == 'input':
+                        # Extra popup close before input to ensure credentials are never blocked
+                        try:
+                            browser_executor.driver.execute_script("""
+                                var popup = document.getElementById('sticky-close');
+                                if (popup && popup.offsetParent !== null) {
+                                    popup.click();
+                                    popup.remove();
+                                }
+                            """)
+                            time.sleep(0.3)  # Wait for popup to close
+                        except:
+                            pass
+                        
+                        # Always scroll element into view
+                        element = wait.until(EC.presence_of_element_located((by_type, by_value)))
+                        browser_executor.driver.execute_script("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", element)
+                        time.sleep(0.5)
+                        # Wait for element to be visible and interactable
                         element = wait.until(EC.visibility_of_element_located((by_type, by_value)))
+                        element.clear()
                         element.send_keys(value)
                     elif action_type == 'click_and_input':
+                        # Extra popup close before input to ensure credentials are never blocked
+                        try:
+                            browser_executor.driver.execute_script("""
+                                var popup = document.getElementById('sticky-close');
+                                if (popup && popup.offsetParent !== null) {
+                                    popup.click();
+                                    popup.remove();
+                                }
+                            """)
+                            time.sleep(0.3)  # Wait for popup to close
+                        except:
+                            pass
+                        
+                        # Always scroll element into view
+                        element = wait.until(EC.presence_of_element_located((by_type, by_value)))
+                        browser_executor.driver.execute_script("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", element)
+                        time.sleep(0.5)
+                        # Wait for element to be clickable
                         element = wait.until(EC.element_to_be_clickable((by_type, by_value)))
                         element.click()
                         time.sleep(0.5)
+                        element.clear()
                         element.send_keys(value)
                     elif action_type == 'select':
+                        element = wait.until(EC.presence_of_element_located((by_type, by_value)))
+                        browser_executor.driver.execute_script("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", element)
+                        time.sleep(0.5)
                         element = wait.until(EC.visibility_of_element_located((by_type, by_value)))
                         select = Select(element)
                         select.select_by_visible_text(value)
                     elif action_type == 'upload_file':
                         # File upload - element must be <input type="file">
                         element = wait.until(EC.presence_of_element_located((by_type, by_value)))
+                        browser_executor.driver.execute_script("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", element)
+                        time.sleep(0.5)
                         # Support multiple files separated by pipe (|)
                         if '|' in value:
                             # Multiple files - send them with newline separator
@@ -378,9 +515,12 @@ def execute_test(browser_executor_class, recorded_sessions):
         # Close browser
         browser_executor.close()
         
+        duration_ms = int((time.time() - start_time) * 1000)  # Convert to milliseconds
+        
         logging.info("=" * 80)
         logging.info(f"✓ TEST PASSED: {session['name']}")
         logging.info(f"  Executed {steps_executed}/{total_steps} steps successfully")
+        logging.info(f"  Duration: {duration_ms}ms")
         logging.info("=" * 80)
         
         return jsonify({
@@ -388,7 +528,8 @@ def execute_test(browser_executor_class, recorded_sessions):
             'passed': True,
             'test_name': session.get('name', 'Test'),
             'steps_executed': steps_executed,
-            'total_steps': total_steps
+            'total_steps': total_steps,
+            'duration': duration_ms
         }), 200
         
     except Exception as e:

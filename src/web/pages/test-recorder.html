@@ -23,7 +23,7 @@
                         <input type="text" id="recordingUrl" placeholder="https://example.com">
                     </div>
 
-                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
                         <button class="btn" onclick="startRecording()" id="startRecordBtn">
                             🔴 Start Recording
                         </button>
@@ -32,6 +32,14 @@
                         </button>
                         <button class="btn" onclick="startNewTestCase()" id="newTestBtn" style="background: #10b981; display: none;">
                             ➕ New Test Case
+                        </button>
+                        
+                        <!-- Phase 4: Advanced Features -->
+                        <button class="btn" onclick="showTemplates()" id="templatesBtn" style="background: #8b5cf6;">
+                            📋 Templates
+                        </button>
+                        <button class="btn" onclick="replaySession()" id="replayBtn" style="background: #3b82f6; display: none;">
+                            ▶️ Replay
                         </button>
                     </div>
 
@@ -91,19 +99,32 @@
                         </div>
                     </div>
 
+                    <!-- Session History Tracker -->
+                    <div id="sessionHistoryPanel" style="display: none; margin-bottom: 15px; padding: 12px; background: #f3f4f6; border-radius: 8px; border: 2px solid #e5e7eb;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <strong style="color: #374151;">📊 Session History</strong>
+                            <span id="sessionHistoryCount" style="background: #667eea; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; font-weight: 600;">0 sessions</span>
+                        </div>
+                        <div id="sessionHistoryList" style="font-size: 0.85em; color: #6b7280; max-height: 120px; overflow-y: auto;">
+                            No sessions yet
+                        </div>
+                    </div>
+
                     <div id="recordedActionsContainer" style="display: none;">
                         <h4 style="color: #667eea; margin-bottom: 10px;">Recorded Actions:</h4>
                         <div id="recordedActionsList" style="max-height: 200px; overflow-y: auto; background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 10px;">
                             <!-- Actions will be listed here -->
                         </div>
                         <div style="display: flex; gap: 10px; margin-top: 10px; align-items: center;">
-                            <label style="color: var(--text-primary); font-weight: 500;">Language:</label>
-                            <select id="codeLanguageSelector" style="flex: 1; padding: 8px; background: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
-                                <option value="python">Python (pytest)</option>
-                                <option value="java">Java (TestNG)</option>
+                            <label style="color: var(--text-primary); font-weight: 500;">📝 Export Format:</label>
+                            <select id="codeLanguageSelector" style="flex: 1; padding: 8px; background: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; font-weight: 500;">
+                                <option value="java">☕ Java (TestNG)</option>
+                                <option value="python">🐍 Python (pytest)</option>
+                                <option value="javascript">🟨 JavaScript (Playwright)</option>
+                                <option value="cypress">🌲 Cypress</option>
                             </select>
-                            <button class="btn" onclick="generateTestFromRecording()" style="flex: 2;">
-                                🚀 Generate Test Code
+                            <button class="btn" onclick="generateTestFromRecording()" style="flex: 2; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                ✨ Generate Test Code
                             </button>
                         </div>
                     </div>

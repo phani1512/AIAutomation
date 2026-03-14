@@ -255,6 +255,65 @@ function saveToSnippets() {
     showAddSnippetModal(code);
 }
 
+function setPrompt(text) {
+    const promptInput = document.getElementById('promptInput');
+    if (promptInput) {
+        promptInput.value = text;
+    }
+}
+
+function validateCode() {
+    const code = document.getElementById('resultContent')?.textContent;
+    if (!code || code === 'Your generated code will appear here...') {
+        alert('No code to validate');
+        return;
+    }
+    
+    showNotification('⏳ Validating code...');
+    
+    // Detect language
+    let language = 'java';
+    if (code.includes('from selenium') || code.includes('import pytest') || code.includes('def ')) {
+        language = 'python';
+    } else if (code.includes('const ') || code.includes('let ') || code.includes('function ')) {
+        language = 'javascript';
+    }
+    
+    // Basic validation
+    const issues = [];
+    if (code.length < 10) {
+        issues.push('Code is too short');
+    }
+    
+    if (language === 'java' && !code.includes('class ')) {
+        issues.push('Missing class definition');
+    }
+    
+    if (issues.length > 0) {
+        showNotification('⚠️ Validation found ' + issues.length + ' issue(s): ' + issues.join(', '));
+    } else {
+        showNotification('✅ Code validation passed!');
+    }
+}
+
+async function executeCurrentTest() {
+    const code = document.getElementById('resultContent')?.textContent;
+    if (!code || code === 'Your generated code will appear here...') {
+        alert('No code to execute. Generate code first.');
+        return;
+    }
+    
+    showNotification('⏳ Executing test...');
+    
+    try {
+        // This would connect to a test execution service
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        showNotification('✅ Test execution feature coming soon!');
+    } catch (error) {
+        showNotification('❌ Execution failed: ' + error.message);
+    }
+}
+
 // Expose functions to window object for inline onclick handlers
 window.generateCode = generateCode;
 window.displayResult = displayResult;
@@ -263,3 +322,6 @@ window.copyResult = copyResult;
 window.exportCode = exportCode;
 window.downloadCodeFile = downloadCodeFile;
 window.saveToSnippets = saveToSnippets;
+window.setPrompt = setPrompt;
+window.validateCode = validateCode;
+window.executeCurrentTest = executeCurrentTest;

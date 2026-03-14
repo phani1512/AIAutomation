@@ -123,7 +123,7 @@ def generate_test_code(recorded_sessions):
             # From src/main/python/code_generator.py, go up 3 levels to project root
             current_file = os.path.abspath(__file__)
             project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_file))))
-            model_path = os.path.join(project_root, 'selenium_ngram_model.pkl')
+            model_path = os.path.join(project_root, 'src', 'resources', 'selenium_ngram_model.pkl')
             
             # Verify the model file exists before trying to load it
             if not os.path.exists(model_path):
@@ -507,7 +507,7 @@ class Test{test_name}:
     def test_{test_name.lower()}(self):
         wait = WebDriverWait(self.driver, 20)
         
-        # Helper method to find elements with self-healing
+        # Helper method to find elements with self-healing and better waits
         def find_element_safe(locator_str):
             if self.healer:
                 element = self.healer.find_element(self.driver, locator_str)
@@ -520,80 +520,139 @@ class Test{test_name}:
                 value = by_parts[1].strip(')"\\'')
                 by_map = {{'ID': By.ID, 'NAME': By.NAME, 'XPATH': By.XPATH, 'CSS_SELECTOR': By.CSS_SELECTOR,
                           'CLASS_NAME': By.CLASS_NAME, 'TAG_NAME': By.TAG_NAME, 'LINK_TEXT': By.LINK_TEXT}}
-                return wait.until(EC.presence_of_element_located((by_map.get(by_type, By.XPATH), value)))
+                locator = (by_map.get(by_type, By.XPATH), value)
+                # First wait for presence, then wait for visibility
+                element = wait.until(EC.presence_of_element_located(locator))
+                wait.until(EC.visibility_of(element))
+                return element
             raise Exception(f"Could not find element: {{locator_str}}")
 """
     
     # Add actions
-    for action in session['actions']:
-        action_type = action['action_type']
+    actions = session.get('actions', [])
+    if not actions:
+        logging.warning(f"[CODE GEN] No actions found in session {session.get('name', 'unknown')}")
+        code += "        # No actions recorded yet\n"
+        code += "        pass\n"
+    
+    first_action = True
+    for action in actions:
+        action_type = action.get('action_type')
+        
+        # Skip actions without proper action_type
+        if not action_type or action_type == 'undefined':
+            logging.warning(f"[CODE GEN] Skipping action with undefined type: {action}")
+            continue
         
         # Skip verify_message steps that have no value
         if action_type == 'verify_message' and not action.get('value'):
             continue
         
+        # Close popup before first input/click action to avoid interference
+        if first_action and action_type in ['input', 'click', 'click_and_input']:
+            code += "        # Close any sticky popups that might interfere with actions\n"
+            code += "        try:\n"
+            code += "            close_btn = self.driver.find_element(By.ID, 'sticky-close')\n"
+            code += "            self.driver.execute_script('arguments[0].click();', close_btn)\n"
+            code += "            time.sleep(0.5)\n"
+            code += "        except:\n"
+            code += "            pass  # Popup might not exist\n"
+            code += "        \n"
+            first_action = False
+        
         code += f"        # Step {action['step']}: {action_type}\n"
         
-        locator = action.get('suggested_locator', 'By.ID, "unknown"')
-        
-        # Build locator string with proper quoting
-        # Use triple-quoted raw string to avoid escaping issues
-        if '"' in locator and "'" in locator:
-            # Has both quote types - use triple quotes
-            locator_str = f'"""{locator}"""'
-            logging.info(f"[LOCATOR] Triple quotes: {locator_str}")
-        elif '"' in locator:
-            # Has double quotes - use single quotes
-            locator_str = f"'{locator}'"
-            logging.info(f"[LOCATOR] Single quotes: {locator_str}")
-        else:
-            # Default - use double quotes
-            locator_str = f'"{locator}"'
-            logging.info(f"[LOCATOR] Double quotes: {locator_str}")
+        # Only build locator for actions that need it (not scroll or verify_message)
+        locator_str = None
+        if action_type not in ['scroll', 'verify_message']:
+            locator = action.get('suggested_locator', 'By.ID, "unknown"')
+            
+            # Build locator string with proper quoting
+            # Use triple-quoted raw string to avoid escaping issues
+            if '"' in locator and "'" in locator:
+                # Has both quote types - use triple quotes
+                locator_str = f'"""{locator}"""'
+                logging.info(f"[LOCATOR] Triple quotes: {locator_str}")
+            elif '"' in locator:
+                # Has double quotes - use single quotes
+                locator_str = f"'{locator}'"
+                logging.info(f"[LOCATOR] Single quotes: {locator_str}")
+            else:
+                # Default - use double quotes
+                locator_str = f'"{locator}"'
+                logging.info(f"[LOCATOR] Double quotes: {locator_str}")
         
         if action_type == 'click':
             code += f"        elem = find_element_safe({locator_str})\n"
-            code += f"        self.driver.execute_script('arguments[0].scrollIntoView({{block: \"center\"}});', elem)\n"
-            code += f"        time.sleep(0.5)  # Wait for scroll and ensure no overlays\n"
+            code += f"        # Scroll element into view\n"
+            code += f"        self.driver.execute_script(\"arguments[0].scrollIntoView({{behavior: 'auto', block: 'center'}});\", elem)\n"
+            code += f"        time.sleep(0.5)\n"
             code += f"        # Try regular click, fallback to JavaScript click if intercepted\n"
             code += f"        try:\n"
             code += f"            elem.click()\n"
             code += f"        except Exception as e:\n"
-            code += f"            if 'intercepted' in str(e):\n"
+            code += f"            if 'intercepted' in str(e).lower() or 'not clickable' in str(e).lower():\n"
             code += f"                print('Element click intercepted, using JavaScript click')\n"
             code += f"                self.driver.execute_script('arguments[0].click();', elem)\n"
             code += f"            else:\n"
             code += f"                raise\n"
-            logging.info(f"[GENERATED] Click with scroll and JS fallback: {locator_str}")
+            code += f"        time.sleep(0.5)  # Brief pause after click\n"
+            logging.info(f"[GENERATED] Click with scrollIntoView and JS fallback: {locator_str}")
         
         elif action_type == 'input':
             code += f"        elem = find_element_safe({locator_str})\n"
-            code += f"        self.driver.execute_script('arguments[0].scrollIntoView({{block: \"center\"}});', elem)\n"
-            code += f"        time.sleep(0.3)  # Wait for scroll\n"
+            code += f"        # Scroll element into view\n"
+            code += f"        self.driver.execute_script(\"arguments[0].scrollIntoView({{behavior: 'auto', block: 'center'}});\", elem)\n"
+            code += f"        time.sleep(0.5)\n"
             code += f"        elem.clear()\n"
+            code += f"        time.sleep(0.2)\n"
             code += f"        elem.send_keys(\"{action['value']}\")\n"
         
         elif action_type == 'click_and_input':
             code += f"        elem = find_element_safe({locator_str})\n"
-            code += f"        self.driver.execute_script('arguments[0].scrollIntoView({{block: \"center\"}});', elem)\n"
-            code += f"        time.sleep(0.3)  # Wait for scroll\n"
+            code += f"        # Scroll element into view\n"
+            code += f"        self.driver.execute_script(\"arguments[0].scrollIntoView({{behavior: 'auto', block: 'center'}});\", elem)\n"
+            code += f"        time.sleep(0.5)\n"
             code += f"        elem.click()\n"
+            code += f"        time.sleep(0.3)\n"
             code += f"        elem.clear()\n"
+            code += f"        time.sleep(0.2)\n"
             code += f"        elem.send_keys(\"{action['value']}\")\n"
         
         elif action_type == 'select':
             code += f"        elem = find_element_safe({locator_str})\n"
-            code += f"        self.driver.execute_script('arguments[0].scrollIntoView({{block: \"center\"}});', elem)\n"
-            code += f"        time.sleep(0.3)  # Wait for scroll\n"
+            code += f"        # Scroll element into view\n"
+            code += f"        self.driver.execute_script(\"arguments[0].scrollIntoView({{behavior: 'auto', block: 'center'}});\", elem)\n"
+            code += f"        time.sleep(0.5)\n"
             code += f"        Select(elem).select_by_visible_text(\"{action['value']}\")\n"
+            code += f"        time.sleep(0.3)  # Wait for selection to register\n"
+        
+        elif action_type == 'scroll':
+            # Handle explicit scroll actions recorded by user
+            import json
+            try:
+                scroll_data = json.loads(action.get('value', '{}'))
+                scroll_x = scroll_data.get('x', 0)
+                scroll_y = scroll_data.get('y', 0)
+                code += f"        # Explicit scroll recorded by user\n"
+                code += f"        self.driver.execute_script('window.scrollTo({scroll_x}, {scroll_y});')\n"
+                code += f"        time.sleep(0.5)  # Wait for scroll to complete\n"
+                logging.info(f"[GENERATED] Scroll to position: x={scroll_x}, y={scroll_y}")
+            except:
+                logging.warning(f"[GENERATED] Could not parse scroll data: {action.get('value')}")
+                pass
         
         elif action_type == 'upload_file':
             file_path = action.get('value', '')
+            code += f"        elem = find_element_safe({locator_str})\n"
+            code += f"        # Scroll element into view\n"
+            code += f"        self.driver.execute_script(\"arguments[0].scrollIntoView({{behavior: 'auto', block: 'center'}});\", elem)\n"
+            code += f"        time.sleep(0.5)\n"
             if '|' in file_path:
                 paths_str = '\\n'.join(file_path.split('|'))
-                code += f"        find_element_safe({locator_str}).send_keys(\"{paths_str}\")\n"
+                code += f"        elem.send_keys(\"{paths_str}\")\n"
             else:
-                code += f"        find_element_safe({locator_str}).send_keys(\"{file_path}\")\n"
+                code += f"        elem.send_keys(\"{file_path}\")\n"
         
         elif action_type == 'drag_and_drop':
             target_locator = action.get('target_locator', 'By.ID, "drop-target"')
@@ -605,13 +664,22 @@ class Test{test_name}:
             else:
                 target_str = f'"{target_locator}"'
             code += f"        from selenium.webdriver.common.action_chains import ActionChains\n"
-            code += f"        ActionChains(self.driver).drag_and_drop(find_element_safe({locator_str}), find_element_safe({target_str})).perform()\n"
+            code += f"        source_elem = find_element_safe({locator_str})\n"
+            code += f"        target_elem = find_element_safe({target_str})\n"
+            code += f"        # Scroll source element into view\n"
+            code += f"        self.driver.execute_script(\"arguments[0].scrollIntoView({{behavior: 'auto', block: 'center'}});\", source_elem)\n"
+            code += f"        time.sleep(0.5)\n"
+            code += f"        ActionChains(self.driver).drag_and_drop(source_elem, target_elem).perform()\n"
         
         elif action_type == 'verify_message':
             message = action.get('value', '')
             if message:
                 normalized_message = ' '.join(message.split())
-                code += f"        actual_msg = ' '.join(find_element_safe({locator_str}).text.split())\n"
+                code += f"        elem = find_element_safe({locator_str})\n"
+                code += f"        # Scroll element into view\n"
+                code += f"        self.driver.execute_script(\"arguments[0].scrollIntoView({{behavior: 'auto', block: 'center'}});\", elem)\n"
+                code += f"        time.sleep(0.5)\n"
+                code += f"        actual_msg = ' '.join(elem.text.split())\n"
                 code += f"        assert '{normalized_message}' in actual_msg, f'Expected: {normalized_message}, Got: {{actual_msg}}'\n"
         
         code += f"\n"

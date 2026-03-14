@@ -18,7 +18,7 @@ class LocalAIVisionDetector:
     Combines OCR text understanding with learned patterns from training.
     """
     
-    def __init__(self, model_path: str = 'selenium_ngram_model.pkl'):
+    def __init__(self, model_path: str = 'src/resources/selenium_ngram_model.pkl'):
         """Initialize with your trained model."""
         self.model = None
         self.model_path = model_path

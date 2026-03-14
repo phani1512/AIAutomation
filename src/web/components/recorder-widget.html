@@ -1,0 +1,505 @@
+<!-- Recorder Widget - Floating Control Panel -->
+<div id="recorderWidget" class="recorder-widget" style="display: none;">
+    <!-- Widget Header -->
+    <div class="recorder-widget-header">
+        <div class="recorder-widget-title">
+            <span class="recorder-icon" id="recorderIcon">🎬</span>
+            <span class="recorder-title-text">Recording</span>
+            <span class="recorder-status-badge" id="recorderStatus">Active</span>
+        </div>
+        <button class="recorder-widget-close" onclick="minimizeRecorderWidget()" title="Minimize">
+            <span>−</span>
+        </button>
+    </div>
+
+    <!-- Recording Stats -->
+    <div class="recorder-stats-row">
+        <div class="recorder-stat">
+            <span class="recorder-stat-value" id="widgetActionCount">0</span>
+            <span class="recorder-stat-label">Actions</span>
+        </div>
+        <div class="recorder-stat">
+            <span class="recorder-stat-value" id="widgetRecordingTime">00:00</span>
+            <span class="recorder-stat-label">Time</span>
+        </div>
+        <div class="recorder-stat">
+            <span class="recorder-stat-value" id="widgetSessionName">Test</span>
+            <span class="recorder-stat-label">Session</span>
+        </div>
+    </div>
+
+    <!-- Quick Controls -->
+    <div class="recorder-controls-row">
+        <button class="recorder-control-btn pause-btn" onclick="pauseRecording()" id="widgetPauseBtn" title="Pause Recording">
+            <span class="btn-icon">⏸️</span>
+            <span class="btn-label">Pause</span>
+        </button>
+        <button class="recorder-control-btn resume-btn" onclick="resumeRecording()" id="widgetResumeBtn" style="display: none;" title="Resume Recording">
+            <span class="btn-icon">▶️</span>
+            <span class="btn-label">Resume</span>
+        </button>
+        <button class="recorder-control-btn screenshot-btn" onclick="captureScreenshotDuringRecording()" title="Take Screenshot">
+            <span class="btn-icon">📸</span>
+            <span class="btn-label">Screenshot</span>
+        </button>
+        <button class="recorder-control-btn stop-btn" onclick="stopRecording()" title="Stop Recording">
+            <span class="btn-icon">⏹️</span>
+            <span class="btn-label">Stop</span>
+        </button>
+    </div>
+
+    <!-- Live Action Preview (collapsible) -->
+    <div class="recorder-actions-preview" id="recorderActionsPreview">
+        <div class="preview-header" onclick="toggleActionsPreview()">
+            <span>Recent Actions</span>
+            <span class="preview-toggle" id="previewToggle">▼</span>
+        </div>
+        <div class="preview-list" id="widgetActionsList">
+            <div class="preview-empty">No actions recorded yet</div>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Hint -->
+    <div class="recorder-shortcuts-hint">
+        <small>
+            <kbd>Ctrl+P</kbd> Pause/Resume  
+            <kbd>Ctrl+Q</kbd> Stop  
+            <kbd>Ctrl+S</kbd> Screenshot
+        </small>
+    </div>
+</div>
+
+<!-- Minimized Widget (small floating button) -->
+<div id="recorderWidgetMinimized" class="recorder-widget-minimized" style="display: none;" onclick="restoreRecorderWidget()">
+    <span class="mini-icon">🎬</span>
+    <span class="mini-badge" id="miniActionCount">0</span>
+</div>
+
+<!-- Recorder Widget Styles -->
+<style>
+.recorder-widget {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 360px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    z-index: 999999;
+    overflow: hidden;
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.recorder-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recorder-widget-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.recorder-icon {
+    font-size: 24px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.recorder-title-text {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.recorder-status-badge {
+    padding: 4px 10px;
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.recorder-status-badge.paused {
+    background: rgba(251, 191, 36, 0.2);
+    border-color: rgba(251, 191, 36, 0.5);
+}
+
+.recorder-widget-close {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.recorder-widget-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.recorder-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.recorder-stat {
+    text-align: center;
+}
+
+.recorder-stat-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.recorder-stat-label {
+    display: block;
+    font-size: 11px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.recorder-controls-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 16px 20px;
+}
+
+.recorder-control-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.recorder-control-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.recorder-control-btn.stop-btn {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+    grid-column: 1 / -1;
+}
+
+.recorder-control-btn.stop-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.btn-icon {
+    font-size: 16px;
+}
+
+.btn-label {
+    font-size: 13px;
+}
+
+.recorder-actions-preview {
+    background: rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.preview-header {
+    padding: 12px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    user-select: none;
+}
+
+.preview-header:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.preview-toggle {
+    transition: transform 0.2s;
+}
+
+.preview-toggle.collapsed {
+    transform: rotate(-90deg);
+}
+
+.preview-list {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0 20px 12px;
+}
+
+.preview-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.preview-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.preview-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.preview-empty {
+    padding: 20px;
+    text-align: center;
+    opacity: 0.6;
+    font-size: 13px;
+}
+
+.preview-action-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.preview-action-step {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+.preview-action-details {
+    flex: 1;
+}
+
+.preview-action-type {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.preview-action-value {
+    opacity: 0.8;
+    font-size: 11px;
+}
+
+.recorder-shortcuts-hint {
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 11px;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.recorder-shortcuts-hint kbd {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 10px;
+    margin: 0 2px;
+}
+
+/* Minimized Widget */
+.recorder-widget-minimized {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.mini-icon {
+    font-size: 28px;
+    animation: pulse 2s infinite;
+}
+
+.mini-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #ef4444;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 24px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .recorder-widget {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+    }
+}
+</style>
+
+<script>
+// Widget control functions
+function minimizeRecorderWidget() {
+    document.getElementById('recorderWidget').style.display = 'none';
+    document.getElementById('recorderWidgetMinimized').style.display = 'flex';
+}
+
+function restoreRecorderWidget() {
+    document.getElementById('recorderWidget').style.display = 'block';
+    document.getElementById('recorderWidgetMinimized').style.display = 'none';
+}
+
+function toggleActionsPreview() {
+    const preview = document.getElementById('widgetActionsList');
+    const toggle = document.getElementById('previewToggle');
+    
+    if (preview.style.display === 'none') {
+        preview.style.display = 'block';
+        toggle.classList.remove('collapsed');
+    } else {
+        preview.style.display = 'none';
+        toggle.classList.add('collapsed');
+    }
+}
+
+// Update widget with action
+function updateRecorderWidget(action) {
+    const actionsList = document.getElementById('widgetActionsList');
+    const emptyMsg = actionsList.querySelector('.preview-empty');
+    
+    if (emptyMsg) {
+        emptyMsg.remove();
+    }
+    
+    const actionItem = document.createElement('div');
+    actionItem.className = 'preview-action-item';
+    actionItem.innerHTML = `
+        <div class="preview-action-step">${action.step}</div>
+        <div class="preview-action-details">
+            <div class="preview-action-type">${action.type}</div>
+            <div class="preview-action-value">${action.value || action.element.getDescription()}</div>
+        </div>
+    `;
+    
+    actionsList.insertBefore(actionItem, actionsList.firstChild);
+    
+    // Keep only last 5 actions visible
+    while (actionsList.children.length > 5) {
+        actionsList.removeChild(actionsList.lastChild);
+    }
+    
+    // Update counts
+    document.getElementById('widgetActionCount').textContent = action.step;
+    document.getElementById('miniActionCount').textContent = action.step;
+}
+
+// Update recording time
+let recorderTimeInterval;
+
+function startRecorderTimer() {
+    const startTime = Date.now();
+    recorderTimeInterval = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+        const seconds = (elapsed % 60).toString().padStart(2, '0');
+        document.getElementById('widgetRecordingTime').textContent = `${minutes}:${seconds}`;
+    }, 1000);
+}
+
+function stopRecorderTimer() {
+    if (recorderTimeInterval) {
+        clearInterval(recorderTimeInterval);
+        recorderTimeInterval = null;
+    }
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', function(e) {
+    if (!window.isRecording) return;
+    
+    if (e.ctrlKey && e.key === 'p') {
+        e.preventDefault();
+        const isPaused = document.getElementById('widgetResumeBtn').style.display !== 'none';
+        if (isPaused) {
+            resumeRecording();
+        } else {
+            pauseRecording();
+        }
+    } else if (e.ctrlKey && e.key === 'q') {
+        e.preventDefault();
+        stopRecording();
+    } else if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        captureScreenshotDuringRecording();
+    }
+});
+</script>

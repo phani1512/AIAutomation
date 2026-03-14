@@ -3,37 +3,90 @@
     <div style="max-width: 1400px; margin: 0 auto; padding: 20px;">
         <div class="section-row">
             <div class="card">
-                <h3 class="section-header">💡 Action Suggestions</h3>
+                <h3 class="section-header">💡 Action Suggestions </h3>
                 <div id="actionTab" class="tab-content">
                     <div class="form-group">
                         <label for="elementType">Element Type:</label>
                         <select id="elementType">
-                            <option value="button">Button</option>
-                            <option value="input">Input Field</option>
-                            <option value="link">Link</option>
-                            <option value="dropdown">Dropdown</option>
-                            <option value="checkbox">Checkbox</option>
-                            <option value="radio">Radio Button</option>
+                            <optgroup label="Basic Elements">
+                                <option value="button">Button</option>
+                                <option value="input">Input Field</option>
+                                <option value="link">Link</option>
+                                <option value="checkbox">Checkbox</option>
+                                <option value="radio">Radio Button</option>
+                                <option value="textarea">Text Area</option>
+                                <option value="select">Select/Dropdown</option>
+                            </optgroup>
+                            <optgroup label="Advanced UI">
+                                <option value="modal">Modal/Dialog</option>
+                                <option value="dropdown">Dropdown Menu</option>
+                                <option value="slider">Slider/Range</option>
+                                <option value="tab">Tab</option>
+                                <option value="tooltip">Tooltip</option>
+                                <option value="menu">Menu</option>
+                                <option value="toast">Toast/Notification</option>
+                            </optgroup>
+                            <optgroup label="Complex Elements">
+                                <option value="table">Table</option>
+                                <option value="form">Form</option>
+                                <option value="list">List</option>
+                                <option value="iframe">IFrame</option>
+                            </optgroup>
+                            <optgroup label="Common Actions">
+                                <option value="alert">Alert</option>
+                                <option value="scroll">Scroll</option>
+                                <option value="file">File Upload</option>
+                                <option value="date">Date Picker</option>
+                            </optgroup>
+                            <optgroup label="Generic">
+                                <option value="div">Div Container</option>
+                                <option value="span">Span</option>
+                                <option value="image">Image</option>
+                                <option value="generic">Generic Element</option>
+                            </optgroup>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="contextInput">Context (optional):</label>
-                        <input type="text" id="contextInput" placeholder="e.g., login form, navigation menu">
+                        <input type="text" id="contextInput" placeholder="e.g., email field, submit button, user profile table">
+                        <small style="color: #888; display: block; margin-top: 5px;">
+                            💡 Adding context increases confidence score and provides better suggestions
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="languageSelect">Code Language:</label>
+                        <select id="languageSelect">
+                            <option value="java">Java (Selenium)</option>
+                            <option value="python">Python (Selenium)</option>
+                            <option value="javascript">JavaScript (Playwright)</option>
+                        </select>
                     </div>
 
                     <button class="btn" onclick="suggestAction()">
-                        💡 Suggest Actions
+                        💡 Get Enhanced Suggestions
                     </button>
                 </div>
             </div>
 
             <!-- Action Output -->
             <div class="card">
-                <h3 class="section-header">📝 Suggested Actions</h3>
+                <h3 class="section-header">📊 Comprehensive Analysis & Suggestions</h3>
                 
                 <div class="result-box" id="actionResultBox">
-                    <pre><code id="actionResultContent" class="language-java">Your suggested actions will appear here...</code></pre>
+                    <pre><code id="actionResultContent" class="language-java">Select an element type and click "Get Enhanced Suggestions" to see:
+• Confidence scoring (65-100%)
+• Priority-ranked actions
+• Test scenarios (positive, negative, security, etc.)
+• Context-aware suggestions
+• Multi-language code samples
+
+Examples you can try:
+1. Element: "input" + Context: "email field" → Get email-specific validations
+2. Element: "button" + Context: "submit login" → Get form submission patterns
+3. Element: "table" + Context: "user data" → Get data extraction methods
+4. Element: "modal" + Context: "confirmation dialog" → Get modal interaction patterns</code></pre>
                 </div>
 
                 <div style="display: flex; gap: 10px; margin-top: 15px;">

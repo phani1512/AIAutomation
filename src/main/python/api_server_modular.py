@@ -9,6 +9,10 @@ import time
 import logging
 import traceback
 import importlib
+import warnings
+
+# Suppress urllib3 connection pool warnings
+warnings.filterwarnings('ignore', message='Connection pool is full, discarding connection')
 
 # Configure UTF-8 encoding for Windows console
 if sys.platform == 'win32':
@@ -63,7 +67,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..
 WEB_DIR = os.path.join(PROJECT_ROOT, 'src', 'web')
 
 # Initialize improved model once at startup
-MODEL_PATH = os.path.join(PROJECT_ROOT, 'selenium_ngram_model.pkl')
+MODEL_PATH = os.path.join(PROJECT_ROOT, 'src', 'resources', 'selenium_ngram_model.pkl')
 generator = None  # Lazy loading
 
 # Initialize browser executor
@@ -315,20 +319,29 @@ def suggest_locator():
 
 @app.route('/suggest-action', methods=['POST'])
 def suggest_action():
-    """Suggest action for element type."""
+    """Enhanced action suggestion with confidence scoring and test scenarios."""
     try:
         data = request.get_json()
         element_type = data.get('element_type', 'button')
         context = data.get('context', '')
+        language = data.get('language', 'java')
         
         gen = get_generator()
-        result = gen.suggest_action(element_type, context)
+        result = gen.suggest_action(element_type, context, language)
         
+        # Return enhanced response with all new fields
         return jsonify({
             'element_type': result['element_type'],
+            'context': result['context'],
+            'confidence': result['confidence'],
+            'confidence_level': result['confidence_level'],
             'recommended_actions': result['recommended_actions'],
-            'ai_generated_code': result['ai_generated_code'],
-            'context': result['context']
+            'top_actions': result['top_actions'],
+            'test_scenarios': result['test_scenarios'],
+            'code_samples': result['code_samples'],
+            'ai_generated_code': result['ai_generated_code'],  # backward compatibility
+            'context_hints': result['context_hints'],
+            'total_actions': result['total_actions']
         }), 200
         
     except Exception as e:
@@ -447,8 +460,8 @@ def navigate_and_inject():
 
 @app.route('/recorder/record-action', methods=['POST'])
 def record_action():
-    gen = get_generator()
-    return recorder_handler.record_action(gen)
+    # Generator needed for AI-suggested locators
+    return recorder_handler.record_action(generator=get_generator())
 
 @app.route('/recorder/stop', methods=['POST'])
 def stop_recording():

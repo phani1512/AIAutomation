@@ -28,7 +28,6 @@ function populateModuleFilter(sessions) {
     const moduleFilter = document.getElementById('moduleFilter');
     
     if (!moduleFilter) {
-        console.warn('[Test Suite] moduleFilter element not found - page may not be loaded');
         return;
     }
     
@@ -51,10 +50,9 @@ function populateModuleFilter(sessions) {
 }
 
 function populateModulesList(sessions) {
-    const modulesList = document.getElementById('modulesList');
+    const modulesList = document.getElementById('moduleFilter');
     
     if (!modulesList) {
-        console.warn('[Test Suite] modulesList element not found - page may not be loaded');
         return;
     }
     
@@ -66,11 +64,15 @@ function populateModulesList(sessions) {
         }
     });
     
-    modulesList.innerHTML = '';
+    // Clear existing options (keep the "All Modules" option)
+    while (modulesList.options.length > 1) {
+        modulesList.remove(1);
+    }
     
     Array.from(modules).sort().forEach(module => {
         const option = document.createElement('option');
         option.value = module;
+        option.textContent = module;
         modulesList.appendChild(option);
     });
 }
@@ -97,7 +99,6 @@ function displayTestCases(sessions) {
     const listDiv = document.getElementById('testCasesList');
     
     if (!listDiv) {
-        console.warn('[Test Suite] testCasesList element not found - page may not be loaded');
         return;
     }
     
@@ -146,8 +147,6 @@ function displayTestCases(sessions) {
 }
 
 async function viewTestCase(sessionId) {
-    showLoading(true);
-    
     try {
         const response = await fetch(`${API_URL}/recorder/generate-test`, {
             method: 'POST',
@@ -163,8 +162,6 @@ async function viewTestCase(sessionId) {
     } catch (error) {
         console.error('Error loading test case:', error);
         alert('Error loading test case: ' + error.message);
-    } finally {
-        showLoading(false);
     }
 }
 
@@ -404,19 +401,43 @@ async function deleteSingleTest(sessionId) {
 function updateDashboardFromTestSuite(sessions) {
     const totalTests = sessions.length;
     
-    // Safely update dashboard element if it exists
+    console.log('[Test Suite] 📊 Updating dashboard with', totalTests, 'tests');
+    
+    // Update the global stats object directly
+    if (typeof window.stats !== 'undefined') {
+        console.log('[Test Suite] 📝 Before update - window.stats.totalRequests:', window.stats.totalRequests);
+        
+        // Update total requests on the SAME object reference
+        window.stats.totalRequests = totalTests;
+        
+        console.log('[Test Suite] ✏️ After update - window.stats.totalRequests:', window.stats.totalRequests);
+        console.log('[Test Suite] 📦 Full window.stats:', JSON.stringify(window.stats));
+        
+        // Save to localStorage
+        if (typeof window.saveStats === 'function') {
+            window.saveStats();
+            
+            // Verify the save
+            const savedData = localStorage.getItem('dashboardStats');
+            if (savedData) {
+                const parsed = JSON.parse(savedData);
+                console.log('[Test Suite] ✅ VERIFIED Save - totalRequests in localStorage:', parsed.totalRequests);
+            }
+        }
+        
+        // Update the dashboard UI if on dashboard page
+        if (typeof window.updateDashboardStats === 'function') {
+            window.updateDashboardStats();
+        }
+    } else {
+        console.error('[Test Suite] ❌ window.stats is undefined!');
+    }
+    
+    // Directly update dashboard element if it exists (backup for immediate update)
     const dashboardTotalEl = document.getElementById('dashboardTotalRequests');
     if (dashboardTotalEl) {
         dashboardTotalEl.textContent = totalTests;
-    }
-    
-    // Update stats object
-    if (typeof window.stats !== 'undefined') {
-        window.stats.totalRequests = totalTests;
-        // Save stats to localStorage
-        if (typeof window.saveStats === 'function') {
-            window.saveStats();
-        }
+        console.log('[Test Suite] 🖥️ Updated dashboardTotalRequests element to:', totalTests);
     }
 }
 
@@ -715,6 +736,13 @@ function closeDataOverrideModal() {
 }
 
 async function executeTestCase(sessionId, dataOverrides = {}) {
+    // Prevent double execution
+    if (window.isExecutingTest) {
+        console.log('[Test Suite] ⚠️ Test already executing, ignoring duplicate call');
+        return;
+    }
+    window.isExecutingTest = true;
+    
     // Close any sticky popup before executing test
     const stickyPopup = document.getElementById('sticky-close');
     if (stickyPopup) {
@@ -728,6 +756,7 @@ async function executeTestCase(sessionId, dataOverrides = {}) {
     const currentExecutingTestName = document.getElementById('currentExecutingTestName');
     
     if (!resultsDiv || !resultsList) {
+        window.isExecutingTest = false;
         showNotification('⚠️ Test execution UI not found');
         return;
     }
@@ -762,9 +791,21 @@ async function executeTestCase(sessionId, dataOverrides = {}) {
         
         const data = await response.json();
         
+        console.log('[Test Suite] 🎯 RAW RESPONSE:', JSON.stringify(data, null, 2));
+        console.log('[Test Suite] Response validation:', {
+            hasSuccess: 'success' in data,
+            hasPassed: 'passed' in data,
+            hasTestName: 'test_name' in data,
+            hasDuration: 'duration' in data,
+            successValue: data.success,
+            passedValue: data.passed,
+            durationValue: data.duration
+        });
+        
         if (currentlyExecutingDiv) currentlyExecutingDiv.style.display = 'none';
         
-        if (data.success) {
+        // CRITICAL: Record test results for BOTH passed and failed tests
+        if (data.success !== undefined && ('passed' in data || data.error)) {
             const result = `
                 <div style="padding: 10px; margin-bottom: 10px; background: ${data.passed ? '#d1fae5' : '#fee2e2'}; border-radius: 6px; border-left: 4px solid ${data.passed ? '#10b981' : '#ef4444'};">
                     <div style="font-weight: bold; color: ${data.passed ? '#065f46' : '#991b1b'};">
@@ -778,18 +819,45 @@ async function executeTestCase(sessionId, dataOverrides = {}) {
             `;
             resultsList.innerHTML = result;
             
-            // Update dashboard with test result
+            // Update dashboard with test result (for both passed and failed tests)
+            const isPassed = data.passed === true;
+            const testName = data.test_name || 'Test Case';
+            const duration = data.duration || 0;
+            
+            console.log('[Test Suite] 📈 Processing test result:', {
+                passed: isPassed,
+                test_name: testName,
+                duration: duration,
+                steps: data.steps_executed ? `${data.steps_executed}/${data.total_steps}` : 'N/A',
+                hasError: !!data.error,
+                timestamp: new Date().toISOString()
+            });
+            
             if (typeof addTestResult === 'function') {
-                const testName = data.test_name || 'Test Case';
-                const duration = data.duration || 0;
-                const details = data.passed ? 
-                    `Executed ${data.steps_executed}/${data.total_steps} steps successfully` :
-                    `Failed at step ${data.steps_executed}/${data.total_steps}${data.error ? ': ' + data.error : ''}`;
+                const details = isPassed ? 
+                    `Executed ${data.steps_executed || 0}/${data.total_steps || 0} steps successfully` :
+                    `Failed${data.step ? ' at step ' + data.step : ''}${data.error ? ': ' + data.error.substring(0, 100) : ''}`;
                 
-                addTestResult(testName, data.passed ? 'passed' : 'failed', duration, details);
-            }
-            if (typeof updateDashboardStats === 'function') {
-                updateDashboardStats();
+                console.log('[Test Suite] 📞 CALLING addTestResult NOW:', { testName, status: isPassed ? 'passed' : 'failed', duration, details });
+                
+                // Call addTestResult
+                addTestResult(testName, isPassed ? 'passed' : 'failed', duration, details);
+                
+                console.log('[Test Suite] ✅ addTestResult called - waiting 200ms for save...');
+                
+                // Force dashboard update after a delay to ensure save completed
+                setTimeout(() => {
+                    console.log('[Test Suite] 🔄 Forcing dashboard update NOW');
+                    if (typeof updateDashboardStats === 'function') {
+                        updateDashboardStats();
+                    }
+                    // Double-check localStorage
+                    const stats = localStorage.getItem('dashboardStats');
+                    console.log('[Test Suite] 📊 Dashboard stats after update:', stats ? JSON.parse(stats) : 'NO DATA');
+                }, 200);
+            } else {
+                console.error('[Test Suite] ❌ CRITICAL: addTestResult function not found!');
+                console.log('[Test Suite] Available window functions:', Object.keys(window).filter(k => k.includes('Test') || k.includes('Dashboard')));
             }
         } else {
             const errorHtml = `
@@ -804,6 +872,9 @@ async function executeTestCase(sessionId, dataOverrides = {}) {
     } catch (error) {
         if (currentlyExecutingDiv) currentlyExecutingDiv.style.display = 'none';
         resultsList.innerHTML = `<div style="color: #ef4444;">❌ Error: ${error.message}</div>`;
+    } finally {
+        // Reset execution flag
+        window.isExecutingTest = false;
     }
 }
 

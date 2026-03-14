@@ -60,16 +60,26 @@ def navigate_and_inject(browser_executor, web_dir, url_monitor):
         # Inject the script
         try:
             browser_executor.driver.execute_script(recorder_script)
-            logging.info("Injected recorder script")
+            logging.info("✅ Injected recorder script successfully")
             
             # Wait a moment for script to initialize
             time.sleep(0.5)
             
-            # Start capturing
+            # Verify script was loaded
             result = browser_executor.driver.execute_script("return typeof window.startRecorderCapture === 'function';")
+            logging.info(f"🔍 Recorder script check: startRecorderCapture function exists = {result}")
+            
             if result:
+                # Start capturing
                 browser_executor.driver.execute_script("window.startRecorderCapture();")
-                logging.info("Started recorder capture")
+                logging.info("✅ Started recorder capture (called window.startRecorderCapture())")
+                
+                # Verify it's recording
+                is_recording = browser_executor.driver.execute_script("return window.isRecording;")
+                logging.info(f"🔍 Recording status: window.isRecording = {is_recording}")
+                
+                if not is_recording:
+                    logging.error("❌ WARNING: window.isRecording is false after calling startRecorderCapture()")
                 
                 # Initialize window handle tracking
                 try:
@@ -81,9 +91,9 @@ def navigate_and_inject(browser_executor, web_dir, url_monitor):
                 
                 # Start URL monitoring to persist recorder across page navigations
                 url_monitor.start()
-                logging.info("Started URL monitoring for recorder persistence")
+                logging.info("✅ Started URL monitoring for recorder persistence")
             else:
-                logging.error("startRecorderCapture function not found - script injection may have failed")
+                logging.error("❌ startRecorderCapture function not found - script injection may have failed")
                 return jsonify({'success': False, 'error': 'Failed to start recorder - injection error'}), 500
                 
         except Exception as e:
@@ -178,7 +188,7 @@ def start_new_test(browser_executor, web_dir, url_monitor, recorder):
             
             logging.info("Injecting recorder script...")
             browser_executor.driver.execute_script(recorder_script)
-            logging.info("Recorder script injected successfully")
+            logging.info("✅ Recorder script injected successfully")
             
             # Wait a moment for script to initialize
             time.sleep(1)
@@ -188,15 +198,22 @@ def start_new_test(browser_executor, web_dir, url_monitor, recorder):
                 "return typeof window.startRecorderCapture === 'function';"
             )
             
-            logging.info(f"Script loaded check: {script_loaded}")
+            logging.info(f"🔍 Script loaded check: startRecorderCapture exists = {script_loaded}")
             
             if script_loaded:
                 browser_executor.driver.execute_script("window.startRecorderCapture();")
-                logging.info("Started recorder capture")
+                logging.info("✅ Started recorder capture")
+                
+                # Verify it's recording
+                is_recording = browser_executor.driver.execute_script("return window.isRecording;")
+                logging.info(f"🔍 Recording status: window.isRecording = {is_recording}")
+                
+                if not is_recording:
+                    logging.error("❌ WARNING: Recorder not started properly")
                 
                 # Restart URL monitoring
                 url_monitor.start()
-                logging.info("Restarted URL monitoring")
+                logging.info("✅ Restarted URL monitoring")
                 
                 return jsonify({
                     'success': True,

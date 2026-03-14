@@ -207,15 +207,27 @@
     <!-- Core Modules - Load First -->
     <script src="/web/js/core/api.js"></script>
     <script src="/web/js/core/ui.js"></script>
-    <script src="/web/js/core/navigation.js"></script>
     <script src="/web/js/core/dashboard.js"></script>
+    <script src="/web/js/core/navigation.js"></script>
     <script src="/web/js/core/authentication.js"></script>
+
+    <!-- Recorder Entity Classes - Load Before Features -->
+    <script src="/web/js/entities/recorded-element.js"></script>
+    <script src="/web/js/entities/recorder-action.js"></script>
+    <script src="/web/js/entities/recorder-session.js"></script>
 
     <!-- Feature Modules -->
     <script src="/web/js/features/code-generation.js"></script>
     <script src="/web/js/features/validation.js"></script>
     <script src="/web/js/features/locator-suggestions.js"></script>
     <script src="/web/js/features/action-suggestions.js"></script>
+    <script src="/web/js/features/smart-action-detector.js"></script>
+    <script src="/web/js/features/visual-feedback.js"></script>
+    
+    <!-- Phase 4: Recorder Advanced Features - Load Before test-recorder.js -->
+    <script src="/web/js/features/recorder-player.js"></script>
+    <script src="/web/js/features/recorder-template.js"></script>
+    
     <script src="/web/js/features/test-recorder.js"></script>
     <script src="/web/js/features/recorder-live-monitor.js"></script>
     <script src="/web/js/features/test-suite.js"></script>

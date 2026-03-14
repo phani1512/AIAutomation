@@ -34,10 +34,13 @@ def start_recording():
     }), 200
 
 def record_action(generator):
-    """Record a user action."""
+    """Record a user action with smart deduplication and framework detection."""
+    # Note: generator parameter kept for API compatibility but not used for locators
     global active_session_id, recorded_sessions
     
-    logging.info(f"[DEBUG] Received record-action request. Active session: {active_session_id}")
+    logging.info(f"[RECORD-ACTION] ===== New action received =====")
+    logging.info(f"[RECORD-ACTION] Active session: {active_session_id}")
+    logging.info(f"[RECORD-ACTION] Available sessions: {list(recorded_sessions.keys())}")
     
     if not active_session_id or active_session_id not in recorded_sessions:
         logging.warning(f"[WARNING] No active recording session. Session ID: {active_session_id}")
@@ -49,8 +52,17 @@ def record_action(generator):
     value = data.get('value')
     message_type = data.get('message_type')  # For verify_message actions
     
-    # Skip React Select option clicks - they should be recorded as select actions
+    logging.info(f"[RECORD-ACTION] Action type: {action_type}, Element: {element_info.get('tagName', '?')}#{element_info.get('id', '?')}")
+    
+    # Special logging for scroll actions
+    if action_type == 'scroll':
+        logging.info(f"[SCROLL] Scroll action received with value: {value}")
+    
+    # Framework Detection - React
     element_id = element_info.get('id', '')
+    element_class = element_info.get('className', '') or ''
+    
+    # Skip React Select internals - they should be recorded as select actions
     if action_type == 'click' and element_id and 'react-select' in element_id and '-option-' in element_id:
         logging.info(f"[SKIP] Ignoring React Select option click: {element_id}")
         return jsonify({
@@ -60,8 +72,7 @@ def record_action(generator):
             'total_actions': len(recorded_sessions[active_session_id]['actions'])
         }), 200
     
-    # Skip clicks on elements with react-select menu classes
-    element_class = element_info.get('className', '') or ''
+    # Skip clicks on React Select menu elements
     if action_type == 'click' and ('select__option' in element_class or 'select__menu' in element_class):
         logging.info(f"[SKIP] Ignoring React Select menu click: {element_class}")
         return jsonify({
@@ -71,9 +82,18 @@ def record_action(generator):
             'total_actions': len(recorded_sessions[active_session_id]['actions'])
         }), 200
     
-    # For input actions (including click_and_input), keep only the last value for each element
+    # Framework Detection - Vue
+    if 'v-' in element_class or element_info.get('data-v-') or element_info.get('vue'):
+        logging.info(f"[FRAMEWORK] Detected Vue component")
+        element_info['framework'] = 'vue'
+    
+    # Framework Detection - Angular  
+    if any(attr in element_class.lower() for attr in ['ng-', 'ngx-', 'mat-']):
+        logging.info(f"[FRAMEWORK] Detected Angular component")
+        element_info['framework'] = 'angular'
+    
+    # Smart Deduplication for input actions
     if action_type in ['input', 'click_and_input']:
-        element_id = element_info.get('xpath') or element_info.get('id') or element_info.get('name')
         actions_list = recorded_sessions[active_session_id]['actions']
         
         def is_same_element(prev_element, curr_element):
@@ -93,12 +113,46 @@ def record_action(generator):
             
             return matches >= 2
         
+        # Remove previous input actions for the same element (keep only final value)
         recorded_sessions[active_session_id]['actions'] = [
             a for a in actions_list 
             if not is_same_element(a.get('element', {}), element_info)
         ]
         
-        logging.info(f"[REPLACE] Removed previous actions for element {element_id}, adding new input with value '{value}'")
+        logging.info(f"[REPLACE] Removed previous input actions for element, adding new input with value '{value}'")
+    
+    # Smart Click Deduplication - prevent rapid duplicate clicks (within 500ms)
+    if action_type == 'click':
+        actions_list = recorded_sessions[active_session_id]['actions']
+        current_time = time.time()
+        
+        # Check last 2 actions for duplicate clicks within 500ms
+        for prev_action in actions_list[-2:]:
+            if prev_action['action_type'] == 'click':
+                time_diff = current_time - prev_action.get('timestamp', 0)
+                
+                def is_same_element_click(prev_elem, curr_elem):
+                    """Compare elements for click deduplication"""
+                    if prev_elem.get('xpath') and curr_elem.get('xpath'):
+                        return prev_elem.get('xpath') == curr_elem.get('xpath')
+                    
+                    # Check multiple attributes
+                    same_id = (prev_elem.get('id') and curr_elem.get('id') and 
+                              prev_elem.get('id') == curr_elem.get('id'))
+                    same_text = (prev_elem.get('text') and curr_elem.get('text') and 
+                                prev_elem.get('text') == curr_elem.get('text'))
+                    same_tag = prev_elem.get('tagName') == curr_elem.get('tagName')
+                    
+                    return same_id or (same_text and same_tag)
+                
+                if is_same_element_click(prev_action.get('element', {}), element_info) and time_diff < 0.5:
+                    logging.info(f"[SKIP] Duplicate click detected within {time_diff:.3f}s")
+                    return jsonify({
+                        'success': True,
+                        'skipped': True,
+                        'reason': f'Duplicate click within {time_diff:.3f}s',
+                        'total_actions': len(recorded_sessions[active_session_id]['actions'])
+                    }), 200
     
     action = {
         'step': len(recorded_sessions[active_session_id]['actions']) + 1,
@@ -120,8 +174,8 @@ def record_action(generator):
             action['target_locator'] = target_locator
             logging.info(f"[DRAG_DROP] Source → Target: {target_locator}")
     
-    # Get AI-suggested locator (skip for verify_message as they don't need locators)
-    if action_type != 'verify_message':
+    # Generate rule-based locator (no external AI used)
+    if action_type not in ['verify_message', 'scroll']:
         tag_name = element_info.get('tagName', 'unknown')
         element_text = element_info.get('text', '').strip() if element_info.get('text') else ''
         inner_text = element_info.get('innerText', '').strip() if element_info.get('innerText') else ''
@@ -183,16 +237,16 @@ def record_action(generator):
         elif element_info.get('id') and len(suggested_locators) == 0:
             suggested_locators.append(f'By.id("{element_info.get("id")}")')
         
-        # Fall back to AI-suggested locators
-        if not suggested_locators or len(suggested_locators) < 3:
-            ai_locators = generator.suggest_locator(
-                element_type=tag_name,
-                action=data.get('action_type', 'click'),
-                attributes=element_info
-            )
-            for loc in ai_locators:
-                if loc not in suggested_locators:
-                    suggested_locators.append(loc)
+        # Use XPath as final fallback if no locators found
+        if not suggested_locators:
+            # Generate a simple XPath based on tag name and any unique attribute
+            if element_info.get('id'):
+                suggested_locators.append(f'By.id("{element_info.get("id")}")')
+            elif element_info.get('name'):
+                suggested_locators.append(f'By.name("{element_info.get("name")}")')
+            else:
+                # Generic XPath with tag and index
+                suggested_locators.append(f'By.xpath("//{tag_name}")')
         
         action['suggested_locator'] = suggested_locators[0] if suggested_locators else None
         action['alternative_locators'] = suggested_locators[1:4] if len(suggested_locators) > 1 else []
@@ -201,7 +255,11 @@ def record_action(generator):
     
     recorded_sessions[active_session_id]['actions'].append(action)
     
-    logging.info(f"Recorded action: {action['action_type']} (Step {action['step']})")
+    if action_type == 'scroll':
+        logging.info(f"✅ [SCROLL] Recorded scroll action: Step {action['step']}, Position: {value}")
+    else:
+        logging.info(f"Recorded action: {action['action_type']} (Step {action['step']})")
+    
     return jsonify({
         'success': True,
         'action': action,

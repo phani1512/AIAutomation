@@ -9,7 +9,7 @@ from inference_improved import ImprovedSeleniumGenerator
 
 # Initialize generator
 print("Loading AI model...")
-generator = ImprovedSeleniumGenerator('selenium_ngram_model.pkl')
+generator = ImprovedSeleniumGenerator('src/resources/selenium_ngram_model.pkl')
 print("Ready!\n")
 
 # Example usage

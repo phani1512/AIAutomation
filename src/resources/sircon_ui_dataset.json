@@ -21734,7 +21734,7 @@
         "element_type": "input",
         "locator": "By.cssSelector(\"app-input input\")",
         "value": "",
-        "prompt": "verify subscriber id text box is present",
+        "prompt": " ",
         "page_object": "EditCarrierAccountToolPage",
         "method_name": "isEditCarrierAccountToolPageLoaded",
         "error_message": "input not visible"
@@ -28289,6 +28289,227 @@
         "page_object": "RecentActivityWidget",
         "method_name": "getWidgetContents",
         "error_message": "element not found"
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - scrollElementIntoView",
+    "description": "User scroll element into view",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "JavascriptExecutor js = (JavascriptExecutor) driver;\n        WebElement element = findWebElementBy(targetElement);\n        js.executeScript(\"arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});\", element);",
+        "element_type": "element",
+        "locator": "By.id(\"target-element\")",
+        "value": "",
+        "prompt": "scroll element into view",
+        "page_object": "ScrollActions",
+        "method_name": "scrollElementIntoView",
+        "error_message": "element not scrollable",
+        "ai_prompts": ["scroll to see element", "scroll element into view", "bring element into viewport", "scroll down to find element", "scroll to footer element"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - scrollToTop",
+    "description": "User scroll to top of page",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "JavascriptExecutor js = (JavascriptExecutor) driver;\n        js.executeScript(\"window.scrollTo({top: 0, behavior: 'smooth'});\");",
+        "element_type": "page",
+        "locator": "window",
+        "value": "0,0",
+        "prompt": "scroll to top of page",
+        "page_object": "ScrollActions",
+        "method_name": "scrollToTop",
+        "error_message": "scroll failed",
+        "ai_prompts": ["scroll to top", "scroll to page top", "go to top of page", "scroll up to header", "return to top"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - scrollToBottom",
+    "description": "User scroll to bottom of page",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "JavascriptExecutor js = (JavascriptExecutor) driver;\n        js.executeScript(\"window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});\");",
+        "element_type": "page",
+        "locator": "window",
+        "value": "0,max",
+        "prompt": "scroll to bottom of page",
+        "page_object": "ScrollActions",
+        "method_name": "scrollToBottom",
+        "error_message": "scroll failed",
+        "ai_prompts": ["scroll to bottom", "scroll to page bottom", "scroll down to footer", "go to end of page", "scroll to see more content"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - scrollByOffset",
+    "description": "User scroll by specific offset",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "JavascriptExecutor js = (JavascriptExecutor) driver;\n        js.executeScript(\"window.scrollBy({top: 300, left: 0, behavior: 'smooth'});\");",
+        "element_type": "page",
+        "locator": "window",
+        "value": "0,300",
+        "prompt": "scroll down by 300 pixels",
+        "page_object": "ScrollActions",
+        "method_name": "scrollByOffset",
+        "error_message": "scroll failed",
+        "ai_prompts": ["scroll down a little", "scroll by offset", "scroll 300 pixels", "scroll relative position", "scroll incrementally"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - pageDown",
+    "description": "User press page down key",
+    "steps": [
+      {
+        "step": 1,
+        "action": "keyPress",
+        "code": "Actions actions = new Actions(driver);\n        actions.sendKeys(Keys.PAGE_DOWN).perform();",
+        "element_type": "keyboard",
+        "locator": "Keys.PAGE_DOWN",
+        "value": "PAGE_DOWN",
+        "prompt": "press page down",
+        "page_object": "ScrollActions",
+        "method_name": "pageDown",
+        "error_message": "key press failed",
+        "ai_prompts": ["page down", "scroll one page down", "move down one screen", "next page view", "scroll viewport down"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - pageUp",
+    "description": "User press page up key",
+    "steps": [
+      {
+        "step": 1,
+        "action": "keyPress",
+        "code": "Actions actions = new Actions(driver);\n        actions.sendKeys(Keys.PAGE_UP).perform();",
+        "element_type": "keyboard",
+        "locator": "Keys.PAGE_UP",
+        "value": "PAGE_UP",
+        "prompt": "press page up",
+        "page_object": "ScrollActions",
+        "method_name": "pageUp",
+        "error_message": "key press failed",
+        "ai_prompts": ["page up", "scroll one page up", "move up one screen", "previous page view", "scroll viewport up"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - scrollToPosition",
+    "description": "User scroll to specific x y position",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "JavascriptExecutor js = (JavascriptExecutor) driver;\n        js.executeScript(\"window.scrollTo({top: 500, left: 0, behavior: 'smooth'});\");",
+        "element_type": "page",
+        "locator": "window",
+        "value": "0,500",
+        "prompt": "scroll to position 0,500",
+        "page_object": "ScrollActions",
+        "method_name": "scrollToPosition",
+        "error_message": "scroll failed",
+        "ai_prompts": ["scroll to position", "scroll to coordinates", "scroll to specific location", "scroll to y position 500", "scroll precisely"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - horizontalScroll",
+    "description": "User scroll horizontally",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "JavascriptExecutor js = (JavascriptExecutor) driver;\n        js.executeScript(\"window.scrollBy({top: 0, left: 200, behavior: 'smooth'});\");",
+        "element_type": "page",
+        "locator": "window",
+        "value": "200,0",
+        "prompt": "scroll right 200 pixels",
+        "page_object": "ScrollActions",
+        "method_name": "horizontalScroll",
+        "error_message": "scroll failed",
+        "ai_prompts": ["scroll right", "scroll left", "scroll horizontally", "horizontal scroll", "scroll sideways", "scroll table columns"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - scrollAndClick",
+    "description": "User scroll element into view and click",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "JavascriptExecutor js = (JavascriptExecutor) driver;\n        WebElement element = findWebElementBy(targetButton);\n        js.executeScript(\"arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});\", element);",
+        "element_type": "element",
+        "locator": "By.id(\"submit-button\")",
+        "value": "",
+        "prompt": "scroll to submit button",
+        "page_object": "ScrollActions",
+        "method_name": "scrollAndClick",
+        "error_message": "element not found"
+      },
+      {
+        "step": 2,
+        "action": "click",
+        "code": "waitAndClickOnElement(targetButton);",
+        "element_type": "button",
+        "locator": "By.id(\"submit-button\")",
+        "value": "",
+        "prompt": "click submit button",
+        "page_object": "ScrollActions",
+        "method_name": "scrollAndClick",
+        "error_message": "element not clickable",
+        "ai_prompts": ["scroll down and click submit", "scroll to button and click", "scroll into view and interact", "find and click hidden button", "scroll to see and click"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - scrollToViewElement",
+    "description": "User scroll to view using scrollIntoView false parameter",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "JavascriptExecutor js = (JavascriptExecutor) driver;\n        WebElement element = findWebElementBy(footerElement);\n        js.executeScript(\"arguments[0].scrollIntoView(false);\", element);",
+        "element_type": "element",
+        "locator": "By.className(\"footer-section\")",
+        "value": "",
+        "prompt": "scroll to footer section",
+        "page_object": "ScrollActions",
+        "method_name": "scrollToViewElement",
+        "error_message": "element not found",
+        "ai_prompts": ["scroll to footer", "scroll to view footer", "scroll bottom into view", "align bottom element", "scroll to see footer content"]
+      }
+    ]
+  },
+  {
+    "action": "ScrollActions - scrollContainerIntoView",
+    "description": "User scroll within scrollable container",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "JavascriptExecutor js = (JavascriptExecutor) driver;\n        WebElement container = findWebElementBy(scrollableContainer);\n        WebElement targetElement = findWebElementBy(targetItem);\n        js.executeScript(\"arguments[0].scrollTop = arguments[1].offsetTop;\", container, targetElement);",
+        "element_type": "element",
+        "locator": "By.className(\"scrollable-list\")",
+        "value": "",
+        "prompt": "scroll within list to item",
+        "page_object": "ScrollActions",
+        "method_name": "scrollContainerIntoView",
+        "error_message": "container not scrollable",
+        "ai_prompts": ["scroll in list", "scroll within container", "scroll dropdown to item", "scroll table to row", "scroll sidebar to section", "scroll modal content"]
       }
     ]
   }

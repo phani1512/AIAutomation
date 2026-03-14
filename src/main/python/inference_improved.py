@@ -1,6 +1,6 @@
 """
 Improved inference with better output formatting and cleaning.
-VERSION: 2.0.3 - Dataset-driven element extraction
+VERSION: 2.0.4 - Enhanced Action Suggestions with Confidence Scoring
 """
 
 import pickle
@@ -9,19 +9,23 @@ import re
 import json
 import os
 from train_simple import NGramLanguageModel
+from action_suggestion_engine import ActionSuggestionEngine
 
 class ImprovedSeleniumGenerator:
     """Enhanced Selenium code generator with better output quality."""
     
-    def __init__(self, model_path: str = 'selenium_ngram_model.pkl', silent: bool = False):
+    def __init__(self, model_path: str = 'src/resources/selenium_ngram_model.pkl', silent: bool = False):
         self.tokenizer = tiktoken.get_encoding("cl100k_base")
-        self.version = "2.0.3-DATASET"
+        self.version = "2.0.4-ENHANCED"
         
         if not silent:
-            print(f"[INFERENCE] Version {self.version} - Dataset-driven element extraction")
+            print(f"[INFERENCE] Version {self.version} - Enhanced Action Suggestions")
             print(f"Loading model from {model_path}...")
         self.model = NGramLanguageModel(n=4)
         self.model.load(model_path)
+        
+        # Initialize enhanced action suggestion engine
+        self.action_engine = ActionSuggestionEngine()
         
         # Load datasets for element extraction
         self._load_datasets()
@@ -30,7 +34,8 @@ class ImprovedSeleniumGenerator:
             print(f"[OK] Model loaded successfully!")
             print(f"  Vocabulary size: {len(self.model.vocab)}")
             print(f"  Unique contexts: {len(self.model.ngrams)}")
-            print(f"  Dataset entries: {len(self.dataset_cache)}\n")
+            print(f"  Dataset entries: {len(self.dataset_cache)}")
+            print(f"  Action engine: {len(self.action_engine.action_catalog)} element types\n")
             print()
     
     def _load_datasets(self):
@@ -780,8 +785,32 @@ driver.findElement(By.id("elementId")).click();"""
             }
         }
     
-    def suggest_action(self, element_type: str, context: str = "") -> dict:
-        """Suggest action based on element type and context."""
+    def suggest_action(self, element_type: str, context: str = "", language: str = "java") -> dict:
+        """
+        Enhanced action suggestion using ActionSuggestionEngine.
+        Provides comprehensive, context-aware suggestions with confidence scoring.
+        
+        Args:
+            element_type: Type of HTML element (button, input, etc.)
+            context: Context information (element text, id, purpose, etc.)
+            language: Target language for code generation (java, python, javascript)
+        
+        Returns:
+            dict: Enhanced suggestions with confidence, test scenarios, and code samples
+        """
+        # Use enhanced action suggestion engine
+        result = self.action_engine.suggest_action(element_type, context, language)
+        
+        # Add backward compatibility fields for existing API consumers
+        result['ai_generated_code'] = result['code_samples'].get(language, result['code_samples'].get('java', ''))
+        
+        return result
+    
+    def suggest_action_legacy(self, element_type: str, context: str = "") -> dict:
+        """
+        Legacy action suggestion method (kept for backward compatibility).
+        Use suggest_action() for enhanced features.
+        """
         
         # Rule-based suggestions
         action_map = {
@@ -839,7 +868,7 @@ WebElement textArea = driver.findElement(By.id("textAreaId"));
 textArea.clear();
 textArea.sendKeys("your_text_here");"""
         
-        elif element_lower == 'verify_message' or action == 'verify_message':
+        elif element_lower == 'verify_message':
             ai_code = """// Verify message/toast/alert
 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 WebElement message = wait.until(ExpectedConditions.presenceOfElementLocated(

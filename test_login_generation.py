@@ -11,7 +11,7 @@ from inference_improved import ImprovedSeleniumGenerator
 
 # Initialize generator
 print("Loading AI model...")
-generator = ImprovedSeleniumGenerator('selenium_ngram_model.pkl', silent=False)
+generator = ImprovedSeleniumGenerator('src/resources/selenium_ngram_model.pkl', silent=False)
 
 print("\n" + "="*80)
 print("COMPLETE LOGIN FLOW TEST")

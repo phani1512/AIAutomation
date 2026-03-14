@@ -7,6 +7,12 @@ import time
 import os
 from typing import Dict, Any, Optional
 import logging
+import warnings
+
+# Suppress urllib3 connection pool warnings
+warnings.filterwarnings('ignore', message='Connection pool is full, discarding connection')
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 logger = logging.getLogger(__name__)
 
@@ -172,6 +178,50 @@ class BrowserExecutor:
                     logger.info("[NAVIGATE] Page loaded successfully")
             else:
                 logger.info("[EXECUTOR] No URL provided - staying on current page")
+            
+            # Close any sticky popups before executing actions
+            try:
+                logger.info("[EXECUTOR] Attempting to close sticky popup...")
+                popup_closed = self.driver.execute_script("""
+                    var stickyClose = document.getElementById('sticky-close');
+                    if (stickyClose && stickyClose.offsetParent !== null) {
+                        stickyClose.click();
+                        return 'Popup closed';
+                    }
+                    return 'No visible popup';
+                """)
+                logger.info(f"[EXECUTOR] Popup handling: {popup_closed}")
+                time.sleep(0.5)
+            except Exception as e:
+                logger.info(f"[EXECUTOR] No popup to close: {str(e)}")
+            
+            # Check if this is JavaScript code that should be executed directly in browser
+            code_stripped = generated_code.strip()
+            is_javascript = any([
+                'return {' in code_stripped,
+                'typeof ' in code_stripped,
+                code_stripped.startswith('return ') and ('window.' in code_stripped or '||' in code_stripped or '===' in code_stripped),
+                ': window.' in code_stripped,  # Object literal with window reference
+            ])
+            
+            if is_javascript:
+                logger.info(f"[EXECUTOR] Detected JavaScript code, executing directly in browser")
+                logger.info(f"[EXECUTOR] JavaScript code:\n{generated_code}")
+                
+                try:
+                    js_result = self.driver.execute_script(generated_code)
+                    logger.info(f"[EXECUTOR] JavaScript result: {js_result}")
+                    return {
+                        'success': True,
+                        'result': js_result,
+                        'message': 'JavaScript executed successfully'
+                    }
+                except Exception as js_error:
+                    logger.error(f"[EXECUTOR] JavaScript execution error: {str(js_error)}")
+                    return {
+                        'success': False,
+                        'error': f'JavaScript execution error: {str(js_error)}'
+                    }
             
             # Use the generated Python code directly (no conversion needed)
             python_code = generated_code

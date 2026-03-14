@@ -119,7 +119,29 @@ async function navigateTo(page) {
     // Load data for specific pages
     if (page === 'dashboard') {
         // Initialize dashboard stats when navigating to dashboard
-        setTimeout(() => {
+        // Wait for DOM elements to be available, with retries
+        const initDashboard = (retries = 0) => {
+            const testsPassed = document.getElementById('testsPassedCount');
+            if (!testsPassed && retries < 10) {
+                console.log('[Navigation] Dashboard elements not ready, retrying... (' + retries + ')');
+                setTimeout(() => initDashboard(retries + 1), 100);
+                return;
+            }
+            
+            console.log('[Navigation] Dashboard elements ready, initializing...');
+            
+            // Reload stats data from localStorage and update the existing window.stats object
+            // DON'T create a new object - update the existing reference
+            if (typeof window.loadStats === 'function' && window.stats) {
+                const freshData = window.loadStats();
+                // Update properties on existing object to maintain reference
+                window.stats.totalRequests = freshData.totalRequests;
+                window.stats.totalTime = freshData.totalTime;
+                window.stats.totalTokens = freshData.totalTokens;
+                window.stats.testResults = freshData.testResults;
+                console.log('[Navigation] 🔄 Synced window.stats with localStorage:', window.stats);
+            }
+            
             if (typeof window.updateDashboardStats === 'function') {
                 window.updateDashboardStats();
             }
@@ -129,7 +151,8 @@ async function navigateTo(page) {
             if (typeof window.updateActivityTimeline === 'function') {
                 window.updateActivityTimeline();
             }
-        }, 100);
+        };
+        setTimeout(initDashboard, 50);
     } else if (page === 'semantic') {
         setTimeout(() => refreshSemanticSessions(), 100);
     } else if (page === 'testcases') {

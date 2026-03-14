@@ -102,7 +102,6 @@ function loadSnippets() {
     const listDiv = document.getElementById('snippetsList');
     
     if (!listDiv) {
-        console.warn('[Snippets] snippetsList element not found - page may not be loaded');
         return;
     }
     

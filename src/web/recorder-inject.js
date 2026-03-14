@@ -1,25 +1,364 @@
 /**
  * Browser Action Recorder - Injection Script
  * This script captures user interactions on the page
- * Version: 2.1 - FIXED Duplicate Event Listeners
+ * Version: 2.3.1 - SCROLL DEBUG + BUG FIX (elementSignature removed, Build: 20260314-1645)
  */
 
 (function() {
     'use strict';
     
     console.log('='.repeat(60));
-    console.log('[Recorder Script] Version 2.1 - DUPLICATE LISTENERS REMOVED');
+    console.log('[Recorder Script] ✅ Version 2.3.1 - BUILD 20260314-1645');
+    console.log('[Recorder Script] ✅ SCROLL DEBUG LOGGING ACTIVE');
+    console.log('[Recorder Script] ✅ elementSignature BUG FIXED');
     console.log('[Recorder Script] Loaded at:', new Date().toISOString());
     console.log('='.repeat(60));
+    
+    // ============== SMART ACTION DETECTOR CLASS ==============
+    class SmartActionDetector {
+        constructor() {
+            this.pendingActions = new Map();
+            this.lastActions = new Map();
+            this.actionGroups = [];
+            this.recordedActions = [];
+            this.config = {
+                inputDebounceDelay: 500,
+                clickDebounceDelay: 300,
+                scrollDebounceDelay: 300,
+                groupingWindow: 2000
+            };
+            this.framework = 'vanilla';
+        }
+
+        handleInput(element, value, callback) {
+            const key = this.getElementKey(element);
+            if (this.pendingActions.has(key)) {
+                clearTimeout(this.pendingActions.get(key));
+            }
+            const timeoutId = setTimeout(() => {
+                const lastValue = this.lastActions.get(key);
+                if (lastValue !== value) {
+                    callback(element, value);
+                    this.lastActions.set(key, value);
+                }
+                this.pendingActions.delete(key);
+            }, this.config.inputDebounceDelay);
+            this.pendingActions.set(key, timeoutId);
+        }
+
+        handleClick(element, callback) {
+            const key = this.getElementKey(element);
+            const now = Date.now();
+            const lastClick = this.lastActions.get(`${key}_click`);
+            if (lastClick && (now - lastClick) < this.config.clickDebounceDelay) {
+                console.log('[SmartDetector] Ignoring duplicate click');
+                return false;
+            }
+            if (this.isFileInputTrigger(element) || this.shouldSkipFrameworkElement(element)) {
+                console.log('[SmartDetector] Skipping framework/file element');
+                return false;
+            }
+            this.lastActions.set(`${key}_click`, now);
+            callback(element);
+            return true;
+        }
+
+        detectFrameworkElements(element) {
+            if (this.isReactElement(element)) return 'react';
+            if (this.isVueElement(element)) return 'vue';
+            if (this.isAngularElement(element)) return 'angular';
+            return 'vanilla';
+        }
+
+        isReactElement(element) {
+            let current = element;
+            while (current) {
+                if (current._reactRootContainer || current._reactInternalInstance ||
+                    Object.keys(current).some(key => key.startsWith('__react'))) return true;
+                if (current.id && current.id.includes('react-select')) return true;
+                if (current.className && typeof current.className === 'string') {
+                    if (current.className.includes('react-select') || 
+                        current.className.includes('__option') ||
+                        current.className.includes('__menu')) return true;
+                }
+                current = current.parentElement;
+            }
+            return false;
+        }
+
+        isVueElement(element) {
+            let current = element;
+            while (current) {
+                if (current.__vue__ || current.hasAttribute('data-v-')) return true;
+                current = current.parentElement;
+            }
+            return false;
+        }
+
+        isAngularElement(element) {
+            let current = element;
+            while (current) {
+                if (current.hasAttribute('ng-version')) return true;
+                const attrs = Array.from(current.attributes || []);
+                if (attrs.some(attr => attr.name.startsWith('ng-') || attr.name.startsWith('_ng'))) return true;
+                current = current.parentElement;
+            }
+            return false;
+        }
+
+        shouldSkipFrameworkElement(element) {
+            if (element.id && element.id.includes('react-select') && element.id.includes('-option-')) return true;
+            if (element.className && typeof element.className === 'string') {
+                const className = element.className;
+                if (className.includes('select__option') || className.includes('select__menu') ||
+                    className.includes('select__menu-list')) return true;
+                if (className.includes('cdk-overlay') || className.includes('mat-option')) return true;
+            }
+            if (element.hasAttribute('data-v-virtual-scroller')) return true;
+            return false;
+        }
+
+        isFileInputTrigger(element) {
+            const onclick = element.getAttribute('onclick');
+            if (onclick && onclick.includes('file') && onclick.includes('click')) return true;
+            const parent = element.parentElement;
+            if (parent && parent.querySelector('input[type="file"]')) return true;
+            return false;
+        }
+
+        detectActionPattern(actions) {
+            if (actions.length < 2) return null;
+            return this.detectFormFillPattern(actions) || 
+                   this.detectSearchPattern(actions) || null;
+        }
+
+        detectFormFillPattern(actions) {
+            const recentActions = actions.slice(-5);
+            const inputActions = recentActions.filter(a => 
+                a.type === 'input' || a.type === 'click_and_input' || a.type === 'select'
+            );
+            const submitAction = recentActions.find(a => 
+                a.type === 'click' && (a.element?.type === 'submit' || 
+                a.element?.text?.toLowerCase().includes('submit'))
+            );
+            if (inputActions.length >= 2 && submitAction) {
+                return { pattern: 'form_fill', actions: [...inputActions, submitAction], confidence: 0.9 };
+            }
+            return null;
+        }
+
+        detectSearchPattern(actions) {
+            const recentActions = actions.slice(-3);
+            const searchInput = recentActions.find(a => 
+                (a.type === 'input' || a.type === 'click_and_input') &&
+                (a.element?.name?.toLowerCase().includes('search') ||
+                 a.element?.placeholder?.toLowerCase().includes('search'))
+            );
+            const searchButton = recentActions.find(a =>
+                a.type === 'click' && a.element?.text?.toLowerCase().includes('search')
+            );
+            if (searchInput && searchButton) {
+                return { pattern: 'search', actions: [searchInput, searchButton], confidence: 0.95 };
+            }
+            return null;
+        }
+
+        getElementKey(element) {
+            if (element.id) return `id:${element.id}`;
+            if (element.name) return `name:${element.name}`;
+            return `xpath:${this.generateSimpleXPath(element)}`;
+        }
+
+        generateSimpleXPath(element) {
+            if (element.id) return `//*[@id="${element.id}"]`;
+            let path = '', current = element, depth = 0;
+            while (current && current.nodeType === Node.ELEMENT_NODE && depth < 5) {
+                let index = 0, sibling = current.previousSibling;
+                while (sibling) {
+                    if (sibling.nodeType === Node.ELEMENT_NODE && sibling.tagName === current.tagName) index++;
+                    sibling = sibling.previousSibling;
+                }
+                const tagName = current.tagName.toLowerCase();
+                const pathIndex = index > 0 ? `[${index + 1}]` : '';
+                path = `/${tagName}${pathIndex}${path}`;
+                current = current.parentElement;
+                depth++;
+            }
+            return path || '/unknown';
+        }
+
+        addRecordedAction(action) {
+            this.recordedActions.push(action);
+            const pattern = this.detectActionPattern(this.recordedActions);
+            if (pattern) {
+                console.log('[SmartDetector] 🎯 Pattern detected:', pattern.pattern);
+                this.actionGroups.push(pattern);
+            }
+        }
+
+        getStats() {
+            return {
+                totalActions: this.recordedActions.length,
+                patterns: this.actionGroups.length,
+                pendingActions: this.pendingActions.size,
+                detectedPatterns: this.actionGroups.map(p => p.pattern)
+            };
+        }
+
+        reset() {
+            this.pendingActions.forEach(t => clearTimeout(t));
+            this.pendingActions.clear();
+            this.lastActions.clear();
+            this.actionGroups = [];
+            this.recordedActions = [];
+        }
+    }
+    // ============== END SMART ACTION DETECTOR ==============
+    
+    // ============== VISUAL FEEDBACK SYSTEM ==============
+    class RecorderVisualFeedback {
+        constructor() {
+            this.indicators = [];
+            this.config = {
+                indicatorDuration: 2000,
+                highlightDuration: 1500,
+                maxIndicators: 10,
+                colors: {
+                    click: '#10b981', input: '#3b82f6', select: '#8b5cf6',
+                    navigate: '#f59e0b', hover: '#14b8a6', scroll: '#6366f1', verify: '#10b981'
+                },
+                icons: {
+                    click: '👆', input: '⌨️', select: '📋', navigate: '🌐',
+                    hover: '👉', scroll: '↕️', verify: '✓', screenshot: '📸'
+                }
+            };
+            this.ensureStylesInjected();
+        }
+
+        ensureStylesInjected() {
+            if (document.getElementById('recorder-visual-feedback-styles')) return;
+            const style = document.createElement('style');
+            style.id = 'recorder-visual-feedback-styles';
+            style.textContent = `
+                .recorder-indicator {
+                    position: absolute; z-index: 999998;
+                    background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(5, 150, 105, 0.95));
+                    color: white; border-radius: 20px; padding: 6px 12px;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                    font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                    animation: recorderFadeIn 0.2s ease-out, recorderFadeOut 0.3s ease-in 1.7s forwards;
+                    pointer-events: none;
+                }
+                @keyframes recorderFadeIn {
+                    from { opacity: 0; transform: translateY(-10px) scale(0.9); }
+                    to { opacity: 1; transform: translateY(0) scale(1); }
+                }
+                @keyframes recorderFadeOut {
+                    from { opacity: 1; transform: translateY(0) scale(1); }
+                    to { opacity: 0; transform: translateY(-10px) scale(0.9); }
+                }
+                .recorder-highlight {
+                    outline: 3px solid !important; outline-offset: 2px !important;
+                    animation: recorderPulse 1s ease-in-out;
+                }
+                @keyframes recorderPulse {
+                    0%, 100% { outline-color: var(--highlight-color); outline-width: 3px; }
+                    50% { outline-color: var(--highlight-color); outline-width: 5px; }
+                }
+                .recorder-ripple {
+                    position: absolute; border-radius: 50%;
+                    background: radial-gradient(circle, rgba(16, 185, 129, 0.6), transparent);
+                    transform: scale(0); animation: recorderRipple 0.6s ease-out;
+                    pointer-events: none; z-index: 999997;
+                }
+                @keyframes recorderRipple {
+                    to { transform: scale(4); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        showRecordedAction(element, actionType, actionCount, value = null) {
+            if (!element || !element.getBoundingClientRect) return;
+            this.highlightElement(element, actionType);
+            this.showIndicator(element, actionType, actionCount, value);
+            if (actionType === 'click') this.showRipple(element);
+            this.cleanupOldIndicators();
+        }
+
+        highlightElement(element, actionType) {
+            const color = this.config.colors[actionType] || this.config.colors.click;
+            element.classList.add('recorder-highlight');
+            element.style.setProperty('--highlight-color', color);
+            setTimeout(() => element.classList.remove('recorder-highlight'), this.config.highlightDuration);
+        }
+
+        showIndicator(element, actionType, actionCount, value) {
+            const rect = element.getBoundingClientRect();
+            const indicator = document.createElement('div');
+            indicator.className = 'recorder-indicator';
+            const color = this.config.colors[actionType] || this.config.colors.click;
+            indicator.style.background = `linear-gradient(135deg, ${color}f0, ${color}cc)`;
+            const icon = this.config.icons[actionType] || '✓';
+            const label = actionType.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+            indicator.innerHTML = `
+                <span class="indicator-icon">${icon}</span>
+                <span>${label}</span>
+                <span class="indicator-step" style="background: rgba(255,255,255,0.3);border-radius: 10px;padding: 2px 6px;font-size: 11px;">${actionCount}</span>
+            `;
+            indicator.style.top = `${rect.top + window.scrollY}px`;
+            indicator.style.left = `${rect.right + window.scrollX + 10}px`;
+            document.body.appendChild(indicator);
+            this.indicators.push(indicator);
+            setTimeout(() => {
+                if (indicator.parentNode) indicator.parentNode.removeChild(indicator);
+                this.indicators = this.indicators.filter(ind => ind !== indicator);
+            }, this.config.indicatorDuration);
+        }
+
+        showRipple(element) {
+            const rect = element.getBoundingClientRect();
+            const ripple = document.createElement('div');
+            ripple.className = 'recorder-ripple';
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.top = `${rect.top + window.scrollY + rect.height / 2 - size / 2}px`;
+            ripple.style.left = `${rect.left + window.scrollX + rect.width / 2 - size / 2}px`;
+            document.body.appendChild(ripple);
+            setTimeout(() => { if (ripple.parentNode) ripple.parentNode.removeChild(ripple); }, 600);
+        }
+
+        cleanupOldIndicators() {
+            while (this.indicators.length > this.config.maxIndicators) {
+                const old = this.indicators.shift();
+                if (old.parentNode) old.parentNode.removeChild(old);
+            }
+        }
+    }
+    // ============== END VISUAL FEEDBACK SYSTEM ==============
     
     const API_URL = 'http://localhost:5002';
     let isRecording = false;
     let actionCount = 0;
     let messageObserver = null;
-    let observedMessages = new Set(); // Prevent duplicate message captures
+    let observedMessages = new Set();
     
-    // Expose isRecording to window for external checks
+    // Initialize Smart Action Detector & Visual Feedback
+    const smartDetector = new SmartActionDetector();
+    const visualFeedback = new RecorderVisualFeedback();
+    console.log('[Recorder] ✅ Smart Action Detector initialized');
+    console.log('[Recorder] ✅ Visual Feedback System initialized');
+    
+    // Expose to window for external checks
     window.isRecording = false;
+    window.smartDetector = smartDetector;
+    window.visualFeedback = visualFeedback;
+    
+    // Helper function to show visual feedback
+    function showVisualFeedback(element, type = 'click', value = null) {
+        visualFeedback.showRecordedAction(element, type, actionCount, value);
+    }
     
     // Intercept window.open to record new window/tab navigation
     const originalWindowOpen = window.open;
@@ -96,6 +435,15 @@
         const elementInfo = getElementInfo(element);
 
         console.log(`[Recorder] 📝 Recording ${actionType}:`, elementInfo);
+        
+        // Track action in Smart Detector for pattern detection
+        const actionData = {
+            type: actionType,
+            element: elementInfo,
+            value: value,
+            timestamp: Date.now()
+        };
+        smartDetector.addRecordedAction(actionData);
 
         try {
             console.log(`[Recorder] 🌐 Sending to ${API_URL}/recorder/record-action`);
@@ -134,7 +482,7 @@
             
             // Only show visual feedback if action was actually recorded (not skipped)
             if (!data.skipped) {
-                showVisualFeedback(element);
+                showVisualFeedback(element, actionType, value);
             }
         } catch (error) {
             console.error('[Recorder] ❌ Error recording action:', error);
@@ -299,8 +647,7 @@
         }
     }, true);
     
-    // Track typing in input fields (backup mechanism for sites that prevent focusout)
-    let inputDebounceTimers = new Map();
+    // Track typing in input fields using Smart Detector
     document.addEventListener('input', function(e) {
         if (!isRecording || isPaused) return;
         
@@ -313,30 +660,20 @@
                 value: target.value
             });
             
-            // Clear any existing debounce timer for this element
-            if (inputDebounceTimers.has(target)) {
-                clearTimeout(inputDebounceTimers.get(target));
-            }
-            
-            // Set a new debounce timer - record after 1 second of no typing
-            const timer = setTimeout(() => {
+            // Use Smart Detector for intelligent debouncing
+            smartDetector.handleInput(target, target.value.trim(), (element, value) => {
                 if (!isRecording) return;
                 
-                const currentValue = target.value.trim();
-                const lastValue = lastInputValues.get(target) || '';
-                const elementKey = `${target.id || target.name || target.className}_${currentValue}`;
+                const lastValue = lastInputValues.get(element) || '';
+                const elementKey = `${element.id || element.name || element.className}_${value}`;
                 
-                if (currentValue && currentValue !== lastValue && !inputRecordedForElement.has(elementKey)) {
-                    console.log('[Recorder] 📝 Recording input (via input event):', currentValue);
-                    recordAction('click_and_input', target, currentValue);
-                    lastInputValues.set(target, currentValue);
+                if (value && value !== lastValue && !inputRecordedForElement.has(elementKey)) {
+                    console.log('[Recorder] 📝 Recording input (via Smart Detector):', value);
+                    recordAction('click_and_input', element, value);
+                    lastInputValues.set(element, value);
                     inputRecordedForElement.add(elementKey);
                 }
-                
-                inputDebounceTimers.delete(target);
-            }, 1000); // Wait 1 second after user stops typing
-            
-            inputDebounceTimers.set(target, timer);
+            });
         }
     }, true);
 
@@ -409,11 +746,18 @@
             return;
         }
         
+        // Note: We NO LONGER prevent default on submit buttons or links
+        // This allows navigation to happen naturally (e.g., login forms)
+        // The form submission handler will record the action before navigation
+        
         console.log('[Recorder] Click detected on:', target.tagName, 'ID:', target.id, 'Class:', target.className);
         
-        // Ignore recorder controls
-        if (target.closest('#recorderControls')) {
-            console.log('[Recorder] ❌ Skipped: Recorder controls');
+        // Ignore recorder controls and sticky popup
+        if (target.closest('#recorderControls') || 
+            target.id === 'sticky-close' || 
+            target.closest('#sticky-close') ||
+            target.closest('.sticky-popup')) {
+            console.log('[Recorder] ❌ Skipped: Recorder controls or sticky popup');
             return;
         }
         
@@ -500,44 +844,26 @@
             return;
         }
         
-        // Deduplicate rapid clicks on the same element (within 2 seconds to catch form submissions)
-        const currentTime = Date.now();
-        const elementSignature = (target.id || '') + '|' + classNameStr + '|' + target.tagName;
-        if (lastClickedElement === elementSignature && (currentTime - lastClickTime) < 2000) {
-            console.log('[Recorder] Skipping duplicate click on same element within 2s');
+        // Use Smart Detector for framework detection and click deduplication
+        const framework = smartDetector.detectFrameworkElements(target);
+        if (framework !== 'vanilla') {
+            console.log(`[Recorder] 🎯 Detected ${framework} framework element`);
+        }
+        
+        // Use Smart Detector to check if we should skip this element
+        if (smartDetector.shouldSkipFrameworkElement(target)) {
+            console.log('[Recorder] Skipping framework-specific element via Smart Detector');
             return;
         }
         
-        // Skip React Select dropdown options - they will be handled as select actions
-        // React Select uses IDs like "react-select-3-option-0"
-        if (target.id && target.id.match(/react-select-\d+-option-\d+/)) {
-            console.log('[Recorder] React Select option clicked - recording as select');
-            // Record as a select action instead
-            const optionText = target.textContent.trim();
-            // Find the react-select container (the clickable div that opens the dropdown)
-            // It usually has class containing "react-select" or "select__control"
-            const selectContainer = document.querySelector('[class*="react-select"][class*="control"]') || 
-                                   document.querySelector('[class*="select__control"]') ||
-                                   document.querySelector('.react-select__control');
-            
-            if (selectContainer) {
-                // Store the option text and record the container as the target
-                recordAction('react_select', selectContainer, optionText);
-                console.log('[Recorder] Recorded React Select with container and option:', optionText);
-            } else {
-                console.log('[Recorder] Could not find React Select container, skipping');
-            }
-            return;
-        }
+        // Deduplicate rapid clicks using Smart Detector
+        const shouldRecord = smartDetector.handleClick(target, (element) => {
+            // Record the actual click action
+            recordAction('click', element);
+        });
         
-        // Skip clicks on React Select menu containers and options by class
-        if (classNameStr.includes('select__option') || 
-            classNameStr.includes('select__menu') ||
-            classNameStr.includes('select__dropdown') ||
-            target.closest('[class*="select__menu"]') ||
-            target.closest('[class*="select__option"]')) {
-            console.log('[Recorder] Skipping React Select menu/option click');
-            return;
+        if (!shouldRecord) {
+            return; // Smart Detector prevented duplicate/unwanted click
         }
         
         // Skip clicks on date picker SELECT elements (month/year dropdowns)
@@ -560,60 +886,45 @@
             }
         }
         
-        // Only record clicks on interactive elements
-        const interactiveElements = ['BUTTON', 'A', 'SELECT', 'OPTION', 'I', 'SVG', 'IMG'];
-        const isInteractive = interactiveElements.includes(target.tagName) ||
-                            target.onclick !== null ||
-                            target.getAttribute('onclick') !== null ||
-                            target.role === 'button' ||
-                            target.role === 'link' ||
-                            target.role === 'tab' ||
-                            target.role === 'menuitem' ||
-                            target.classList.contains('btn') ||
-                            target.classList.contains('button') ||
-                            target.classList.contains('clickable') ||
-                            target.classList.contains('icon') ||
-                            target.classList.contains('glyphicon') ||
-                            target.hasAttribute('data-toggle') ||
-                            target.hasAttribute('data-target') ||
-                            target.hasAttribute('data-dismiss') ||
-                            target.closest('button') !== null ||
-                            target.closest('a') !== null ||
-                            target.closest('[onclick]') !== null ||
-                            target.closest('[role="button"]') !== null ||
-                            target.closest('[role="link"]') !== null ||
-                            target.closest('[role="tab"]') !== null ||
-                            // Better detection: if parent is clickable, icon clicks count
-                            (target.parentElement && (
-                                target.parentElement.tagName === 'BUTTON' ||
-                                target.parentElement.tagName === 'A' ||
-                                target.parentElement.classList.contains('btn') ||
-                                target.parentElement.classList.contains('button') ||
-                                target.parentElement.role === 'button'
-                            ));
+        // ULTRA STRICT: Only record clicks on ACTUAL actionable elements
+        // Absolutely NO divs, spans, or decorative elements
         
-        // Log interactive check details
-        console.log('[Recorder] 🔍 Interactive check:', {
-            tagName: target.tagName,
-            isInArray: interactiveElements.includes(target.tagName),
-            hasOnclick: target.onclick !== null || target.getAttribute('onclick') !== null,
-            role: target.role,
-            classes: target.className,
-            parentTag: target.parentElement?.tagName,
-            parentClasses: target.parentElement?.className,
-            closestButton: target.closest('button') !== null,
-            closestLink: target.closest('a') !== null,
-            isInteractive: isInteractive
-        });
+        // First check: Is this an actual interactive HTML element?
+        const isRealButton = target.tagName === 'BUTTON';
+        const isRealLink = target.tagName === 'A' && target.hasAttribute('href');
+        const isRealInput = target.tagName === 'INPUT' && (target.type === 'button' || target.type === 'submit');
+        const isRealSelect = target.tagName === 'SELECT';
         
-        // Skip clicks on non-interactive elements
-        if (!isInteractive) {
-            console.log('[Recorder] ❌ Skipped: Non-interactive element:', target.tagName, target.className);
+        // If it's one of the above REAL elements, record it
+        if (isRealButton || isRealLink || isRealInput || isRealSelect) {
+            console.log('[Recorder] ✅ Recording REAL interactive element:', target.tagName, target.id || target.className);
+            // Continue to record this
+        }
+        // If it's an icon/svg/img inside a button/link, traverse up
+        else if (target.tagName === 'I' || target.tagName === 'SVG' || target.tagName === 'IMG' || target.tagName === 'SPAN' || target.tagName === 'PATH') {
+            // Look for parent button/link
+            const parentButton = target.closest('button');
+            const parentLink = target.closest('a[href]');
+            
+            if (!parentButton && !parentLink) {
+                console.log('[Recorder] ❌ BLOCKED: Icon/span without button/link parent -', target.tagName, target.className);
+                return; // Do NOT record standalone icons/spans
+            }
+            console.log('[Recorder] ✅ Icon inside button/link, will traverse up');
+            // Continue to traverse logic below
+        }
+        // Everything else (divs, spans without button parents, etc.) - BLOCK
+        else {
+            console.log('[Recorder] ⛔ BLOCKED non-interactive element:', {
+                tag: target.tagName,
+                class: target.className,
+                id: target.id,
+                text: target.textContent?.substring(0, 30)
+            });
             return;
         }
 
         // Update last click tracking
-        lastClickedElement = elementSignature;
         lastClickTime = currentTime;
 
         // Check if this is a message/toast/alert element
@@ -641,19 +952,34 @@
             return; // Don't record as a regular click
         }
 
-        // If clicked on an icon/SVG/img inside a button/link, use the parent as the target
+        // If clicked on an icon/SVG/img/span inside a button/link, traverse up to find the button
         let clickTarget = target;
-        if ((target.tagName === 'I' || target.tagName === 'SVG' || target.tagName === 'IMG' || target.tagName === 'SPAN') &&
-            target.parentElement && 
-            (target.parentElement.tagName === 'BUTTON' || 
-             target.parentElement.tagName === 'A' ||
-             target.parentElement.classList.contains('btn') ||
-             target.parentElement.role === 'button')) {
-            clickTarget = target.parentElement;
-            console.log('[Recorder] ✅ Recording click on icon parent:', clickTarget.tagName, clickTarget.id || clickTarget.className);
-        } else {
-            console.log('[Recorder] ✅ Recording click on:', target.tagName, target.id || target.className);
+        if (target.tagName === 'I' || target.tagName === 'SVG' || target.tagName === 'IMG' || target.tagName === 'SPAN') {
+            // Look up to 3 levels for a button
+            let current = target;
+            let depth = 0;
+            while (current && depth < 3) {
+                if (current.tagName === 'BUTTON' || 
+                    current.tagName === 'A' ||
+                    current.classList.contains('btn') ||
+                    current.classList.contains('button') ||
+                    current.role === 'button') {
+                    clickTarget = current;
+                    console.log('[Recorder] ✅ Found clickable parent:', clickTarget.tagName, clickTarget.id || clickTarget.className);
+                    break;
+                }
+                current = current.parentElement;
+                depth++;
+            }
+            if (clickTarget === target) {
+                console.log('[Recorder] ⚠️ No clickable parent found, recording span/icon directly');
+            }
         }
+        
+        // isActionable check already done earlier in the handler
+        // Removed duplicate check to prevent re-declaration error
+        
+        console.log('[Recorder] ✅ Recording click on:', clickTarget.tagName, clickTarget.id || clickTarget.className);
         
         recordAction('click', clickTarget);
     }, true);
@@ -867,6 +1193,91 @@
         }
     }, true);
 
+    // Capture form submission during recording - Record but allow navigation
+    document.addEventListener('submit', function(e) {
+        if (!isRecording || isPaused) {
+            return; // Not recording, allow normal submission
+        }
+        
+        console.log('[Recorder] ✅ Form submission detected - Recording and allowing navigation');
+        
+        // Record the form submission action
+        const form = e.target;
+        const submitButton = form.querySelector('button[type="submit"], input[type="submit"]') || 
+                           document.activeElement;
+        
+        // Find the actual submit button that was clicked
+        let clickedSubmit = submitButton;
+        if (submitButton && submitButton.form === form) {
+            clickedSubmit = submitButton;
+        }
+        
+        // Record the submit button click
+        if (clickedSubmit && (clickedSubmit.type === 'submit' || clickedSubmit.tagName === 'BUTTON')) {
+            console.log('[Recorder] 📝 Recording submit button click:', clickedSubmit);
+            recordAction('click', clickedSubmit, 'submit');
+        } else {
+            // Fallback: record the form submission directly
+            console.log('[Recorder] 📝 Recording form submission');
+            recordAction('submit', form, 'form_submit');
+        }
+        
+        // Allow the form to submit normally (navigation will happen)
+        // The recording will be saved before the page unloads
+        console.log('[Recorder] ✅ Allowing form submission to proceed - page will navigate');
+        
+    }, true);
+
+    // ============== SCROLL EVENT RECORDING ==============
+    let scrollTimeout;
+    let lastScrollY = window.scrollY;
+    let lastScrollX = window.scrollX;
+    
+    window.addEventListener('scroll', function(e) {
+        console.log('[Recorder] 🔍 SCROLL EVENT FIRED - isRecording:', isRecording, 'isPaused:', isPaused, 'scrollY:', window.scrollY);
+        if (!isRecording || isPaused) {
+            console.log('[Recorder] ⚠️ Scroll ignored - isRecording:', isRecording, 'isPaused:', isPaused);
+            return;
+        }
+        
+        // Debounce scroll events - only record when user stops scrolling
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const currentScrollY = window.scrollY;
+            const currentScrollX = window.scrollX;
+            
+            console.log('[Recorder] 🔍 SCROLL DEBOUNCE COMPLETE:', {
+                currentY: currentScrollY,
+                currentX: currentScrollX,
+                lastY: lastScrollY,
+                lastX: lastScrollX
+            });
+            
+            // Only record if scroll position changed significantly (more than 50px)
+            const deltaY = Math.abs(currentScrollY - lastScrollY);
+            const deltaX = Math.abs(currentScrollX - lastScrollX);
+            
+            console.log('[Recorder] 🔍 DELTA:', { deltaY, deltaX, threshold: 50, willRecord: (deltaY > 50 || deltaX > 50) });
+            
+            if (deltaY > 50 || deltaX > 50) {
+                console.log('[Recorder] 📜 Scroll detected:', { x: currentScrollX, y: currentScrollY, deltaY, deltaX });
+                
+                // Record scroll action with position
+                recordAction('scroll', document.body, JSON.stringify({
+                    x: currentScrollX,
+                    y: currentScrollY,
+                    deltaY: deltaY,
+                    deltaX: deltaX
+                }));
+                
+                lastScrollY = currentScrollY;
+                lastScrollX = currentScrollX;
+            } else {
+                console.log('[Recorder] ⚠️ Scroll too small - threshold not met (need >50px)', { deltaY, deltaX });
+            }
+        }, 500); // Wait 500ms after user stops scrolling
+    }, { passive: true });
+
     // Keyboard shortcuts for recorder control
     document.addEventListener('keydown', function(e) {
         // Ctrl+Shift+R - Toggle recording on/off
@@ -1037,6 +1448,8 @@
             z-index: 999999;
             font-family: Arial, sans-serif;
             font-size: 14px;
+            cursor: move;
+            user-select: none;
         `;
 
         controls.innerHTML = `
@@ -1058,6 +1471,48 @@
                 }
             </style>
         `;
+
+        // Make the panel draggable
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        controls.addEventListener('mousedown', function(e) {
+            // Don't start drag if clicking on the stop button
+            if (e.target.id === 'stopRecordingBtn' || e.target.closest('#stopRecordingBtn')) {
+                return;
+            }
+            
+            isDragging = true;
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+            controls.style.cursor = 'grabbing';
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                xOffset = currentX;
+                yOffset = currentY;
+                
+                // Update position
+                controls.style.transform = `translate(${currentX}px, ${currentY}px)`;
+            }
+        });
+
+        document.addEventListener('mouseup', function(e) {
+            if (isDragging) {
+                isDragging = false;
+                controls.style.cursor = 'move';
+            }
+        });
 
         // Add click handler for stop button
         setTimeout(() => {
@@ -1081,9 +1536,18 @@
         window.isRecording = true;
         actionCount = 0;
         observedMessages.clear();
+        
+        // Reset scroll tracking when recording starts
+        lastScrollY = window.scrollY;
+        lastScrollX = window.scrollX;
+        console.log('[Recorder] 🔄 Scroll tracking reset to current position:', { x: lastScrollX, y: lastScrollY });
+        
         createRecorderControls();
         startMessageObserver();
         startDateInputMonitoring(); // Start monitoring date inputs
+        
+        // Reset Smart Detector for new session
+        smartDetector.reset();
         
         console.log('='.repeat(60));
         console.log('[Recorder] ✅ RECORDING STARTED');
@@ -1095,6 +1559,7 @@
         });
         console.log('[Recorder] 📝 Interact with the page - all actions will be captured');
         console.log('[Recorder] 🔍 Check console for "🎯", "⌨️", "👋", "📝" emojis to see events');
+        console.log('[Recorder] 🧠 Smart Detection: ENABLED (debouncing, framework detection, pattern recognition)');
         console.log('='.repeat(60));
     };
 
@@ -1123,6 +1588,14 @@
         inputRecordedForElement.clear();
         lastInputValues.clear();
         observedMessages.clear();
+        
+        // Clear Smart Detector and log stats
+        const stats = smartDetector.getStats();
+        console.log('[Recorder] 📊 Smart Detector Stats:', stats);
+        if (smartDetector.actionGroups.length > 0) {
+            console.log('[Recorder] 🎯 Detected Action Patterns:', smartDetector.actionGroups.map(p => p.pattern));
+        }
+        smartDetector.reset();
         
         console.log(`[Recorder] Stopped. Total actions recorded: ${actionCount}`);
         
