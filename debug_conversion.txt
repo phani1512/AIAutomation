@@ -1,0 +1,692 @@
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[PYTHON CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVASCRIPT CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): // Playwright handles waits automatically
+element = await page.locator('.login-row .primary-btn').waitFor()
+element.click()
+[CONVERSION COMPLETE]
+
+================================================================================
+[CYPRESS CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = cy.get('.login-row .primary-btn').should('be.visible')
+element.click()
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify page title
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVASCRIPT CONVERSION STARTED]
+Prompt: verify page title
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): // Playwright handles waits automatically
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+[CONVERSION COMPLETE]
+
+================================================================================
+[PYTHON CONVERSION STARTED]
+Prompt: verify page title
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+[CONVERSION COMPLETE]
+
+================================================================================
+[CYPRESS CONVERSION STARTED]
+Prompt: verify page title
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVASCRIPT CONVERSION STARTED]
+Prompt: verify page title
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): // Playwright handles waits automatically
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify page title
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: select value from dropdown
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+dropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "select.form-control.role-select")))
+Select dropdown = new Select(dropdownElement)
+dropdown.s
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement dropdownElement = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector("select.form-control.role-select
+[CONVERSION COMPLETE]
+
+================================================================================
+[PYTHON CONVERSION STARTED]
+Prompt: select value from dropdown
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+dropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "select.form-control.role-select")))
+Select dropdown = new Select(dropdownElement)
+dropdown.s
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+dropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "select.form-control.role-select")))
+Select dropdown = new Select(dropdownElement)
+dropdown.s
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVASCRIPT CONVERSION STARTED]
+Prompt: select value from dropdown
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+dropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "select.form-control.role-select")))
+Select dropdown = new Select(dropdownElement)
+dropdown.s
+Converted code (first 200 chars): // Playwright handles waits automatically
+dropdownElement = await page.locator('select.form-control.role-select').waitFor()
+Select dropdown = new Select(dropdownElement)
+dropdown.selectByVisibleText(v
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: enter username
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_located((By.ID, "username")))
+element.clear()
+element.send_keys(value)
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("username")));
+element.clear();
+element.sen
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify title is Login Page
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: enter username
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_located((By.ID, "username")))
+element.clear()
+element.send_keys(value)
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("username")));
+element.clear();
+element.sen
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify title is Login Page
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: enter username
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_located((By.ID, "username")))
+element.clear()
+element.send_keys(value)
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("username")));
+element.clear();
+element.sen
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify title is Login Page
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: enter username
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_located((By.ID, "username")))
+element.clear()
+element.send_keys(value)
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("username")));
+element.clear();
+element.sen
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify title is Login Page
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: enter username
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_located((By.ID, "username")))
+element.clear()
+element.send_keys(value)
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("username")));
+element.clear();
+element.sen
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify title is Login Page
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: enter username
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_located((By.ID, "username")))
+element.clear()
+element.send_keys(value)
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("username")));
+element.clear();
+element.sen
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify title is Login Page
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click email preview over lay dialog close button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".dialog-content .button-row button[type='button']")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".dialog-content .button-row button[type
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: enter username
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_located((By.ID, "username")))
+element.clear()
+element.send_keys(value)
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("username")));
+element.clear();
+element.sen
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify title is Login Page
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[PYTHON CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+[CONVERSION COMPLETE]
+
+================================================================================
+[PYTHON CONVERSION STARTED]
+Prompt: select value from dropdown
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+dropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "select.form-control.role-select")))
+Select dropdown = new Select(dropdownElement)
+dropdown.s
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+dropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "select.form-control.role-select")))
+Select dropdown = new Select(dropdownElement)
+dropdown.s
+[CONVERSION COMPLETE]
+
+================================================================================
+[PYTHON CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+[CONVERSION COMPLETE]
+
+================================================================================
+[PYTHON CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: click login button
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(".login-row .primary-btn")));
+element.cl
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: select value from dropdown
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+dropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "select.form-control.role-select")))
+Select dropdown = new Select(dropdownElement)
+dropdown.s
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement dropdownElement = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector("select.form-control.role-select
+[CONVERSION COMPLETE]
+
+================================================================================
+[PYTHON CONVERSION STARTED]
+Prompt: select value from dropdown
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+dropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "select.form-control.role-select")))
+Select dropdown = new Select(dropdownElement)
+dropdown.s
+Converted code (first 200 chars): wait = WebDriverWait(driver, 10)
+dropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "select.form-control.role-select")))
+Select dropdown = new Select(dropdownElement)
+dropdown.s
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify page title
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify page title
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]
+
+================================================================================
+[JAVA CONVERSION STARTED]
+Prompt: verify page title
+Python code (first 200 chars): wait = WebDriverWait(driver, 10)
+wait.until(EC.title_contains("Expected Title"))
+assert "Expected Title" in driver.getTitle()
+Converted code (first 200 chars): WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(EC.title_contains("Expected Title"));
+assert "Expected Title" in driver.getTitle();
+[CONVERSION COMPLETE]

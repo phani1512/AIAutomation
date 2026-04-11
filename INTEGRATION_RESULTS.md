@@ -8,7 +8,7 @@ All four integration options have been successfully built, tested, and verified!
 ## 🌐 **NEW! Option 4: Web Interface**
 
 ### Status: **LIVE** ✓
-- **URL:** http://localhost:5000
+- **URL:** http://localhost:5002
 - **Interface:** Modern, responsive web UI
 - **Real-time Stats:** Request tracking and performance metrics
 
@@ -53,7 +53,7 @@ All four integration options have been successfully built, tested, and verified!
 python src/main/python/api_server.py
 
 # 2. Open browser to:
-http://localhost:5000
+http://localhost:5002
 
 # 3. Start generating code!
 ```
@@ -79,7 +79,7 @@ http://localhost:5000
 ## ✅ Option 1: REST API Server
 
 ### Status: **RUNNING** ✓
-- **URL:** http://localhost:5000
+- **URL:** http://localhost:5002
 - **Model:** Loaded successfully
 - **Vocabulary Size:** 935 tokens
 - **Unique Contexts:** 3,827
@@ -88,7 +88,7 @@ http://localhost:5000
 
 #### 1. Health Check
 ```bash
-GET http://localhost:5000/health
+GET http://localhost:5002/health
 ```
 **Response:**
 ```json
@@ -100,7 +100,7 @@ GET http://localhost:5000/health
 
 #### 2. Generate Code
 ```bash
-POST http://localhost:5000/generate
+POST http://localhost:5002/generate
 Content-Type: application/json
 
 {
@@ -118,7 +118,7 @@ Content-Type: application/json
 
 #### 3. Suggest Locator
 ```bash
-POST http://localhost:5000/suggest-locator
+POST http://localhost:5002/suggest-locator
 Content-Type: application/json
 
 {
@@ -137,7 +137,7 @@ Content-Type: application/json
 
 #### 4. Suggest Action
 ```bash
-POST http://localhost:5000/suggest-action
+POST http://localhost:5002/suggest-action
 Content-Type: application/json
 
 {
@@ -389,11 +389,11 @@ python src/main/python/api_server.py
 pip install gunicorn
 
 # Run with gunicorn (Linux/Mac)
-gunicorn -w 4 -b 0.0.0.0:5000 api_server:app
+gunicorn -w 4 -b 0.0.0.0:5002 api_server:app
 
 # Or use waitress (Windows)
 pip install waitress
-waitress-serve --host=0.0.0.0 --port=5000 api_server:app
+waitress-serve --host=0.0.0.0 --port=5002 api_server:app
 ```
 
 #### For Java Integration:
@@ -419,19 +419,19 @@ waitress-serve --host=0.0.0.0 --port=5000 api_server:app
 ### Test REST API:
 ```powershell
 # Health check
-Invoke-RestMethod -Uri "http://localhost:5000/health" -Method Get
+Invoke-RestMethod -Uri "http://localhost:5002/health" -Method Get
 
 # Generate code
 $body = @{ prompt = "click submit button" } | ConvertTo-Json
-Invoke-RestMethod -Uri "http://localhost:5000/generate" -Method Post -Body $body -ContentType "application/json"
+Invoke-RestMethod -Uri "http://localhost:5002/generate" -Method Post -Body $body -ContentType "application/json"
 
 # Suggest locator
 $body = @{ html = '<input id="email" name="email">' } | ConvertTo-Json
-Invoke-RestMethod -Uri "http://localhost:5000/suggest-locator" -Method Post -Body $body -ContentType "application/json"
+Invoke-RestMethod -Uri "http://localhost:5002/suggest-locator" -Method Post -Body $body -ContentType "application/json"
 
 # Suggest action
 $body = @{ element_type = "button"; context = "form" } | ConvertTo-Json
-Invoke-RestMethod -Uri "http://localhost:5000/suggest-action" -Method Post -Body $body -ContentType "application/json"
+Invoke-RestMethod -Uri "http://localhost:5002/suggest-action" -Method Post -Body $body -ContentType "application/json"
 ```
 
 ### Test Java Integration:
@@ -462,7 +462,7 @@ python src/main/python/ai_recorder.py
 ## ✨ Success Metrics
 
 ✅ All **four** integration options **built and verified**  
-✅ **Web interface** running at http://localhost:5000  
+✅ **Web interface** running at http://localhost:5002  
 ✅ REST API server **running and responsive**  
 ✅ Java integration **compiled and tested**  
 ✅ Python recorder **generating valid test code**  
@@ -470,3 +470,4 @@ python src/main/python/ai_recorder.py
 ✅ Complete **end-to-end pipeline** functional  
 
 **The trained SLM is now fully integrated with a beautiful web UI and ready for production use!**
+

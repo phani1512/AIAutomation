@@ -1,0 +1,1502 @@
+[
+  {
+    "prompt": "enter {value} in {label} field",
+    "expected_method": "setInputFieldValue",
+    "code_template": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "set {label} field to {value}",
+    "expected_method": "setInputFieldValue",
+    "code_template": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "type {value} into {label} input",
+    "expected_method": "setInputFieldValue",
+    "code_template": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "fill {label} with {value}",
+    "expected_method": "setInputFieldValue",
+    "code_template": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "input {value} for {label}",
+    "expected_method": "setInputFieldValue",
+    "code_template": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "get value of {label} field",
+    "expected_method": "getInputFieldValue",
+    "code_template": "String value = getInputFieldValue(\"{LABEL}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "retrieve {label} input value",
+    "expected_method": "getInputFieldValue",
+    "code_template": "String value = getInputFieldValue(\"{LABEL}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "what is the value in {label}",
+    "expected_method": "getInputFieldValue",
+    "code_template": "String value = getInputFieldValue(\"{LABEL}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "read {label} field value",
+    "expected_method": "getInputFieldValue",
+    "code_template": "String value = getInputFieldValue(\"{LABEL}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "fetch value from {label}",
+    "expected_method": "getInputFieldValue",
+    "code_template": "String value = getInputFieldValue(\"{LABEL}\");",
+    "category": "Input Field Interaction by Label"
+  },
+  {
+    "prompt": "is {label} field disabled",
+    "expected_method": "isInputFieldDisabled",
+    "code_template": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "check if {label} is disabled",
+    "expected_method": "isInputFieldDisabled",
+    "code_template": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "verify {label} field is not editable",
+    "expected_method": "isInputFieldDisabled",
+    "code_template": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "is {label} input enabled",
+    "expected_method": "isInputFieldDisabled",
+    "code_template": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "can I edit {label} field",
+    "expected_method": "isInputFieldDisabled",
+    "code_template": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "get validation message for {label}",
+    "expected_method": "getInputFieldValidationMessage",
+    "code_template": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "what is the error message on {label}",
+    "expected_method": "getInputFieldValidationMessage",
+    "code_template": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "retrieve {label} field error",
+    "expected_method": "getInputFieldValidationMessage",
+    "code_template": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "read validation text for {label}",
+    "expected_method": "getInputFieldValidationMessage",
+    "code_template": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "fetch error message from {label} field",
+    "expected_method": "getInputFieldValidationMessage",
+    "code_template": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+    "category": "Input Field Validation"
+  },
+  {
+    "prompt": "select {value} from {label} dropdown",
+    "expected_method": "setDropdownValue",
+    "code_template": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "set {label} dropdown to {value}",
+    "expected_method": "setDropdownValue",
+    "code_template": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "choose {value} in {label}",
+    "expected_method": "setDropdownValue",
+    "code_template": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "pick {value} from {label} list",
+    "expected_method": "setDropdownValue",
+    "code_template": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "select {value} for {label}",
+    "expected_method": "setDropdownValue",
+    "code_template": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "get selected value from {label} dropdown",
+    "expected_method": "getSelectedDropdownValue",
+    "code_template": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "what is selected in {label}",
+    "expected_method": "getSelectedDropdownValue",
+    "code_template": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "retrieve {label} dropdown value",
+    "expected_method": "getSelectedDropdownValue",
+    "code_template": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "read selected option from {label}",
+    "expected_method": "getSelectedDropdownValue",
+    "code_template": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "fetch {label} dropdown selection",
+    "expected_method": "getSelectedDropdownValue",
+    "code_template": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "is {label} dropdown disabled",
+    "expected_method": "isDropdownFieldDisabled",
+    "code_template": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "check if {label} dropdown is enabled",
+    "expected_method": "isDropdownFieldDisabled",
+    "code_template": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "verify {label} dropdown editability",
+    "expected_method": "isDropdownFieldDisabled",
+    "code_template": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "can I select from {label}",
+    "expected_method": "isDropdownFieldDisabled",
+    "code_template": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "is {label} dropdown locked",
+    "expected_method": "isDropdownFieldDisabled",
+    "code_template": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+    "category": "Dropdown Interaction by Label"
+  },
+  {
+    "prompt": "check the {label} checkbox",
+    "expected_method": "setCheckboxOn",
+    "code_template": "setCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "select {label} checkbox",
+    "expected_method": "setCheckboxOn",
+    "code_template": "setCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "enable {label}",
+    "expected_method": "setCheckboxOn",
+    "code_template": "setCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "turn on {label} checkbox",
+    "expected_method": "setCheckboxOn",
+    "code_template": "setCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "mark {label} as checked",
+    "expected_method": "setCheckboxOn",
+    "code_template": "setCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "uncheck the {label} checkbox",
+    "expected_method": "setCheckboxOff",
+    "code_template": "setCheckboxOff(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "deselect {label} checkbox",
+    "expected_method": "setCheckboxOff",
+    "code_template": "setCheckboxOff(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "disable {label}",
+    "expected_method": "setCheckboxOff",
+    "code_template": "setCheckboxOff(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "turn off {label} checkbox",
+    "expected_method": "setCheckboxOff",
+    "code_template": "setCheckboxOff(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "unmark {label}",
+    "expected_method": "setCheckboxOff",
+    "code_template": "setCheckboxOff(\"{LABEL}\");",
+    "category": "Checkbox Operations by Label"
+  },
+  {
+    "prompt": "is {label} checkbox checked",
+    "expected_method": "isCheckboxOn",
+    "code_template": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "verify {label} is selected",
+    "expected_method": "isCheckboxOn",
+    "code_template": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "check if {label} is enabled",
+    "expected_method": "isCheckboxOn",
+    "code_template": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "is {label} marked",
+    "expected_method": "isCheckboxOn",
+    "code_template": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "validate {label} checkbox state",
+    "expected_method": "isCheckboxOn",
+    "code_template": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "is {label} checkbox disabled",
+    "expected_method": "isCheckboxDisabled",
+    "code_template": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "check if {label} can be selected",
+    "expected_method": "isCheckboxDisabled",
+    "code_template": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "verify {label} checkbox editability",
+    "expected_method": "isCheckboxDisabled",
+    "code_template": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "is {label} checkbox locked",
+    "expected_method": "isCheckboxDisabled",
+    "code_template": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "can I click {label} checkbox",
+    "expected_method": "isCheckboxDisabled",
+    "code_template": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+    "category": "Checkbox Validation"
+  },
+  {
+    "prompt": "select {label} radio button",
+    "expected_method": "selectRadioButton",
+    "code_template": "selectRadioButton(\"{LABEL}\");",
+    "category": "Radio Button Operations by Label"
+  },
+  {
+    "prompt": "choose {label} option",
+    "expected_method": "selectRadioButton",
+    "code_template": "selectRadioButton(\"{LABEL}\");",
+    "category": "Radio Button Operations by Label"
+  },
+  {
+    "prompt": "pick {label}",
+    "expected_method": "selectRadioButton",
+    "code_template": "selectRadioButton(\"{LABEL}\");",
+    "category": "Radio Button Operations by Label"
+  },
+  {
+    "prompt": "click {label} radio",
+    "expected_method": "selectRadioButton",
+    "code_template": "selectRadioButton(\"{LABEL}\");",
+    "category": "Radio Button Operations by Label"
+  },
+  {
+    "prompt": "set radio to {label}",
+    "expected_method": "selectRadioButton",
+    "code_template": "selectRadioButton(\"{LABEL}\");",
+    "category": "Radio Button Operations by Label"
+  },
+  {
+    "prompt": "is {label} radio button selected",
+    "expected_method": "isRadioButtonSelected",
+    "code_template": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+    "category": "Radio Button Validation"
+  },
+  {
+    "prompt": "check if {label} is chosen",
+    "expected_method": "isRadioButtonSelected",
+    "code_template": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+    "category": "Radio Button Validation"
+  },
+  {
+    "prompt": "verify {label} radio state",
+    "expected_method": "isRadioButtonSelected",
+    "code_template": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+    "category": "Radio Button Validation"
+  },
+  {
+    "prompt": "is {label} option selected",
+    "expected_method": "isRadioButtonSelected",
+    "code_template": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+    "category": "Radio Button Validation"
+  },
+  {
+    "prompt": "validate {label} radio selection",
+    "expected_method": "isRadioButtonSelected",
+    "code_template": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+    "category": "Radio Button Validation"
+  },
+  {
+    "prompt": "click {button} button",
+    "expected_method": "clickButton",
+    "code_template": "clickButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "press {button}",
+    "expected_method": "clickButton",
+    "code_template": "clickButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "click on {button}",
+    "expected_method": "clickButton",
+    "code_template": "clickButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "hit {button} button",
+    "expected_method": "clickButton",
+    "code_template": "clickButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "select {button}",
+    "expected_method": "clickButton",
+    "code_template": "clickButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "click {button} in dialog",
+    "expected_method": "clickDialogButton",
+    "code_template": "clickDialogButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "click {button} on popup",
+    "expected_method": "clickDialogButton",
+    "code_template": "clickDialogButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "press {button} in modal",
+    "expected_method": "clickDialogButton",
+    "code_template": "clickDialogButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "click dialog {button}",
+    "expected_method": "clickDialogButton",
+    "code_template": "clickDialogButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "select {button} in popup",
+    "expected_method": "clickDialogButton",
+    "code_template": "clickDialogButton(\"{BUTTON_TEXT}\");",
+    "category": "Button Actions by Text"
+  },
+  {
+    "prompt": "is {button} button present",
+    "expected_method": "isButtonFound",
+    "code_template": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "{LAST_NAME}s {button} exist",
+    "expected_method": "isButtonFound",
+    "code_template": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "find {button} button",
+    "expected_method": "isButtonFound",
+    "code_template": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "check for {button}",
+    "expected_method": "isButtonFound",
+    "code_template": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "verify {button} is displayed",
+    "expected_method": "isButtonFound",
+    "code_template": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "is submit button disabled",
+    "expected_method": "isSubmitButtonDisabled",
+    "code_template": "boolean isDisabled = isSubmitButtonDisabled();",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "can I submit",
+    "expected_method": "isSubmitButtonDisabled",
+    "code_template": "boolean isDisabled = isSubmitButtonDisabled();",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "check submit button state",
+    "expected_method": "isSubmitButtonDisabled",
+    "code_template": "boolean isDisabled = isSubmitButtonDisabled();",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "verify submit is enabled",
+    "expected_method": "isSubmitButtonDisabled",
+    "code_template": "boolean isDisabled = isSubmitButtonDisabled();",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "is form submittable",
+    "expected_method": "isSubmitButtonDisabled",
+    "code_template": "boolean isDisabled = isSubmitButtonDisabled();",
+    "category": "Button Validation"
+  },
+  {
+    "prompt": "click {link} link",
+    "expected_method": "clickLink",
+    "code_template": "clickLink(\"{LINK_TEXT}\");",
+    "category": "Link Operations"
+  },
+  {
+    "prompt": "click on {link}",
+    "expected_method": "clickLink",
+    "code_template": "clickLink(\"{LINK_TEXT}\");",
+    "category": "Link Operations"
+  },
+  {
+    "prompt": "follow {link}",
+    "expected_method": "clickLink",
+    "code_template": "clickLink(\"{LINK_TEXT}\");",
+    "category": "Link Operations"
+  },
+  {
+    "prompt": "navigate to {link}",
+    "expected_method": "clickLink",
+    "code_template": "clickLink(\"{LINK_TEXT}\");",
+    "category": "Link Operations"
+  },
+  {
+    "prompt": "select {link}",
+    "expected_method": "clickLink",
+    "code_template": "clickLink(\"{LINK_TEXT}\");",
+    "category": "Link Operations"
+  },
+  {
+    "prompt": "is {link} link present",
+    "expected_method": "isLinkFound",
+    "code_template": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "{LAST_NAME}s {link} exist",
+    "expected_method": "isLinkFound",
+    "code_template": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "find {link} link",
+    "expected_method": "isLinkFound",
+    "code_template": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "check for {link}",
+    "expected_method": "isLinkFound",
+    "code_template": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "verify {link} is displayed",
+    "expected_method": "isLinkFound",
+    "code_template": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "{LAST_NAME}s {link} open in new tab",
+    "expected_method": "isLinkOpeningInNewTab",
+    "code_template": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "verify {link} opens new window",
+    "expected_method": "isLinkOpeningInNewTab",
+    "code_template": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "check if {link} has target blank",
+    "expected_method": "isLinkOpeningInNewTab",
+    "code_template": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "is {link} external",
+    "expected_method": "isLinkOpeningInNewTab",
+    "code_template": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "{LAST_NAME}s {link} open new tab",
+    "expected_method": "isLinkOpeningInNewTab",
+    "code_template": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+    "category": "Link Validation"
+  },
+  {
+    "prompt": "click {tab} tab",
+    "expected_method": "clickNavigationTab",
+    "code_template": "clickNavigationTab(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "switch to {tab}",
+    "expected_method": "clickNavigationTab",
+    "code_template": "clickNavigationTab(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "navigate to {tab} tab",
+    "expected_method": "clickNavigationTab",
+    "code_template": "clickNavigationTab(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "select {tab} tab",
+    "expected_method": "clickNavigationTab",
+    "code_template": "clickNavigationTab(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "go to {tab}",
+    "expected_method": "clickNavigationTab",
+    "code_template": "clickNavigationTab(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "click {tab} button",
+    "expected_method": "clickTabButton",
+    "code_template": "clickTabButton(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "open {tab} section",
+    "expected_method": "clickTabButton",
+    "code_template": "clickTabButton(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "activate {tab}",
+    "expected_method": "clickTabButton",
+    "code_template": "clickTabButton(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "show {tab} content",
+    "expected_method": "clickTabButton",
+    "code_template": "clickTabButton(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "display {tab}",
+    "expected_method": "clickTabButton",
+    "code_template": "clickTabButton(\"{TAB_NAME}\");",
+    "category": "Tab Navigation"
+  },
+  {
+    "prompt": "is {tab} active",
+    "expected_method": "isTabButtonActive",
+    "code_template": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+    "category": "Tab Validation"
+  },
+  {
+    "prompt": "is {tab} selected",
+    "expected_method": "isTabButtonActive",
+    "code_template": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+    "category": "Tab Validation"
+  },
+  {
+    "prompt": "check if {tab} is current",
+    "expected_method": "isTabButtonActive",
+    "code_template": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+    "category": "Tab Validation"
+  },
+  {
+    "prompt": "verify {tab} is active",
+    "expected_method": "isTabButtonActive",
+    "code_template": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+    "category": "Tab Validation"
+  },
+  {
+    "prompt": "is {tab} tab open",
+    "expected_method": "isTabButtonActive",
+    "code_template": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+    "category": "Tab Validation"
+  },
+  {
+    "prompt": "is dialog open",
+    "expected_method": "isDialogOpen",
+    "code_template": "boolean isOpen = isDialogOpen();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "is modal displayed",
+    "expected_method": "isDialogOpen",
+    "code_template": "boolean isOpen = isDialogOpen();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "check if popup is visible",
+    "expected_method": "isDialogOpen",
+    "code_template": "boolean isOpen = isDialogOpen();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "verify dialog is showing",
+    "expected_method": "isDialogOpen",
+    "code_template": "boolean isOpen = isDialogOpen();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "is there a popup",
+    "expected_method": "isDialogOpen",
+    "code_template": "boolean isOpen = isDialogOpen();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "get dialog text",
+    "expected_method": "getDialogContent",
+    "code_template": "String content = getDialogContent();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "read modal content",
+    "expected_method": "getDialogContent",
+    "code_template": "String content = getDialogContent();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "what {LAST_NAME}s the dialog say",
+    "expected_method": "getDialogContent",
+    "code_template": "String content = getDialogContent();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "retrieve popup message",
+    "expected_method": "getDialogContent",
+    "code_template": "String content = getDialogContent();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "fetch dialog content",
+    "expected_method": "getDialogContent",
+    "code_template": "String content = getDialogContent();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "close dialog",
+    "expected_method": "closeDialog",
+    "code_template": "closeDialog();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "close modal",
+    "expected_method": "closeDialog",
+    "code_template": "closeDialog();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "dismiss popup",
+    "expected_method": "closeDialog",
+    "code_template": "closeDialog();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "close the window",
+    "expected_method": "closeDialog",
+    "code_template": "closeDialog();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "exit dialog",
+    "expected_method": "closeDialog",
+    "code_template": "closeDialog();",
+    "category": "Dialog Operations"
+  },
+  {
+    "prompt": "submit dialog",
+    "expected_method": "clickDialogSubmitButton",
+    "code_template": "clickDialogSubmitButton();",
+    "category": "Dialog Actions"
+  },
+  {
+    "prompt": "confirm dialog",
+    "expected_method": "clickDialogSubmitButton",
+    "code_template": "clickDialogSubmitButton();",
+    "category": "Dialog Actions"
+  },
+  {
+    "prompt": "click dialog submit",
+    "expected_method": "clickDialogSubmitButton",
+    "code_template": "clickDialogSubmitButton();",
+    "category": "Dialog Actions"
+  },
+  {
+    "prompt": "accept dialog",
+    "expected_method": "clickDialogSubmitButton",
+    "code_template": "clickDialogSubmitButton();",
+    "category": "Dialog Actions"
+  },
+  {
+    "prompt": "save dialog changes",
+    "expected_method": "clickDialogSubmitButton",
+    "code_template": "clickDialogSubmitButton();",
+    "category": "Dialog Actions"
+  },
+  {
+    "prompt": "search table for {criteria}",
+    "expected_method": "searchTable",
+    "code_template": "searchTable(\"{CRITERIA}\");",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "find {criteria} in table",
+    "expected_method": "searchTable",
+    "code_template": "searchTable(\"{CRITERIA}\");",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "filter table by {criteria}",
+    "expected_method": "searchTable",
+    "code_template": "searchTable(\"{CRITERIA}\");",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "search for {criteria}",
+    "expected_method": "searchTable",
+    "code_template": "searchTable(\"{CRITERIA}\");",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "lookup {criteria} in table",
+    "expected_method": "searchTable",
+    "code_template": "searchTable(\"{CRITERIA}\");",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "count table rows",
+    "expected_method": "getTableRowCount",
+    "code_template": "int count = getTableRowCount();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "how many rows in table",
+    "expected_method": "getTableRowCount",
+    "code_template": "int count = getTableRowCount();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "get table row count",
+    "expected_method": "getTableRowCount",
+    "code_template": "int count = getTableRowCount();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "number of table entries",
+    "expected_method": "getTableRowCount",
+    "code_template": "int count = getTableRowCount();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "table size",
+    "expected_method": "getTableRowCount",
+    "code_template": "int count = getTableRowCount();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "are there no results",
+    "expected_method": "isSearchTableNoResultsFound",
+    "code_template": "boolean noResults = isSearchTableNoResultsFound();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "is table empty",
+    "expected_method": "isSearchTableNoResultsFound",
+    "code_template": "boolean noResults = isSearchTableNoResultsFound();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "check for no results",
+    "expected_method": "isSearchTableNoResultsFound",
+    "code_template": "boolean noResults = isSearchTableNoResultsFound();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "verify no matches found",
+    "expected_method": "isSearchTableNoResultsFound",
+    "code_template": "boolean noResults = isSearchTableNoResultsFound();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "is search empty",
+    "expected_method": "isSearchTableNoResultsFound",
+    "code_template": "boolean noResults = isSearchTableNoResultsFound();",
+    "category": "Table Operations"
+  },
+  {
+    "prompt": "select row containing {text}",
+    "expected_method": "setTableRowCheckboxOn",
+    "code_template": "setTableRowCheckboxOn(\"{TEXT}\");",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "check row with {text}",
+    "expected_method": "setTableRowCheckboxOn",
+    "code_template": "setTableRowCheckboxOn(\"{TEXT}\");",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "mark {text} row",
+    "expected_method": "setTableRowCheckboxOn",
+    "code_template": "setTableRowCheckboxOn(\"{TEXT}\");",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "select {text} in table",
+    "expected_method": "setTableRowCheckboxOn",
+    "code_template": "setTableRowCheckboxOn(\"{TEXT}\");",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "check checkbox for {text}",
+    "expected_method": "setTableRowCheckboxOn",
+    "code_template": "setTableRowCheckboxOn(\"{TEXT}\");",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "open row menu",
+    "expected_method": "clickTableRowDropdownToggle",
+    "code_template": "clickTableRowDropdownToggle();",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "click row actions",
+    "expected_method": "clickTableRowDropdownToggle",
+    "code_template": "clickTableRowDropdownToggle();",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "open kebab menu",
+    "expected_method": "clickTableRowDropdownToggle",
+    "code_template": "clickTableRowDropdownToggle();",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "show row options",
+    "expected_method": "clickTableRowDropdownToggle",
+    "code_template": "clickTableRowDropdownToggle();",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "click three dots menu",
+    "expected_method": "clickTableRowDropdownToggle",
+    "code_template": "clickTableRowDropdownToggle();",
+    "category": "Table Row Operations"
+  },
+  {
+    "prompt": "edit row",
+    "expected_method": "clickEditPencilButton",
+    "code_template": "clickEditPencilButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "click edit button",
+    "expected_method": "clickEditPencilButton",
+    "code_template": "clickEditPencilButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "modify entry",
+    "expected_method": "clickEditPencilButton",
+    "code_template": "clickEditPencilButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "click pencil icon",
+    "expected_method": "clickEditPencilButton",
+    "code_template": "clickEditPencilButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "update row",
+    "expected_method": "clickEditPencilButton",
+    "code_template": "clickEditPencilButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "delete row",
+    "expected_method": "clickTrashCanButton",
+    "code_template": "clickTrashCanButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "remove entry",
+    "expected_method": "clickTrashCanButton",
+    "code_template": "clickTrashCanButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "click delete button",
+    "expected_method": "clickTrashCanButton",
+    "code_template": "clickTrashCanButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "click trash icon",
+    "expected_method": "clickTrashCanButton",
+    "code_template": "clickTrashCanButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "remove record",
+    "expected_method": "clickTrashCanButton",
+    "code_template": "clickTrashCanButton();",
+    "category": "Table Row Actions"
+  },
+  {
+    "prompt": "{LAST_NAME}s table contain {text}",
+    "expected_method": "isTableContains",
+    "code_template": "boolean contains = isTableContains(\"{TEXT}\");",
+    "category": "Table Validation"
+  },
+  {
+    "prompt": "is {text} in table",
+    "expected_method": "isTableContains",
+    "code_template": "boolean contains = isTableContains(\"{TEXT}\");",
+    "category": "Table Validation"
+  },
+  {
+    "prompt": "find {text} in table",
+    "expected_method": "isTableContains",
+    "code_template": "boolean contains = isTableContains(\"{TEXT}\");",
+    "category": "Table Validation"
+  },
+  {
+    "prompt": "verify table has {text}",
+    "expected_method": "isTableContains",
+    "code_template": "boolean contains = isTableContains(\"{TEXT}\");",
+    "category": "Table Validation"
+  },
+  {
+    "prompt": "search table for {text}",
+    "expected_method": "isTableContains",
+    "code_template": "boolean contains = isTableContains(\"{TEXT}\");",
+    "category": "Table Validation"
+  },
+  {
+    "prompt": "get message text",
+    "expected_method": "getMessageBoxText",
+    "code_template": "String message = getMessageBoxText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "read message box",
+    "expected_method": "getMessageBoxText",
+    "code_template": "String message = getMessageBoxText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "what {LAST_NAME}s the message say",
+    "expected_method": "getMessageBoxText",
+    "code_template": "String message = getMessageBoxText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "retrieve message content",
+    "expected_method": "getMessageBoxText",
+    "code_template": "String message = getMessageBoxText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "fetch alert text",
+    "expected_method": "getMessageBoxText",
+    "code_template": "String message = getMessageBoxText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "get success message",
+    "expected_method": "getMessageBoxSuccessText",
+    "code_template": "String success = getMessageBoxSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "read success notification",
+    "expected_method": "getMessageBoxSuccessText",
+    "code_template": "String success = getMessageBoxSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "what is the success text",
+    "expected_method": "getMessageBoxSuccessText",
+    "code_template": "String success = getMessageBoxSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "retrieve success message",
+    "expected_method": "getMessageBoxSuccessText",
+    "code_template": "String success = getMessageBoxSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "fetch confirmation text",
+    "expected_method": "getMessageBoxSuccessText",
+    "code_template": "String success = getMessageBoxSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "get error message",
+    "expected_method": "getMessageBoxErrorText",
+    "code_template": "String error = getMessageBoxErrorText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "read error text",
+    "expected_method": "getMessageBoxErrorText",
+    "code_template": "String error = getMessageBoxErrorText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "what is the error",
+    "expected_method": "getMessageBoxErrorText",
+    "code_template": "String error = getMessageBoxErrorText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "retrieve error message",
+    "expected_method": "getMessageBoxErrorText",
+    "code_template": "String error = getMessageBoxErrorText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "fetch failure text",
+    "expected_method": "getMessageBoxErrorText",
+    "code_template": "String error = getMessageBoxErrorText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "get toast message",
+    "expected_method": "getToastSuccessText",
+    "code_template": "String toast = getToastSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "read success toast",
+    "expected_method": "getToastSuccessText",
+    "code_template": "String toast = getToastSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "what {LAST_NAME}s the toast say",
+    "expected_method": "getToastSuccessText",
+    "code_template": "String toast = getToastSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "retrieve toast notification",
+    "expected_method": "getToastSuccessText",
+    "code_template": "String toast = getToastSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "fetch toast text",
+    "expected_method": "getToastSuccessText",
+    "code_template": "String toast = getToastSuccessText();",
+    "category": "Message Validation"
+  },
+  {
+    "prompt": "wait for page to load",
+    "expected_method": "waitForPageLoading",
+    "code_template": "waitForPageLoading();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "wait for loading",
+    "expected_method": "waitForPageLoading",
+    "code_template": "waitForPageLoading();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "let page finish loading",
+    "expected_method": "waitForPageLoading",
+    "code_template": "waitForPageLoading();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "wait until ready",
+    "expected_method": "waitForPageLoading",
+    "code_template": "waitForPageLoading();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "pause for page load",
+    "expected_method": "waitForPageLoading",
+    "code_template": "waitForPageLoading();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "wait for processing",
+    "expected_method": "waitForProcessingSpinner",
+    "code_template": "waitForProcessingSpinner();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "wait for spinner",
+    "expected_method": "waitForProcessingSpinner",
+    "code_template": "waitForProcessingSpinner();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "let processing finish",
+    "expected_method": "waitForProcessingSpinner",
+    "code_template": "waitForProcessingSpinner();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "wait for operation",
+    "expected_method": "waitForProcessingSpinner",
+    "code_template": "waitForProcessingSpinner();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "pause for processing",
+    "expected_method": "waitForProcessingSpinner",
+    "code_template": "waitForProcessingSpinner();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "wait for success toast",
+    "expected_method": "waitForToastSuccess",
+    "code_template": "waitForToastSuccess();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "wait for notification",
+    "expected_method": "waitForToastSuccess",
+    "code_template": "waitForToastSuccess();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "let toast show and hide",
+    "expected_method": "waitForToastSuccess",
+    "code_template": "waitForToastSuccess();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "wait for success message",
+    "expected_method": "waitForToastSuccess",
+    "code_template": "waitForToastSuccess();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "pause for toast",
+    "expected_method": "waitForToastSuccess",
+    "code_template": "waitForToastSuccess();",
+    "category": "Wait Operations"
+  },
+  {
+    "prompt": "upload file {filename}",
+    "expected_method": "selectFileToUpload",
+    "code_template": "selectFileToUpload(\"{FILEPATH}\");",
+    "category": "File Upload"
+  },
+  {
+    "prompt": "select file {filename}",
+    "expected_method": "selectFileToUpload",
+    "code_template": "selectFileToUpload(\"{FILEPATH}\");",
+    "category": "File Upload"
+  },
+  {
+    "prompt": "attach {filename}",
+    "expected_method": "selectFileToUpload",
+    "code_template": "selectFileToUpload(\"{FILEPATH}\");",
+    "category": "File Upload"
+  },
+  {
+    "prompt": "choose file {filename}",
+    "expected_method": "selectFileToUpload",
+    "code_template": "selectFileToUpload(\"{FILEPATH}\");",
+    "category": "File Upload"
+  },
+  {
+    "prompt": "upload {filename}",
+    "expected_method": "selectFileToUpload",
+    "code_template": "selectFileToUpload(\"{FILEPATH}\");",
+    "category": "File Upload"
+  },
+  {
+    "prompt": "click {menu} menu",
+    "expected_method": "clickMenu",
+    "code_template": "clickMenu(\"{MENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "open {menu}",
+    "expected_method": "clickMenu",
+    "code_template": "clickMenu(\"{MENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "select {menu} menu",
+    "expected_method": "clickMenu",
+    "code_template": "clickMenu(\"{MENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "go to {menu}",
+    "expected_method": "clickMenu",
+    "code_template": "clickMenu(\"{MENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "click on {menu}",
+    "expected_method": "clickMenu",
+    "code_template": "clickMenu(\"{MENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "click {submenu} submenu",
+    "expected_method": "clickSubmenu",
+    "code_template": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "select {submenu} option",
+    "expected_method": "clickSubmenu",
+    "code_template": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "choose {submenu}",
+    "expected_method": "clickSubmenu",
+    "code_template": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "go to {submenu}",
+    "expected_method": "clickSubmenu",
+    "code_template": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "open {submenu}",
+    "expected_method": "clickSubmenu",
+    "code_template": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+    "category": "Menu Navigation"
+  },
+  {
+    "prompt": "scroll to element",
+    "expected_method": "scrollToView",
+    "code_template": "scrollToView(locator);",
+    "category": "Scroll Operations"
+  },
+  {
+    "prompt": "bring element into view",
+    "expected_method": "scrollToView",
+    "code_template": "scrollToView(locator);",
+    "category": "Scroll Operations"
+  },
+  {
+    "prompt": "scroll until visible",
+    "expected_method": "scrollToView",
+    "code_template": "scrollToView(locator);",
+    "category": "Scroll Operations"
+  },
+  {
+    "prompt": "make element visible",
+    "expected_method": "scrollToView",
+    "code_template": "scrollToView(locator);",
+    "category": "Scroll Operations"
+  },
+  {
+    "prompt": "scroll to show element",
+    "expected_method": "scrollToView",
+    "code_template": "scrollToView(locator);",
+    "category": "Scroll Operations"
+  },
+  {
+    "prompt": "is element present",
+    "expected_method": "isElementFound",
+    "code_template": "boolean exists = isElementFound(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "{LAST_NAME}s element exist",
+    "expected_method": "isElementFound",
+    "code_template": "boolean exists = isElementFound(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "find element",
+    "expected_method": "isElementFound",
+    "code_template": "boolean exists = isElementFound(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "check for element",
+    "expected_method": "isElementFound",
+    "code_template": "boolean exists = isElementFound(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "verify element exists",
+    "expected_method": "isElementFound",
+    "code_template": "boolean exists = isElementFound(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "is element hidden",
+    "expected_method": "isElementInvisible",
+    "code_template": "boolean invisible = isElementInvisible(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "verify element invisible",
+    "expected_method": "isElementInvisible",
+    "code_template": "boolean invisible = isElementInvisible(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "check if element not visible",
+    "expected_method": "isElementInvisible",
+    "code_template": "boolean invisible = isElementInvisible(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "is element gone",
+    "expected_method": "isElementInvisible",
+    "code_template": "boolean invisible = isElementInvisible(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "element disappeared",
+    "expected_method": "isElementInvisible",
+    "code_template": "boolean invisible = isElementInvisible(locator);",
+    "category": "Element Verification"
+  },
+  {
+    "prompt": "get panel text",
+    "expected_method": "getPanelContents",
+    "code_template": "String content = getPanelContents();",
+    "category": "Panel Operations"
+  },
+  {
+    "prompt": "read panel content",
+    "expected_method": "getPanelContents",
+    "code_template": "String content = getPanelContents();",
+    "category": "Panel Operations"
+  },
+  {
+    "prompt": "what {LAST_NAME}s the panel say",
+    "expected_method": "getPanelContents",
+    "code_template": "String content = getPanelContents();",
+    "category": "Panel Operations"
+  },
+  {
+    "prompt": "retrieve panel information",
+    "expected_method": "getPanelContents",
+    "code_template": "String content = getPanelContents();",
+    "category": "Panel Operations"
+  },
+  {
+    "prompt": "fetch panel data",
+    "expected_method": "getPanelContents",
+    "code_template": "String content = getPanelContents();",
+    "category": "Panel Operations"
+  },
+  {
+    "prompt": "is panel with {text} present",
+    "expected_method": "isPanelFound",
+    "code_template": "boolean exists = isPanelFound(\"{TEXT}\");",
+    "category": "Panel Operations"
+  },
+  {
+    "prompt": "{LAST_NAME}s {text} panel exist",
+    "expected_method": "isPanelFound",
+    "code_template": "boolean exists = isPanelFound(\"{TEXT}\");",
+    "category": "Panel Operations"
+  },
+  {
+    "prompt": "find panel containing {text}",
+    "expected_method": "isPanelFound",
+    "code_template": "boolean exists = isPanelFound(\"{TEXT}\");",
+    "category": "Panel Operations"
+  },
+  {
+    "prompt": "verify {text} panel",
+    "expected_method": "isPanelFound",
+    "code_template": "boolean exists = isPanelFound(\"{TEXT}\");",
+    "category": "Panel Operations"
+  },
+  {
+    "prompt": "check for {text} panel",
+    "expected_method": "isPanelFound",
+    "code_template": "boolean exists = isPanelFound(\"{TEXT}\");",
+    "category": "Panel Operations"
+  }
+]

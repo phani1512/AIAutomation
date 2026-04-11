@@ -1,0 +1,18 @@
+=== FALLBACKS PATH (line 340-348) ===
+Called gen.get_last_alternatives() and got 3 alternatives:
+
+1. [72.1%] type text in username field
+   Category: sendKeys
+   Code (first 80 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_l
+
+2. [72.1%] input text in username field
+   Category: sendKeys
+   Code (first 80 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_l
+
+3. [72.1%] fill text in username field
+   Category: sendKeys
+   Code (first 80 chars): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_l
+

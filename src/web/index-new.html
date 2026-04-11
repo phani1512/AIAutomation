@@ -13,13 +13,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     
     <!-- Modular CSS Architecture -->
-    <link rel="stylesheet" href="/web/css/base.css">
-    <link rel="stylesheet" href="/web/css/layout.css">
+    <link rel="stylesheet" href="/web/css/base.css">    <link rel="stylesheet" href="/web/css/design-system.css">    <link rel="stylesheet" href="/web/css/layout.css">
     <link rel="stylesheet" href="/web/css/components/cards.css">
     <link rel="stylesheet" href="/web/css/components/forms.css">
     <link rel="stylesheet" href="/web/css/components/modals.css">
     <link rel="stylesheet" href="/web/css/components/screenshot-ai.css">
+    <link rel="stylesheet" href="/web/css/sidebar-enhanced.css">
+    <link rel="stylesheet" href="/web/css/ui-overhaul.css">
     <link rel="stylesheet" href="/web/css/styles.css">
+    <link rel="stylesheet" href="/web/css/modern-theme.css?v=1774499338">
 </head>
 <body>
     <!-- Login Page -->
@@ -46,14 +48,23 @@
                 
                 <div class="login-input-group">
                     <label class="login-label" for="loginPassword">Password</label>
-                    <input 
-                        type="password" 
-                        id="loginPagePassword" 
-                        class="login-input" 
-                        placeholder="Enter your password"
-                        required
-                        autocomplete="off"
-                    />
+                    <div class="password-input-wrapper">
+                        <input 
+                            type="password" 
+                            id="loginPagePassword" 
+                            class="login-input password-field" 
+                            placeholder="Enter your password"
+                            required
+                            autocomplete="off"
+                        />
+                        <span 
+                            class="password-toggle-btn" 
+                            onclick="togglePasswordVisibility('loginPagePassword', this)"
+                            role="button"
+                            tabindex="0"
+                            aria-label="Toggle password visibility"
+                        >👁️</span>
+                    </div>
                 </div>
                 
                 <button type="submit" class="login-button" onclick="window.userClickedLogin = true;">
@@ -84,11 +95,11 @@
                 <nav>
                     <div class="nav-section">
                         <div class="nav-title">Main</div>
-                        <div class="nav-item active" onclick="navigateTo('dashboard')">
+                        <div class="nav-item active" onclick="navigateTo('dashboard')" data-tooltip="Dashboard">
                             <span class="nav-icon">📊</span>
                             <span>Dashboard</span>
                         </div>
-                        <div class="nav-item" onclick="navigateTo('generate')">
+                        <div class="nav-item" onclick="navigateTo('generate')" data-tooltip="Generate Code">
                             <span class="nav-icon">✨</span>
                             <span>Generate Code</span>
                         </div>
@@ -96,27 +107,24 @@
 
                     <div class="nav-section">
                         <div class="nav-title">Tools</div>
-                        <div class="nav-item" onclick="navigateTo('locator')">
+                        <div class="nav-item" onclick="navigateTo('locator')" data-tooltip="Locator Suggestions">
                             <span class="nav-icon">🎯</span>
                             <span>Locator Suggestions</span>
                         </div>
-                        <div class="nav-item" onclick="navigateTo('action')">
+                        <div class="nav-item" onclick="navigateTo('action')" data-tooltip="Action Suggestions">
                             <span class="nav-icon">💡</span>
                             <span>Action Suggestions</span>
                         </div>
-                        <div class="nav-item" onclick="navigateTo('browser')">
-                            <span class="nav-icon">🌐</span>
-                            <span>Browser Control</span>
-                        </div>
-                        <div class="nav-item" onclick="navigateTo('recorder')">
+
+                        <div class="nav-item" onclick="navigateTo('recorder')" data-tooltip="Test Recorder">
                             <span class="nav-icon">🎬</span>
                             <span>Test Recorder</span>
                         </div>
-                        <div class="nav-item" onclick="navigateTo('semantic')">
+                        <div class="nav-item" onclick="navigateTo('semantic')" data-tooltip="Semantic Analysis">
                             <span class="nav-icon">🧠</span>
                             <span>Semantic Analysis</span>
                         </div>
-                        <div class="nav-item" onclick="navigateTo('screenshot')">
+                        <div class="nav-item" onclick="navigateTo('screenshot')" data-tooltip="Screenshot AI">
                             <span class="nav-icon">📸</span>
                             <span>Screenshot AI</span>
                         </div>
@@ -124,48 +132,52 @@
 
                     <div class="nav-section">
                         <div class="nav-title">Library</div>
-                        <div class="nav-item" onclick="navigateTo('snippets')">
+                        <div class="nav-item" onclick="navigateTo('snippets')" data-tooltip="Code Snippets">
                             <span class="nav-icon">📚</span>
                             <span>Code Snippets</span>
                         </div>
-                        <div class="nav-item" onclick="navigateTo('testcases')">
+                        <div class="nav-item" onclick="navigateTo('testBuilder')" data-tooltip="Test Builder">
+                            <span class="nav-icon">🧪</span>
+                            <span>Test Builder</span>
+                        </div>
+                        <div class="nav-item" onclick="navigateTo('testcases')" data-tooltip="Test Suite">
                             <span class="nav-icon">📋</span>
                             <span>Test Suite</span>
-                        </div>
-                        <div class="nav-item" onclick="navigateTo('testrunner')">
-                            <span class="nav-icon">▶️</span>
-                            <span>Test Runner</span>
                         </div>
                     </div>
                 </nav>
 
-                <!-- User Profile in Sidebar -->
-                <div id="userProfileSidebar" style="display: none; margin-top: auto; margin-bottom: 12px; padding: 16px; background: rgba(255, 255, 255, 0.1); border-radius: var(--radius); border: 1px solid rgba(255, 255, 255, 0.15);">
-                    <div style="display: flex; align-items: center; gap: 12px; cursor: pointer;" onclick="showUserMenu()">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.25); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 1em;" id="userAvatarSidebar">U</div>
-                        <div style="flex: 1;">
-                            <div style="color: white; font-weight: 600; font-size: 0.95em;" id="userNameSidebar">User</div>
-                            <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.75em;">View Profile</div>
+                <!-- Sidebar Footer -->
+                <div class="sidebar-footer">
+                    <!-- User Profile in Sidebar -->
+                    <div id="userProfileSidebar" style="display: none; padding: 12px; background: rgba(255, 255, 255, 0.1); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15);">
+                        <div style="display: flex; align-items: center; gap: 10px; cursor: pointer;" onclick="showUserMenu()">
+                            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, 0.25); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px;" id="userAvatarSidebar">U</div>
+                            <div style="flex: 1;">
+                                <div style="color: white; font-weight: 600; font-size: 13px;" id="userNameSidebar">User</div>
+                                <div style="color: rgba(255, 255, 255, 0.6); font-size: 11px;">View Profile</div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Login Button in Sidebar -->
-                <button id="loginBtnSidebar" class="btn" onclick="showLoginModal()" style="margin-top: auto; margin-bottom: 12px; width: 100%; padding: 12px; font-size: 0.9em; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.25); color: white;">
-                    👤 Login
-                </button>
+                    <!-- Login Button in Sidebar -->
+                    <button id="loginBtnSidebar" class="btn" onclick="showLoginModal()" style="width: 100%; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.25); color: white;">
+                        <span>👤</span>
+                        <span>Login</span>
+                    </button>
 
-                <!-- Dark Mode Toggle in Sidebar -->
-                <div class="dark-mode-toggle" onclick="toggleDarkMode()">
-                    <div class="toggle-content">
-                        <span id="darkModeSlider">🌙</span>
-                        <span style="font-size: 13px;">Dark Mode</span>
+                    <!-- Dark Mode Toggle in Sidebar -->
+                    <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+                        <div class="toggle-content">
+                            <span id="darkModeSlider">🌙</span>
+                            <span>Dark Mode</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Toggle Sidebar Icon -->
-                <div id="toggleSidebarBtn" onclick="toggleSidebar()" style="width: 100%; margin-bottom: 12px; text-align: center; cursor: pointer; font-size: 1.5em; color: rgba(255, 255, 255, 0.8); padding: 8px; transition: all 0.3s ease;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">
-                    <span id="toggleIcon">◀</span>
+                    <!-- Toggle Sidebar Icon -->
+                    <div id="toggleSidebarBtn" onclick="toggleSidebar()" style="width: 100%; text-align: center; cursor: pointer; color: rgba(255, 255, 255, 0.8); transition: all 0.2s ease;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">
+                        <span id="toggleIcon">◀</span>
+                    </div>
                 </div>
             </div>
 
@@ -186,10 +198,18 @@
                 </div>
             </div>
 
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: 9998; backdrop-filter: blur(2px);"></div>
+    
     <!-- Loading Spinner -->
     <div id="loading">
-        <div class="spinner"></div>
-        <div style="text-align: center; color: var(--text-primary); font-weight: 600;">Processing...</div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <div class="spinner"></div>
+            <div id="loadingMessage" style="text-align: center; color: var(--text-primary); font-weight: 600; font-size: 15px;">Loading...</div>
+            <button id="cancelExecutionBtn" style="display: none; padding: 10px 24px; background: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s; box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3); white-space: nowrap; position: relative; z-index: 10000; pointer-events: auto;">
+                ❌ Cancel
+            </button>
+        </div>
     </div>
 
     <!-- Prism.js for syntax highlighting - Load before app scripts -->
@@ -201,7 +221,19 @@
 
     <!-- Global Configuration -->
     <script>
-        const API_URL = 'http://localhost:5002';
+        const API_URL = 'http://localhost:5003';
+        
+        // Password visibility toggle
+        function togglePasswordVisibility(inputId, button) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                button.textContent = '🙈';
+            } else {
+                input.type = 'password';
+                button.textContent = '👁️';
+            }
+        }
     </script>
 
     <!-- Core Modules - Load First -->
@@ -209,7 +241,8 @@
     <script src="/web/js/core/ui.js"></script>
     <script src="/web/js/core/dashboard.js"></script>
     <script src="/web/js/core/navigation.js"></script>
-    <script src="/web/js/core/authentication.js"></script>
+    <script src="/web/js/core/sidebar-collapse-simple.js"></script>
+    <script src="/web/js/core/authentication.js?v=1774499338"></script>
 
     <!-- Recorder Entity Classes - Load Before Features -->
     <script src="/web/js/entities/recorded-element.js"></script>
@@ -217,7 +250,7 @@
     <script src="/web/js/entities/recorder-session.js"></script>
 
     <!-- Feature Modules -->
-    <script src="/web/js/features/code-generation.js"></script>
+    <script src="/web/js/features/code-generation.js?v=1774499338"></script>
     <script src="/web/js/features/validation.js"></script>
     <script src="/web/js/features/locator-suggestions.js"></script>
     <script src="/web/js/features/action-suggestions.js"></script>
@@ -225,22 +258,27 @@
     <script src="/web/js/features/visual-feedback.js"></script>
     
     <!-- Phase 4: Recorder Advanced Features - Load Before test-recorder.js -->
-    <script src="/web/js/features/recorder-player.js"></script>
-    <script src="/web/js/features/recorder-template.js"></script>
+    <script src="/web/js/features/recorder-player.js?v=1774499338"></script>
+    <script src="/web/js/features/recorder-template.js?v=1774499338"></script>
     
-    <script src="/web/js/features/test-recorder.js"></script>
-    <script src="/web/js/features/recorder-live-monitor.js"></script>
-    <script src="/web/js/features/test-suite.js"></script>
-    <script src="/web/js/features/browser-control.js"></script>
-    <script src="/web/js/features/semantic-analysis.js"></script>
-    <script src="/web/js/features/snippets.js"></script>
-    <script src="/web/js/features/screenshot-ai.js"></script>
-    <script src="/web/js/utils.js"></script>
-
-    <!-- Main Application Initialization - Load Last -->
-    <script src="/web/js/app.js"></script>
+    <script src="/web/js/features/test-recorder.js?v=1774499338"></script>
+    <script src="/web/js/features/recorder-live-monitor.js?v=1774499338"></script>
+    <!-- Field-Aware Semantic Suggestions Module -->
+    <script src="/web/js/modules/semantic-suggestions.js?v=20260408003"></script>
     
-    <!-- Live Recorder Panel Helper Functions -->
+    <!-- Feedback System Module -->
+    <script src="/web/js/modules/feedback-system.js?v=20260408001"></script>
+    
+    <!-- Test Suite Feature -->
+    <script src="/web/js/features/test-suite.js?v=20260408001"></script>
+    <script src="/web/js/features/healing-ui.js?v=1774499338"></script> <!-- Phase 4 & 5: Self-Healing UI -->
+    <script src="/web/js/features/browser-control.js?v=1774499338"></script>
+    <script src="/web/js/features/semantic-analysis.js?v=1775886999"></script>
+    <script src="/web/js/features/snippets.js?v=1774499338"></script>
+    <script src="/web/js/features/screenshot-ai.js?v=1774499338"></script>
+    <script src="/web/js/features/test-builder.js?v=1774499338"></script> <!-- Phase 0: Multi-Prompt Test Builder -->
+    <script src="/web/js/core/utils.js?v=1774499338"></script>
+unctions -->
     <script>
         // Bring browser window to front
         async function bringBrowserToFront() {
@@ -270,9 +308,9 @@
                 sidebar.classList.toggle('collapsed');
                 mainContent.classList.toggle('expanded');
                 if (sidebar.classList.contains('collapsed')) {
-                    toggleIcon.textContent = '▶';
+                    toggleIcon.textContent = '>';
                 } else {
-                    toggleIcon.textContent = '◀';
+                    toggleIcon.textContent = '<';
                 }
             };
         }
@@ -301,6 +339,13 @@
         body:not(.dark-mode) pre[class*="language-"] {
             background: #f8fafc !important;
             border: 2px solid #e2e8f0;
+        }
+
+        /* Test Case Item Hover Effect */
+        .test-case-item:hover {
+            background: var(--bg-tertiary) !important;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
     </style>
 </body>

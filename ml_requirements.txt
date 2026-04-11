@@ -1,0 +1,12 @@
+# ML Semantic Analysis Dependencies
+# Install with: pip install -r ml_requirements.txt
+
+# Core ML Libraries
+scikit-learn>=1.3.0       # Machine learning algorithms
+joblib>=1.3.0             # Model serialization
+numpy>=1.24.0             # Numerical computations
+pandas>=2.0.0             # Data manipulation (optional, for analysis)
+
+# Already installed (Flask app dependencies)
+# flask>=2.3.0
+# flask-cors>=4.0.0

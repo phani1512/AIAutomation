@@ -1,37 +1,50 @@
 <!-- Locator Suggestions Page -->
 <section id="locatorPage" class="page-section">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 20px;">
+    <div class="container" style="padding-top: var(--space-6); padding-bottom: var(--space-8);">
         <!-- Locator Suggestions -->
         <div class="section-row">
             <div class="card">
-                <h3 class="section-header">🎯 Locator Suggestions</h3>
-                <div id="locatorTab" class="tab-content">
-                    <div class="form-group">
-                        <label for="htmlInput">HTML Element:</label>
-                        <textarea id="htmlInput" placeholder='<button id="submit-btn" class="btn-primary">Submit</button>'></textarea>
-                    </div>
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="card-title-icon">🎯</span>
+                        Locator Suggestions
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div id="locatorTab" class="tab-content">
+                        <div class="form-group">
+                            <label for="htmlInput">HTML Element:</label>
+                            <textarea id="htmlInput" placeholder='<button id="submit-btn" class="btn-primary">Submit</button>'></textarea>
+                        </div>
 
-                    <button class="btn" onclick="suggestLocator()">
-                        🎯 Suggest Locators
-                    </button>
+                        <button class="btn" onclick="suggestLocator()">
+                            🎯 Suggest Locators
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- Locator Output -->
             <div class="card">
-                <h3 class="section-header">📝 Suggested Locators</h3>
-                
-                <div class="result-box" id="locatorResultBox">
-                    <pre><code id="locatorResultContent" class="language-java">Your suggested locators will appear here...</code></pre>
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="card-title-icon">📝</span>
+                        Suggested Locators
+                    </h3>
                 </div>
+                <div class="card-body">
+                    <div class="result-box" id="locatorResultBox">
+                        <pre><code id="locatorResultContent" class="language-java">Your suggested locators will appear here...</code></pre>
+                    </div>
 
-                <div style="display: flex; gap: 10px; margin-top: 15px;">
-                    <button class="copy-btn" onclick="copyLocatorResult()" id="copyLocatorBtn" style="display: none; flex: 1;">
-                        📋 Copy to Clipboard
-                    </button>
-                    <button class="copy-btn" onclick="saveLocatorToSnippets()" id="saveLocatorSnippetBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
-                        💾 Save to Snippets
-                    </button>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyLocatorResult()" id="copyLocatorBtn" style="display: none; flex: 1;">
+                            📋 Copy to Clipboard
+                        </button>
+                        <button class="copy-btn" onclick="saveLocatorToSnippets()" id="saveLocatorSnippetBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                            💾 Save to Snippets
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

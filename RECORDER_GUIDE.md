@@ -213,7 +213,7 @@ public class LoginTest {
 ## Troubleshooting
 
 ### Recording doesn't start
-- Ensure server is running on port 5000
+- Ensure server is running on port 5002
 - Check browser initialized successfully
 - Verify URL is accessible
 
@@ -239,3 +239,4 @@ The Recorder works seamlessly with:
 ---
 
 **🎉 Happy Testing!** The recorder makes test creation faster, easier, and more maintainable with AI-powered intelligence.
+

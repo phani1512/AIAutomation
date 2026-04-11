@@ -1,0 +1,1168 @@
+[
+  {
+    "category": "Input Field Interaction by Label",
+    "method_name": "setInputFieldValue",
+    "description": "Set value in an input field by finding it using its label text",
+    "prompt_variations": [
+      "enter {value} in {label} field",
+      "set {label} field to {value}",
+      "type {value} into {label} input",
+      "fill {label} with {value}",
+      "input {value} for {label}"
+    ],
+    "code_template": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+    "example_usage": "setInputFieldValue(\"First Name\", \"{FIRST_NAME}\");",
+    "xpath_pattern": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "labelName": "The visible text of the label associated with the input field",
+      "fieldValue": "The value to enter into the field"
+    },
+    "use_cases": [
+      "Form filling with visible label text",
+      "Data entry based on field labels",
+      "Dynamic form handling without hard-coded IDs"
+    ]
+  },
+  {
+    "category": "Input Field Interaction by Label",
+    "method_name": "getInputFieldValue",
+    "description": "Retrieve the current value of an input field by its label",
+    "prompt_variations": [
+      "get value of {label} field",
+      "retrieve {label} input value",
+      "what is the value in {label}",
+      "read {label} field value",
+      "fetch value from {label}"
+    ],
+    "code_template": "String value = getInputFieldValue(\"{LABEL}\");",
+    "example_usage": "String firstName = getInputFieldValue(\"First Name\");",
+    "xpath_pattern": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "String (field value)",
+    "parameters": {
+      "labelName": "The visible text of the label associated with the input field"
+    },
+    "use_cases": [
+      "Field value verification",
+      "Data validation in tests",
+      "Reading pre-populated form data"
+    ]
+  },
+  {
+    "category": "Input Field Validation",
+    "method_name": "isInputFieldDisabled",
+    "description": "Check if an input field is disabled by its label",
+    "prompt_variations": [
+      "is {label} field disabled",
+      "check if {label} is disabled",
+      "verify {label} field is not editable",
+      "is {label} input enabled",
+      "can I edit {label} field"
+    ],
+    "code_template": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+    "example_usage": "boolean isDisabled = isInputFieldDisabled(\"Email\");",
+    "xpath_pattern": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input",
+    "returns": "boolean (true if disabled)",
+    "parameters": {
+      "labelName": "The visible text of the label associated with the input field"
+    },
+    "use_cases": [
+      "Validating field editability",
+      "Testing form state",
+      "Conditional field validation"
+    ]
+  },
+  {
+    "category": "Input Field Validation",
+    "method_name": "getInputFieldValidationMessage",
+    "description": "Get validation error message displayed for an input field",
+    "prompt_variations": [
+      "get validation message for {label}",
+      "what is the error message on {label}",
+      "retrieve {label} field error",
+      "read validation text for {label}",
+      "fetch error message from {label} field"
+    ],
+    "code_template": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+    "example_usage": "String error = getInputFieldValidationMessage(\"Email\");",
+    "xpath_pattern": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li",
+    "returns": "String (validation message)",
+    "parameters": {
+      "labelName": "The visible text of the label associated with the input field"
+    },
+    "use_cases": [
+      "Form validation testing",
+      "Error message verification",
+      "Negative test scenarios"
+    ]
+  },
+  {
+    "category": "Dropdown Interaction by Label",
+    "method_name": "setDropdownValue",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "prompt_variations": [
+      "select {value} from {label} dropdown",
+      "set {label} dropdown to {value}",
+      "choose {value} in {label}",
+      "pick {value} from {label} list",
+      "select {value} for {label}"
+    ],
+    "code_template": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+    "example_usage": "setDropdownValue(\"Country\", \"{COUNTRY}\");",
+    "xpath_pattern": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "labelName": "The visible text of the label for the dropdown",
+      "dropdownValue": "The visible text of the option to select"
+    },
+    "use_cases": [
+      "Form dropdown selection",
+      "Selecting options by visible text",
+      "Dynamic dropdown handling"
+    ]
+  },
+  {
+    "category": "Dropdown Interaction by Label",
+    "method_name": "getSelectedDropdownValue",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "prompt_variations": [
+      "get selected value from {label} dropdown",
+      "what is selected in {label}",
+      "retrieve {label} dropdown value",
+      "read selected option from {label}",
+      "fetch {label} dropdown selection"
+    ],
+    "code_template": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+    "example_usage": "String country = getSelectedDropdownValue(\"Country\");",
+    "xpath_pattern": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "String (selected option text)",
+    "parameters": {
+      "labelName": "The visible text of the label for the dropdown"
+    },
+    "use_cases": [
+      "Dropdown selection verification",
+      "Reading default selections",
+      "Data validation"
+    ]
+  },
+  {
+    "category": "Dropdown Interaction by Label",
+    "method_name": "isDropdownFieldDisabled",
+    "description": "Check if a dropdown is disabled by its label",
+    "prompt_variations": [
+      "is {label} dropdown disabled",
+      "check if {label} dropdown is enabled",
+      "verify {label} dropdown editability",
+      "can I select from {label}",
+      "is {label} dropdown locked"
+    ],
+    "code_template": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+    "example_usage": "boolean isDisabled = isDropdownFieldDisabled(\"State\");",
+    "xpath_pattern": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "boolean (true if disabled)",
+    "parameters": {
+      "labelName": "The visible text of the label for the dropdown"
+    },
+    "use_cases": [
+      "Dropdown state validation",
+      "Testing conditional dropdowns",
+      "Form accessibility verification"
+    ]
+  },
+  {
+    "category": "Checkbox Operations by Label",
+    "method_name": "setCheckboxOn",
+    "description": "Check a checkbox by finding it using its label text",
+    "prompt_variations": [
+      "check the {label} checkbox",
+      "select {label} checkbox",
+      "enable {label}",
+      "turn on {label} checkbox",
+      "mark {label} as checked"
+    ],
+    "code_template": "setCheckboxOn(\"{LABEL}\");",
+    "example_usage": "setCheckboxOn(\"I agree to terms and conditions\");",
+    "xpath_pattern": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "labelName": "The visible text of the checkbox label"
+    },
+    "use_cases": [
+      "Form checkbox selection",
+      "Agreement checkboxes",
+      "Multi-select options"
+    ]
+  },
+  {
+    "category": "Checkbox Operations by Label",
+    "method_name": "setCheckboxOff",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "prompt_variations": [
+      "uncheck the {label} checkbox",
+      "deselect {label} checkbox",
+      "disable {label}",
+      "turn off {label} checkbox",
+      "unmark {label}"
+    ],
+    "code_template": "setCheckboxOff(\"{LABEL}\");",
+    "example_usage": "setCheckboxOff(\"Subscribe to newsletter\");",
+    "xpath_pattern": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "labelName": "The visible text of the checkbox label"
+    },
+    "use_cases": [
+      "Unchecking selected options",
+      "Toggling checkbox states",
+      "Negative testing scenarios"
+    ]
+  },
+  {
+    "category": "Checkbox Validation",
+    "method_name": "isCheckboxOn",
+    "description": "Verify if a checkbox is checked by its label",
+    "prompt_variations": [
+      "is {label} checkbox checked",
+      "verify {label} is selected",
+      "check if {label} is enabled",
+      "is {label} marked",
+      "validate {label} checkbox state"
+    ],
+    "code_template": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+    "example_usage": "boolean isAgreed = isCheckboxOn(\"I agree to terms\");",
+    "xpath_pattern": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "boolean (true if checked)",
+    "parameters": {
+      "labelName": "The visible text of the checkbox label"
+    },
+    "use_cases": [
+      "Checkbox state verification",
+      "Form validation",
+      "Testing default selections"
+    ]
+  },
+  {
+    "category": "Checkbox Validation",
+    "method_name": "isCheckboxDisabled",
+    "description": "Check if a checkbox is disabled by its label",
+    "prompt_variations": [
+      "is {label} checkbox disabled",
+      "check if {label} can be selected",
+      "verify {label} checkbox editability",
+      "is {label} checkbox locked",
+      "can I click {label} checkbox"
+    ],
+    "code_template": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+    "example_usage": "boolean isDisabled = isCheckboxDisabled(\"Auto-renew\");",
+    "xpath_pattern": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "parameters": {
+      "labelName": "The visible text of the checkbox label"
+    },
+    "use_cases": [
+      "Checkbox accessibility testing",
+      "Conditional checkbox validation",
+      "Form state verification"
+    ]
+  },
+  {
+    "category": "Radio Button Operations by Label",
+    "method_name": "selectRadioButton",
+    "description": "Select a radio button by its label text",
+    "prompt_variations": [
+      "select {label} radio button",
+      "choose {label} option",
+      "pick {label}",
+      "click {label} radio",
+      "set radio to {label}"
+    ],
+    "code_template": "selectRadioButton(\"{LABEL}\");",
+    "example_usage": "selectRadioButton(\"Credit Card\");",
+    "xpath_pattern": "//app-radio//label[contains(., '{LABEL}')]",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "labelName": "The visible text of the radio button label"
+    },
+    "use_cases": [
+      "Selecting radio options",
+      "Form choice selection",
+      "Mutually exclusive options"
+    ]
+  },
+  {
+    "category": "Radio Button Validation",
+    "method_name": "isRadioButtonSelected",
+    "description": "Check if a radio button is selected by its label",
+    "prompt_variations": [
+      "is {label} radio button selected",
+      "check if {label} is chosen",
+      "verify {label} radio state",
+      "is {label} option selected",
+      "validate {label} radio selection"
+    ],
+    "code_template": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+    "example_usage": "boolean isSelected = isRadioButtonSelected(\"Debit Card\");",
+    "xpath_pattern": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]",
+    "returns": "boolean (true if selected)",
+    "parameters": {
+      "labelName": "The visible text of the radio button label"
+    },
+    "use_cases": [
+      "Radio button verification",
+      "Default selection testing",
+      "Option state validation"
+    ]
+  },
+  {
+    "category": "Button Actions by Text",
+    "method_name": "clickButton",
+    "description": "Click a button by its visible text",
+    "prompt_variations": [
+      "click {button} button",
+      "press {button}",
+      "click on {button}",
+      "hit {button} button",
+      "select {button}"
+    ],
+    "code_template": "clickButton(\"{BUTTON_TEXT}\");",
+    "example_usage": "clickButton(\"Submit\");",
+    "xpath_pattern": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "buttonText": "The visible text on the button"
+    },
+    "use_cases": [
+      "Form submission",
+      "Navigation actions",
+      "General button clicking"
+    ]
+  },
+  {
+    "category": "Button Actions by Text",
+    "method_name": "clickDialogButton",
+    "description": "Click a button within a dialog by its text",
+    "prompt_variations": [
+      "click {button} in dialog",
+      "click {button} on popup",
+      "press {button} in modal",
+      "click dialog {button}",
+      "select {button} in popup"
+    ],
+    "code_template": "clickDialogButton(\"{BUTTON_TEXT}\");",
+    "example_usage": "clickDialogButton(\"Confirm\");",
+    "xpath_pattern": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "buttonText": "The visible text on the dialog button"
+    },
+    "use_cases": [
+      "Dialog confirmation",
+      "Modal interactions",
+      "Popup actions"
+    ]
+  },
+  {
+    "category": "Button Validation",
+    "method_name": "isButtonFound",
+    "description": "Check if a button with specific text exists",
+    "prompt_variations": [
+      "is {button} button present",
+      "{LAST_NAME}s {button} exist",
+      "find {button} button",
+      "check for {button}",
+      "verify {button} is displayed"
+    ],
+    "code_template": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+    "example_usage": "boolean exists = isButtonFound(\"Save\");",
+    "xpath_pattern": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "boolean (true if found)",
+    "parameters": {
+      "buttonText": "The visible text on the button"
+    },
+    "use_cases": [
+      "Button presence verification",
+      "Conditional button testing",
+      "UI element validation"
+    ]
+  },
+  {
+    "category": "Button Validation",
+    "method_name": "isSubmitButtonDisabled",
+    "description": "Check if submit button is disabled",
+    "prompt_variations": [
+      "is submit button disabled",
+      "can I submit",
+      "check submit button state",
+      "verify submit is enabled",
+      "is form submittable"
+    ],
+    "code_template": "boolean isDisabled = isSubmitButtonDisabled();",
+    "example_usage": "boolean isDisabled = isSubmitButtonDisabled();",
+    "xpath_pattern": "//app-wait-button//button[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "parameters": {},
+    "use_cases": [
+      "Form validation testing",
+      "Submit button state verification",
+      "Conditional submission testing"
+    ]
+  },
+  {
+    "category": "Link Operations",
+    "method_name": "clickLink",
+    "description": "Click a link by its visible text",
+    "prompt_variations": [
+      "click {link} link",
+      "click on {link}",
+      "follow {link}",
+      "navigate to {link}",
+      "select {link}"
+    ],
+    "code_template": "clickLink(\"{LINK_TEXT}\");",
+    "example_usage": "clickLink(\"Forgot Password?\");",
+    "xpath_pattern": "//a[text()='{LINK_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "linkText": "The visible text of the link"
+    },
+    "use_cases": [
+      "Navigation links",
+      "Hyperlink clicking",
+      "Text-based navigation"
+    ]
+  },
+  {
+    "category": "Link Validation",
+    "method_name": "isLinkFound",
+    "description": "Check if a link with specific text exists",
+    "prompt_variations": [
+      "is {link} link present",
+      "{LAST_NAME}s {link} exist",
+      "find {link} link",
+      "check for {link}",
+      "verify {link} is displayed"
+    ],
+    "code_template": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+    "example_usage": "boolean exists = isLinkFound(\"Terms of Service\");",
+    "xpath_pattern": "//a[text()='{LINK_TEXT}']",
+    "returns": "boolean (true if found)",
+    "parameters": {
+      "linkText": "The visible text of the link"
+    },
+    "use_cases": [
+      "Link presence verification",
+      "Navigation validation",
+      "Content verification"
+    ]
+  },
+  {
+    "category": "Link Validation",
+    "method_name": "isLinkOpeningInNewTab",
+    "description": "Check if a link opens in a new tab",
+    "prompt_variations": [
+      "{LAST_NAME}s {link} open in new tab",
+      "verify {link} opens new window",
+      "check if {link} has target blank",
+      "is {link} external",
+      "{LAST_NAME}s {link} open new tab"
+    ],
+    "code_template": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+    "example_usage": "boolean opensNew = isLinkOpeningInNewTab(\"Privacy Policy\");",
+    "xpath_pattern": "//a[text()='{LINK_TEXT}'][@target='_blank']",
+    "returns": "boolean (true if opens in new tab)",
+    "parameters": {
+      "linkText": "The visible text of the link"
+    },
+    "use_cases": [
+      "Link behavior validation",
+      "External link testing",
+      "Target attribute verification"
+    ]
+  },
+  {
+    "category": "Tab Navigation",
+    "method_name": "clickNavigationTab",
+    "description": "Click a navigation tab by its name",
+    "prompt_variations": [
+      "click {tab} tab",
+      "switch to {tab}",
+      "navigate to {tab} tab",
+      "select {tab} tab",
+      "go to {tab}"
+    ],
+    "code_template": "clickNavigationTab(\"{TAB_NAME}\");",
+    "example_usage": "clickNavigationTab(\"Settings\");",
+    "xpath_pattern": "//nav//a[text()='{TAB_NAME}']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "tabName": "The visible text of the tab"
+    },
+    "use_cases": [
+      "Tab navigation",
+      "Multi-page forms",
+      "Section switching"
+    ]
+  },
+  {
+    "category": "Tab Navigation",
+    "method_name": "clickTabButton",
+    "description": "Click a tab button within a tabbed interface",
+    "prompt_variations": [
+      "click {tab} button",
+      "open {tab} section",
+      "activate {tab}",
+      "show {tab} content",
+      "display {tab}"
+    ],
+    "code_template": "clickTabButton(\"{TAB_NAME}\");",
+    "example_usage": "clickTabButton(\"Personal Info\");",
+    "xpath_pattern": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "tabName": "The visible text of the tab button"
+    },
+    "use_cases": [
+      "Tab interface interaction",
+      "Accordion navigation",
+      "Content section switching"
+    ]
+  },
+  {
+    "category": "Tab Validation",
+    "method_name": "isTabButtonActive",
+    "description": "Check if a tab is currently active",
+    "prompt_variations": [
+      "is {tab} active",
+      "is {tab} selected",
+      "check if {tab} is current",
+      "verify {tab} is active",
+      "is {tab} tab open"
+    ],
+    "code_template": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+    "example_usage": "boolean isActive = isTabButtonActive(\"Account\");",
+    "xpath_pattern": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]",
+    "returns": "boolean (true if active)",
+    "parameters": {
+      "tabName": "The visible text of the tab"
+    },
+    "use_cases": [
+      "Tab state verification",
+      "Navigation testing",
+      "Active section validation"
+    ]
+  },
+  {
+    "category": "Dialog Operations",
+    "method_name": "isDialogOpen",
+    "description": "Check if a dialog/modal is currently open",
+    "prompt_variations": [
+      "is dialog open",
+      "is modal displayed",
+      "check if popup is visible",
+      "verify dialog is showing",
+      "is there a popup"
+    ],
+    "code_template": "boolean isOpen = isDialogOpen();",
+    "example_usage": "boolean isOpen = isDialogOpen();",
+    "xpath_pattern": "//app-dialog//div[@class='dialog-body']",
+    "returns": "boolean (true if open)",
+    "parameters": {},
+    "use_cases": [
+      "Dialog state verification",
+      "Modal presence testing",
+      "Popup validation"
+    ]
+  },
+  {
+    "category": "Dialog Operations",
+    "method_name": "getDialogContent",
+    "description": "Get the text content of a dialog",
+    "prompt_variations": [
+      "get dialog text",
+      "read modal content",
+      "what {LAST_NAME}s the dialog say",
+      "retrieve popup message",
+      "fetch dialog content"
+    ],
+    "code_template": "String content = getDialogContent();",
+    "example_usage": "String message = getDialogContent();",
+    "xpath_pattern": "//div[@class='dialog-body']",
+    "returns": "String (dialog content)",
+    "parameters": {},
+    "use_cases": [
+      "Dialog message verification",
+      "Popup content validation",
+      "Error message reading"
+    ]
+  },
+  {
+    "category": "Dialog Operations",
+    "method_name": "closeDialog",
+    "description": "Close an open dialog/modal",
+    "prompt_variations": [
+      "close dialog",
+      "close modal",
+      "dismiss popup",
+      "close the window",
+      "exit dialog"
+    ],
+    "code_template": "closeDialog();",
+    "example_usage": "closeDialog();",
+    "xpath_pattern": "//app-dialog//button[contains(@class,'close')]",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {},
+    "use_cases": [
+      "Dialog dismissal",
+      "Modal closing",
+      "Popup cleanup"
+    ]
+  },
+  {
+    "category": "Dialog Actions",
+    "method_name": "clickDialogSubmitButton",
+    "description": "Click the submit/primary button in a dialog",
+    "prompt_variations": [
+      "submit dialog",
+      "confirm dialog",
+      "click dialog submit",
+      "accept dialog",
+      "save dialog changes"
+    ],
+    "code_template": "clickDialogSubmitButton();",
+    "example_usage": "clickDialogSubmitButton();",
+    "xpath_pattern": "//app-dialog//button[contains(@class,'btn-primary')]",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {},
+    "use_cases": [
+      "Dialog confirmation",
+      "Modal submission",
+      "Popup acceptance"
+    ]
+  },
+  {
+    "category": "Table Operations",
+    "method_name": "searchTable",
+    "description": "Search within a table using search criteria",
+    "prompt_variations": [
+      "search table for {criteria}",
+      "find {criteria} in table",
+      "filter table by {criteria}",
+      "search for {criteria}",
+      "lookup {criteria} in table"
+    ],
+    "code_template": "searchTable(\"{CRITERIA}\");",
+    "example_usage": "searchTable(\"{FIRST_NAME} {LAST_NAME}\");",
+    "xpath_pattern": "//app-list-search//input",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "criteria": "The search text to filter the table"
+    },
+    "use_cases": [
+      "Table filtering",
+      "Data searching",
+      "Record lookup"
+    ]
+  },
+  {
+    "category": "Table Operations",
+    "method_name": "getTableRowCount",
+    "description": "Get the number of rows in a table",
+    "prompt_variations": [
+      "count table rows",
+      "how many rows in table",
+      "get table row count",
+      "number of table entries",
+      "table size"
+    ],
+    "code_template": "int count = getTableRowCount();",
+    "example_usage": "int rowCount = getTableRowCount();",
+    "xpath_pattern": "//table//tr[@class='table-row']",
+    "returns": "int (number of rows)",
+    "parameters": {},
+    "use_cases": [
+      "Table size verification",
+      "Row counting",
+      "Data validation"
+    ]
+  },
+  {
+    "category": "Table Operations",
+    "method_name": "isSearchTableNoResultsFound",
+    "description": "Check if table search returned no results",
+    "prompt_variations": [
+      "are there no results",
+      "is table empty",
+      "check for no results",
+      "verify no matches found",
+      "is search empty"
+    ],
+    "code_template": "boolean noResults = isSearchTableNoResultsFound();",
+    "example_usage": "boolean isEmpty = isSearchTableNoResultsFound();",
+    "xpath_pattern": "//div[@class='no-results']",
+    "returns": "boolean (true if no results)",
+    "parameters": {},
+    "use_cases": [
+      "Empty result validation",
+      "No data testing",
+      "Search failure verification"
+    ]
+  },
+  {
+    "category": "Table Row Operations",
+    "method_name": "setTableRowCheckboxOn",
+    "description": "Check a checkbox in a table row identified by text",
+    "prompt_variations": [
+      "select row containing {text}",
+      "check row with {text}",
+      "mark {text} row",
+      "select {text} in table",
+      "check checkbox for {text}"
+    ],
+    "code_template": "setTableRowCheckboxOn(\"{TEXT}\");",
+    "example_usage": "setTableRowCheckboxOn(\"{FIRST_NAME} {LAST_NAME}\");",
+    "xpath_pattern": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']",
+    "returns": "void",
+    "parameters": {
+      "rowIdentifyingText": "Text that uniquely identifies the row"
+    },
+    "use_cases": [
+      "Multi-row selection",
+      "Bulk operations",
+      "Row marking"
+    ]
+  },
+  {
+    "category": "Table Row Operations",
+    "method_name": "clickTableRowDropdownToggle",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "prompt_variations": [
+      "open row menu",
+      "click row actions",
+      "open kebab menu",
+      "show row options",
+      "click three dots menu"
+    ],
+    "code_template": "clickTableRowDropdownToggle();",
+    "example_usage": "clickTableRowDropdownToggle();",
+    "xpath_pattern": "//tr//button[@class='dropdown-toggle']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {},
+    "use_cases": [
+      "Row action menus",
+      "Context menu opening",
+      "Row options display"
+    ]
+  },
+  {
+    "category": "Table Row Actions",
+    "method_name": "clickEditPencilButton",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "prompt_variations": [
+      "edit row",
+      "click edit button",
+      "modify entry",
+      "click pencil icon",
+      "update row"
+    ],
+    "code_template": "clickEditPencilButton();",
+    "example_usage": "clickEditPencilButton();",
+    "xpath_pattern": "//button//fa-icon[@class='fa-pencil']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {},
+    "use_cases": [
+      "Row editing",
+      "Entry modification",
+      "Record update"
+    ]
+  },
+  {
+    "category": "Table Row Actions",
+    "method_name": "clickTrashCanButton",
+    "description": "Click the delete (trash icon) button in a table row",
+    "prompt_variations": [
+      "delete row",
+      "remove entry",
+      "click delete button",
+      "click trash icon",
+      "remove record"
+    ],
+    "code_template": "clickTrashCanButton();",
+    "example_usage": "clickTrashCanButton();",
+    "xpath_pattern": "//button//fa-icon[@data-icon='trash-can']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {},
+    "use_cases": [
+      "Row deletion",
+      "Entry removal",
+      "Record cleanup"
+    ]
+  },
+  {
+    "category": "Table Validation",
+    "method_name": "isTableContains",
+    "description": "Check if table contains specific text",
+    "prompt_variations": [
+      "{LAST_NAME}s table contain {text}",
+      "is {text} in table",
+      "find {text} in table",
+      "verify table has {text}",
+      "search table for {text}"
+    ],
+    "code_template": "boolean contains = isTableContains(\"{TEXT}\");",
+    "example_usage": "boolean found = isTableContains(\"Active\");",
+    "xpath_pattern": "//table//tr[contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "parameters": {
+      "text": "The text to search for in the table"
+    },
+    "use_cases": [
+      "Data presence verification",
+      "Table content validation",
+      "Search result checking"
+    ]
+  },
+  {
+    "category": "Message Validation",
+    "method_name": "getMessageBoxText",
+    "description": "Get the text from a message box (any type)",
+    "prompt_variations": [
+      "get message text",
+      "read message box",
+      "what {LAST_NAME}s the message say",
+      "retrieve message content",
+      "fetch alert text"
+    ],
+    "code_template": "String message = getMessageBoxText();",
+    "example_usage": "String msg = getMessageBoxText();",
+    "xpath_pattern": "//app-message-box",
+    "returns": "String (message text)",
+    "parameters": {},
+    "use_cases": [
+      "Message verification",
+      "Alert text reading",
+      "Notification validation"
+    ]
+  },
+  {
+    "category": "Message Validation",
+    "method_name": "getMessageBoxSuccessText",
+    "description": "Get the text from a success message box",
+    "prompt_variations": [
+      "get success message",
+      "read success notification",
+      "what is the success text",
+      "retrieve success message",
+      "fetch confirmation text"
+    ],
+    "code_template": "String success = getMessageBoxSuccessText();",
+    "example_usage": "String successMsg = getMessageBoxSuccessText();",
+    "xpath_pattern": "//app-message-box[@level='success']",
+    "returns": "String (success message)",
+    "parameters": {},
+    "use_cases": [
+      "Success message verification",
+      "Confirmation validation",
+      "Positive feedback checking"
+    ]
+  },
+  {
+    "category": "Message Validation",
+    "method_name": "getMessageBoxErrorText",
+    "description": "Get the text from an error message box",
+    "prompt_variations": [
+      "get error message",
+      "read error text",
+      "what is the error",
+      "retrieve error message",
+      "fetch failure text"
+    ],
+    "code_template": "String error = getMessageBoxErrorText();",
+    "example_usage": "String errorMsg = getMessageBoxErrorText();",
+    "xpath_pattern": "//app-message-box[@level='error']",
+    "returns": "String (error message)",
+    "parameters": {},
+    "use_cases": [
+      "Error message verification",
+      "Failure validation",
+      "Negative feedback checking"
+    ]
+  },
+  {
+    "category": "Message Validation",
+    "method_name": "getToastSuccessText",
+    "description": "Get the text from a success toast notification",
+    "prompt_variations": [
+      "get toast message",
+      "read success toast",
+      "what {LAST_NAME}s the toast say",
+      "retrieve toast notification",
+      "fetch toast text"
+    ],
+    "code_template": "String toast = getToastSuccessText();",
+    "example_usage": "String toastMsg = getToastSuccessText();",
+    "xpath_pattern": "//div[@class='toast-success']",
+    "returns": "String (toast message)",
+    "parameters": {},
+    "use_cases": [
+      "Toast notification verification",
+      "Success confirmation",
+      "Temporary message validation"
+    ]
+  },
+  {
+    "category": "Wait Operations",
+    "method_name": "waitForPageLoading",
+    "description": "Wait for page loading spinner to disappear",
+    "prompt_variations": [
+      "wait for page to load",
+      "wait for loading",
+      "let page finish loading",
+      "wait until ready",
+      "pause for page load"
+    ],
+    "code_template": "waitForPageLoading();",
+    "example_usage": "waitForPageLoading();",
+    "xpath_pattern": "//app-wait[@class='spinner']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {},
+    "use_cases": [
+      "Page synchronization",
+      "Loading wait",
+      "Spinner handling"
+    ]
+  },
+  {
+    "category": "Wait Operations",
+    "method_name": "waitForProcessingSpinner",
+    "description": "Wait for processing spinner to complete",
+    "prompt_variations": [
+      "wait for processing",
+      "wait for spinner",
+      "let processing finish",
+      "wait for operation",
+      "pause for processing"
+    ],
+    "code_template": "waitForProcessingSpinner();",
+    "example_usage": "waitForProcessingSpinner();",
+    "xpath_pattern": "//button//fa-icon[@class='fa-spinner']",
+    "returns": "void",
+    "parameters": {},
+    "use_cases": [
+      "Operation synchronization",
+      "Processing wait",
+      "Button spinner handling"
+    ]
+  },
+  {
+    "category": "Wait Operations",
+    "method_name": "waitForToastSuccess",
+    "description": "Wait for success toast to appear and disappear",
+    "prompt_variations": [
+      "wait for success toast",
+      "wait for notification",
+      "let toast show and hide",
+      "wait for success message",
+      "pause for toast"
+    ],
+    "code_template": "waitForToastSuccess();",
+    "example_usage": "waitForToastSuccess();",
+    "xpath_pattern": "//div[@class='toast-success']",
+    "returns": "void",
+    "parameters": {},
+    "use_cases": [
+      "Toast notification wait",
+      "Success message synchronization",
+      "Temporary notification handling"
+    ]
+  },
+  {
+    "category": "File Upload",
+    "method_name": "selectFileToUpload",
+    "description": "Select one or more files to upload",
+    "prompt_variations": [
+      "upload file {filename}",
+      "select file {filename}",
+      "attach {filename}",
+      "choose file {filename}",
+      "upload {filename}"
+    ],
+    "code_template": "selectFileToUpload(\"{FILEPATH}\");",
+    "example_usage": "selectFileToUpload(\"documents/test.pdf\");",
+    "xpath_pattern": "//input[@type='file']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "resourcePaths": "One or more file paths to upload"
+    },
+    "use_cases": [
+      "File uploading",
+      "Document attachment",
+      "Multi-file selection"
+    ]
+  },
+  {
+    "category": "Menu Navigation",
+    "method_name": "clickMenu",
+    "description": "Click a menu item by its text",
+    "prompt_variations": [
+      "click {menu} menu",
+      "open {menu}",
+      "select {menu} menu",
+      "go to {menu}",
+      "click on {menu}"
+    ],
+    "code_template": "clickMenu(\"{MENU_TEXT}\");",
+    "example_usage": "clickMenu(\"Settings\");",
+    "xpath_pattern": "//button[text()='{MENU_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "menuText": "The visible text of the menu item"
+    },
+    "use_cases": [
+      "Main menu navigation",
+      "Menu selection",
+      "Top-level navigation"
+    ]
+  },
+  {
+    "category": "Menu Navigation",
+    "method_name": "clickSubmenu",
+    "description": "Click a submenu item by its text",
+    "prompt_variations": [
+      "click {submenu} submenu",
+      "select {submenu} option",
+      "choose {submenu}",
+      "go to {submenu}",
+      "open {submenu}"
+    ],
+    "code_template": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+    "example_usage": "clickSubmenu(\"Account Settings\");",
+    "xpath_pattern": "//a[text()='{SUBMENU_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "parameters": {
+      "submenuText": "The visible text of the submenu item"
+    },
+    "use_cases": [
+      "Submenu navigation",
+      "Nested menu selection",
+      "Dropdown menu interaction"
+    ]
+  },
+  {
+    "category": "Scroll Operations",
+    "method_name": "scrollToView",
+    "description": "Scroll an element into view",
+    "prompt_variations": [
+      "scroll to element",
+      "bring element into view",
+      "scroll until visible",
+      "make element visible",
+      "scroll to show element"
+    ],
+    "code_template": "scrollToView(locator);",
+    "example_usage": "scrollToView(By.id(\"footer\"));",
+    "xpath_pattern": "any element locator",
+    "returns": "void",
+    "parameters": {
+      "by": "The locator of the element to scroll to"
+    },
+    "use_cases": [
+      "Element visibility",
+      "Page scrolling",
+      "Viewport adjustment"
+    ]
+  },
+  {
+    "category": "Element Verification",
+    "method_name": "isElementFound",
+    "description": "Check if an element exists on the page",
+    "prompt_variations": [
+      "is element present",
+      "{LAST_NAME}s element exist",
+      "find element",
+      "check for element",
+      "verify element exists"
+    ],
+    "code_template": "boolean exists = isElementFound(locator);",
+    "example_usage": "boolean exists = isElementFound(By.id(\"header\"));",
+    "xpath_pattern": "any element locator",
+    "returns": "boolean (true if found)",
+    "parameters": {
+      "by": "The locator of the element to find"
+    },
+    "use_cases": [
+      "Element presence check",
+      "Conditional logic",
+      "Element validation"
+    ]
+  },
+  {
+    "category": "Element Verification",
+    "method_name": "isElementInvisible",
+    "description": "Check if an element is invisible or not present",
+    "prompt_variations": [
+      "is element hidden",
+      "verify element invisible",
+      "check if element not visible",
+      "is element gone",
+      "element disappeared"
+    ],
+    "code_template": "boolean invisible = isElementInvisible(locator);",
+    "example_usage": "boolean hidden = isElementInvisible(By.id(\"spinner\"));",
+    "xpath_pattern": "any element locator",
+    "returns": "boolean (true if invisible)",
+    "parameters": {
+      "by": "The locator of the element to check"
+    },
+    "use_cases": [
+      "Element invisibility check",
+      "Spinner disappearance",
+      "Loading completion"
+    ]
+  },
+  {
+    "category": "Panel Operations",
+    "method_name": "getPanelContents",
+    "description": "Get the text content from a panel",
+    "prompt_variations": [
+      "get panel text",
+      "read panel content",
+      "what {LAST_NAME}s the panel say",
+      "retrieve panel information",
+      "fetch panel data"
+    ],
+    "code_template": "String content = getPanelContents();",
+    "example_usage": "String panelText = getPanelContents();",
+    "xpath_pattern": "//div[@class='suif-panel']",
+    "returns": "String (panel content)",
+    "parameters": {},
+    "use_cases": [
+      "Panel content verification",
+      "Information reading",
+      "Data extraction"
+    ]
+  },
+  {
+    "category": "Panel Operations",
+    "method_name": "isPanelFound",
+    "description": "Check if a panel containing specific text exists",
+    "prompt_variations": [
+      "is panel with {text} present",
+      "{LAST_NAME}s {text} panel exist",
+      "find panel containing {text}",
+      "verify {text} panel",
+      "check for {text} panel"
+    ],
+    "code_template": "boolean exists = isPanelFound(\"{TEXT}\");",
+    "example_usage": "boolean found = isPanelFound(\"Summary\");",
+    "xpath_pattern": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "parameters": {
+      "identifyingText": "Text to identify the panel"
+    },
+    "use_cases": [
+      "Panel presence verification",
+      "Section validation",
+      "Content area checking"
+    ]
+  }
+]

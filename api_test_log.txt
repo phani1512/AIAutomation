@@ -1,0 +1,45 @@
+≡ƒº¬ Testing: click login button
+≡ƒôñ Sending request...
+
+≡ƒôÑ Response:
+{
+  "alternatives": [
+    {
+      "category": "dropdown",
+      "code": "wait = WebDriverWait(driver, 10)\ndropdownElement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, \"select.form-control.role-select\")))\nSelect dropdown = new Select(dropdownElement)\ndropdown.selectByVisibleText(value)",
+      "prompt": "choose from role dropdown",
+      "score": 0.715204081632653,
+      "strategy": "dataset",
+      "xpath": ""
+    },
+    {
+      "category": "dropdown",
+      "code": "wait = WebDriverWait(driver, 10)\ndropdownElement = wait.until(EC.element_to_be_clickable((By.XPATH, \"//select[@name='state']\")))\nSelect dropdown = new Select(dropdownElement)\ndropdown.selectByVisibleText(value)",
+      "prompt": "select from state dropdown",
+      "score": 0.7090000000000001,
+      "strategy": "dataset",
+      "xpath": ""
+    },
+    {
+      "category": "dropdown",
+      "code": "wait = WebDriverWait(driver, 10)\ndropdownElement = wait.until(EC.element_to_be_clickable((By.XPATH, \"//select[@name='state']\")))\nSelect dropdown = new Select(dropdownElement)\ndropdown.selectByVisibleText(value)",
+      "prompt": "choose from state dropdown",
+      "score": 0.7090000000000001,
+      "strategy": "dataset",
+      "xpath": ""
+    }
+  ],
+  "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(\".login-row .primary-btn\")));\nelement.click();",
+  "fallback_count": 0,
+  "generated": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector(\".login-row .primary-btn\")));\nelement.click();",
+  "has_fallbacks": false,
+  "prompt": "click login button",
+  "tokens_generated": 12
+}
+
+≡ƒöì Alternatives count: 3
+
+≡ƒÆí Alternatives:
+  - [71.5%] choose from role dropdown
+  - [70.9%] select from state dropdown
+  - [70.9%] choose from state dropdown

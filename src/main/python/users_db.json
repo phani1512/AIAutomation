@@ -1,0 +1,26 @@
+{
+  "Phaneendra Valaboju": {
+    "password_hash": "696fb601bcb00ecd86d59d2b612ebf3aa128ec3139e38d215e7cfb53a4fe596e",
+    "email": "phaneendraphani20@gmail.com",
+    "created_at": "2026-04-08T16:07:04.297208",
+    "sessions": {},
+    "snippets": [],
+    "stats": {
+      "total_requests": 0,
+      "tests_passed": 0,
+      "tests_failed": 0
+    }
+  },
+  "admin": {
+    "password_hash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "email": "admin@example.com",
+    "created_at": "2026-04-08T16:10:04.616286",
+    "sessions": {},
+    "snippets": [],
+    "stats": {
+      "total_requests": 0,
+      "tests_passed": 0,
+      "tests_failed": 0
+    }
+  }
+}

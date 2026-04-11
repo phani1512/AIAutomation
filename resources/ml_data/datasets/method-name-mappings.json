@@ -1,0 +1,201 @@
+{
+  "description": "Method name mappings for converting Java custom helper methods to different languages",
+  "version": "1.0.0",
+  "mappings": {
+    "python": {
+      "type_conversions": [
+        {
+          "pattern": "boolean (\\w+)",
+          "replacement": "\\1",
+          "description": "Remove Java boolean type declaration"
+        },
+        {
+          "pattern": "String (\\w+)",
+          "replacement": "\\1",
+          "description": "Remove Java String type declaration"
+        },
+        {
+          "pattern": "int (\\w+)",
+          "replacement": "\\1",
+          "description": "Remove Java int type declaration"
+        }
+      ],
+      "method_mappings": [
+        {
+          "java_method": "isDialogOpen()",
+          "python_method": "is_dialog_open()",
+          "category": "dialog",
+          "description": "Check if dialog is open"
+        },
+        {
+          "java_method": "getDialogContent()",
+          "python_method": "get_dialog_content()",
+          "category": "dialog",
+          "description": "Get dialog content"
+        },
+        {
+          "java_method": "closeDialog()",
+          "python_method": "close_dialog()",
+          "category": "dialog",
+          "description": "Close dialog"
+        },
+        {
+          "java_method": "clickButton(",
+          "python_method": "click_button(",
+          "category": "button",
+          "description": "Click button by text"
+        },
+        {
+          "java_method": "setInputFieldValue(",
+          "python_method": "set_input_field_value(",
+          "category": "input",
+          "description": "Set input field value by label"
+        },
+        {
+          "java_method": "getInputFieldValue(",
+          "python_method": "get_input_field_value(",
+          "category": "input",
+          "description": "Get input field value"
+        },
+        {
+          "java_method": "setDropdownValue(",
+          "python_method": "set_dropdown_value(",
+          "category": "dropdown",
+          "description": "Set dropdown value"
+        },
+        {
+          "java_method": "getSelectedDropdownValue(",
+          "python_method": "get_selected_dropdown_value(",
+          "category": "dropdown",
+          "description": "Get selected dropdown value"
+        },
+        {
+          "java_method": "setCheckboxOn(",
+          "python_method": "set_checkbox_on(",
+          "category": "checkbox",
+          "description": "Enable checkbox"
+        },
+        {
+          "java_method": "setCheckboxOff(",
+          "python_method": "set_checkbox_off(",
+          "category": "checkbox",
+          "description": "Disable checkbox"
+        },
+        {
+          "java_method": "isCheckboxOn(",
+          "python_method": "is_checkbox_on(",
+          "category": "checkbox",
+          "description": "Check if checkbox is enabled"
+        },
+        {
+          "java_method": "selectRadioButton(",
+          "python_method": "select_radio_button(",
+          "category": "radio",
+          "description": "Select radio button"
+        },
+        {
+          "java_method": "isRadioButtonSelected(",
+          "python_method": "is_radio_button_selected(",
+          "category": "radio",
+          "description": "Check if radio button is selected"
+        },
+        {
+          "java_method": "clickLink(",
+          "python_method": "click_link(",
+          "category": "link",
+          "description": "Click link"
+        },
+        {
+          "java_method": "clickNavigationTab(",
+          "python_method": "click_navigation_tab(",
+          "category": "navigation",
+          "description": "Click navigation tab"
+        },
+        {
+          "java_method": "clickTabButton(",
+          "python_method": "click_tab_button(",
+          "category": "navigation",
+          "description": "Click tab button"
+        },
+        {
+          "java_method": "searchTable(",
+          "python_method": "search_table(",
+          "category": "table",
+          "description": "Search in table"
+        },
+        {
+          "java_method": "getTableRowCount()",
+          "python_method": "get_table_row_count()",
+          "category": "table",
+          "description": "Get table row count"
+        },
+        {
+          "java_method": ".clear()",
+          "python_method": ".clear()",
+          "category": "input",
+          "description": "Clear input field (same in both languages)"
+        }
+      ]
+    },
+    "javascript": {
+      "type_conversions": [
+        {
+          "pattern": "boolean (\\w+) =",
+          "replacement": "const \\1 =",
+          "description": "Convert Java boolean to JavaScript const"
+        },
+        {
+          "pattern": "String (\\w+) =",
+          "replacement": "const \\1 =",
+          "description": "Convert Java String to JavaScript const"
+        },
+        {
+          "pattern": "int (\\w+) =",
+          "replacement": "const \\1 =",
+          "description": "Convert Java int to JavaScript const"
+        }
+      ],
+      "method_mappings": []
+    },
+    "csharp": {
+      "type_conversions": [
+        {
+          "pattern": "boolean",
+          "replacement": "bool",
+          "description": "Convert Java boolean to C# bool"
+        },
+        {
+          "pattern": "String",
+          "replacement": "string",
+          "description": "Convert Java String to C# string"
+        }
+      ],
+      "method_patterns": [
+        {
+          "pattern": "is(\\w)",
+          "replacement": "Is\\1",
+          "capitalize_first": true,
+          "description": "Capitalize is* methods"
+        },
+        {
+          "pattern": "get(\\w)",
+          "replacement": "Get\\1",
+          "capitalize_first": true,
+          "description": "Capitalize get* methods"
+        },
+        {
+          "pattern": "set(\\w)",
+          "replacement": "Set\\1",
+          "capitalize_first": true,
+          "description": "Capitalize set* methods"
+        },
+        {
+          "pattern": "click(\\w)",
+          "replacement": "Click\\1",
+          "capitalize_first": true,
+          "description": "Capitalize click* methods"
+        }
+      ]
+    }
+  }
+}

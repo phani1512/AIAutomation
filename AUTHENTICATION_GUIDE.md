@@ -248,7 +248,7 @@ sessions_db = {
    python src/main/python/api_server_improved.py
    ```
 
-2. Open `http://localhost:5000` in browser
+2. Open `http://localhost:5002` in browser
 
 3. Click "Login" button
 
@@ -350,7 +350,7 @@ MIN_PASSWORD_LENGTH = 6
 Located in `index.html`:
 ```javascript
 // API URL
-const API_URL = 'http://localhost:5000';
+const API_URL = 'http://localhost:5002';
 
 // Session token storage
 localStorage.setItem('session_token', token);
@@ -360,7 +360,7 @@ localStorage.setItem('session_token', token);
 
 ### "Cannot connect to server"
 - Ensure `api_server_improved.py` is running
-- Check if port 5000 is available
+- Check if port 5002 is available
 - Verify API_URL matches server address
 
 ### "Session expired" error

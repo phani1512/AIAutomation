@@ -1,0 +1,84 @@
+{
+  "patterns": [
+    {
+      "category": "button_actions",
+      "keywords": ["button", "click"],
+      "method_patterns": ["clickButton", "clickDialogButton"],
+      "xpath_template": "//button[contains(text(), '{param0}')]",
+      "action_type": "click",
+      "description": "Button click actions"
+    },
+    {
+      "category": "button_verification",
+      "keywords": ["button", "is", "found", "disabled"],
+      "method_patterns": ["isButtonFound", "isSubmitButtonDisabled"],
+      "xpath_template": "//button[contains(text(), '{param0}')]",
+      "action_type": "verify",
+      "description": "Button verification"
+    },
+    {
+      "category": "input_actions",
+      "keywords": ["input", "field", "set", "value"],
+      "method_patterns": ["setInputFieldValue"],
+      "xpath_template": "//input[@aria-label='{param0}' or @placeholder='{param0}' or @name='{param0}']",
+      "action_type": "input",
+      "description": "Input field actions"
+    },
+    {
+      "category": "input_verification",
+      "keywords": ["input", "field", "get", "value"],
+      "method_patterns": ["getInputFieldValue", "isInputFieldDisabled"],
+      "xpath_template": "//input[@aria-label='{param0}' or @placeholder='{param0}']",
+      "action_type": "verify",
+      "description": "Input field verification"
+    },
+    {
+      "category": "dropdown_actions",
+      "keywords": ["dropdown", "set", "select"],
+      "method_patterns": ["setDropdownValue"],
+      "xpath_template": "//select[@aria-label='{param0}' or @name='{param0}']",
+      "action_type": "select",
+      "description": "Dropdown selection"
+    },
+    {
+      "category": "checkbox_actions",
+      "keywords": ["checkbox", "check", "set", "on", "off"],
+      "method_patterns": ["setCheckboxOn", "setCheckboxOff", "isCheckboxOn"],
+      "xpath_template": "//input[@type='checkbox' and (@aria-label='{param0}' or @name='{param0}')]",
+      "action_type": "click",
+      "description": "Checkbox actions"
+    },
+    {
+      "category": "table_actions",
+      "keywords": ["table", "search", "row", "count"],
+      "method_patterns": ["searchTable", "getTableRowCount", "isTableContains"],
+      "xpath_template": "//table//td[contains(text(), '{param0}')]",
+      "action_type": "verify",
+      "description": "Table operations"
+    },
+    {
+      "category": "dialog_actions",
+      "keywords": ["dialog", "close", "open"],
+      "method_patterns": ["closeDialog", "isDialogOpen", "getDialogContent"],
+      "xpath_template": "//div[contains(@class, 'dialog') or @role='dialog']",
+      "action_type": "click",
+      "description": "Dialog operations"
+    },
+    {
+      "category": "tab_actions",
+      "keywords": ["tab", "click", "navigation"],
+      "method_patterns": ["clickNavigationTab", "clickTabButton", "isTabButtonActive"],
+      "xpath_template": "//button[contains(@class, 'tab') and contains(text(), '{param0}')] | //a[@role='tab' and contains(text(), '{param0}')]",
+      "action_type": "click",
+      "description": "Tab navigation"
+    },
+    {
+      "category": "link_actions",
+      "keywords": ["link", "click"],
+      "method_patterns": ["clickLink", "isLinkFound"],
+      "xpath_template": "//a[contains(text(), '{param0}')]",
+      "action_type": "click",
+      "description": "Link actions"
+    }
+  ]
+}

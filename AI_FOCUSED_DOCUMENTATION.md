@@ -1294,7 +1294,7 @@ python src/main/python/train_simple.py
 # 4. Start server
 python src/main/python/api_server_improved.py
 
-# Server starts on http://localhost:5000
+# Server starts on http://localhost:5002
 ```
 
 ### Model Training (Optional)

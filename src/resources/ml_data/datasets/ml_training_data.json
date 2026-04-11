@@ -1,0 +1,11 @@
+{
+  "samples": [],
+  "metadata": {
+    "total_samples": 0,
+    "source_breakdown": {},
+    "scenario_distribution": {},
+    "workflow_distribution": {},
+    "avg_action_count": 0,
+    "avg_scenarios_per_test": 0
+  }
+}

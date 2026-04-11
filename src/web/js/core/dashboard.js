@@ -10,6 +10,7 @@ function loadStats() {
                 totalRequests: parsed.totalRequests || 0,
                 totalTime: parsed.totalTime || 0,
                 totalTokens: parsed.totalTokens || 0,
+                testsGenerated: parsed.testsGenerated || 0,  // New: only recorder/builder tests
                 testResults: parsed.testResults || []
             };
         } catch (e) {
@@ -26,6 +27,7 @@ function loadStats() {
         totalRequests: 0,
         totalTime: 0,
         totalTokens: 0,
+        testsGenerated: 0,  // New: only recorder/builder tests
         testResults: []
     };
 }
@@ -66,8 +68,9 @@ function updateDashboardStats() {
     }
     
     if (totalRequestsEl) {
-        totalRequestsEl.textContent = freshStats.totalRequests;
-        console.log('[Dashboard] Updated dashboardTotalRequests to:', freshStats.totalRequests);
+        // Show testsGenerated (recorder/builder only), not raw code generation requests
+        totalRequestsEl.textContent = freshStats.testsGenerated || 0;
+        console.log('[Dashboard] Updated dashboardTotalRequests to:', freshStats.testsGenerated);
     }
     
     // Calculate average time from test results
@@ -170,27 +173,47 @@ function updateRecentTestResults() {
     console.log('[Dashboard] Test results count:', freshStats.testResults.length);
     
     if (freshStats.testResults.length === 0) {
-        container.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--text-secondary);">No test results yet. Start generating and running tests!</div>';
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">📊</div>
+                <div class="empty-state-title">No test results yet</div>
+                <div class="empty-state-description">
+                    Start generating and running tests to see results here
+                </div>
+            </div>
+        `;
         return;
     }
     
-    container.innerHTML = freshStats.testResults.map(result => `
-        <div class="test-result-item ${result.status}">
-            <div style="display: flex; justify-content: space-between; align-items: start;">
-                <div style="flex: 1;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                        <span style="font-size: 1.2em;">${result.status === 'passed' ? '✅' : result.status === 'failed' ? '❌' : '⏸️'}</span>
-                        <strong style="color: var(--text-primary);">${result.name}</strong>
+    container.innerHTML = `
+        <div class="result-list">
+            ${freshStats.testResults.map(result => `
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <div class="result-card-title">${result.name}</div>
+                        <span class="result-card-badge ${result.status}">
+                            ${result.status === 'passed' ? '✅ Passed' : 
+                              result.status === 'failed' ? '❌ Failed' : 
+                              result.status === 'info' ? 'ℹ️ Info' : '⏸️ Pending'}
+                        </span>
                     </div>
-                    ${result.details ? `<p style="color: var(--text-secondary); font-size: 0.9em; margin: 0 0 8px 0;">${result.details}</p>` : ''}
-                    <div style="display: flex; gap: 15px; font-size: 0.85em; color: var(--text-tertiary);">
-                        <span>⏱️ ${result.duration}ms</span>
-                        <span>📅 ${result.timestamp}</span>
+                    ${result.details ? `
+                        <div class="result-card-body">${result.details}</div>
+                    ` : ''}
+                    <div class="result-card-footer">
+                        <div class="result-card-meta">
+                            <span class="result-card-meta-item">
+                                ⏱️ ${result.duration}ms
+                            </span>
+                            <span class="result-card-meta-item">
+                                📅 ${result.timestamp}
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            `).join('')}
         </div>
-    `).join('');
+    `;
 }
 
 function updateActivityTimeline() {
@@ -201,20 +224,71 @@ function updateActivityTimeline() {
     const freshStats = loadStats();
     
     if (freshStats.testResults.length === 0) {
-        container.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--text-secondary);">Your activity will appear here</div>';
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">⏱️</div>
+                <div class="empty-state-title">No activity yet</div>
+                <div class="empty-state-description">
+                    Your activity will appear here as you work
+                </div>
+            </div>
+        `;
         return;
     }
     
-    container.innerHTML = freshStats.testResults.slice(0, 5).map((result, index) => `
-        <div style="display: flex; gap: 15px; margin-bottom: 20px; ${index < freshStats.testResults.length - 1 ? 'padding-bottom: 20px; border-bottom: 1px solid var(--border-color);' : ''}">
-            <div style="font-size: 2em; opacity: 0.5;">${result.status === 'passed' ? '✅' : result.status === 'failed' ? '❌' : '⏸️'}</div>
-            <div style="flex: 1;">
-                <strong style="color: var(--text-primary);">${result.name}</strong>
-                <div style="color: var(--text-secondary); font-size: 0.9em; margin-top: 4px;">${result.timestamp}</div>
-            </div>
-            <div style="color: var(--text-tertiary); font-size: 0.9em;">${result.duration}ms</div>
+    container.innerHTML = `
+        <div class="timeline">
+            ${freshStats.testResults.slice(0, 5).map((result, index) => `
+                <div class="timeline-item">
+                    <div class="timeline-icon ${result.status}">
+                        ${result.status === 'passed' ? '✅' : result.status === 'failed' ? '❌' : result.status === 'info' ? 'ℹ️' : '⏸️'}
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">${result.name}</div>
+                        ${result.details ? `<div class="timeline-description">${result.details}</div>` : ''}
+                        <div class="timeline-meta">
+                            <span>⏱️ ${result.duration}ms</span>
+                            <span>📅 ${result.timestamp}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
         </div>
-    `).join('');
+    `;
+}
+
+// Add activity log entry (for all activity including raw code generation)
+function addActivityLog(name, type, duration, details = '') {
+    console.log('[Dashboard] 📝 addActivityLog CALLED:', {
+        name: name,
+        type: type,  // 'test', 'code_generated', 'execution', etc.
+        duration: duration,
+        details: details
+    });
+    
+    // Map type to status for display
+    const statusMap = {
+        'test': 'passed',           // Test created successfully
+        'code_generated': 'info',   // Code generated (just an activity, not a test result)
+        'action_suggestion': 'info', // Action suggestion generated
+        'execution': 'pending',      // Test execution in progress
+        'passed': 'passed',
+        'failed': 'failed'
+    };
+    
+    const status = statusMap[type] || 'pending';
+    
+    // Use addTestResult to add to timeline (it handles the UI updates)
+    addTestResult(name, status, duration, details);
+}
+
+// Increment tests generated counter (only for saved recorder/builder tests)
+function incrementTestsGenerated() {
+    console.log('[Dashboard] ✅ incrementTestsGenerated CALLED');
+    window.stats.testsGenerated = (window.stats.testsGenerated || 0) + 1;
+    saveStats();
+    updateDashboardStats();
+    console.log('[Dashboard] Total tests generated:', window.stats.testsGenerated);
 }
 
 // Expose functions to window object (stats already exposed above)
@@ -222,6 +296,8 @@ window.loadStats = loadStats;
 window.saveStats = saveStats;
 window.updateDashboardStats = updateDashboardStats;
 window.addTestResult = addTestResult;
+window.addActivityLog = addActivityLog;
+window.incrementTestsGenerated = incrementTestsGenerated;
 window.updateRecentTestResults = updateRecentTestResults;
 window.updateActivityTimeline = updateActivityTimeline;
 

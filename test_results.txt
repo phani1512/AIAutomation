@@ -1,0 +1,369 @@
+
+
+======================================================================
+COMPREHENSIVE WORKFLOW TEST SUITE
+Testing all critical paths after refactoring
+======================================================================
+======================================================================
+TEST 1: Placeholder Preservation
+======================================================================
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 635 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4450 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[FUZZY] Matched 'enter username in username field' to 'enter text in username field' (score: 87.33%)
+[CODE GEN] Generating python code for prompt: 'enter username in username field' (comprehensive=False)
+[FUZZY] Matched 'enter username in username field' to 'enter text in username field' (score: 87.33%)
+[ALTERNATIVES] Found 3 alternatives
+[UNIVERSAL] No dataset fallback_selectors found, trying universal handler
+[UNIVERSAL INPUT] Γ£à Detected pattern: enter 'username' in 'username'
+[UNIVERSAL INPUT] Using {VALUE} placeholder
+[UNIVERSAL INPUT] Generated 8 fallback selectors for 'username'
+[UNIVERSAL INPUT]   1. app-input[label='Username'] input
+[UNIVERSAL INPUT]   2. input[name='username']
+[UNIVERSAL INPUT]   3. input[id='username']
+[UNIVERSAL INPUT] Generating python code with fallback support (comprehensive=False)
+[UNIVERSAL INPUT] Γ£à Generated code successfully
+[UNIVERSAL] Γ£à Successfully generated code using universal pattern
+
+≡ƒôï Prompt: 'enter username in username field'
+≡ƒöÆ preserve_data_placeholder=True
+Γ£à Generated code:
+
+# Try multiple selector strategies until one works
+wait = WebDriverWait(driver, 10)
+element = None
+selectors = ["app-input[label='Username'] input", "input[name='username']", "input[id='username']", "input[id*='username']", "input[placeholder*='Username']"]
+for selector in selectors:
+    try:
+        element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))
+        break
+    except:
+        continue
+if element:
+    element.clear()
+    element.send_keys("{VALUE}")
+else:
+    raise Exception("Could not find username field with any selector")
+
+Γ£à PASS: Placeholder preserved
+[FUZZY] Matched 'enter john123 in username field' to 'enter text in username field' (score: 76.54%)
+[CODE GEN] Generating python code for prompt: 'enter john123 in username field' (comprehensive=False)
+[FUZZY] Matched 'enter john123 in username field' to 'enter text in username field' (score: 76.54%)
+[ALTERNATIVES] Found 3 alternatives
+[UNIVERSAL] No dataset fallback_selectors found, trying universal handler
+[UNIVERSAL INPUT] Γ£à Detected pattern: enter 'john123' in 'username'
+[UNIVERSAL INPUT] Generated 8 fallback selectors for 'username'
+[UNIVERSAL INPUT]   1. app-input[label='Username'] input
+[UNIVERSAL INPUT]   2. input[name='username']
+[UNIVERSAL INPUT]   3. input[id='username']
+[UNIVERSAL INPUT] Generating python code with fallback support (comprehensive=False)
+[UNIVERSAL INPUT] Γ£à Generated code successfully
+[UNIVERSAL] Γ£à Successfully generated code using universal pattern
+
+≡ƒôï Prompt: 'enter john123 in username field'
+≡ƒöô preserve_data_placeholder=False
+Γ£à Generated code:
+
+# Try multiple selector strategies until one works
+wait = WebDriverWait(driver, 10)
+element = None
+selectors = ["app-input[label='Username'] input", "input[name='username']", "input[id='username']", "input[id*='username']", "input[placeholder*='Username']"]
+for selector in selectors:
+    try:
+        element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))
+        break
+    except:
+        continue
+if element:
+    element.clear()
+    element.send_keys("john123")
+else:
+    raise Exception("Could not find username field with any selector")
+
+Γ£à PASS: Value extracted and used
+
+======================================================================
+TEST 2: Quote Handling Across Languages
+======================================================================
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 635 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4450 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[FUZZY] Matched 'enter test123 in username' to 'enter text in username' (score: 76.24%)
+[CODE GEN] Generating python code for prompt: 'enter test123 in username' (comprehensive=False)
+[FUZZY] Matched 'enter test123 in username' to 'enter text in username' (score: 76.24%)
+[ALTERNATIVES] Found 3 alternatives
+[UNIVERSAL] No dataset fallback_selectors found, trying universal handler
+[UNIVERSAL INPUT] Γ£à Detected pattern: enter 'test123' in 'username'
+[UNIVERSAL INPUT] Generated 8 fallback selectors for 'username'
+[UNIVERSAL INPUT]   1. app-input[label='Username'] input
+[UNIVERSAL INPUT]   2. input[name='username']
+[UNIVERSAL INPUT]   3. input[id='username']
+[UNIVERSAL INPUT] Generating python code with fallback support (comprehensive=False)
+[UNIVERSAL INPUT] Γ£à Generated code successfully
+[UNIVERSAL] Γ£à Successfully generated code using universal pattern
+
+≡ƒôï PYTHON: 'enter test123 in username'
+   Looking for: send_keys("test123")
+   Generated:
+
+# Try multiple selector strategies until one works
+wait = WebDriverWait(driver, 10)
+element = None
+selectors = ["app-input[label='Username'] input", "input[name='username']", "input[id='username']", ...
+
+   Γ£à PASS
+[FUZZY] Matched 'enter test456 in email' to 'enter text in email field' (score: 68.14%)
+[CODE GEN] Generating java code for prompt: 'enter test456 in email' (comprehensive=False)
+[FUZZY] Matched 'enter test456 in email' to 'enter text in email field' (score: 68.14%)
+[ALTERNATIVES] Found 3 alternatives
+[DATASET] Prompt: 'enter test456 in email'
+[DATASET] Match found: True
+[DATASET] Locator: input[type='email']
+[DATASET] Code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "input[type='email']")))
+element.clear()
+element.send_keys(value)
+[DATASET] Action: sendKeys
+[DATASET] Code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.visibility_of_element_l...
+[DATASET] Found 14 fallback selectors
+[DATASET] Generating code with 14 fallback selectors
+
+≡ƒôï JAVA: 'enter test456 in email'
+   Looking for: sendKeys("test456")
+   Generated:
+// Phase 1: Instant check for visible elements
+WebElement element = null;
+String[] selectors = {"input[type='email']", "input[id='email']", "input[id='producer-email']", "input[name='email']", "input[...
+
+   Γ£à PASS
+[CODE GEN] Generating javascript code for prompt: 'type hello in message' (comprehensive=False)
+[UNIVERSAL] No dataset fallback_selectors found, trying universal handler
+[UNIVERSAL INPUT] Γ£à Detected pattern: enter 'hello' in 'message'
+[UNIVERSAL INPUT] Generated 8 fallback selectors for 'message'
+[UNIVERSAL INPUT]   1. app-input[label='Message'] input
+[UNIVERSAL INPUT]   2. input[name='message']
+[UNIVERSAL INPUT]   3. input[id='message']
+[UNIVERSAL INPUT] Generating javascript code with fallback support (comprehensive=False)
+INFO:test_session_manager:[SESSION MANAGER] Initialized with directory: C:\Users\valaboph\AIAutomation\src\resources\test_sessions
+INFO:test_session_manager:[SESSION MANAGER] Created session: 3b53e2fe-731f-464a-b924-37669fee472a - Test Builder Test
+INFO:test_session_manager:[SESSION 3b53e2fe-731f-464a-b924-37669fee472a] Added step 1: enter username in username field
+INFO:test_session_manager:[SESSION 3b53e2fe-731f-464a-b924-37669fee472a] Added step 2: enter password in password field
+INFO:test_session_manager:[SESSION 3b53e2fe-731f-464a-b924-37669fee472a] Added step 3: click login button
+INFO:test_case_builder:[TEST BUILDER] Initialized with directory: C:\Users\valaboph\AIAutomation\test_cases\builder
+Traceback (most recent call last):
+  File "C:\Users\valaboph\AIAutomation\comprehensive_workflow_test.py", line 263, in run_all_tests
+    passed = test_func()
+  File "C:\Users\valaboph\AIAutomation\comprehensive_workflow_test.py", line 128, in test_test_case_builder
+    test_code = builder.build_test_case(session, language='python')
+                ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'TestCaseBuilder' object has no attribute 'build_test_case'. Did you mean: 'load_test_case'?
+Traceback (most recent call last):
+  File "C:\Users\valaboph\AIAutomation\comprehensive_workflow_test.py", line 263, in run_all_tests
+    passed = test_func()
+  File "C:\Users\valaboph\AIAutomation\comprehensive_workflow_test.py", line 179, in test_fallback_strategy
+    code = gen.generate_with_fallbacks(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FallbackStrategyGenerator' object has no attribute 'generate_with_fallbacks'. Did you mean: 'generate_code_with_fallbacks'?
+[UNIVERSAL INPUT] Γ£à Generated code successfully
+[UNIVERSAL] Γ£à Successfully generated code using universal pattern
+
+≡ƒôï JAVASCRIPT: 'type hello in message'
+   Looking for: fill("hello")
+   Generated:
+
+// Try multiple selector strategies until one works
+const selectors = ["app-input[label='Message'] input", "input[name='message']", "input[id='message']", "input[id*='message']", "input[placeholder*=...
+
+   Γ£à PASS
+[FUZZY] Matched 'input data in field' to 'enter text in npn field' (score: 67.98%)
+[CODE GEN] Generating csharp code for prompt: 'input data in field' (comprehensive=False)
+[FUZZY] Matched 'input data in field' to 'enter text in npn field' (score: 67.98%)
+[ALTERNATIVES] Found 3 alternatives
+[UNIVERSAL] No dataset fallback_selectors found, trying universal handler
+[UNIVERSAL INPUT] Γ£à Detected pattern: enter 'data' in 'field'
+[UNIVERSAL INPUT] Using {VALUE} placeholder
+[UNIVERSAL INPUT] Generated 8 fallback selectors for 'field'
+[UNIVERSAL INPUT]   1. app-input[label='Field'] input
+[UNIVERSAL INPUT]   2. input[name='field']
+[UNIVERSAL INPUT]   3. input[id='field']
+[UNIVERSAL INPUT] Generating csharp code with fallback support (comprehensive=False)
+[UNIVERSAL INPUT] Γ£à Generated code successfully
+[UNIVERSAL] Γ£à Successfully generated code using universal pattern
+
+≡ƒôï CSHARP: 'input data in field'
+   Looking for: SendKeys("data")
+   Generated:
+
+// Try multiple selector strategies until one works
+var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+IWebElement element = null;
+string[] selectors = { "app-input[label='Field'] input"...
+
+   Γ£à PASS
+
+======================================================================
+TEST 3: Test Case Builder Placeholder Replacement
+======================================================================
+
+≡ƒôï Created session with 3 steps
+   1. enter username in username field | value=john_doe | code=element.send_keys("{VALUE}")
+   2. enter password in password field | value=secret123 | code=element.send_keys("{VALUE}")
+   3. click login button | value=None | code=element.click()
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 635 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4450 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+
+Γ¥î TEST FAILED WITH EXCEPTION: Test Case Builder
+   Error: 'TestCaseBuilder' object has no attribute 'build_test_case'
+
+======================================================================
+TEST 4: Fallback Strategy Quote Handling
+======================================================================
+
+Γ¥î TEST FAILED WITH EXCEPTION: Fallback Strategy
+   Error: 'FallbackStrategyGenerator' object has no attribute 'generate_with_fallbacks'
+
+======================================================================
+TEST 5: Comprehensive vs Simple Mode
+======================================================================
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 635 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4450 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[CODE GEN] Generating python code for prompt: 'click submit button' (comprehensive=False)
+[DATASET] Prompt: 'click submit button'
+[DATASET] Match found: True
+[DATASET] Locator: //button[normalize-space()='Submit']
+[DATASET] Code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Submit']"))))
+element.click()
+[DATASET] Action: click
+[DATASET] Code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable...
+[DATASET] Found 11 fallback selectors
+[DATASET] Generating code with 11 fallback selectors
+
+≡ƒôï Simple Mode:
+# Phase 1: Instant check for visible elements (no wait)
+element = None
+selectors = ["//button[normalize-space()='Submit']", "button[type='submit']", "input[type='submit']", "button:contains('Submit')", "button:contains('Save')", "button:contains('Confirm')"]
+for selector in selectors:
+    try:
+        locator_type = By.XPATH if selector.startswith('//') else By.CSS_SELECTOR
+        elements = driver.find_elements(locator_type, selector)
+        for el in elements:
+            if el.is_displayed() and el.is_enabled():
+                element = el
+                break
+        if element:
+            break
+    except:
+        continue
+
+if not element:
+    wait = WebDriverWait(driver, 2)
+    for selector in selectors:
+        try:
+            locator_type = By.XPATH if selector.startswith('//') else By.CSS_SELECTOR
+            element = wait.until(EC.element_to_be_clickable((locator_type, selector)))
+            break  # Found element
+        except:
+            continue  # Try next
+
+if element:
+    # Scroll element into view (consistent with recorder)
+    try:
+        driver.execute_script("arguments[0].scrollIntoView(false);", element)
+        time.sleep(0.3)
+    except:
+        pass  # Scroll not critical
+    element.click()
+else:
+    raise Exception("Could not find element")
+[CODE GEN] Generating python code for prompt: 'click submit button' (comprehensive=True)
+[DATASET] Prompt: 'click submit button'
+[DATASET] Match found: True
+[DATASET] Locator: //button[normalize-space()='Submit']
+[DATASET] Code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Submit']"))))
+element.click()
+[DATASET] Action: click
+[DATASET] Code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable...
+[DATASET] Found 11 fallback selectors
+[DATASET] Generating code with 11 fallback selectors
+
+≡ƒôï Comprehensive Mode:
+# click submit button - optimized fallback strategy (10-20x faster)
+# Phase 1: Instant check for visible elements (no wait)
+element = None
+selectors = ["//button[normalize-space()='Submit']", "button[type='submit']", "input[type='submit']", "button:contains('Submit')", "button:contains('Save')", "button:contains('Confirm')"]
+for selector in selectors:
+    try:
+        locator_type = By.XPATH if selector.startswith('//') else By.CSS_SELECTOR
+        elements = driver.find_elements(locator_type, selector)
+        for el in elements:
+            if el.is_displayed() and el.is_enabled():
+                element = el
+                break
+        if element:
+            break
+    except:
+        continue
+
+if not element:
+    wait = WebDriverWait(driver, 2)
+    for selector in selectors:
+        try:
+            locator_type = By.XPATH if selector.startswith('//') else By.CSS_SELECTOR
+            element = wait.until(EC.element_to_be_clickable((locator_type, selector)))
+            break  # Found element
+        except:
+            continue  # Try next
+
+if element:
+    # Scroll element into view (consistent with recorder)
+    try:
+        driver.execute_script("arguments[0].scrollIntoView(false);", element)
+        time.sleep(0.3)
+    except:
+        pass  # Scroll not critical
+    element.click()
+else:
+    raise Exception("Could not find element")
+
+Γ£à PASS: Comprehensive mode includes waits
+
+======================================================================
+TEST SUMMARY
+======================================================================
+Γ£à PASS - Placeholder Preservation
+Γ£à PASS - Quote Handling
+Γ¥î FAIL - Test Case Builder
+Γ¥î FAIL - Fallback Strategy
+Γ£à PASS - Comprehensive Mode
+
+======================================================================
+Results: 3/5 tests passed
+ΓÜá∩╕Å  2 test(s) failed - Issues found!
+======================================================================

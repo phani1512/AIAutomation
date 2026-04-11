@@ -1,0 +1,632 @@
+[
+  {
+    "id": "pom_001",
+    "instruction": "Write code to enter a value in a text field using its visible label",
+    "input": "Enter '{FULL_NAME}' in the 'Full Name' field",
+    "output": "setInputFieldValue(\"Full Name\", \"{FULL_NAME}\");",
+    "category": "input_field_interaction",
+    "difficulty": "easy",
+    "method_pattern": "setInputFieldValue(String labelName, String value)"
+  },
+  {
+    "id": "pom_002",
+    "instruction": "Write code to verify the value in a field by its label",
+    "input": "Get the value from the 'Email Address' field",
+    "output": "String email = getInputFieldValue(\"Email Address\");",
+    "category": "input_field_validation",
+    "difficulty": "easy",
+    "method_pattern": "String getInputFieldValue(String labelName)"
+  },
+  {
+    "id": "pom_003",
+    "instruction": "Write code to check if a field is disabled",
+    "input": "Check if the 'Social Security Number' field is disabled",
+    "output": "boolean isDisabled = isInputFieldDisabled(\"Social Security Number\");",
+    "category": "input_field_validation",
+    "difficulty": "medium",
+    "method_pattern": "boolean isInputFieldDisabled(String labelName)"
+  },
+  {
+    "id": "pom_004",
+    "instruction": "Write code to select an option from a dropdown using its label",
+    "input": "Select '{STATE}' from the 'State' dropdown",
+    "output": "setDropdownValue(\"State\", \"{STATE}\");",
+    "category": "dropdown_interaction",
+    "difficulty": "easy",
+    "method_pattern": "setDropdownValue(String labelName, String value)"
+  },
+  {
+    "id": "pom_005",
+    "instruction": "Write code to retrieve the selected value from a dropdown",
+    "input": "Get the selected value from 'Country' dropdown",
+    "output": "String country = getSelectedDropdownValue(\"Country\");",
+    "category": "dropdown_validation",
+    "difficulty": "easy",
+    "method_pattern": "String getSelectedDropdownValue(String labelName)"
+  },
+  {
+    "id": "pom_006",
+    "instruction": "Write code to check a checkbox by its label",
+    "input": "Check the 'I agree to terms and conditions' checkbox",
+    "output": "setCheckboxOn(\"I agree to terms and conditions\");",
+    "category": "checkbox_interaction",
+    "difficulty": "easy",
+    "method_pattern": "setCheckboxOn(String labelName)"
+  },
+  {
+    "id": "pom_007",
+    "instruction": "Write code to uncheck a checkbox",
+    "input": "Uncheck the 'Subscribe to newsletter' checkbox",
+    "output": "setCheckboxOff(\"Subscribe to newsletter\");",
+    "category": "checkbox_interaction",
+    "difficulty": "easy",
+    "method_pattern": "setCheckboxOff(String labelName)"
+  },
+  {
+    "id": "pom_008",
+    "instruction": "Write code to verify if a checkbox is checked",
+    "input": "Verify if 'Remember me' checkbox is checked",
+    "output": "boolean isChecked = isCheckboxOn(\"Remember me\");",
+    "category": "checkbox_validation",
+    "difficulty": "easy",
+    "method_pattern": "boolean isCheckboxOn(String labelName)"
+  },
+  {
+    "id": "pom_009",
+    "instruction": "Write code to select a radio button by its label",
+    "input": "Select the 'Credit Card' radio button",
+    "output": "selectRadioButton(\"Credit Card\");",
+    "category": "radio_button_interaction",
+    "difficulty": "easy",
+    "method_pattern": "selectRadioButton(String labelName)"
+  },
+  {
+    "id": "pom_010",
+    "instruction": "Write code to verify if a radio button is selected",
+    "input": "Check if 'Debit Card' radio button is selected",
+    "output": "boolean isSelected = isRadioButtonSelected(\"Debit Card\");",
+    "category": "radio_button_validation",
+    "difficulty": "easy",
+    "method_pattern": "boolean isRadioButtonSelected(String labelName)"
+  },
+  {
+    "id": "pom_011",
+    "instruction": "Write code to click a button by its text",
+    "input": "Click the 'Submit' button",
+    "output": "clickButton(\"Submit\");",
+    "category": "button_interaction",
+    "difficulty": "easy",
+    "method_pattern": "clickButton(String buttonText)"
+  },
+  {
+    "id": "pom_012",
+    "instruction": "Write code to click a button in a dialog",
+    "input": "Click 'Confirm' button in the dialog",
+    "output": "clickDialogButton(\"Confirm\");",
+    "category": "dialog_interaction",
+    "difficulty": "medium",
+    "method_pattern": "clickDialogButton(String buttonText)"
+  },
+  {
+    "id": "pom_013",
+    "instruction": "Write code to verify if a button exists",
+    "input": "Check if 'Cancel' button is present",
+    "output": "boolean exists = isButtonFound(\"Cancel\");",
+    "category": "button_validation",
+    "difficulty": "easy",
+    "method_pattern": "boolean isButtonFound(String buttonText)"
+  },
+  {
+    "id": "pom_014",
+    "instruction": "Write code to click a link by its text",
+    "input": "Click on 'Forgot Password?' link",
+    "output": "clickLink(\"Forgot Password?\");",
+    "category": "link_interaction",
+    "difficulty": "easy",
+    "method_pattern": "clickLink(String linkText)"
+  },
+  {
+    "id": "pom_015",
+    "instruction": "Write code to verify if a link opens in new tab",
+    "input": "Check if 'Privacy Policy' link opens in a new tab",
+    "output": "boolean opensNew = isLinkOpeningInNewTab(\"Privacy Policy\");",
+    "category": "link_validation",
+    "difficulty": "medium",
+    "method_pattern": "boolean isLinkOpeningInNewTab(String linkText)"
+  },
+  {
+    "id": "pom_016",
+    "instruction": "Write code to click a navigation tab",
+    "input": "Click on the 'Settings' tab",
+    "output": "clickNavigationTab(\"Settings\");",
+    "category": "tab_navigation",
+    "difficulty": "easy",
+    "method_pattern": "clickNavigationTab(String tabName)"
+  },
+  {
+    "id": "pom_017",
+    "instruction": "Write code to verify if a tab is active",
+    "input": "Verify if 'Profile' tab is active",
+    "output": "boolean isActive = isTabButtonActive(\"Profile\");",
+    "category": "tab_validation",
+    "difficulty": "medium",
+    "method_pattern": "boolean isTabButtonActive(String tabName)"
+  },
+  {
+    "id": "pom_018",
+    "instruction": "Write code to check if a dialog is open",
+    "input": "Check if a dialog is currently displayed",
+    "output": "boolean isOpen = isDialogOpen();",
+    "category": "dialog_validation",
+    "difficulty": "easy",
+    "method_pattern": "boolean isDialogOpen()"
+  },
+  {
+    "id": "pom_019",
+    "instruction": "Write code to get dialog content",
+    "input": "Read the text content from the dialog",
+    "output": "String content = getDialogContent();",
+    "category": "dialog_validation",
+    "difficulty": "easy",
+    "method_pattern": "String getDialogContent()"
+  },
+  {
+    "id": "pom_020",
+    "instruction": "Write code to close a dialog",
+    "input": "Close the currently open dialog",
+    "output": "closeDialog();",
+    "category": "dialog_interaction",
+    "difficulty": "easy",
+    "method_pattern": "closeDialog()"
+  },
+  {
+    "id": "pom_021",
+    "instruction": "Write code to submit a dialog",
+    "input": "Click the submit button in the dialog",
+    "output": "clickDialogSubmitButton();",
+    "category": "dialog_interaction",
+    "difficulty": "easy",
+    "method_pattern": "clickDialogSubmitButton()"
+  },
+  {
+    "id": "pom_022",
+    "instruction": "Write code to search within a table",
+    "input": "Search for '{FIRST_NAME} {LAST_NAME}' in the table",
+    "output": "searchTable(\"{FIRST_NAME} {LAST_NAME}\");",
+    "category": "table_interaction",
+    "difficulty": "medium",
+    "method_pattern": "searchTable(String criteria)"
+  },
+  {
+    "id": "pom_023",
+    "instruction": "Write code to count table rows",
+    "input": "Get the number of rows in the table",
+    "output": "int rowCount = getTableRowCount();",
+    "category": "table_validation",
+    "difficulty": "easy",
+    "method_pattern": "int getTableRowCount()"
+  },
+  {
+    "id": "pom_024",
+    "instruction": "Write code to check if table has no results",
+    "input": "Verify if the table search returned no results",
+    "output": "boolean noResults = isSearchTableNoResultsFound();",
+    "category": "table_validation",
+    "difficulty": "medium",
+    "method_pattern": "boolean isSearchTableNoResultsFound()"
+  },
+  {
+    "id": "pom_025",
+    "instruction": "Write code to select a table row by text",
+    "input": "Check the checkbox for the row containing 'Active User'",
+    "output": "setTableRowCheckboxOn(\"Active User\");",
+    "category": "table_interaction",
+    "difficulty": "medium",
+    "method_pattern": "setTableRowCheckboxOn(String identifyingText)"
+  },
+  {
+    "id": "pom_026",
+    "instruction": "Write code to verify table contains text",
+    "input": "Check if the table contains 'Approved'",
+    "output": "boolean contains = isTableContains(\"Approved\");",
+    "category": "table_validation",
+    "difficulty": "medium",
+    "method_pattern": "boolean isTableContains(String text)"
+  },
+  {
+    "id": "pom_027",
+    "instruction": "Write code to click edit button in a row",
+    "input": "Click the edit pencil icon",
+    "output": "clickEditPencilButton();",
+    "category": "table_row_action",
+    "difficulty": "easy",
+    "method_pattern": "clickEditPencilButton()"
+  },
+  {
+    "id": "pom_028",
+    "instruction": "Write code to click delete button in a row",
+    "input": "Click the trash can icon to delete",
+    "output": "clickTrashCanButton();",
+    "category": "table_row_action",
+    "difficulty": "easy",
+    "method_pattern": "clickTrashCanButton()"
+  },
+  {
+    "id": "pom_029",
+    "instruction": "Write code to read a success message",
+    "input": "Get the success message text",
+    "output": "String message = getMessageBoxSuccessText();",
+    "category": "message_validation",
+    "difficulty": "easy",
+    "method_pattern": "String getMessageBoxSuccessText()"
+  },
+  {
+    "id": "pom_030",
+    "instruction": "Write code to read an error message",
+    "input": "Get the error message displayed",
+    "output": "String error = getMessageBoxErrorText();",
+    "category": "message_validation",
+    "difficulty": "easy",
+    "method_pattern": "String getMessageBoxErrorText()"
+  },
+  {
+    "id": "pom_031",
+    "instruction": "Write code to read a toast notification",
+    "input": "Get the success toast message",
+    "output": "String toast = getToastSuccessText();",
+    "category": "message_validation",
+    "difficulty": "easy",
+    "method_pattern": "String getToastSuccessText()"
+  },
+  {
+    "id": "pom_032",
+    "instruction": "Write code to get validation message for a field",
+    "input": "Get the validation error for 'Email' field",
+    "output": "String message = getInputFieldValidationMessage(\"Email\");",
+    "category": "validation_message",
+    "difficulty": "medium",
+    "method_pattern": "String getInputFieldValidationMessage(String labelName)"
+  },
+  {
+    "id": "pom_033",
+    "instruction": "Write code to wait for page to load",
+    "input": "Wait until the page finishes loading",
+    "output": "waitForPageLoading();",
+    "category": "wait_operation",
+    "difficulty": "easy",
+    "method_pattern": "waitForPageLoading()"
+  },
+  {
+    "id": "pom_034",
+    "instruction": "Write code to wait for processing spinner",
+    "input": "Wait for the processing spinner to disappear",
+    "output": "waitForProcessingSpinner();",
+    "category": "wait_operation",
+    "difficulty": "easy",
+    "method_pattern": "waitForProcessingSpinner()"
+  },
+  {
+    "id": "pom_035",
+    "instruction": "Write code to wait for toast notification",
+    "input": "Wait for success toast to appear and disappear",
+    "output": "waitForToastSuccess();",
+    "category": "wait_operation",
+    "difficulty": "medium",
+    "method_pattern": "waitForToastSuccess()"
+  },
+  {
+    "id": "pom_036",
+    "instruction": "Write code to upload a file",
+    "input": "Upload the file 'test-document.pdf'",
+    "output": "selectFileToUpload(\"test-document.pdf\");",
+    "category": "file_operation",
+    "difficulty": "medium",
+    "method_pattern": "selectFileToUpload(String... filePaths)"
+  },
+  {
+    "id": "pom_037",
+    "instruction": "Write code to click a menu item",
+    "input": "Click on 'File' menu",
+    "output": "clickMenu(\"File\");",
+    "category": "menu_navigation",
+    "difficulty": "easy",
+    "method_pattern": "clickMenu(String menuText)"
+  },
+  {
+    "id": "pom_038",
+    "instruction": "Write code to click a submenu item",
+    "input": "Click on 'Export' submenu",
+    "output": "clickSubmenu(\"Export\");",
+    "category": "menu_navigation",
+    "difficulty": "easy",
+    "method_pattern": "clickSubmenu(String submenuText)"
+  },
+  {
+    "id": "pom_039",
+    "instruction": "Write code to scroll element into view",
+    "input": "Scroll to make the footer visible",
+    "output": "scrollToView(By.id(\"footer\"));",
+    "category": "scroll_operation",
+    "difficulty": "medium",
+    "method_pattern": "scrollToView(By locator)"
+  },
+  {
+    "id": "pom_040",
+    "instruction": "Write code to check element existence",
+    "input": "Check if an element with ID 'header' exists",
+    "output": "boolean exists = isElementFound(By.id(\"header\"));",
+    "category": "element_validation",
+    "difficulty": "easy",
+    "method_pattern": "boolean isElementFound(By locator)"
+  },
+  {
+    "id": "pom_041",
+    "instruction": "Write code for complete form filling workflow",
+    "input": "Fill out a registration form with first name '{FIRST_NAME}', last name '{LAST_NAME}', select 'Female' gender, check terms, and submit",
+    "output": "setInputFieldValue(\"First Name\", \"{FIRST_NAME}\");\nsetInputFieldValue(\"Last Name\", \"{LAST_NAME}\");\nselectRadioButton(\"Female\");\nsetCheckboxOn(\"I agree to terms\");\nclickButton(\"Submit\");",
+    "category": "workflow",
+    "difficulty": "hard",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_042",
+    "instruction": "Write code for table search and edit workflow",
+    "input": "Search for '{FULL_NAME}' in table, then click the edit button",
+    "output": "searchTable(\"{FULL_NAME}\");\nclickEditPencilButton();",
+    "category": "workflow",
+    "difficulty": "medium",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_043",
+    "instruction": "Write code for dialog interaction workflow",
+    "input": "Open dialog, enter 'New Value' in 'Name' field, and submit",
+    "output": "waitUntilDialogIsOpen(5);\nsetInputFieldValue(\"Name\", \"New Value\");\nclickDialogSubmitButton();",
+    "category": "workflow",
+    "difficulty": "medium",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_044",
+    "instruction": "Write code for validation checking workflow",
+    "input": "Enter invalid email, check for validation message, then verify submit is disabled",
+    "output": "setInputFieldValue(\"Email\", \"invalid\");\nString error = getInputFieldValidationMessage(\"Email\");\nboolean disabled = isSubmitButtonDisabled();",
+    "category": "workflow",
+    "difficulty": "hard",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_045",
+    "instruction": "Write code for multi-step navigation and data entry",
+    "input": "Click 'Personal Info' tab, enter name, then click 'Address' tab and enter city",
+    "output": "clickNavigationTab(\"Personal Info\");\nsetInputFieldValue(\"Full Name\", \"{FIRST_NAME} {LAST_NAME}\");\nclickNavigationTab(\"Address\");\nsetInputFieldValue(\"City\", \"{CITY}\");",
+    "category": "workflow",
+    "difficulty": "hard",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_046",
+    "instruction": "Write natural language to code conversion",
+    "input": "type Test123! into Password field and verify it's not visible",
+    "output": "setInputFieldValue(\"Password\", \"Test123!\");\nString value = getInputFieldValue(\"Password\");\nassertTrue(value.isEmpty() || value.equals(\"••••••\"));",
+    "category": "natural_language",
+    "difficulty": "hard",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_047",
+    "instruction": "Write natural language to code conversion",
+    "input": "make sure the save button is disabled until I fill the required name field",
+    "output": "boolean initiallyDisabled = isSubmitButtonDisabled();\nsetInputFieldValue(\"Name\", \"Test Name\");\nboolean nowEnabled = !isSubmitButtonDisabled();",
+    "category": "natural_language",
+    "difficulty": "hard",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_048",
+    "instruction": "Write natural language to code conversion",
+    "input": "select {COUNTRY} from country dropdown then pick {STATE} from state",
+    "output": "setDropdownValue(\"Country\", \"{COUNTRY}\");\nsetDropdownValue(\"State\", \"{STATE}\");",
+    "category": "natural_language",
+    "difficulty": "medium",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_049",
+    "instruction": "Write natural language to code conversion",
+    "input": "find the row with {FIRST_NAME}@example.com and click the trash icon",
+    "output": "searchTable(\"{FIRST_NAME}@example.com\");\nclickTrashCanButton();",
+    "category": "natural_language",
+    "difficulty": "medium",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_050",
+    "instruction": "Write natural language to code conversion",
+    "input": "check if the success message says data saved successfully",
+    "output": "String message = getMessageBoxSuccessText();\nassertTrue(message.contains(\"Data saved successfully\"));",
+    "category": "natural_language",
+    "difficulty": "medium",
+    "method_pattern": "multiple methods"
+  },
+  {
+    "id": "pom_051",
+    "instruction": "Generate test assertion from description",
+    "input": "Verify that after entering an invalid phone number, the field shows an error message",
+    "output": "setInputFieldValue(\"Phone Number\", \"123\");\nString error = getInputFieldValidationMessage(\"Phone Number\");\nassertFalse(error.isEmpty(), \"Expected validation error for invalid phone\");",
+    "category": "test_generation",
+    "difficulty": "hard",
+    "method_pattern": "multiple methods with assertions"
+  },
+  {
+    "id": "pom_052",
+    "instruction": "Generate test assertion from description",
+    "input": "Verify the terms checkbox must be checked before submit button is enabled",
+    "output": "boolean initiallyDisabled = isSubmitButtonDisabled();\nsetCheckboxOn(\"I agree to terms and conditions\");\nboolean nowEnabled = !isSubmitButtonDisabled();\nassertTrue(initiallyDisabled && nowEnabled, \"Submit should be enabled after accepting terms\");",
+    "category": "test_generation",
+    "difficulty": "hard",
+    "method_pattern": "multiple methods with assertions"
+  },
+  {
+    "id": "pom_053",
+    "instruction": "Generate test assertion from description",
+    "input": "Verify that clicking a disabled dropdown {LAST_NAME}s not show any options",
+    "output": "boolean isDisabled = isDropdownFieldDisabled(\"Country\");\nassertTrue(isDisabled, \"Country dropdown should be disabled\");\nList<WebElement> options = getDropdownSearchResults();\nassertTrue(options.isEmpty(), \"No options should be available for disabled dropdown\");",
+    "category": "test_generation",
+    "difficulty": "hard",
+    "method_pattern": "multiple methods with assertions"
+  },
+  {
+    "id": "pom_054",
+    "instruction": "Generate complete test method",
+    "input": "Create a test that verifies user can successfully register with valid data",
+    "output": "@Test\npublic void testSuccessfulRegistration() {\n    setInputFieldValue(\"First Name\", \"{FIRST_NAME}\");\n    setInputFieldValue(\"Last Name\", \"{LAST_NAME}\");\n    setInputFieldValue(\"Email\", \"{FIRST_NAME}.{LAST_NAME}@example.com\");\n    setInputFieldValue(\"Password\", \"SecurePass123!\");\n    setCheckboxOn(\"I agree to terms\");\n    clickButton(\"Register\");\n    waitForToastSuccess();\n    String message = getToastSuccessText();\n    assertTrue(message.contains(\"Registration successful\"));\n}",
+    "category": "test_generation",
+    "difficulty": "expert",
+    "method_pattern": "complete test method"
+  },
+  {
+    "id": "pom_055",
+    "instruction": "Generate complete test method",
+    "input": "Create a test for editing user profile information",
+    "output": "@Test\npublic void testEditUserProfile() {\n    clickNavigationTab(\"Profile\");\n    waitForPageLoading();\n    clickButton(\"Edit\");\n    setInputFieldValue(\"Display Name\", \"{FIRST_NAME}ny D\");\n    setInputFieldValue(\"Bio\", \"Software Engineer\");\n    setDropdownValue(\"Country\", \"{COUNTRY}\");\n    clickButton(\"Save Changes\");\n    waitForToastSuccess();\n    String toast = getToastSuccessText();\n    assertEquals(\"Profile updated successfully\", toast);\n}",
+    "category": "test_generation",
+    "difficulty": "expert",
+    "method_pattern": "complete test method"
+  },
+  {
+    "id": "pom_056",
+    "instruction": "Handle error scenario",
+    "input": "Write code to handle when a required field validation fails",
+    "output": "setInputFieldValue(\"Email\", \"\");\nclickButton(\"Submit\");\nString validationMsg = getInputFieldValidationMessage(\"Email\");\nassertEquals(\"Email is required\", validationMsg);\nboolean submitDisabled = isSubmitButtonDisabled();\nassertTrue(submitDisabled);",
+    "category": "error_handling",
+    "difficulty": "hard",
+    "method_pattern": "validation workflow"
+  },
+  {
+    "id": "pom_057",
+    "instruction": "Handle edge case",
+    "input": "Test that extremely long input is truncated or rejected",
+    "output": "String longText = \"a\".repeat(1000);\nsetInputFieldValue(\"Name\", longText);\nString actualValue = getInputFieldValue(\"Name\");\nassertTrue(actualValue.length() <= 255, \"Input should be limited to 255 characters\");",
+    "category": "edge_case",
+    "difficulty": "hard",
+    "method_pattern": "boundary testing"
+  },
+  {
+    "id": "pom_058",
+    "instruction": "Handle dynamic content",
+    "input": "Wait for table to load after search and verify results",
+    "output": "searchTable(\"test\");\nwaitForPageLoading();\nint rowCount = getTableRowCount();\nassertTrue(rowCount > 0, \"Expected search results\");\nboolean contains = isTableContains(\"test\");\nassertTrue(contains);",
+    "category": "dynamic_content",
+    "difficulty": "medium",
+    "method_pattern": "async waiting"
+  },
+  {
+    "id": "pom_059",
+    "instruction": "Handle conditional logic",
+    "input": "Only fill address if country is selected",
+    "output": "if (isDropdownFieldFound(\"Country\")) {\n    setDropdownValue(\"Country\", \"{COUNTRY}\");\n    waitForPageLoading();\n    if (isInputFieldFound(\"Address\")) {\n        setInputFieldValue(\"Address\", \"{ADDRESS}\");\n    }\n}",
+    "category": "conditional_logic",
+    "difficulty": "hard",
+    "method_pattern": "conditional workflow"
+  },
+  {
+    "id": "pom_060",
+    "instruction": "Handle multiple similar elements",
+    "input": "Find and edit the second occurrence of Edit button",
+    "output": "int editCount = getEditPencilButtonCount();\nassertTrue(editCount >= 2, \"Need at least 2 edit buttons\");\nclickEditPencilButton(1); // 0-indexed, so 1 is second",
+    "category": "multiple_elements",
+    "difficulty": "medium",
+    "method_pattern": "indexed selection"
+  },
+  {
+    "id": "pom_061",
+    "instruction": "Complex workflow with validation",
+    "input": "Complete a multi-step form with validation at each step",
+    "output": "// Step 1: Personal Info\nclickNavigationTab(\"Personal Info\");\nsetInputFieldValue(\"First Name\", \"{FIRST_NAME}\");\nsetInputFieldValue(\"Last Name\", \"{LAST_NAME}\");\nclickButton(\"Next\");\n\n// Step 2: Contact\nclickNavigationTab(\"Contact\");\nsetInputFieldValue(\"Email\", \"{FIRST_NAME}@example.com\");\nsetInputFieldValue(\"Phone\", \"{PHONE}\");\nString emailError = getInputFieldValidationMessage(\"Email\");\nassertTrue(emailError.isEmpty());\nclickButton(\"Next\");\n\n// Step 3: Review & Submit\nclickNavigationTab(\"Review\");\nString panelContent = getPanelContents();\nassertTrue(panelContent.contains(\"{FIRST_NAME}\"));\nassertTrue(panelContent.contains(\"{LAST_NAME}\"));\nclickButton(\"Submit\");\nwaitForToastSuccess();",
+    "category": "complex_workflow",
+    "difficulty": "expert",
+    "method_pattern": "multi-step with validation"
+  },
+  {
+    "id": "pom_062",
+    "instruction": "Data-driven test pattern",
+    "input": "Create a re{COUNTRY}ble method to test login with different credentials",
+    "output": "public void testLogin(String username, String password, boolean shouldSucceed) {\n    setInputFieldValue(\"Username\", username);\n    setInputFieldValue(\"Password\", password);\n    clickButton(\"Login\");\n    \n    if (shouldSucceed) {\n        waitForPageLoading();\n        assertTrue(isElementFound(By.id(\"dashboard\")));\n    } else {\n        String error = getMessageBoxErrorText();\n        assertFalse(error.isEmpty());\n    }\n}",
+    "category": "data_driven",
+    "difficulty": "expert",
+    "method_pattern": "parameterized method"
+  },
+  {
+    "id": "pom_063",
+    "instruction": "Generate page object method from UI description",
+    "input": "Create a method to fill a payment form with card details",
+    "output": "public void fillPaymentDetails(String cardNumber, String expiry, String cvv) {\n    setInputFieldValue(\"Card Number\", cardNumber);\n    setInputFieldValue(\"Expiry Date\", expiry);\n    setInputFieldValue(\"CVV\", cvv);\n    setCheckboxOn(\"Save card for future use\");\n}",
+    "category": "method_generation",
+    "difficulty": "hard",
+    "method_pattern": "custom helper method"
+  },
+  {
+    "id": "pom_064",
+    "instruction": "Generate page object method from UI description",
+    "input": "Create a method to filter table by multiple criteria",
+    "output": "public void filterTable(String searchTerm, String statusFilter) {\n    searchTable(searchTerm);\n    waitForPageLoading();\n    clickButton(\"Filters\");\n    setDropdownValue(\"Status\", statusFilter);\n    clickDialogButton(\"Apply\");\n    waitForPageLoading();\n}",
+    "category": "method_generation",
+    "difficulty": "hard",
+    "method_pattern": "custom helper method"
+  },
+  {
+    "id": "pom_065",
+    "instruction": "Refactor repetitive code to use Page Helper methods",
+    "input": "Refactor: driver.findElement(By.xpath(\"//label[text()='Name']/../input\")).sendKeys(\"{FIRST_NAME}\");",
+    "output": "setInputFieldValue(\"Name\", \"{FIRST_NAME}\");",
+    "category": "refactoring",
+    "difficulty": "medium",
+    "method_pattern": "code improvement"
+  },
+  {
+    "id": "pom_066",
+    "instruction": "Refactor repetitive code to use Page Helper methods",
+    "input": "Refactor: WebElement checkbox = driver.findElement(By.xpath(\"//label[text()='Terms']/input\")); if (!checkbox.isSelected()) checkbox.click();",
+    "output": "setCheckboxOn(\"Terms\");",
+    "category": "refactoring",
+    "difficulty": "medium",
+    "method_pattern": "code improvement"
+  },
+  {
+    "id": "pom_067",
+    "instruction": "Complex assertion with multiple validations",
+    "input": "Verify form submission shows success and redirects to dashboard",
+    "output": "clickButton(\"Submit\");\nwaitForToastSuccess();\nString successMsg = getToastSuccessText();\nassertEquals(\"Form submitted successfully\", successMsg);\nwaitForPageLoading();\nboolean isDashboard = isElementFound(By.id(\"dashboard\"));\nassertTrue(isDashboard, \"Should redirect to dashboard after submission\");",
+    "category": "complex_assertion",
+    "difficulty": "hard",
+    "method_pattern": "multi-step verification"
+  },
+  {
+    "id": "pom_068",
+    "instruction": "Handle timeout scenarios",
+    "input": "Wait for dialog with custom timeout and handle if it {LAST_NAME}sn't appear",
+    "output": "try {\n    waitUntilDialogIsOpen(10);\n    clickDialogButton(\"OK\");\n} catch (TimeoutException e) {\n    System.out.println(\"Dialog did not appear within timeout\");\n    // Continue with alternative flow\n}",
+    "category": "timeout_handling",
+    "difficulty": "hard",
+    "method_pattern": "exception handling"
+  },
+  {
+    "id": "pom_069",
+    "instruction": "Generate accessibility test",
+    "input": "Verify all form fields can be navigated using keyboard",
+    "output": "@Test\npublic void testKeyboardNavigation() {\n    assertTrue(isInputFieldFound(\"Name\"));\n    assertTrue(isInputFieldFound(\"Email\"));\n    assertTrue(isDropdownFieldFound(\"Country\"));\n    assertTrue(isCheckboxFound(\"Terms\"));\n    assertTrue(isButtonFound(\"Submit\"));\n    \n    // All interactive elements should be accessible\n    assertFalse(isInputFieldDisabled(\"Name\"));\n    assertFalse(isDropdownFieldDisabled(\"Country\"));\n    assertFalse(isCheckboxDisabled(\"Terms\"));\n}",
+    "category": "accessibility",
+    "difficulty": "hard",
+    "method_pattern": "accessibility validation"
+  },
+  {
+    "id": "pom_070",
+    "instruction": "Generate performance validation test",
+    "input": "Verify page loads and form is interactive within acceptable time",
+    "output": "@Test\npublic void testPageLoadPerformance() {\n    long startTime = System.currentTimeMillis();\n    waitForPageLoading();\n    long loadTime = System.currentTimeMillis() - startTime;\n    \n    assertTrue(loadTime < 5000, \"Page should load within 5 seconds\");\n    assertTrue(isInputFieldFound(\"Name\"));\n    assertFalse(isSubmitButtonDisabled());\n}",
+    "category": "performance",
+    "difficulty": "medium",
+    "method_pattern": "performance testing"
+  }
+]

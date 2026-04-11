@@ -1,0 +1,97 @@
+[AUTH] Loaded 1 users from disk
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 638 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4442 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\resources\\ml_data\\datasets\\page-helper-patterns-dataset.json'
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 638 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4442 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\resources\\ml_data\\datasets\\page-helper-patterns-dataset.json'
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 638 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4442 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\resources\\ml_data\\datasets\\page-helper-patterns-dataset.json'
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 638 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4442 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\resources\\ml_data\\datasets\\page-helper-patterns-dataset.json'
+[INIT] Server started fresh - recorded_sessions cleared (count: 0)
+[INIT] Server Instance ID: 0940fba129474ee4da440973d94ac9be
+[INIT] All previous auth sessions invalidated
+[SERVER] AI model will be loaded on first request...
+[SERVER] ML Semantic Analysis: ENABLED
+
+============================================================
+[SERVER] Selenium SLM API Server (Modular)
+============================================================
+[WEB] Interface: http://localhost:5002
+[WEB] Screenshot AI: http://localhost:5002/screenshot-generator
+
+[API] Endpoints:
+  GET  /health              - Health check
+  POST /generate            - Generate code
+  POST /suggest-locator     - Suggest locator
+  POST /suggest-action      - Suggest action
+
+[BROWSER] Control:
+  POST /browser/initialize  - Initialize
+  POST /browser/execute     - Execute code
+  POST /browser/close       - Close
+
+[RECORDER] Actions:
+  POST /recorder/start      - Start session
+  POST /recorder/navigate   - Navigate & inject script
+  POST /recorder/record-action - Record
+  POST /recorder/stop       - Stop (keeps browser open)
+  POST /recorder/new-test   - Start new test in same browser
+  POST /recorder/generate-test - Generate test
+  POST /recorder/save-generated-test - Save AI generated test
+  POST /recorder/save-test-case - Save recorded test to disk
+  GET  /recorder/sessions   - List active sessions
+  GET  /recorder/saved-tests - List all saved recorder test cases
+  GET  /recorder/test/<id>  - Get saved test with full details (actions)
+
+[ML-POWERED] Test Scenario Generator ≡ƒñû:
+  POST /ml/suggest-test-scenarios  - NEW! ML-powered test suggestions (Recorder + Builder)
+
+[SEMANTIC] Analysis:
+  POST /semantic/analyze-intent    - Analyze test intent
+  POST /semantic/suggest-scenarios - Suggest test scenarios
+  GET  /semantic/cache-stats       - View cache statistics
+  POST /semantic/clear-cache       - Clear cache
+  POST /semantic/feedback/rate-scenario   - Rate suggested scenario
+  POST /semantic/feedback/test-result     - Record test result
+  POST /semantic/feedback/suggest-scenario - Submit user suggestion
+  GET  /semantic/feedback/summary         - Get feedback statistics
+
+[SCREENSHOT] Multi-modal AI:
+  POST /screenshot/analyze        - Detect elements from screenshot
+  POST /screenshot/generate-code  - Generate test from screenshot
+  POST /screenshot/annotate       - Annotate screenshot with elements
+
+[TEST SUITE] Execution:
+  POST /recorder/execute-test - Execute single test
+  GET  /test-suite/execution-results/<test_case_id> - Get execution history with screenshots
+  POST /recorder/delete-session - Delete specific test case
+  POST /recorder/clear-sessions - Clear all test cases
+============================================================
+
+[SERVER] Starting production server on http://localhost:5002
+[SERVER] Press CTRL+C to quit
+

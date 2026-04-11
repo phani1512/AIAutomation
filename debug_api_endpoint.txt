@@ -1,0 +1,1234 @@
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: python
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: javascript
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: cypress
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: verify page title
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: verify page title
+Language: javascript
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=javascript, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: verify page title
+Language: python
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=python, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: verify page title
+Language: cypress
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=cypress, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: verify page title
+Language: javascript
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=javascript, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: verify page title
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: python
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: javascript
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click email preview over lay dialog close button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 11
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter username
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: verify title is Login Page
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click email preview over lay dialog close button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 11
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter username
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: verify title is Login Page
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click email preview over lay dialog close button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 11
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter username
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: verify title is Login Page
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click email preview over lay dialog close button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 11
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter username
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: verify title is Login Page
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click email preview over lay dialog close button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 11
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter username
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: verify title is Login Page
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click email preview over lay dialog close button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 11
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter username
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: verify title is Login Page
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click email preview over lay dialog close button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 11
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: enter username
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: verify title is Login Page
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: else (standard generation, line 468)
+Calling gen.generate_clean() with language=java, comprehensive_mode=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: python
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: python
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: python
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: python
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: java
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: python
+Comprehensive mode: True
+With fallbacks: False
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=True
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter text in email field
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 14
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: select from role dropdown
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: wait for modal to appear
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 9
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click sign in button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 6
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: verify page title
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: enter username in input field
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 5
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter text in email field
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 14
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: verify page title
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: enter username in input field
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 5
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter username in input field
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 5
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: verify page title
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: enter username in input field
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 5
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 10
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: select value from dropdown
+Language: javascript
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 7
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: Invalid Input Testing
+
+Verify proper validation and error messages for invalid inputs including SQL injection, XSS attacks, and malformed data
+
+ORIGINAL TEST ACTIONS: action, action, action
+
+This is a NEGATIVE TEST - Test failure scenarios:
+REQUIRED CHANGES:
+- Replace all valid inputs with INVALID data:
+  * Email fields: "not-an-email", "user@", "@domain.com", "plaintext"
+  * Text fields: "", "   " (spaces only), null
+  * Numbers: -1, "abc", special characters
+  * Required fields: Leave empty or missing
+- Change all success assertions to failure assertions:
+  * Instead of assert success_message: assert error_message
+  * Verify error messages appear: assert "Invalid" in page or "Required"
+  * Check validation warnings are displayed
+- Expected outcome: Operation should FAIL with proper error messages
+
+SPECIFIC TEST STEPS FOR THIS NEGATIVE:
+1. Test with empty/null inputs in required fields
+2. Test with whitespace-only inputs
+3. Test with special characters: !@#$%^&*()[]{}|\:;"'<>?,./~`
+4. Test with Unicode characters: 你好, مرحبا, Здравствуй
+5. Test with XSS payloads: <script>alert(1)</script>, <img src=x onerror=alert(1)>
+6. Verify all validation errors are displayed correctly
+
+EXPECTED RESULT: Application should reject invalid inputs, display appropriate error messages, and prevent security vulnerabilities
+
+REMEMBER: This must be a DIFFERENT test from the original. Change the test data and assertions!
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 11
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: Invalid Credentials Test
+
+Verify secure handling of invalid credentials without revealing user existence
+
+ORIGINAL TEST ACTIONS: 0 steps
+
+This is a NEGATIVE TEST - Test failure scenarios:
+REQUIRED CHANGES:
+- Replace all valid inputs with INVALID data:
+  * Email fields: "not-an-email", "user@", "@domain.com", "plaintext"
+  * Text fields: "", "   " (spaces only), null
+  * Numbers: -1, "abc", special characters
+  * Required fields: Leave empty or missing
+- Change all success assertions to failure assertions:
+  * Instead of assert success_message: assert error_message
+  * Verify error messages appear: assert "Invalid" in page or "Required"
+  * Check validation warnings are displayed
+- Expected outcome: Operation should FAIL with proper error messages
+
+SPECIFIC TEST STEPS FOR THIS NEGATIVE:
+1. Enter valid email with wrong password → Verify generic error message
+2. Enter invalid email with valid password → Verify generic error message
+3. Enter invalid format email → Verify format validation error
+4. Attempt SQL injection in email field → Verify proper sanitization
+5. Verify error messages don't reveal if user exists
+
+EXPECTED RESULT: Secure error handling, no information leakage, proper input sanitization
+
+REMEMBER: This must be a DIFFERENT test from the original. Change the test data and assertions!
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: []
+TAKING PATH: with_fallbacks (line 369)
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 10
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 10
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 10
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: click login button
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 10
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False
+
+================================================================================
+API /generate called
+Prompt: enter username in input field
+Language: java
+Comprehensive mode: True
+With fallbacks: True
+Dataset match found: True
+Has dataset fallbacks: True
+Fallback count: 5
+TAKING PATH: has_dataset_fallbacks (line 340)
+Calling gen.generate_clean() with ignore_fallbacks=False

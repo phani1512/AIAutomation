@@ -54,11 +54,11 @@ This will install:
 python src/main/python/api_server_improved.py
 ```
 
-Server will start on: http://localhost:5000
+Server will start on: http://localhost:5002
 
 ### Web Interface
 
-Open browser and navigate to: **http://localhost:5000**
+Open browser and navigate to: **http://localhost:5002**
 
 #### Browser Tab Workflow:
 
@@ -301,12 +301,12 @@ element.click()
 
 ### Port Already in Use
 
-**Issue**: "Port 5000 is already in use"
+**Issue**: "Port 5002 is already in use"
 
 **Solution**:
 ```powershell
-# Find process using port 5000
-netstat -ano | findstr :5000
+# Find process using port 5002
+netstat -ano | findstr :5002
 
 # Kill the process (replace PID with actual number)
 taskkill /PID <PID> /F
@@ -341,7 +341,7 @@ python src/main/python/api_server_improved.py
 ```
 
 2. **Open Web Interface**
-Navigate to: http://localhost:5000
+Navigate to: http://localhost:5002
 
 3. **Initialize Browser**
 - Browser Tab → Select "Chrome"
@@ -368,7 +368,7 @@ Navigate to: http://localhost:5000
 ```python
 import requests
 
-API_URL = "http://localhost:5000"
+API_URL = "http://localhost:5002"
 
 # Initialize browser
 response = requests.post(f"{API_URL}/browser/initialize", json={
@@ -395,17 +395,17 @@ requests.post(f"{API_URL}/browser/close")
 
 ```bash
 # Initialize browser
-curl -X POST http://localhost:5000/browser/initialize \
+curl -X POST http://localhost:5002/browser/initialize \
   -H "Content-Type: application/json" \
   -d '{"browser":"chrome","headless":false}'
 
 # Execute test
-curl -X POST http://localhost:5000/generate \
+curl -X POST http://localhost:5002/generate \
   -H "Content-Type: application/json" \
   -d '{"prompt":"click submit button","execute":true,"url":"https://example.com"}'
 
 # Close browser
-curl -X POST http://localhost:5000/browser/close
+curl -X POST http://localhost:5002/browser/close
 ```
 
 ## Limitations

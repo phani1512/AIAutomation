@@ -1,0 +1,93 @@
+[AUTH] Loaded 1 users from disk
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: close dialog -> code: WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement closeBtn = wait.u...
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.un...
+[DATASET] Loaded 782 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 5137 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: close dialog -> code: WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement closeBtn = wait.u...
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.un...
+[DATASET] Loaded 782 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 5137 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: close dialog -> code: WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement closeBtn = wait.u...
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.un...
+[DATASET] Loaded 782 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 5137 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: close dialog -> code: WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement closeBtn = wait.u...
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement element = wait.un...
+[DATASET] Loaded 782 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 5137 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[INIT] Server started fresh - recorded_sessions cleared (count: 0)
+[INIT] Server Instance ID: 090b07366c485c07bfde7b232b554f1f
+[INIT] All previous auth sessions invalidated
+[SERVER] AI model will be loaded on first request...
+
+============================================================
+[SERVER] Selenium SLM API Server (Modular)
+============================================================
+[WEB] Interface: http://localhost:5002
+[WEB] Screenshot AI: http://localhost:5002/screenshot-generator
+
+[API] Endpoints:
+  GET  /health              - Health check
+  POST /generate            - Generate code
+  POST /suggest-locator     - Suggest locator
+  POST /suggest-action      - Suggest action
+
+[BROWSER] Control:
+  POST /browser/initialize  - Initialize
+  POST /browser/execute     - Execute code
+  POST /browser/close       - Close
+
+[RECORDER] Actions:
+  POST /recorder/start      - Start session
+  POST /recorder/navigate   - Navigate & inject script
+  POST /recorder/record-action - Record
+  POST /recorder/stop       - Stop (keeps browser open)
+  POST /recorder/new-test   - Start new test in same browser
+  POST /recorder/generate-test - Generate test
+  POST /recorder/save-generated-test - Save AI generated test
+  GET  /recorder/sessions   - List sessions
+
+[SEMANTIC] Analysis:
+  POST /semantic/analyze-intent    - Analyze test intent
+  POST /semantic/suggest-scenarios - Suggest test scenarios
+  GET  /semantic/cache-stats       - View cache statistics
+  POST /semantic/clear-cache       - Clear cache
+
+[SCREENSHOT] Multi-modal AI:
+  POST /screenshot/analyze        - Detect elements from screenshot
+  POST /screenshot/generate-code  - Generate test from screenshot
+  POST /screenshot/annotate       - Annotate screenshot with elements
+
+[TEST SUITE] Execution:
+  POST /recorder/execute-test - Execute single test
+  POST /recorder/delete-session - Delete specific test case
+  POST /recorder/clear-sessions - Clear all test cases
+============================================================
+
+[SERVER] Starting production server on http://localhost:5002
+[SERVER] Press CTRL+C to quit
+

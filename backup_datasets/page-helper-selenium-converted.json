@@ -1,0 +1,3572 @@
+[
+  {
+    "prompt": "enter {value} in {label} field",
+    "category": "Input Field Interaction by Label",
+    "description": "Set value in an input field by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nelement.clear();\nelement.sendKeys(\"{VALUE}\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setInputFieldValue",
+    "metadata": {
+      "original_method": "setInputFieldValue",
+      "prompt_variations": [
+        "enter {value} in {label} field"
+      ]
+    }
+  },
+  {
+    "prompt": "set {label} field to {value}",
+    "category": "Input Field Interaction by Label",
+    "description": "Set value in an input field by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nelement.clear();\nelement.sendKeys(\"{VALUE}\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setInputFieldValue",
+    "metadata": {
+      "original_method": "setInputFieldValue",
+      "prompt_variations": [
+        "set {label} field to {value}"
+      ]
+    }
+  },
+  {
+    "prompt": "type {value} into {label} input",
+    "category": "Input Field Interaction by Label",
+    "description": "Set value in an input field by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nelement.clear();\nelement.sendKeys(\"{VALUE}\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setInputFieldValue",
+    "metadata": {
+      "original_method": "setInputFieldValue",
+      "prompt_variations": [
+        "type {value} into {label} input"
+      ]
+    }
+  },
+  {
+    "prompt": "fill {label} with {value}",
+    "category": "Input Field Interaction by Label",
+    "description": "Set value in an input field by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nelement.clear();\nelement.sendKeys(\"{VALUE}\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setInputFieldValue",
+    "metadata": {
+      "original_method": "setInputFieldValue",
+      "prompt_variations": [
+        "fill {label} with {value}"
+      ]
+    }
+  },
+  {
+    "prompt": "input {value} for {label}",
+    "category": "Input Field Interaction by Label",
+    "description": "Set value in an input field by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nelement.clear();\nelement.sendKeys(\"{VALUE}\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setInputFieldValue",
+    "metadata": {
+      "original_method": "setInputFieldValue",
+      "prompt_variations": [
+        "input {value} for {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "get value of {label} field",
+    "category": "Input Field Interaction by Label",
+    "description": "Retrieve the current value of an input field by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nString value = element.getAttribute(\"value\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "String (field value)",
+    "action_type": "getInputFieldValue",
+    "metadata": {
+      "original_method": "getInputFieldValue",
+      "prompt_variations": [
+        "get value of {label} field"
+      ]
+    }
+  },
+  {
+    "prompt": "retrieve {label} input value",
+    "category": "Input Field Interaction by Label",
+    "description": "Retrieve the current value of an input field by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nString value = element.getAttribute(\"value\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "String (field value)",
+    "action_type": "getInputFieldValue",
+    "metadata": {
+      "original_method": "getInputFieldValue",
+      "prompt_variations": [
+        "retrieve {label} input value"
+      ]
+    }
+  },
+  {
+    "prompt": "what is the value in {label}",
+    "category": "Input Field Interaction by Label",
+    "description": "Retrieve the current value of an input field by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nString value = element.getAttribute(\"value\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "String (field value)",
+    "action_type": "getInputFieldValue",
+    "metadata": {
+      "original_method": "getInputFieldValue",
+      "prompt_variations": [
+        "what is the value in {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "read {label} field value",
+    "category": "Input Field Interaction by Label",
+    "description": "Retrieve the current value of an input field by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nString value = element.getAttribute(\"value\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "String (field value)",
+    "action_type": "getInputFieldValue",
+    "metadata": {
+      "original_method": "getInputFieldValue",
+      "prompt_variations": [
+        "read {label} field value"
+      ]
+    }
+  },
+  {
+    "prompt": "fetch value from {label}",
+    "category": "Input Field Interaction by Label",
+    "description": "Retrieve the current value of an input field by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//label/span[text()='{LABEL}']/../../..//input\")));\nString value = element.getAttribute(\"value\");",
+    "xpath": "//label/span[text()='{LABEL}']/../../..//input",
+    "returns": "String (field value)",
+    "action_type": "getInputFieldValue",
+    "metadata": {
+      "original_method": "getInputFieldValue",
+      "prompt_variations": [
+        "fetch value from {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} field disabled",
+    "category": "Input Field Validation",
+    "description": "Check if an input field is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input\")));\nboolean isDisabled = !element.isEnabled();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isInputFieldDisabled",
+    "metadata": {
+      "original_method": "isInputFieldDisabled",
+      "prompt_variations": [
+        "is {label} field disabled"
+      ]
+    }
+  },
+  {
+    "prompt": "check if {label} is disabled",
+    "category": "Input Field Validation",
+    "description": "Check if an input field is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input\")));\nboolean isDisabled = !element.isEnabled();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isInputFieldDisabled",
+    "metadata": {
+      "original_method": "isInputFieldDisabled",
+      "prompt_variations": [
+        "check if {label} is disabled"
+      ]
+    }
+  },
+  {
+    "prompt": "verify {label} field is not editable",
+    "category": "Input Field Validation",
+    "description": "Check if an input field is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input\")));\nboolean isDisabled = !element.isEnabled();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isInputFieldDisabled",
+    "metadata": {
+      "original_method": "isInputFieldDisabled",
+      "prompt_variations": [
+        "verify {label} field is not editable"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} input enabled",
+    "category": "Input Field Validation",
+    "description": "Check if an input field is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input\")));\nboolean isDisabled = !element.isEnabled();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isInputFieldDisabled",
+    "metadata": {
+      "original_method": "isInputFieldDisabled",
+      "prompt_variations": [
+        "is {label} input enabled"
+      ]
+    }
+  },
+  {
+    "prompt": "can I edit {label} field",
+    "category": "Input Field Validation",
+    "description": "Check if an input field is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input\")));\nboolean isDisabled = !element.isEnabled();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isInputFieldDisabled",
+    "metadata": {
+      "original_method": "isInputFieldDisabled",
+      "prompt_variations": [
+        "can I edit {label} field"
+      ]
+    }
+  },
+  {
+    "prompt": "get validation message for {label}",
+    "category": "Input Field Validation",
+    "description": "Get validation error message displayed for an input field",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li\")));\nString message = element.getText();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li",
+    "returns": "String (validation message)",
+    "action_type": "getInputFieldValidationMessage",
+    "metadata": {
+      "original_method": "getInputFieldValidationMessage",
+      "prompt_variations": [
+        "get validation message for {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "what is the error message on {label}",
+    "category": "Input Field Validation",
+    "description": "Get validation error message displayed for an input field",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li\")));\nString message = element.getText();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li",
+    "returns": "String (validation message)",
+    "action_type": "getInputFieldValidationMessage",
+    "metadata": {
+      "original_method": "getInputFieldValidationMessage",
+      "prompt_variations": [
+        "what is the error message on {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "retrieve {label} field error",
+    "category": "Input Field Validation",
+    "description": "Get validation error message displayed for an input field",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li\")));\nString message = element.getText();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li",
+    "returns": "String (validation message)",
+    "action_type": "getInputFieldValidationMessage",
+    "metadata": {
+      "original_method": "getInputFieldValidationMessage",
+      "prompt_variations": [
+        "retrieve {label} field error"
+      ]
+    }
+  },
+  {
+    "prompt": "read validation text for {label}",
+    "category": "Input Field Validation",
+    "description": "Get validation error message displayed for an input field",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li\")));\nString message = element.getText();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li",
+    "returns": "String (validation message)",
+    "action_type": "getInputFieldValidationMessage",
+    "metadata": {
+      "original_method": "getInputFieldValidationMessage",
+      "prompt_variations": [
+        "read validation text for {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "fetch error message from {label} field",
+    "category": "Input Field Validation",
+    "description": "Get validation error message displayed for an input field",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li\")));\nString message = element.getText();",
+    "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li",
+    "returns": "String (validation message)",
+    "action_type": "getInputFieldValidationMessage",
+    "metadata": {
+      "original_method": "getInputFieldValidationMessage",
+      "prompt_variations": [
+        "fetch error message from {label} field"
+      ]
+    }
+  },
+  {
+    "prompt": "select {value} from {label} dropdown",
+    "category": "Dropdown Interaction by Label",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select\")));\nSelect select = new Select(dropdown);\nselect.selectByVisibleText(\"{VALUE}\");",
+    "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setDropdownValue",
+    "metadata": {
+      "original_method": "setDropdownValue",
+      "prompt_variations": [
+        "select {value} from {label} dropdown"
+      ]
+    }
+  },
+  {
+    "prompt": "set {label} dropdown to {value}",
+    "category": "Dropdown Interaction by Label",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select\")));\nSelect select = new Select(dropdown);\nselect.selectByVisibleText(\"{VALUE}\");",
+    "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setDropdownValue",
+    "metadata": {
+      "original_method": "setDropdownValue",
+      "prompt_variations": [
+        "set {label} dropdown to {value}"
+      ]
+    }
+  },
+  {
+    "prompt": "choose {value} in {label}",
+    "category": "Dropdown Interaction by Label",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select\")));\nSelect select = new Select(dropdown);\nselect.selectByVisibleText(\"{VALUE}\");",
+    "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setDropdownValue",
+    "metadata": {
+      "original_method": "setDropdownValue",
+      "prompt_variations": [
+        "choose {value} in {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "pick {value} from {label} list",
+    "category": "Dropdown Interaction by Label",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select\")));\nSelect select = new Select(dropdown);\nselect.selectByVisibleText(\"{VALUE}\");",
+    "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setDropdownValue",
+    "metadata": {
+      "original_method": "setDropdownValue",
+      "prompt_variations": [
+        "pick {value} from {label} list"
+      ]
+    }
+  },
+  {
+    "prompt": "select {value} for {label}",
+    "category": "Dropdown Interaction by Label",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select\")));\nSelect select = new Select(dropdown);\nselect.selectByVisibleText(\"{VALUE}\");",
+    "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setDropdownValue",
+    "metadata": {
+      "original_method": "setDropdownValue",
+      "prompt_variations": [
+        "select {value} for {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "get selected value from {label} dropdown",
+    "category": "Dropdown Interaction by Label",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nSelect select = new Select(dropdown);\nString selected = select.getFirstSelectedOption().getText();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "String (selected option text)",
+    "action_type": "getSelectedDropdownValue",
+    "metadata": {
+      "original_method": "getSelectedDropdownValue",
+      "prompt_variations": [
+        "get selected value from {label} dropdown"
+      ]
+    }
+  },
+  {
+    "prompt": "what is selected in {label}",
+    "category": "Dropdown Interaction by Label",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nSelect select = new Select(dropdown);\nString selected = select.getFirstSelectedOption().getText();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "String (selected option text)",
+    "action_type": "getSelectedDropdownValue",
+    "metadata": {
+      "original_method": "getSelectedDropdownValue",
+      "prompt_variations": [
+        "what is selected in {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "retrieve {label} dropdown value",
+    "category": "Dropdown Interaction by Label",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nSelect select = new Select(dropdown);\nString selected = select.getFirstSelectedOption().getText();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "String (selected option text)",
+    "action_type": "getSelectedDropdownValue",
+    "metadata": {
+      "original_method": "getSelectedDropdownValue",
+      "prompt_variations": [
+        "retrieve {label} dropdown value"
+      ]
+    }
+  },
+  {
+    "prompt": "read selected option from {label}",
+    "category": "Dropdown Interaction by Label",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nSelect select = new Select(dropdown);\nString selected = select.getFirstSelectedOption().getText();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "String (selected option text)",
+    "action_type": "getSelectedDropdownValue",
+    "metadata": {
+      "original_method": "getSelectedDropdownValue",
+      "prompt_variations": [
+        "read selected option from {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "fetch {label} dropdown selection",
+    "category": "Dropdown Interaction by Label",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nSelect select = new Select(dropdown);\nString selected = select.getFirstSelectedOption().getText();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "String (selected option text)",
+    "action_type": "getSelectedDropdownValue",
+    "metadata": {
+      "original_method": "getSelectedDropdownValue",
+      "prompt_variations": [
+        "fetch {label} dropdown selection"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} dropdown disabled",
+    "category": "Dropdown Interaction by Label",
+    "description": "Check if a dropdown is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nboolean isDisabled = !dropdown.isEnabled();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isDropdownFieldDisabled",
+    "metadata": {
+      "original_method": "isDropdownFieldDisabled",
+      "prompt_variations": [
+        "is {label} dropdown disabled"
+      ]
+    }
+  },
+  {
+    "prompt": "check if {label} dropdown is enabled",
+    "category": "Dropdown Interaction by Label",
+    "description": "Check if a dropdown is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nboolean isDisabled = !dropdown.isEnabled();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isDropdownFieldDisabled",
+    "metadata": {
+      "original_method": "isDropdownFieldDisabled",
+      "prompt_variations": [
+        "check if {label} dropdown is enabled"
+      ]
+    }
+  },
+  {
+    "prompt": "verify {label} dropdown editability",
+    "category": "Dropdown Interaction by Label",
+    "description": "Check if a dropdown is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nboolean isDisabled = !dropdown.isEnabled();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isDropdownFieldDisabled",
+    "metadata": {
+      "original_method": "isDropdownFieldDisabled",
+      "prompt_variations": [
+        "verify {label} dropdown editability"
+      ]
+    }
+  },
+  {
+    "prompt": "can I select from {label}",
+    "category": "Dropdown Interaction by Label",
+    "description": "Check if a dropdown is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nboolean isDisabled = !dropdown.isEnabled();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isDropdownFieldDisabled",
+    "metadata": {
+      "original_method": "isDropdownFieldDisabled",
+      "prompt_variations": [
+        "can I select from {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} dropdown locked",
+    "category": "Dropdown Interaction by Label",
+    "description": "Check if a dropdown is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-select//label[contains(., '{LABEL}')]/../../select\")));\nboolean isDisabled = !dropdown.isEnabled();",
+    "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isDropdownFieldDisabled",
+    "metadata": {
+      "original_method": "isDropdownFieldDisabled",
+      "prompt_variations": [
+        "is {label} dropdown locked"
+      ]
+    }
+  },
+  {
+    "prompt": "check the {label} checkbox",
+    "category": "Checkbox Operations by Label",
+    "description": "Check a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != true) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOn",
+    "metadata": {
+      "original_method": "setCheckboxOn",
+      "prompt_variations": [
+        "check the {label} checkbox"
+      ]
+    }
+  },
+  {
+    "prompt": "select {label} checkbox",
+    "category": "Checkbox Operations by Label",
+    "description": "Check a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != true) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOn",
+    "metadata": {
+      "original_method": "setCheckboxOn",
+      "prompt_variations": [
+        "select {label} checkbox"
+      ]
+    }
+  },
+  {
+    "prompt": "enable {label}",
+    "category": "Checkbox Operations by Label",
+    "description": "Check a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != true) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOn",
+    "metadata": {
+      "original_method": "setCheckboxOn",
+      "prompt_variations": [
+        "enable {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "turn on {label} checkbox",
+    "category": "Checkbox Operations by Label",
+    "description": "Check a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != true) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOn",
+    "metadata": {
+      "original_method": "setCheckboxOn",
+      "prompt_variations": [
+        "turn on {label} checkbox"
+      ]
+    }
+  },
+  {
+    "prompt": "mark {label} as checked",
+    "category": "Checkbox Operations by Label",
+    "description": "Check a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != true) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOn",
+    "metadata": {
+      "original_method": "setCheckboxOn",
+      "prompt_variations": [
+        "mark {label} as checked"
+      ]
+    }
+  },
+  {
+    "prompt": "uncheck the {label} checkbox",
+    "category": "Checkbox Operations by Label",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != false) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOff",
+    "metadata": {
+      "original_method": "setCheckboxOff",
+      "prompt_variations": [
+        "uncheck the {label} checkbox"
+      ]
+    }
+  },
+  {
+    "prompt": "deselect {label} checkbox",
+    "category": "Checkbox Operations by Label",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != false) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOff",
+    "metadata": {
+      "original_method": "setCheckboxOff",
+      "prompt_variations": [
+        "deselect {label} checkbox"
+      ]
+    }
+  },
+  {
+    "prompt": "disable {label}",
+    "category": "Checkbox Operations by Label",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != false) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOff",
+    "metadata": {
+      "original_method": "setCheckboxOff",
+      "prompt_variations": [
+        "disable {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "turn off {label} checkbox",
+    "category": "Checkbox Operations by Label",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != false) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOff",
+    "metadata": {
+      "original_method": "setCheckboxOff",
+      "prompt_variations": [
+        "turn off {label} checkbox"
+      ]
+    }
+  },
+  {
+    "prompt": "unmark {label}",
+    "category": "Checkbox Operations by Label",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nif (checkbox.isSelected() != false) {\n    checkbox.click();\n}",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "setCheckboxOff",
+    "metadata": {
+      "original_method": "setCheckboxOff",
+      "prompt_variations": [
+        "unmark {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} checkbox checked",
+    "category": "Checkbox Validation",
+    "description": "Verify if a checkbox is checked by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nboolean isChecked = checkbox.isSelected();",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "boolean (true if checked)",
+    "action_type": "isCheckboxOn",
+    "metadata": {
+      "original_method": "isCheckboxOn",
+      "prompt_variations": [
+        "is {label} checkbox checked"
+      ]
+    }
+  },
+  {
+    "prompt": "verify {label} is selected",
+    "category": "Checkbox Validation",
+    "description": "Verify if a checkbox is checked by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nboolean isChecked = checkbox.isSelected();",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "boolean (true if checked)",
+    "action_type": "isCheckboxOn",
+    "metadata": {
+      "original_method": "isCheckboxOn",
+      "prompt_variations": [
+        "verify {label} is selected"
+      ]
+    }
+  },
+  {
+    "prompt": "check if {label} is enabled",
+    "category": "Checkbox Validation",
+    "description": "Verify if a checkbox is checked by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nboolean isChecked = checkbox.isSelected();",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "boolean (true if checked)",
+    "action_type": "isCheckboxOn",
+    "metadata": {
+      "original_method": "isCheckboxOn",
+      "prompt_variations": [
+        "check if {label} is enabled"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} marked",
+    "category": "Checkbox Validation",
+    "description": "Verify if a checkbox is checked by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nboolean isChecked = checkbox.isSelected();",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "boolean (true if checked)",
+    "action_type": "isCheckboxOn",
+    "metadata": {
+      "original_method": "isCheckboxOn",
+      "prompt_variations": [
+        "is {label} marked"
+      ]
+    }
+  },
+  {
+    "prompt": "validate {label} checkbox state",
+    "category": "Checkbox Validation",
+    "description": "Verify if a checkbox is checked by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//label/span[text()='{LABEL}']\")));\nboolean isChecked = checkbox.isSelected();",
+    "xpath": "//app-checkbox//label/span[text()='{LABEL}']",
+    "returns": "boolean (true if checked)",
+    "action_type": "isCheckboxOn",
+    "metadata": {
+      "original_method": "isCheckboxOn",
+      "prompt_variations": [
+        "validate {label} checkbox state"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} checkbox disabled",
+    "category": "Checkbox Validation",
+    "description": "Check if a checkbox is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]\")));\nboolean isDisabled = !checkbox.isEnabled();",
+    "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isCheckboxDisabled",
+    "metadata": {
+      "original_method": "isCheckboxDisabled",
+      "prompt_variations": [
+        "is {label} checkbox disabled"
+      ]
+    }
+  },
+  {
+    "prompt": "check if {label} can be selected",
+    "category": "Checkbox Validation",
+    "description": "Check if a checkbox is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]\")));\nboolean isDisabled = !checkbox.isEnabled();",
+    "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isCheckboxDisabled",
+    "metadata": {
+      "original_method": "isCheckboxDisabled",
+      "prompt_variations": [
+        "check if {label} can be selected"
+      ]
+    }
+  },
+  {
+    "prompt": "verify {label} checkbox editability",
+    "category": "Checkbox Validation",
+    "description": "Check if a checkbox is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]\")));\nboolean isDisabled = !checkbox.isEnabled();",
+    "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isCheckboxDisabled",
+    "metadata": {
+      "original_method": "isCheckboxDisabled",
+      "prompt_variations": [
+        "verify {label} checkbox editability"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} checkbox locked",
+    "category": "Checkbox Validation",
+    "description": "Check if a checkbox is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]\")));\nboolean isDisabled = !checkbox.isEnabled();",
+    "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isCheckboxDisabled",
+    "metadata": {
+      "original_method": "isCheckboxDisabled",
+      "prompt_variations": [
+        "is {label} checkbox locked"
+      ]
+    }
+  },
+  {
+    "prompt": "can I click {label} checkbox",
+    "category": "Checkbox Validation",
+    "description": "Check if a checkbox is disabled by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]\")));\nboolean isDisabled = !checkbox.isEnabled();",
+    "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isCheckboxDisabled",
+    "metadata": {
+      "original_method": "isCheckboxDisabled",
+      "prompt_variations": [
+        "can I click {label} checkbox"
+      ]
+    }
+  },
+  {
+    "prompt": "select {label} radio button",
+    "category": "Radio Button Operations by Label",
+    "description": "Select a radio button by its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]\")));\nif (!radio.isSelected()) {\n    radio.click();\n}",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectRadioButton",
+    "metadata": {
+      "original_method": "selectRadioButton",
+      "prompt_variations": [
+        "select {label} radio button"
+      ]
+    }
+  },
+  {
+    "prompt": "choose {label} option",
+    "category": "Radio Button Operations by Label",
+    "description": "Select a radio button by its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]\")));\nif (!radio.isSelected()) {\n    radio.click();\n}",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectRadioButton",
+    "metadata": {
+      "original_method": "selectRadioButton",
+      "prompt_variations": [
+        "choose {label} option"
+      ]
+    }
+  },
+  {
+    "prompt": "pick {label}",
+    "category": "Radio Button Operations by Label",
+    "description": "Select a radio button by its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]\")));\nif (!radio.isSelected()) {\n    radio.click();\n}",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectRadioButton",
+    "metadata": {
+      "original_method": "selectRadioButton",
+      "prompt_variations": [
+        "pick {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "click {label} radio",
+    "category": "Radio Button Operations by Label",
+    "description": "Select a radio button by its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]\")));\nif (!radio.isSelected()) {\n    radio.click();\n}",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectRadioButton",
+    "metadata": {
+      "original_method": "selectRadioButton",
+      "prompt_variations": [
+        "click {label} radio"
+      ]
+    }
+  },
+  {
+    "prompt": "set radio to {label}",
+    "category": "Radio Button Operations by Label",
+    "description": "Select a radio button by its label text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]\")));\nif (!radio.isSelected()) {\n    radio.click();\n}",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectRadioButton",
+    "metadata": {
+      "original_method": "selectRadioButton",
+      "prompt_variations": [
+        "set radio to {label}"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} radio button selected",
+    "category": "Radio Button Validation",
+    "description": "Check if a radio button is selected by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]\")));\nboolean isSelected = radio.isSelected();",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]",
+    "returns": "boolean (true if selected)",
+    "action_type": "isRadioButtonSelected",
+    "metadata": {
+      "original_method": "isRadioButtonSelected",
+      "prompt_variations": [
+        "is {label} radio button selected"
+      ]
+    }
+  },
+  {
+    "prompt": "check if {label} is chosen",
+    "category": "Radio Button Validation",
+    "description": "Check if a radio button is selected by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]\")));\nboolean isSelected = radio.isSelected();",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]",
+    "returns": "boolean (true if selected)",
+    "action_type": "isRadioButtonSelected",
+    "metadata": {
+      "original_method": "isRadioButtonSelected",
+      "prompt_variations": [
+        "check if {label} is chosen"
+      ]
+    }
+  },
+  {
+    "prompt": "verify {label} radio state",
+    "category": "Radio Button Validation",
+    "description": "Check if a radio button is selected by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]\")));\nboolean isSelected = radio.isSelected();",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]",
+    "returns": "boolean (true if selected)",
+    "action_type": "isRadioButtonSelected",
+    "metadata": {
+      "original_method": "isRadioButtonSelected",
+      "prompt_variations": [
+        "verify {label} radio state"
+      ]
+    }
+  },
+  {
+    "prompt": "is {label} option selected",
+    "category": "Radio Button Validation",
+    "description": "Check if a radio button is selected by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]\")));\nboolean isSelected = radio.isSelected();",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]",
+    "returns": "boolean (true if selected)",
+    "action_type": "isRadioButtonSelected",
+    "metadata": {
+      "original_method": "isRadioButtonSelected",
+      "prompt_variations": [
+        "is {label} option selected"
+      ]
+    }
+  },
+  {
+    "prompt": "validate {label} radio selection",
+    "category": "Radio Button Validation",
+    "description": "Check if a radio button is selected by its label",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement radio = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]\")));\nboolean isSelected = radio.isSelected();",
+    "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]",
+    "returns": "boolean (true if selected)",
+    "action_type": "isRadioButtonSelected",
+    "metadata": {
+      "original_method": "isRadioButtonSelected",
+      "prompt_variations": [
+        "validate {label} radio selection"
+      ]
+    }
+  },
+  {
+    "prompt": "click {button} button",
+    "category": "Button Actions by Text",
+    "description": "Click a button by its visible text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickButton",
+    "metadata": {
+      "original_method": "clickButton",
+      "prompt_variations": [
+        "click {button} button"
+      ]
+    }
+  },
+  {
+    "prompt": "press {button}",
+    "category": "Button Actions by Text",
+    "description": "Click a button by its visible text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickButton",
+    "metadata": {
+      "original_method": "clickButton",
+      "prompt_variations": [
+        "press {button}"
+      ]
+    }
+  },
+  {
+    "prompt": "click on {button}",
+    "category": "Button Actions by Text",
+    "description": "Click a button by its visible text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickButton",
+    "metadata": {
+      "original_method": "clickButton",
+      "prompt_variations": [
+        "click on {button}"
+      ]
+    }
+  },
+  {
+    "prompt": "hit {button} button",
+    "category": "Button Actions by Text",
+    "description": "Click a button by its visible text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickButton",
+    "metadata": {
+      "original_method": "clickButton",
+      "prompt_variations": [
+        "hit {button} button"
+      ]
+    }
+  },
+  {
+    "prompt": "select {button}",
+    "category": "Button Actions by Text",
+    "description": "Click a button by its visible text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickButton",
+    "metadata": {
+      "original_method": "clickButton",
+      "prompt_variations": [
+        "select {button}"
+      ]
+    }
+  },
+  {
+    "prompt": "click {button} in dialog",
+    "category": "Button Actions by Text",
+    "description": "Click a button within a dialog by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogButton",
+    "metadata": {
+      "original_method": "clickDialogButton",
+      "prompt_variations": [
+        "click {button} in dialog"
+      ]
+    }
+  },
+  {
+    "prompt": "click {button} on popup",
+    "category": "Button Actions by Text",
+    "description": "Click a button within a dialog by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogButton",
+    "metadata": {
+      "original_method": "clickDialogButton",
+      "prompt_variations": [
+        "click {button} on popup"
+      ]
+    }
+  },
+  {
+    "prompt": "press {button} in modal",
+    "category": "Button Actions by Text",
+    "description": "Click a button within a dialog by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogButton",
+    "metadata": {
+      "original_method": "clickDialogButton",
+      "prompt_variations": [
+        "press {button} in modal"
+      ]
+    }
+  },
+  {
+    "prompt": "click dialog {button}",
+    "category": "Button Actions by Text",
+    "description": "Click a button within a dialog by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogButton",
+    "metadata": {
+      "original_method": "clickDialogButton",
+      "prompt_variations": [
+        "click dialog {button}"
+      ]
+    }
+  },
+  {
+    "prompt": "select {button} in popup",
+    "category": "Button Actions by Text",
+    "description": "Click a button within a dialog by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[normalize-space()='{BUTTON_TEXT}']\")));\nelement.click();",
+    "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogButton",
+    "metadata": {
+      "original_method": "clickDialogButton",
+      "prompt_variations": [
+        "select {button} in popup"
+      ]
+    }
+  },
+  {
+    "prompt": "is {button} button present",
+    "category": "Button Validation",
+    "description": "Check if a button with specific text exists",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "boolean (true if found)",
+    "action_type": "isButtonFound",
+    "metadata": {
+      "original_method": "isButtonFound",
+      "prompt_variations": [
+        "is {button} button present"
+      ]
+    }
+  },
+  {
+    "prompt": "{LAST_NAME}s {button} exist",
+    "category": "Button Validation",
+    "description": "Check if a button with specific text exists",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "boolean (true if found)",
+    "action_type": "isButtonFound",
+    "metadata": {
+      "original_method": "isButtonFound",
+      "prompt_variations": [
+        "{LAST_NAME}s {button} exist"
+      ]
+    }
+  },
+  {
+    "prompt": "find {button} button",
+    "category": "Button Validation",
+    "description": "Check if a button with specific text exists",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "boolean (true if found)",
+    "action_type": "isButtonFound",
+    "metadata": {
+      "original_method": "isButtonFound",
+      "prompt_variations": [
+        "find {button} button"
+      ]
+    }
+  },
+  {
+    "prompt": "check for {button}",
+    "category": "Button Validation",
+    "description": "Check if a button with specific text exists",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "boolean (true if found)",
+    "action_type": "isButtonFound",
+    "metadata": {
+      "original_method": "isButtonFound",
+      "prompt_variations": [
+        "check for {button}"
+      ]
+    }
+  },
+  {
+    "prompt": "verify {button} is displayed",
+    "category": "Button Validation",
+    "description": "Check if a button with specific text exists",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[normalize-space()='{BUTTON_TEXT}']\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "//button[normalize-space()='{BUTTON_TEXT}']",
+    "returns": "boolean (true if found)",
+    "action_type": "isButtonFound",
+    "metadata": {
+      "original_method": "isButtonFound",
+      "prompt_variations": [
+        "verify {button} is displayed"
+      ]
+    }
+  },
+  {
+    "prompt": "is submit button disabled",
+    "category": "Button Validation",
+    "description": "Check if submit button is disabled",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement button = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-wait-button//button[@disabled]\")));\nboolean isDisabled = !button.isEnabled();",
+    "xpath": "//app-wait-button//button[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isSubmitButtonDisabled",
+    "metadata": {
+      "original_method": "isSubmitButtonDisabled",
+      "prompt_variations": [
+        "is submit button disabled"
+      ]
+    }
+  },
+  {
+    "prompt": "can I submit",
+    "category": "Button Validation",
+    "description": "Check if submit button is disabled",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement button = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-wait-button//button[@disabled]\")));\nboolean isDisabled = !button.isEnabled();",
+    "xpath": "//app-wait-button//button[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isSubmitButtonDisabled",
+    "metadata": {
+      "original_method": "isSubmitButtonDisabled",
+      "prompt_variations": [
+        "can I submit"
+      ]
+    }
+  },
+  {
+    "prompt": "check submit button state",
+    "category": "Button Validation",
+    "description": "Check if submit button is disabled",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement button = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-wait-button//button[@disabled]\")));\nboolean isDisabled = !button.isEnabled();",
+    "xpath": "//app-wait-button//button[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isSubmitButtonDisabled",
+    "metadata": {
+      "original_method": "isSubmitButtonDisabled",
+      "prompt_variations": [
+        "check submit button state"
+      ]
+    }
+  },
+  {
+    "prompt": "verify submit is enabled",
+    "category": "Button Validation",
+    "description": "Check if submit button is disabled",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement button = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-wait-button//button[@disabled]\")));\nboolean isDisabled = !button.isEnabled();",
+    "xpath": "//app-wait-button//button[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isSubmitButtonDisabled",
+    "metadata": {
+      "original_method": "isSubmitButtonDisabled",
+      "prompt_variations": [
+        "verify submit is enabled"
+      ]
+    }
+  },
+  {
+    "prompt": "is form submittable",
+    "category": "Button Validation",
+    "description": "Check if submit button is disabled",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement button = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//app-wait-button//button[@disabled]\")));\nboolean isDisabled = !button.isEnabled();",
+    "xpath": "//app-wait-button//button[@disabled]",
+    "returns": "boolean (true if disabled)",
+    "action_type": "isSubmitButtonDisabled",
+    "metadata": {
+      "original_method": "isSubmitButtonDisabled",
+      "prompt_variations": [
+        "is form submittable"
+      ]
+    }
+  },
+  {
+    "prompt": "click {link} link",
+    "category": "Link Operations",
+    "description": "Click a link by its visible text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//a[text()='{LINK_TEXT}']\")));\nelement.click();",
+    "xpath": "//a[text()='{LINK_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickLink",
+    "metadata": {
+      "original_method": "clickLink",
+      "prompt_variations": [
+        "click {link} link"
+      ]
+    }
+  },
+  {
+    "prompt": "follow {link}",
+    "category": "Link Operations",
+    "description": "Click a link by its visible text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//a[text()='{LINK_TEXT}']\")));\nelement.click();",
+    "xpath": "//a[text()='{LINK_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickLink",
+    "metadata": {
+      "original_method": "clickLink",
+      "prompt_variations": [
+        "follow {link}"
+      ]
+    }
+  },
+  {
+    "prompt": "navigate to {link}",
+    "category": "Link Operations",
+    "description": "Click a link by its visible text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//a[text()='{LINK_TEXT}']\")));\nelement.click();",
+    "xpath": "//a[text()='{LINK_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickLink",
+    "metadata": {
+      "original_method": "clickLink",
+      "prompt_variations": [
+        "navigate to {link}"
+      ]
+    }
+  },
+  {
+    "prompt": "is {link} link present",
+    "category": "Link Validation",
+    "description": "Check if a link with specific text exists",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//a[text()='{LINK_TEXT}']\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "//a[text()='{LINK_TEXT}']",
+    "returns": "boolean (true if found)",
+    "action_type": "isLinkFound",
+    "metadata": {
+      "original_method": "isLinkFound",
+      "prompt_variations": [
+        "is {link} link present"
+      ]
+    }
+  },
+  {
+    "prompt": "find {link} link",
+    "category": "Link Validation",
+    "description": "Check if a link with specific text exists",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//a[text()='{LINK_TEXT}']\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "//a[text()='{LINK_TEXT}']",
+    "returns": "boolean (true if found)",
+    "action_type": "isLinkFound",
+    "metadata": {
+      "original_method": "isLinkFound",
+      "prompt_variations": [
+        "find {link} link"
+      ]
+    }
+  },
+  {
+    "prompt": "{LAST_NAME}s {link} open in new tab",
+    "category": "Link Validation",
+    "description": "Check if a link opens in a new tab",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement link = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//a[text()='{LINK_TEXT}'][@target='_blank']\")));\nString target = link.getAttribute(\"target\");\nboolean opensNew = \"_blank\".equals(target);",
+    "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']",
+    "returns": "boolean (true if opens in new tab)",
+    "action_type": "isLinkOpeningInNewTab",
+    "metadata": {
+      "original_method": "isLinkOpeningInNewTab",
+      "prompt_variations": [
+        "{LAST_NAME}s {link} open in new tab"
+      ]
+    }
+  },
+  {
+    "prompt": "verify {link} opens new window",
+    "category": "Link Validation",
+    "description": "Check if a link opens in a new tab",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement link = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//a[text()='{LINK_TEXT}'][@target='_blank']\")));\nString target = link.getAttribute(\"target\");\nboolean opensNew = \"_blank\".equals(target);",
+    "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']",
+    "returns": "boolean (true if opens in new tab)",
+    "action_type": "isLinkOpeningInNewTab",
+    "metadata": {
+      "original_method": "isLinkOpeningInNewTab",
+      "prompt_variations": [
+        "verify {link} opens new window"
+      ]
+    }
+  },
+  {
+    "prompt": "check if {link} has target blank",
+    "category": "Link Validation",
+    "description": "Check if a link opens in a new tab",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement link = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//a[text()='{LINK_TEXT}'][@target='_blank']\")));\nString target = link.getAttribute(\"target\");\nboolean opensNew = \"_blank\".equals(target);",
+    "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']",
+    "returns": "boolean (true if opens in new tab)",
+    "action_type": "isLinkOpeningInNewTab",
+    "metadata": {
+      "original_method": "isLinkOpeningInNewTab",
+      "prompt_variations": [
+        "check if {link} has target blank"
+      ]
+    }
+  },
+  {
+    "prompt": "is {link} external",
+    "category": "Link Validation",
+    "description": "Check if a link opens in a new tab",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement link = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//a[text()='{LINK_TEXT}'][@target='_blank']\")));\nString target = link.getAttribute(\"target\");\nboolean opensNew = \"_blank\".equals(target);",
+    "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']",
+    "returns": "boolean (true if opens in new tab)",
+    "action_type": "isLinkOpeningInNewTab",
+    "metadata": {
+      "original_method": "isLinkOpeningInNewTab",
+      "prompt_variations": [
+        "is {link} external"
+      ]
+    }
+  },
+  {
+    "prompt": "{LAST_NAME}s {link} open new tab",
+    "category": "Link Validation",
+    "description": "Check if a link opens in a new tab",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement link = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//a[text()='{LINK_TEXT}'][@target='_blank']\")));\nString target = link.getAttribute(\"target\");\nboolean opensNew = \"_blank\".equals(target);",
+    "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']",
+    "returns": "boolean (true if opens in new tab)",
+    "action_type": "isLinkOpeningInNewTab",
+    "metadata": {
+      "original_method": "isLinkOpeningInNewTab",
+      "prompt_variations": [
+        "{LAST_NAME}s {link} open new tab"
+      ]
+    }
+  },
+  {
+    "prompt": "click {tab} tab",
+    "category": "Tab Navigation",
+    "description": "Click a navigation tab by its name",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//nav//a[text()='{TAB_NAME}']\")));\nelement.click();",
+    "xpath": "//nav//a[text()='{TAB_NAME}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickNavigationTab",
+    "metadata": {
+      "original_method": "clickNavigationTab",
+      "prompt_variations": [
+        "click {tab} tab"
+      ]
+    }
+  },
+  {
+    "prompt": "switch to {tab}",
+    "category": "Tab Navigation",
+    "description": "Click a navigation tab by its name",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//nav//a[text()='{TAB_NAME}']\")));\nelement.click();",
+    "xpath": "//nav//a[text()='{TAB_NAME}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickNavigationTab",
+    "metadata": {
+      "original_method": "clickNavigationTab",
+      "prompt_variations": [
+        "switch to {tab}"
+      ]
+    }
+  },
+  {
+    "prompt": "navigate to {tab} tab",
+    "category": "Tab Navigation",
+    "description": "Click a navigation tab by its name",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//nav//a[text()='{TAB_NAME}']\")));\nelement.click();",
+    "xpath": "//nav//a[text()='{TAB_NAME}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickNavigationTab",
+    "metadata": {
+      "original_method": "clickNavigationTab",
+      "prompt_variations": [
+        "navigate to {tab} tab"
+      ]
+    }
+  },
+  {
+    "prompt": "select {tab} tab",
+    "category": "Tab Navigation",
+    "description": "Click a navigation tab by its name",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//nav//a[text()='{TAB_NAME}']\")));\nelement.click();",
+    "xpath": "//nav//a[text()='{TAB_NAME}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickNavigationTab",
+    "metadata": {
+      "original_method": "clickNavigationTab",
+      "prompt_variations": [
+        "select {tab} tab"
+      ]
+    }
+  },
+  {
+    "prompt": "go to {tab}",
+    "category": "Tab Navigation",
+    "description": "Click a navigation tab by its name",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//nav//a[text()='{TAB_NAME}']\")));\nelement.click();",
+    "xpath": "//nav//a[text()='{TAB_NAME}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickNavigationTab",
+    "metadata": {
+      "original_method": "clickNavigationTab",
+      "prompt_variations": [
+        "go to {tab}"
+      ]
+    }
+  },
+  {
+    "prompt": "open {tab} section",
+    "category": "Tab Navigation",
+    "description": "Click a tab button within a tabbed interface",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[@role='tab']/span[contains(.,'{TAB_NAME}')]\")));\nelement.click();",
+    "xpath": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTabButton",
+    "metadata": {
+      "original_method": "clickTabButton",
+      "prompt_variations": [
+        "open {tab} section"
+      ]
+    }
+  },
+  {
+    "prompt": "activate {tab}",
+    "category": "Tab Navigation",
+    "description": "Click a tab button within a tabbed interface",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[@role='tab']/span[contains(.,'{TAB_NAME}')]\")));\nelement.click();",
+    "xpath": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTabButton",
+    "metadata": {
+      "original_method": "clickTabButton",
+      "prompt_variations": [
+        "activate {tab}"
+      ]
+    }
+  },
+  {
+    "prompt": "show {tab} content",
+    "category": "Tab Navigation",
+    "description": "Click a tab button within a tabbed interface",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[@role='tab']/span[contains(.,'{TAB_NAME}')]\")));\nelement.click();",
+    "xpath": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTabButton",
+    "metadata": {
+      "original_method": "clickTabButton",
+      "prompt_variations": [
+        "show {tab} content"
+      ]
+    }
+  },
+  {
+    "prompt": "display {tab}",
+    "category": "Tab Navigation",
+    "description": "Click a tab button within a tabbed interface",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[@role='tab']/span[contains(.,'{TAB_NAME}')]\")));\nelement.click();",
+    "xpath": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTabButton",
+    "metadata": {
+      "original_method": "clickTabButton",
+      "prompt_variations": [
+        "display {tab}"
+      ]
+    }
+  },
+  {
+    "prompt": "is {tab} active",
+    "category": "Tab Validation",
+    "description": "Check if a tab is currently active",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement tab = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]\")));\nString classes = tab.getAttribute(\"class\");\nboolean isActive = classes.contains(\"active\");",
+    "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]",
+    "returns": "boolean (true if active)",
+    "action_type": "isTabButtonActive",
+    "metadata": {
+      "original_method": "isTabButtonActive",
+      "prompt_variations": [
+        "is {tab} active"
+      ]
+    }
+  },
+  {
+    "prompt": "is {tab} selected",
+    "category": "Tab Validation",
+    "description": "Check if a tab is currently active",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement tab = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]\")));\nString classes = tab.getAttribute(\"class\");\nboolean isActive = classes.contains(\"active\");",
+    "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]",
+    "returns": "boolean (true if active)",
+    "action_type": "isTabButtonActive",
+    "metadata": {
+      "original_method": "isTabButtonActive",
+      "prompt_variations": [
+        "is {tab} selected"
+      ]
+    }
+  },
+  {
+    "prompt": "check if {tab} is current",
+    "category": "Tab Validation",
+    "description": "Check if a tab is currently active",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement tab = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]\")));\nString classes = tab.getAttribute(\"class\");\nboolean isActive = classes.contains(\"active\");",
+    "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]",
+    "returns": "boolean (true if active)",
+    "action_type": "isTabButtonActive",
+    "metadata": {
+      "original_method": "isTabButtonActive",
+      "prompt_variations": [
+        "check if {tab} is current"
+      ]
+    }
+  },
+  {
+    "prompt": "verify {tab} is active",
+    "category": "Tab Validation",
+    "description": "Check if a tab is currently active",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement tab = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]\")));\nString classes = tab.getAttribute(\"class\");\nboolean isActive = classes.contains(\"active\");",
+    "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]",
+    "returns": "boolean (true if active)",
+    "action_type": "isTabButtonActive",
+    "metadata": {
+      "original_method": "isTabButtonActive",
+      "prompt_variations": [
+        "verify {tab} is active"
+      ]
+    }
+  },
+  {
+    "prompt": "is {tab} tab open",
+    "category": "Tab Validation",
+    "description": "Check if a tab is currently active",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement tab = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]\")));\nString classes = tab.getAttribute(\"class\");\nboolean isActive = classes.contains(\"active\");",
+    "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]",
+    "returns": "boolean (true if active)",
+    "action_type": "isTabButtonActive",
+    "metadata": {
+      "original_method": "isTabButtonActive",
+      "prompt_variations": [
+        "is {tab} tab open"
+      ]
+    }
+  },
+  {
+    "prompt": "is dialog open",
+    "category": "Dialog Operations",
+    "description": "Check if a dialog/modal is currently open",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-dialog//div[@class='dialog-body']\")));\n    boolean isOpen = true;\n} catch (TimeoutException e) {\n    boolean isOpen = false;\n}",
+    "xpath": "//app-dialog//div[@class='dialog-body']",
+    "returns": "boolean (true if open)",
+    "action_type": "isDialogOpen",
+    "metadata": {
+      "original_method": "isDialogOpen",
+      "prompt_variations": [
+        "is dialog open"
+      ]
+    }
+  },
+  {
+    "prompt": "is modal displayed",
+    "category": "Dialog Operations",
+    "description": "Check if a dialog/modal is currently open",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-dialog//div[@class='dialog-body']\")));\n    boolean isOpen = true;\n} catch (TimeoutException e) {\n    boolean isOpen = false;\n}",
+    "xpath": "//app-dialog//div[@class='dialog-body']",
+    "returns": "boolean (true if open)",
+    "action_type": "isDialogOpen",
+    "metadata": {
+      "original_method": "isDialogOpen",
+      "prompt_variations": [
+        "is modal displayed"
+      ]
+    }
+  },
+  {
+    "prompt": "check if popup is visible",
+    "category": "Dialog Operations",
+    "description": "Check if a dialog/modal is currently open",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-dialog//div[@class='dialog-body']\")));\n    boolean isOpen = true;\n} catch (TimeoutException e) {\n    boolean isOpen = false;\n}",
+    "xpath": "//app-dialog//div[@class='dialog-body']",
+    "returns": "boolean (true if open)",
+    "action_type": "isDialogOpen",
+    "metadata": {
+      "original_method": "isDialogOpen",
+      "prompt_variations": [
+        "check if popup is visible"
+      ]
+    }
+  },
+  {
+    "prompt": "verify dialog is showing",
+    "category": "Dialog Operations",
+    "description": "Check if a dialog/modal is currently open",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-dialog//div[@class='dialog-body']\")));\n    boolean isOpen = true;\n} catch (TimeoutException e) {\n    boolean isOpen = false;\n}",
+    "xpath": "//app-dialog//div[@class='dialog-body']",
+    "returns": "boolean (true if open)",
+    "action_type": "isDialogOpen",
+    "metadata": {
+      "original_method": "isDialogOpen",
+      "prompt_variations": [
+        "verify dialog is showing"
+      ]
+    }
+  },
+  {
+    "prompt": "is there a popup",
+    "category": "Dialog Operations",
+    "description": "Check if a dialog/modal is currently open",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-dialog//div[@class='dialog-body']\")));\n    boolean isOpen = true;\n} catch (TimeoutException e) {\n    boolean isOpen = false;\n}",
+    "xpath": "//app-dialog//div[@class='dialog-body']",
+    "returns": "boolean (true if open)",
+    "action_type": "isDialogOpen",
+    "metadata": {
+      "original_method": "isDialogOpen",
+      "prompt_variations": [
+        "is there a popup"
+      ]
+    }
+  },
+  {
+    "prompt": "get dialog text",
+    "category": "Dialog Operations",
+    "description": "Get the text content of a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='dialog-body']\")));\nString content = dialog.getText();",
+    "xpath": "//div[@class='dialog-body']",
+    "returns": "String (dialog content)",
+    "action_type": "getDialogContent",
+    "metadata": {
+      "original_method": "getDialogContent",
+      "prompt_variations": [
+        "get dialog text"
+      ]
+    }
+  },
+  {
+    "prompt": "read modal content",
+    "category": "Dialog Operations",
+    "description": "Get the text content of a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='dialog-body']\")));\nString content = dialog.getText();",
+    "xpath": "//div[@class='dialog-body']",
+    "returns": "String (dialog content)",
+    "action_type": "getDialogContent",
+    "metadata": {
+      "original_method": "getDialogContent",
+      "prompt_variations": [
+        "read modal content"
+      ]
+    }
+  },
+  {
+    "prompt": "what {LAST_NAME}s the dialog say",
+    "category": "Dialog Operations",
+    "description": "Get the text content of a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='dialog-body']\")));\nString content = dialog.getText();",
+    "xpath": "//div[@class='dialog-body']",
+    "returns": "String (dialog content)",
+    "action_type": "getDialogContent",
+    "metadata": {
+      "original_method": "getDialogContent",
+      "prompt_variations": [
+        "what {LAST_NAME}s the dialog say"
+      ]
+    }
+  },
+  {
+    "prompt": "retrieve popup message",
+    "category": "Dialog Operations",
+    "description": "Get the text content of a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='dialog-body']\")));\nString content = dialog.getText();",
+    "xpath": "//div[@class='dialog-body']",
+    "returns": "String (dialog content)",
+    "action_type": "getDialogContent",
+    "metadata": {
+      "original_method": "getDialogContent",
+      "prompt_variations": [
+        "retrieve popup message"
+      ]
+    }
+  },
+  {
+    "prompt": "fetch dialog content",
+    "category": "Dialog Operations",
+    "description": "Get the text content of a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='dialog-body']\")));\nString content = dialog.getText();",
+    "xpath": "//div[@class='dialog-body']",
+    "returns": "String (dialog content)",
+    "action_type": "getDialogContent",
+    "metadata": {
+      "original_method": "getDialogContent",
+      "prompt_variations": [
+        "fetch dialog content"
+      ]
+    }
+  },
+  {
+    "prompt": "close dialog",
+    "category": "Dialog Operations",
+    "description": "Close an open dialog/modal",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'close')]\")));\ncloseBtn.click();",
+    "xpath": "//app-dialog//button[contains(@class,'close')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "closeDialog",
+    "metadata": {
+      "original_method": "closeDialog",
+      "prompt_variations": [
+        "close dialog"
+      ]
+    }
+  },
+  {
+    "prompt": "close modal",
+    "category": "Dialog Operations",
+    "description": "Close an open dialog/modal",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'close')]\")));\ncloseBtn.click();",
+    "xpath": "//app-dialog//button[contains(@class,'close')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "closeDialog",
+    "metadata": {
+      "original_method": "closeDialog",
+      "prompt_variations": [
+        "close modal"
+      ]
+    }
+  },
+  {
+    "prompt": "dismiss popup",
+    "category": "Dialog Operations",
+    "description": "Close an open dialog/modal",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'close')]\")));\ncloseBtn.click();",
+    "xpath": "//app-dialog//button[contains(@class,'close')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "closeDialog",
+    "metadata": {
+      "original_method": "closeDialog",
+      "prompt_variations": [
+        "dismiss popup"
+      ]
+    }
+  },
+  {
+    "prompt": "close the window",
+    "category": "Dialog Operations",
+    "description": "Close an open dialog/modal",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'close')]\")));\ncloseBtn.click();",
+    "xpath": "//app-dialog//button[contains(@class,'close')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "closeDialog",
+    "metadata": {
+      "original_method": "closeDialog",
+      "prompt_variations": [
+        "close the window"
+      ]
+    }
+  },
+  {
+    "prompt": "exit dialog",
+    "category": "Dialog Operations",
+    "description": "Close an open dialog/modal",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'close')]\")));\ncloseBtn.click();",
+    "xpath": "//app-dialog//button[contains(@class,'close')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "closeDialog",
+    "metadata": {
+      "original_method": "closeDialog",
+      "prompt_variations": [
+        "exit dialog"
+      ]
+    }
+  },
+  {
+    "prompt": "submit dialog",
+    "category": "Dialog Actions",
+    "description": "Click the submit/primary button in a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'btn-primary')]\")));\n// TODO: Add specific action for clickDialogSubmitButton",
+    "xpath": "//app-dialog//button[contains(@class,'btn-primary')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogSubmitButton",
+    "metadata": {
+      "original_method": "clickDialogSubmitButton",
+      "prompt_variations": [
+        "submit dialog"
+      ]
+    }
+  },
+  {
+    "prompt": "confirm dialog",
+    "category": "Dialog Actions",
+    "description": "Click the submit/primary button in a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'btn-primary')]\")));\n// TODO: Add specific action for clickDialogSubmitButton",
+    "xpath": "//app-dialog//button[contains(@class,'btn-primary')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogSubmitButton",
+    "metadata": {
+      "original_method": "clickDialogSubmitButton",
+      "prompt_variations": [
+        "confirm dialog"
+      ]
+    }
+  },
+  {
+    "prompt": "click dialog submit",
+    "category": "Dialog Actions",
+    "description": "Click the submit/primary button in a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'btn-primary')]\")));\n// TODO: Add specific action for clickDialogSubmitButton",
+    "xpath": "//app-dialog//button[contains(@class,'btn-primary')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogSubmitButton",
+    "metadata": {
+      "original_method": "clickDialogSubmitButton",
+      "prompt_variations": [
+        "click dialog submit"
+      ]
+    }
+  },
+  {
+    "prompt": "accept dialog",
+    "category": "Dialog Actions",
+    "description": "Click the submit/primary button in a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'btn-primary')]\")));\n// TODO: Add specific action for clickDialogSubmitButton",
+    "xpath": "//app-dialog//button[contains(@class,'btn-primary')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogSubmitButton",
+    "metadata": {
+      "original_method": "clickDialogSubmitButton",
+      "prompt_variations": [
+        "accept dialog"
+      ]
+    }
+  },
+  {
+    "prompt": "save dialog changes",
+    "category": "Dialog Actions",
+    "description": "Click the submit/primary button in a dialog",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//app-dialog//button[contains(@class,'btn-primary')]\")));\n// TODO: Add specific action for clickDialogSubmitButton",
+    "xpath": "//app-dialog//button[contains(@class,'btn-primary')]",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickDialogSubmitButton",
+    "metadata": {
+      "original_method": "clickDialogSubmitButton",
+      "prompt_variations": [
+        "save dialog changes"
+      ]
+    }
+  },
+  {
+    "prompt": "search table for {criteria}",
+    "category": "Table Operations",
+    "description": "Search within a table using search criteria",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-list-search//input\")));\nsearchBox.clear();\nsearchBox.sendKeys(\"{SEARCH_TEXT}\");\n// Optionally click search button or press Enter\nsearchBox.sendKeys(Keys.ENTER);",
+    "xpath": "//app-list-search//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "searchTable",
+    "metadata": {
+      "original_method": "searchTable",
+      "prompt_variations": [
+        "search table for {criteria}"
+      ]
+    }
+  },
+  {
+    "prompt": "find {criteria} in table",
+    "category": "Table Operations",
+    "description": "Search within a table using search criteria",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-list-search//input\")));\nsearchBox.clear();\nsearchBox.sendKeys(\"{SEARCH_TEXT}\");\n// Optionally click search button or press Enter\nsearchBox.sendKeys(Keys.ENTER);",
+    "xpath": "//app-list-search//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "searchTable",
+    "metadata": {
+      "original_method": "searchTable",
+      "prompt_variations": [
+        "find {criteria} in table"
+      ]
+    }
+  },
+  {
+    "prompt": "filter table by {criteria}",
+    "category": "Table Operations",
+    "description": "Search within a table using search criteria",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-list-search//input\")));\nsearchBox.clear();\nsearchBox.sendKeys(\"{SEARCH_TEXT}\");\n// Optionally click search button or press Enter\nsearchBox.sendKeys(Keys.ENTER);",
+    "xpath": "//app-list-search//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "searchTable",
+    "metadata": {
+      "original_method": "searchTable",
+      "prompt_variations": [
+        "filter table by {criteria}"
+      ]
+    }
+  },
+  {
+    "prompt": "search for {criteria}",
+    "category": "Table Operations",
+    "description": "Search within a table using search criteria",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-list-search//input\")));\nsearchBox.clear();\nsearchBox.sendKeys(\"{SEARCH_TEXT}\");\n// Optionally click search button or press Enter\nsearchBox.sendKeys(Keys.ENTER);",
+    "xpath": "//app-list-search//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "searchTable",
+    "metadata": {
+      "original_method": "searchTable",
+      "prompt_variations": [
+        "search for {criteria}"
+      ]
+    }
+  },
+  {
+    "prompt": "lookup {criteria} in table",
+    "category": "Table Operations",
+    "description": "Search within a table using search criteria",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-list-search//input\")));\nsearchBox.clear();\nsearchBox.sendKeys(\"{SEARCH_TEXT}\");\n// Optionally click search button or press Enter\nsearchBox.sendKeys(Keys.ENTER);",
+    "xpath": "//app-list-search//input",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "searchTable",
+    "metadata": {
+      "original_method": "searchTable",
+      "prompt_variations": [
+        "lookup {criteria} in table"
+      ]
+    }
+  },
+  {
+    "prompt": "count table rows",
+    "category": "Table Operations",
+    "description": "Get the number of rows in a table",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nList<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(\"//table//tr[@class='table-row']\")));\nint rowCount = rows.size();",
+    "xpath": "//table//tr[@class='table-row']",
+    "returns": "int (number of rows)",
+    "action_type": "getTableRowCount",
+    "metadata": {
+      "original_method": "getTableRowCount",
+      "prompt_variations": [
+        "count table rows"
+      ]
+    }
+  },
+  {
+    "prompt": "how many rows in table",
+    "category": "Table Operations",
+    "description": "Get the number of rows in a table",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nList<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(\"//table//tr[@class='table-row']\")));\nint rowCount = rows.size();",
+    "xpath": "//table//tr[@class='table-row']",
+    "returns": "int (number of rows)",
+    "action_type": "getTableRowCount",
+    "metadata": {
+      "original_method": "getTableRowCount",
+      "prompt_variations": [
+        "how many rows in table"
+      ]
+    }
+  },
+  {
+    "prompt": "get table row count",
+    "category": "Table Operations",
+    "description": "Get the number of rows in a table",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nList<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(\"//table//tr[@class='table-row']\")));\nint rowCount = rows.size();",
+    "xpath": "//table//tr[@class='table-row']",
+    "returns": "int (number of rows)",
+    "action_type": "getTableRowCount",
+    "metadata": {
+      "original_method": "getTableRowCount",
+      "prompt_variations": [
+        "get table row count"
+      ]
+    }
+  },
+  {
+    "prompt": "number of table entries",
+    "category": "Table Operations",
+    "description": "Get the number of rows in a table",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nList<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(\"//table//tr[@class='table-row']\")));\nint rowCount = rows.size();",
+    "xpath": "//table//tr[@class='table-row']",
+    "returns": "int (number of rows)",
+    "action_type": "getTableRowCount",
+    "metadata": {
+      "original_method": "getTableRowCount",
+      "prompt_variations": [
+        "number of table entries"
+      ]
+    }
+  },
+  {
+    "prompt": "table size",
+    "category": "Table Operations",
+    "description": "Get the number of rows in a table",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nList<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(\"//table//tr[@class='table-row']\")));\nint rowCount = rows.size();",
+    "xpath": "//table//tr[@class='table-row']",
+    "returns": "int (number of rows)",
+    "action_type": "getTableRowCount",
+    "metadata": {
+      "original_method": "getTableRowCount",
+      "prompt_variations": [
+        "table size"
+      ]
+    }
+  },
+  {
+    "prompt": "are there no results",
+    "category": "Table Operations",
+    "description": "Check if table search returned no results",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='no-results']\")));\n    boolean noResults = true;\n} catch (TimeoutException e) {\n    boolean noResults = false;\n}",
+    "xpath": "//div[@class='no-results']",
+    "returns": "boolean (true if no results)",
+    "action_type": "isSearchTableNoResultsFound",
+    "metadata": {
+      "original_method": "isSearchTableNoResultsFound",
+      "prompt_variations": [
+        "are there no results"
+      ]
+    }
+  },
+  {
+    "prompt": "is table empty",
+    "category": "Table Operations",
+    "description": "Check if table search returned no results",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='no-results']\")));\n    boolean noResults = true;\n} catch (TimeoutException e) {\n    boolean noResults = false;\n}",
+    "xpath": "//div[@class='no-results']",
+    "returns": "boolean (true if no results)",
+    "action_type": "isSearchTableNoResultsFound",
+    "metadata": {
+      "original_method": "isSearchTableNoResultsFound",
+      "prompt_variations": [
+        "is table empty"
+      ]
+    }
+  },
+  {
+    "prompt": "check for no results",
+    "category": "Table Operations",
+    "description": "Check if table search returned no results",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='no-results']\")));\n    boolean noResults = true;\n} catch (TimeoutException e) {\n    boolean noResults = false;\n}",
+    "xpath": "//div[@class='no-results']",
+    "returns": "boolean (true if no results)",
+    "action_type": "isSearchTableNoResultsFound",
+    "metadata": {
+      "original_method": "isSearchTableNoResultsFound",
+      "prompt_variations": [
+        "check for no results"
+      ]
+    }
+  },
+  {
+    "prompt": "verify no matches found",
+    "category": "Table Operations",
+    "description": "Check if table search returned no results",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='no-results']\")));\n    boolean noResults = true;\n} catch (TimeoutException e) {\n    boolean noResults = false;\n}",
+    "xpath": "//div[@class='no-results']",
+    "returns": "boolean (true if no results)",
+    "action_type": "isSearchTableNoResultsFound",
+    "metadata": {
+      "original_method": "isSearchTableNoResultsFound",
+      "prompt_variations": [
+        "verify no matches found"
+      ]
+    }
+  },
+  {
+    "prompt": "is search empty",
+    "category": "Table Operations",
+    "description": "Check if table search returned no results",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='no-results']\")));\n    boolean noResults = true;\n} catch (TimeoutException e) {\n    boolean noResults = false;\n}",
+    "xpath": "//div[@class='no-results']",
+    "returns": "boolean (true if no results)",
+    "action_type": "isSearchTableNoResultsFound",
+    "metadata": {
+      "original_method": "isSearchTableNoResultsFound",
+      "prompt_variations": [
+        "is search empty"
+      ]
+    }
+  },
+  {
+    "prompt": "select row containing {text}",
+    "category": "Table Row Operations",
+    "description": "Check a checkbox in a table row identified by text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr[contains(.,'{TEXT}')]//input[@type='checkbox']\")));\nif (!checkbox.isSelected()) {\n    checkbox.click();\n}",
+    "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']",
+    "returns": "void",
+    "action_type": "setTableRowCheckboxOn",
+    "metadata": {
+      "original_method": "setTableRowCheckboxOn",
+      "prompt_variations": [
+        "select row containing {text}"
+      ]
+    }
+  },
+  {
+    "prompt": "check row with {text}",
+    "category": "Table Row Operations",
+    "description": "Check a checkbox in a table row identified by text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr[contains(.,'{TEXT}')]//input[@type='checkbox']\")));\nif (!checkbox.isSelected()) {\n    checkbox.click();\n}",
+    "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']",
+    "returns": "void",
+    "action_type": "setTableRowCheckboxOn",
+    "metadata": {
+      "original_method": "setTableRowCheckboxOn",
+      "prompt_variations": [
+        "check row with {text}"
+      ]
+    }
+  },
+  {
+    "prompt": "mark {text} row",
+    "category": "Table Row Operations",
+    "description": "Check a checkbox in a table row identified by text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr[contains(.,'{TEXT}')]//input[@type='checkbox']\")));\nif (!checkbox.isSelected()) {\n    checkbox.click();\n}",
+    "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']",
+    "returns": "void",
+    "action_type": "setTableRowCheckboxOn",
+    "metadata": {
+      "original_method": "setTableRowCheckboxOn",
+      "prompt_variations": [
+        "mark {text} row"
+      ]
+    }
+  },
+  {
+    "prompt": "select {text} in table",
+    "category": "Table Row Operations",
+    "description": "Check a checkbox in a table row identified by text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr[contains(.,'{TEXT}')]//input[@type='checkbox']\")));\nif (!checkbox.isSelected()) {\n    checkbox.click();\n}",
+    "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']",
+    "returns": "void",
+    "action_type": "setTableRowCheckboxOn",
+    "metadata": {
+      "original_method": "setTableRowCheckboxOn",
+      "prompt_variations": [
+        "select {text} in table"
+      ]
+    }
+  },
+  {
+    "prompt": "check checkbox for {text}",
+    "category": "Table Row Operations",
+    "description": "Check a checkbox in a table row identified by text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr[contains(.,'{TEXT}')]//input[@type='checkbox']\")));\nif (!checkbox.isSelected()) {\n    checkbox.click();\n}",
+    "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']",
+    "returns": "void",
+    "action_type": "setTableRowCheckboxOn",
+    "metadata": {
+      "original_method": "setTableRowCheckboxOn",
+      "prompt_variations": [
+        "check checkbox for {text}"
+      ]
+    }
+  },
+  {
+    "prompt": "open row menu",
+    "category": "Table Row Operations",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr//button[@class='dropdown-toggle']\")));\n// TODO: Add specific action for clickTableRowDropdownToggle",
+    "xpath": "//tr//button[@class='dropdown-toggle']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTableRowDropdownToggle",
+    "metadata": {
+      "original_method": "clickTableRowDropdownToggle",
+      "prompt_variations": [
+        "open row menu"
+      ]
+    }
+  },
+  {
+    "prompt": "click row actions",
+    "category": "Table Row Operations",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr//button[@class='dropdown-toggle']\")));\n// TODO: Add specific action for clickTableRowDropdownToggle",
+    "xpath": "//tr//button[@class='dropdown-toggle']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTableRowDropdownToggle",
+    "metadata": {
+      "original_method": "clickTableRowDropdownToggle",
+      "prompt_variations": [
+        "click row actions"
+      ]
+    }
+  },
+  {
+    "prompt": "open kebab menu",
+    "category": "Table Row Operations",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr//button[@class='dropdown-toggle']\")));\n// TODO: Add specific action for clickTableRowDropdownToggle",
+    "xpath": "//tr//button[@class='dropdown-toggle']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTableRowDropdownToggle",
+    "metadata": {
+      "original_method": "clickTableRowDropdownToggle",
+      "prompt_variations": [
+        "open kebab menu"
+      ]
+    }
+  },
+  {
+    "prompt": "show row options",
+    "category": "Table Row Operations",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr//button[@class='dropdown-toggle']\")));\n// TODO: Add specific action for clickTableRowDropdownToggle",
+    "xpath": "//tr//button[@class='dropdown-toggle']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTableRowDropdownToggle",
+    "metadata": {
+      "original_method": "clickTableRowDropdownToggle",
+      "prompt_variations": [
+        "show row options"
+      ]
+    }
+  },
+  {
+    "prompt": "click three dots menu",
+    "category": "Table Row Operations",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//tr//button[@class='dropdown-toggle']\")));\n// TODO: Add specific action for clickTableRowDropdownToggle",
+    "xpath": "//tr//button[@class='dropdown-toggle']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTableRowDropdownToggle",
+    "metadata": {
+      "original_method": "clickTableRowDropdownToggle",
+      "prompt_variations": [
+        "click three dots menu"
+      ]
+    }
+  },
+  {
+    "prompt": "edit row",
+    "category": "Table Row Actions",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@class='fa-pencil']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@class='fa-pencil']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickEditPencilButton",
+    "metadata": {
+      "original_method": "clickEditPencilButton",
+      "prompt_variations": [
+        "edit row"
+      ]
+    }
+  },
+  {
+    "prompt": "click edit button",
+    "category": "Table Row Actions",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@class='fa-pencil']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@class='fa-pencil']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickEditPencilButton",
+    "metadata": {
+      "original_method": "clickEditPencilButton",
+      "prompt_variations": [
+        "click edit button"
+      ]
+    }
+  },
+  {
+    "prompt": "modify entry",
+    "category": "Table Row Actions",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@class='fa-pencil']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@class='fa-pencil']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickEditPencilButton",
+    "metadata": {
+      "original_method": "clickEditPencilButton",
+      "prompt_variations": [
+        "modify entry"
+      ]
+    }
+  },
+  {
+    "prompt": "click pencil icon",
+    "category": "Table Row Actions",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@class='fa-pencil']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@class='fa-pencil']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickEditPencilButton",
+    "metadata": {
+      "original_method": "clickEditPencilButton",
+      "prompt_variations": [
+        "click pencil icon"
+      ]
+    }
+  },
+  {
+    "prompt": "update row",
+    "category": "Table Row Actions",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@class='fa-pencil']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@class='fa-pencil']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickEditPencilButton",
+    "metadata": {
+      "original_method": "clickEditPencilButton",
+      "prompt_variations": [
+        "update row"
+      ]
+    }
+  },
+  {
+    "prompt": "delete row",
+    "category": "Table Row Actions",
+    "description": "Click the delete (trash icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@data-icon='trash-can']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@data-icon='trash-can']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTrashCanButton",
+    "metadata": {
+      "original_method": "clickTrashCanButton",
+      "prompt_variations": [
+        "delete row"
+      ]
+    }
+  },
+  {
+    "prompt": "remove entry",
+    "category": "Table Row Actions",
+    "description": "Click the delete (trash icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@data-icon='trash-can']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@data-icon='trash-can']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTrashCanButton",
+    "metadata": {
+      "original_method": "clickTrashCanButton",
+      "prompt_variations": [
+        "remove entry"
+      ]
+    }
+  },
+  {
+    "prompt": "click delete button",
+    "category": "Table Row Actions",
+    "description": "Click the delete (trash icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@data-icon='trash-can']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@data-icon='trash-can']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTrashCanButton",
+    "metadata": {
+      "original_method": "clickTrashCanButton",
+      "prompt_variations": [
+        "click delete button"
+      ]
+    }
+  },
+  {
+    "prompt": "click trash icon",
+    "category": "Table Row Actions",
+    "description": "Click the delete (trash icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@data-icon='trash-can']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@data-icon='trash-can']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTrashCanButton",
+    "metadata": {
+      "original_method": "clickTrashCanButton",
+      "prompt_variations": [
+        "click trash icon"
+      ]
+    }
+  },
+  {
+    "prompt": "remove record",
+    "category": "Table Row Actions",
+    "description": "Click the delete (trash icon) button in a table row",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button//fa-icon[@data-icon='trash-can']\")));\nelement.click();",
+    "xpath": "//button//fa-icon[@data-icon='trash-can']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickTrashCanButton",
+    "metadata": {
+      "original_method": "clickTrashCanButton",
+      "prompt_variations": [
+        "remove record"
+      ]
+    }
+  },
+  {
+    "prompt": "{LAST_NAME}s table contain {text}",
+    "category": "Table Validation",
+    "description": "Check if table contains specific text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement table = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//table//tr[contains(.,'{TEXT}')]\")));\nString tableText = table.getText();\nboolean contains = tableText.contains(\"{TEXT}\");",
+    "xpath": "//table//tr[contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "action_type": "isTableContains",
+    "metadata": {
+      "original_method": "isTableContains",
+      "prompt_variations": [
+        "{LAST_NAME}s table contain {text}"
+      ]
+    }
+  },
+  {
+    "prompt": "is {text} in table",
+    "category": "Table Validation",
+    "description": "Check if table contains specific text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement table = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//table//tr[contains(.,'{TEXT}')]\")));\nString tableText = table.getText();\nboolean contains = tableText.contains(\"{TEXT}\");",
+    "xpath": "//table//tr[contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "action_type": "isTableContains",
+    "metadata": {
+      "original_method": "isTableContains",
+      "prompt_variations": [
+        "is {text} in table"
+      ]
+    }
+  },
+  {
+    "prompt": "verify table has {text}",
+    "category": "Table Validation",
+    "description": "Check if table contains specific text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement table = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//table//tr[contains(.,'{TEXT}')]\")));\nString tableText = table.getText();\nboolean contains = tableText.contains(\"{TEXT}\");",
+    "xpath": "//table//tr[contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "action_type": "isTableContains",
+    "metadata": {
+      "original_method": "isTableContains",
+      "prompt_variations": [
+        "verify table has {text}"
+      ]
+    }
+  },
+  {
+    "prompt": "get message text",
+    "category": "Message Validation",
+    "description": "Get the text from a message box (any type)",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box\")));\nString text = message.getText();",
+    "xpath": "//app-message-box",
+    "returns": "String (message text)",
+    "action_type": "getMessageBoxText",
+    "metadata": {
+      "original_method": "getMessageBoxText",
+      "prompt_variations": [
+        "get message text"
+      ]
+    }
+  },
+  {
+    "prompt": "read message box",
+    "category": "Message Validation",
+    "description": "Get the text from a message box (any type)",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box\")));\nString text = message.getText();",
+    "xpath": "//app-message-box",
+    "returns": "String (message text)",
+    "action_type": "getMessageBoxText",
+    "metadata": {
+      "original_method": "getMessageBoxText",
+      "prompt_variations": [
+        "read message box"
+      ]
+    }
+  },
+  {
+    "prompt": "what {LAST_NAME}s the message say",
+    "category": "Message Validation",
+    "description": "Get the text from a message box (any type)",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box\")));\nString text = message.getText();",
+    "xpath": "//app-message-box",
+    "returns": "String (message text)",
+    "action_type": "getMessageBoxText",
+    "metadata": {
+      "original_method": "getMessageBoxText",
+      "prompt_variations": [
+        "what {LAST_NAME}s the message say"
+      ]
+    }
+  },
+  {
+    "prompt": "retrieve message content",
+    "category": "Message Validation",
+    "description": "Get the text from a message box (any type)",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box\")));\nString text = message.getText();",
+    "xpath": "//app-message-box",
+    "returns": "String (message text)",
+    "action_type": "getMessageBoxText",
+    "metadata": {
+      "original_method": "getMessageBoxText",
+      "prompt_variations": [
+        "retrieve message content"
+      ]
+    }
+  },
+  {
+    "prompt": "fetch alert text",
+    "category": "Message Validation",
+    "description": "Get the text from a message box (any type)",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box\")));\nString text = message.getText();",
+    "xpath": "//app-message-box",
+    "returns": "String (message text)",
+    "action_type": "getMessageBoxText",
+    "metadata": {
+      "original_method": "getMessageBoxText",
+      "prompt_variations": [
+        "fetch alert text"
+      ]
+    }
+  },
+  {
+    "prompt": "get success message",
+    "category": "Message Validation",
+    "description": "Get the text from a success message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='success']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='success']",
+    "returns": "String (success message)",
+    "action_type": "getMessageBoxSuccessText",
+    "metadata": {
+      "original_method": "getMessageBoxSuccessText",
+      "prompt_variations": [
+        "get success message"
+      ]
+    }
+  },
+  {
+    "prompt": "read success notification",
+    "category": "Message Validation",
+    "description": "Get the text from a success message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='success']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='success']",
+    "returns": "String (success message)",
+    "action_type": "getMessageBoxSuccessText",
+    "metadata": {
+      "original_method": "getMessageBoxSuccessText",
+      "prompt_variations": [
+        "read success notification"
+      ]
+    }
+  },
+  {
+    "prompt": "what is the success text",
+    "category": "Message Validation",
+    "description": "Get the text from a success message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='success']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='success']",
+    "returns": "String (success message)",
+    "action_type": "getMessageBoxSuccessText",
+    "metadata": {
+      "original_method": "getMessageBoxSuccessText",
+      "prompt_variations": [
+        "what is the success text"
+      ]
+    }
+  },
+  {
+    "prompt": "retrieve success message",
+    "category": "Message Validation",
+    "description": "Get the text from a success message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='success']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='success']",
+    "returns": "String (success message)",
+    "action_type": "getMessageBoxSuccessText",
+    "metadata": {
+      "original_method": "getMessageBoxSuccessText",
+      "prompt_variations": [
+        "retrieve success message"
+      ]
+    }
+  },
+  {
+    "prompt": "fetch confirmation text",
+    "category": "Message Validation",
+    "description": "Get the text from a success message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='success']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='success']",
+    "returns": "String (success message)",
+    "action_type": "getMessageBoxSuccessText",
+    "metadata": {
+      "original_method": "getMessageBoxSuccessText",
+      "prompt_variations": [
+        "fetch confirmation text"
+      ]
+    }
+  },
+  {
+    "prompt": "get error message",
+    "category": "Message Validation",
+    "description": "Get the text from an error message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='error']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='error']",
+    "returns": "String (error message)",
+    "action_type": "getMessageBoxErrorText",
+    "metadata": {
+      "original_method": "getMessageBoxErrorText",
+      "prompt_variations": [
+        "get error message"
+      ]
+    }
+  },
+  {
+    "prompt": "read error text",
+    "category": "Message Validation",
+    "description": "Get the text from an error message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='error']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='error']",
+    "returns": "String (error message)",
+    "action_type": "getMessageBoxErrorText",
+    "metadata": {
+      "original_method": "getMessageBoxErrorText",
+      "prompt_variations": [
+        "read error text"
+      ]
+    }
+  },
+  {
+    "prompt": "what is the error",
+    "category": "Message Validation",
+    "description": "Get the text from an error message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='error']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='error']",
+    "returns": "String (error message)",
+    "action_type": "getMessageBoxErrorText",
+    "metadata": {
+      "original_method": "getMessageBoxErrorText",
+      "prompt_variations": [
+        "what is the error"
+      ]
+    }
+  },
+  {
+    "prompt": "retrieve error message",
+    "category": "Message Validation",
+    "description": "Get the text from an error message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='error']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='error']",
+    "returns": "String (error message)",
+    "action_type": "getMessageBoxErrorText",
+    "metadata": {
+      "original_method": "getMessageBoxErrorText",
+      "prompt_variations": [
+        "retrieve error message"
+      ]
+    }
+  },
+  {
+    "prompt": "fetch failure text",
+    "category": "Message Validation",
+    "description": "Get the text from an error message box",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//app-message-box[@level='error']\")));\nString text = message.getText();",
+    "xpath": "//app-message-box[@level='error']",
+    "returns": "String (error message)",
+    "action_type": "getMessageBoxErrorText",
+    "metadata": {
+      "original_method": "getMessageBoxErrorText",
+      "prompt_variations": [
+        "fetch failure text"
+      ]
+    }
+  },
+  {
+    "prompt": "get toast message",
+    "category": "Message Validation",
+    "description": "Get the text from a success toast notification",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nString text = message.getText();",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "String (toast message)",
+    "action_type": "getToastSuccessText",
+    "metadata": {
+      "original_method": "getToastSuccessText",
+      "prompt_variations": [
+        "get toast message"
+      ]
+    }
+  },
+  {
+    "prompt": "read success toast",
+    "category": "Message Validation",
+    "description": "Get the text from a success toast notification",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nString text = message.getText();",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "String (toast message)",
+    "action_type": "getToastSuccessText",
+    "metadata": {
+      "original_method": "getToastSuccessText",
+      "prompt_variations": [
+        "read success toast"
+      ]
+    }
+  },
+  {
+    "prompt": "what {LAST_NAME}s the toast say",
+    "category": "Message Validation",
+    "description": "Get the text from a success toast notification",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nString text = message.getText();",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "String (toast message)",
+    "action_type": "getToastSuccessText",
+    "metadata": {
+      "original_method": "getToastSuccessText",
+      "prompt_variations": [
+        "what {LAST_NAME}s the toast say"
+      ]
+    }
+  },
+  {
+    "prompt": "retrieve toast notification",
+    "category": "Message Validation",
+    "description": "Get the text from a success toast notification",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nString text = message.getText();",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "String (toast message)",
+    "action_type": "getToastSuccessText",
+    "metadata": {
+      "original_method": "getToastSuccessText",
+      "prompt_variations": [
+        "retrieve toast notification"
+      ]
+    }
+  },
+  {
+    "prompt": "fetch toast text",
+    "category": "Message Validation",
+    "description": "Get the text from a success toast notification",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nString text = message.getText();",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "String (toast message)",
+    "action_type": "getToastSuccessText",
+    "metadata": {
+      "original_method": "getToastSuccessText",
+      "prompt_variations": [
+        "fetch toast text"
+      ]
+    }
+  },
+  {
+    "prompt": "wait for page to load",
+    "category": "Wait Operations",
+    "description": "Wait for page loading spinner to disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//app-wait[@class='spinner']\")));",
+    "xpath": "//app-wait[@class='spinner']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "waitForPageLoading",
+    "metadata": {
+      "original_method": "waitForPageLoading",
+      "prompt_variations": [
+        "wait for page to load"
+      ]
+    }
+  },
+  {
+    "prompt": "wait for loading",
+    "category": "Wait Operations",
+    "description": "Wait for page loading spinner to disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//app-wait[@class='spinner']\")));",
+    "xpath": "//app-wait[@class='spinner']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "waitForPageLoading",
+    "metadata": {
+      "original_method": "waitForPageLoading",
+      "prompt_variations": [
+        "wait for loading"
+      ]
+    }
+  },
+  {
+    "prompt": "let page finish loading",
+    "category": "Wait Operations",
+    "description": "Wait for page loading spinner to disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//app-wait[@class='spinner']\")));",
+    "xpath": "//app-wait[@class='spinner']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "waitForPageLoading",
+    "metadata": {
+      "original_method": "waitForPageLoading",
+      "prompt_variations": [
+        "let page finish loading"
+      ]
+    }
+  },
+  {
+    "prompt": "wait until ready",
+    "category": "Wait Operations",
+    "description": "Wait for page loading spinner to disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//app-wait[@class='spinner']\")));",
+    "xpath": "//app-wait[@class='spinner']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "waitForPageLoading",
+    "metadata": {
+      "original_method": "waitForPageLoading",
+      "prompt_variations": [
+        "wait until ready"
+      ]
+    }
+  },
+  {
+    "prompt": "pause for page load",
+    "category": "Wait Operations",
+    "description": "Wait for page loading spinner to disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//app-wait[@class='spinner']\")));",
+    "xpath": "//app-wait[@class='spinner']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "waitForPageLoading",
+    "metadata": {
+      "original_method": "waitForPageLoading",
+      "prompt_variations": [
+        "pause for page load"
+      ]
+    }
+  },
+  {
+    "prompt": "wait for processing",
+    "category": "Wait Operations",
+    "description": "Wait for processing spinner to complete",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//button//fa-icon[@class='fa-spinner']\")));",
+    "xpath": "//button//fa-icon[@class='fa-spinner']",
+    "returns": "void",
+    "action_type": "waitForProcessingSpinner",
+    "metadata": {
+      "original_method": "waitForProcessingSpinner",
+      "prompt_variations": [
+        "wait for processing"
+      ]
+    }
+  },
+  {
+    "prompt": "wait for spinner",
+    "category": "Wait Operations",
+    "description": "Wait for processing spinner to complete",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//button//fa-icon[@class='fa-spinner']\")));",
+    "xpath": "//button//fa-icon[@class='fa-spinner']",
+    "returns": "void",
+    "action_type": "waitForProcessingSpinner",
+    "metadata": {
+      "original_method": "waitForProcessingSpinner",
+      "prompt_variations": [
+        "wait for spinner"
+      ]
+    }
+  },
+  {
+    "prompt": "let processing finish",
+    "category": "Wait Operations",
+    "description": "Wait for processing spinner to complete",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//button//fa-icon[@class='fa-spinner']\")));",
+    "xpath": "//button//fa-icon[@class='fa-spinner']",
+    "returns": "void",
+    "action_type": "waitForProcessingSpinner",
+    "metadata": {
+      "original_method": "waitForProcessingSpinner",
+      "prompt_variations": [
+        "let processing finish"
+      ]
+    }
+  },
+  {
+    "prompt": "wait for operation",
+    "category": "Wait Operations",
+    "description": "Wait for processing spinner to complete",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//button//fa-icon[@class='fa-spinner']\")));",
+    "xpath": "//button//fa-icon[@class='fa-spinner']",
+    "returns": "void",
+    "action_type": "waitForProcessingSpinner",
+    "metadata": {
+      "original_method": "waitForProcessingSpinner",
+      "prompt_variations": [
+        "wait for operation"
+      ]
+    }
+  },
+  {
+    "prompt": "pause for processing",
+    "category": "Wait Operations",
+    "description": "Wait for processing spinner to complete",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//button//fa-icon[@class='fa-spinner']\")));",
+    "xpath": "//button//fa-icon[@class='fa-spinner']",
+    "returns": "void",
+    "action_type": "waitForProcessingSpinner",
+    "metadata": {
+      "original_method": "waitForProcessingSpinner",
+      "prompt_variations": [
+        "pause for processing"
+      ]
+    }
+  },
+  {
+    "prompt": "wait for success toast",
+    "category": "Wait Operations",
+    "description": "Wait for success toast to appear and disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "void",
+    "action_type": "waitForToastSuccess",
+    "metadata": {
+      "original_method": "waitForToastSuccess",
+      "prompt_variations": [
+        "wait for success toast"
+      ]
+    }
+  },
+  {
+    "prompt": "wait for notification",
+    "category": "Wait Operations",
+    "description": "Wait for success toast to appear and disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "void",
+    "action_type": "waitForToastSuccess",
+    "metadata": {
+      "original_method": "waitForToastSuccess",
+      "prompt_variations": [
+        "wait for notification"
+      ]
+    }
+  },
+  {
+    "prompt": "let toast show and hide",
+    "category": "Wait Operations",
+    "description": "Wait for success toast to appear and disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "void",
+    "action_type": "waitForToastSuccess",
+    "metadata": {
+      "original_method": "waitForToastSuccess",
+      "prompt_variations": [
+        "let toast show and hide"
+      ]
+    }
+  },
+  {
+    "prompt": "wait for success message",
+    "category": "Wait Operations",
+    "description": "Wait for success toast to appear and disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "void",
+    "action_type": "waitForToastSuccess",
+    "metadata": {
+      "original_method": "waitForToastSuccess",
+      "prompt_variations": [
+        "wait for success message"
+      ]
+    }
+  },
+  {
+    "prompt": "pause for toast",
+    "category": "Wait Operations",
+    "description": "Wait for success toast to appear and disappear",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(\"//div[@class='toast-success']\")));",
+    "xpath": "//div[@class='toast-success']",
+    "returns": "void",
+    "action_type": "waitForToastSuccess",
+    "metadata": {
+      "original_method": "waitForToastSuccess",
+      "prompt_variations": [
+        "pause for toast"
+      ]
+    }
+  },
+  {
+    "prompt": "upload file {filename}",
+    "category": "File Upload",
+    "description": "Select one or more files to upload",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//input[@type='file']\")));\nfileInput.sendKeys(\"{FILE_PATH}\");",
+    "xpath": "//input[@type='file']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectFileToUpload",
+    "metadata": {
+      "original_method": "selectFileToUpload",
+      "prompt_variations": [
+        "upload file {filename}"
+      ]
+    }
+  },
+  {
+    "prompt": "select file {filename}",
+    "category": "File Upload",
+    "description": "Select one or more files to upload",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//input[@type='file']\")));\nfileInput.sendKeys(\"{FILE_PATH}\");",
+    "xpath": "//input[@type='file']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectFileToUpload",
+    "metadata": {
+      "original_method": "selectFileToUpload",
+      "prompt_variations": [
+        "select file {filename}"
+      ]
+    }
+  },
+  {
+    "prompt": "attach {filename}",
+    "category": "File Upload",
+    "description": "Select one or more files to upload",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//input[@type='file']\")));\nfileInput.sendKeys(\"{FILE_PATH}\");",
+    "xpath": "//input[@type='file']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectFileToUpload",
+    "metadata": {
+      "original_method": "selectFileToUpload",
+      "prompt_variations": [
+        "attach {filename}"
+      ]
+    }
+  },
+  {
+    "prompt": "choose file {filename}",
+    "category": "File Upload",
+    "description": "Select one or more files to upload",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//input[@type='file']\")));\nfileInput.sendKeys(\"{FILE_PATH}\");",
+    "xpath": "//input[@type='file']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectFileToUpload",
+    "metadata": {
+      "original_method": "selectFileToUpload",
+      "prompt_variations": [
+        "choose file {filename}"
+      ]
+    }
+  },
+  {
+    "prompt": "upload {filename}",
+    "category": "File Upload",
+    "description": "Select one or more files to upload",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//input[@type='file']\")));\nfileInput.sendKeys(\"{FILE_PATH}\");",
+    "xpath": "//input[@type='file']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "selectFileToUpload",
+    "metadata": {
+      "original_method": "selectFileToUpload",
+      "prompt_variations": [
+        "upload {filename}"
+      ]
+    }
+  },
+  {
+    "prompt": "click {menu} menu",
+    "category": "Menu Navigation",
+    "description": "Click a menu item by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement menu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[text()='{MENU_TEXT}']\")));\nmenu.click();",
+    "xpath": "//button[text()='{MENU_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickMenu",
+    "metadata": {
+      "original_method": "clickMenu",
+      "prompt_variations": [
+        "click {menu} menu"
+      ]
+    }
+  },
+  {
+    "prompt": "open {menu}",
+    "category": "Menu Navigation",
+    "description": "Click a menu item by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement menu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[text()='{MENU_TEXT}']\")));\nmenu.click();",
+    "xpath": "//button[text()='{MENU_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickMenu",
+    "metadata": {
+      "original_method": "clickMenu",
+      "prompt_variations": [
+        "open {menu}"
+      ]
+    }
+  },
+  {
+    "prompt": "select {menu} menu",
+    "category": "Menu Navigation",
+    "description": "Click a menu item by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement menu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[text()='{MENU_TEXT}']\")));\nmenu.click();",
+    "xpath": "//button[text()='{MENU_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickMenu",
+    "metadata": {
+      "original_method": "clickMenu",
+      "prompt_variations": [
+        "select {menu} menu"
+      ]
+    }
+  },
+  {
+    "prompt": "click {submenu} submenu",
+    "category": "Menu Navigation",
+    "description": "Click a submenu item by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement menu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//a[text()='{SUBMENU_TEXT}']\")));\nmenu.click();",
+    "xpath": "//a[text()='{SUBMENU_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickSubmenu",
+    "metadata": {
+      "original_method": "clickSubmenu",
+      "prompt_variations": [
+        "click {submenu} submenu"
+      ]
+    }
+  },
+  {
+    "prompt": "select {submenu} option",
+    "category": "Menu Navigation",
+    "description": "Click a submenu item by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement menu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//a[text()='{SUBMENU_TEXT}']\")));\nmenu.click();",
+    "xpath": "//a[text()='{SUBMENU_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickSubmenu",
+    "metadata": {
+      "original_method": "clickSubmenu",
+      "prompt_variations": [
+        "select {submenu} option"
+      ]
+    }
+  },
+  {
+    "prompt": "choose {submenu}",
+    "category": "Menu Navigation",
+    "description": "Click a submenu item by its text",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement menu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//a[text()='{SUBMENU_TEXT}']\")));\nmenu.click();",
+    "xpath": "//a[text()='{SUBMENU_TEXT}']",
+    "returns": "PageHelper (method chaining)",
+    "action_type": "clickSubmenu",
+    "metadata": {
+      "original_method": "clickSubmenu",
+      "prompt_variations": [
+        "choose {submenu}"
+      ]
+    }
+  },
+  {
+    "prompt": "scroll to element",
+    "category": "Scroll Operations",
+    "description": "Scroll an element into view",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n((JavascriptExecutor) driver).executeScript(\"arguments[0].scrollIntoView(true);\", element);",
+    "xpath": "any element locator",
+    "returns": "void",
+    "action_type": "scrollToView",
+    "metadata": {
+      "original_method": "scrollToView",
+      "prompt_variations": [
+        "scroll to element"
+      ]
+    }
+  },
+  {
+    "prompt": "bring element into view",
+    "category": "Scroll Operations",
+    "description": "Scroll an element into view",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n((JavascriptExecutor) driver).executeScript(\"arguments[0].scrollIntoView(true);\", element);",
+    "xpath": "any element locator",
+    "returns": "void",
+    "action_type": "scrollToView",
+    "metadata": {
+      "original_method": "scrollToView",
+      "prompt_variations": [
+        "bring element into view"
+      ]
+    }
+  },
+  {
+    "prompt": "scroll until visible",
+    "category": "Scroll Operations",
+    "description": "Scroll an element into view",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n((JavascriptExecutor) driver).executeScript(\"arguments[0].scrollIntoView(true);\", element);",
+    "xpath": "any element locator",
+    "returns": "void",
+    "action_type": "scrollToView",
+    "metadata": {
+      "original_method": "scrollToView",
+      "prompt_variations": [
+        "scroll until visible"
+      ]
+    }
+  },
+  {
+    "prompt": "make element visible",
+    "category": "Scroll Operations",
+    "description": "Scroll an element into view",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n((JavascriptExecutor) driver).executeScript(\"arguments[0].scrollIntoView(true);\", element);",
+    "xpath": "any element locator",
+    "returns": "void",
+    "action_type": "scrollToView",
+    "metadata": {
+      "original_method": "scrollToView",
+      "prompt_variations": [
+        "make element visible"
+      ]
+    }
+  },
+  {
+    "prompt": "scroll to show element",
+    "category": "Scroll Operations",
+    "description": "Scroll an element into view",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n((JavascriptExecutor) driver).executeScript(\"arguments[0].scrollIntoView(true);\", element);",
+    "xpath": "any element locator",
+    "returns": "void",
+    "action_type": "scrollToView",
+    "metadata": {
+      "original_method": "scrollToView",
+      "prompt_variations": [
+        "scroll to show element"
+      ]
+    }
+  },
+  {
+    "prompt": "is element present",
+    "category": "Element Verification",
+    "description": "Check if an element exists on the page",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "any element locator",
+    "returns": "boolean (true if found)",
+    "action_type": "isElementFound",
+    "metadata": {
+      "original_method": "isElementFound",
+      "prompt_variations": [
+        "is element present"
+      ]
+    }
+  },
+  {
+    "prompt": "{LAST_NAME}s element exist",
+    "category": "Element Verification",
+    "description": "Check if an element exists on the page",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "any element locator",
+    "returns": "boolean (true if found)",
+    "action_type": "isElementFound",
+    "metadata": {
+      "original_method": "isElementFound",
+      "prompt_variations": [
+        "{LAST_NAME}s element exist"
+      ]
+    }
+  },
+  {
+    "prompt": "find element",
+    "category": "Element Verification",
+    "description": "Check if an element exists on the page",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "any element locator",
+    "returns": "boolean (true if found)",
+    "action_type": "isElementFound",
+    "metadata": {
+      "original_method": "isElementFound",
+      "prompt_variations": [
+        "find element"
+      ]
+    }
+  },
+  {
+    "prompt": "check for element",
+    "category": "Element Verification",
+    "description": "Check if an element exists on the page",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "any element locator",
+    "returns": "boolean (true if found)",
+    "action_type": "isElementFound",
+    "metadata": {
+      "original_method": "isElementFound",
+      "prompt_variations": [
+        "check for element"
+      ]
+    }
+  },
+  {
+    "prompt": "verify element exists",
+    "category": "Element Verification",
+    "description": "Check if an element exists on the page",
+    "code": "try {\n    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));\n    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"any element locator\")));\n    boolean exists = true;\n} catch (TimeoutException e) {\n    boolean exists = false;\n}",
+    "xpath": "any element locator",
+    "returns": "boolean (true if found)",
+    "action_type": "isElementFound",
+    "metadata": {
+      "original_method": "isElementFound",
+      "prompt_variations": [
+        "verify element exists"
+      ]
+    }
+  },
+  {
+    "prompt": "is element hidden",
+    "category": "Element Verification",
+    "description": "Check if an element is invisible or not present",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"any element locator\")));\n// TODO: Add specific action for isElementInvisible",
+    "xpath": "any element locator",
+    "returns": "boolean (true if invisible)",
+    "action_type": "isElementInvisible",
+    "metadata": {
+      "original_method": "isElementInvisible",
+      "prompt_variations": [
+        "is element hidden"
+      ]
+    }
+  },
+  {
+    "prompt": "verify element invisible",
+    "category": "Element Verification",
+    "description": "Check if an element is invisible or not present",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"any element locator\")));\n// TODO: Add specific action for isElementInvisible",
+    "xpath": "any element locator",
+    "returns": "boolean (true if invisible)",
+    "action_type": "isElementInvisible",
+    "metadata": {
+      "original_method": "isElementInvisible",
+      "prompt_variations": [
+        "verify element invisible"
+      ]
+    }
+  },
+  {
+    "prompt": "check if element not visible",
+    "category": "Element Verification",
+    "description": "Check if an element is invisible or not present",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"any element locator\")));\n// TODO: Add specific action for isElementInvisible",
+    "xpath": "any element locator",
+    "returns": "boolean (true if invisible)",
+    "action_type": "isElementInvisible",
+    "metadata": {
+      "original_method": "isElementInvisible",
+      "prompt_variations": [
+        "check if element not visible"
+      ]
+    }
+  },
+  {
+    "prompt": "is element gone",
+    "category": "Element Verification",
+    "description": "Check if an element is invisible or not present",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"any element locator\")));\n// TODO: Add specific action for isElementInvisible",
+    "xpath": "any element locator",
+    "returns": "boolean (true if invisible)",
+    "action_type": "isElementInvisible",
+    "metadata": {
+      "original_method": "isElementInvisible",
+      "prompt_variations": [
+        "is element gone"
+      ]
+    }
+  },
+  {
+    "prompt": "element disappeared",
+    "category": "Element Verification",
+    "description": "Check if an element is invisible or not present",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"any element locator\")));\n// TODO: Add specific action for isElementInvisible",
+    "xpath": "any element locator",
+    "returns": "boolean (true if invisible)",
+    "action_type": "isElementInvisible",
+    "metadata": {
+      "original_method": "isElementInvisible",
+      "prompt_variations": [
+        "element disappeared"
+      ]
+    }
+  },
+  {
+    "prompt": "get panel text",
+    "category": "Panel Operations",
+    "description": "Get the text content from a panel",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[@class='suif-panel']\")));\n// TODO: Add specific action for getPanelContents",
+    "xpath": "//div[@class='suif-panel']",
+    "returns": "String (panel content)",
+    "action_type": "getPanelContents",
+    "metadata": {
+      "original_method": "getPanelContents",
+      "prompt_variations": [
+        "get panel text"
+      ]
+    }
+  },
+  {
+    "prompt": "read panel content",
+    "category": "Panel Operations",
+    "description": "Get the text content from a panel",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[@class='suif-panel']\")));\n// TODO: Add specific action for getPanelContents",
+    "xpath": "//div[@class='suif-panel']",
+    "returns": "String (panel content)",
+    "action_type": "getPanelContents",
+    "metadata": {
+      "original_method": "getPanelContents",
+      "prompt_variations": [
+        "read panel content"
+      ]
+    }
+  },
+  {
+    "prompt": "what {LAST_NAME}s the panel say",
+    "category": "Panel Operations",
+    "description": "Get the text content from a panel",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[@class='suif-panel']\")));\n// TODO: Add specific action for getPanelContents",
+    "xpath": "//div[@class='suif-panel']",
+    "returns": "String (panel content)",
+    "action_type": "getPanelContents",
+    "metadata": {
+      "original_method": "getPanelContents",
+      "prompt_variations": [
+        "what {LAST_NAME}s the panel say"
+      ]
+    }
+  },
+  {
+    "prompt": "retrieve panel information",
+    "category": "Panel Operations",
+    "description": "Get the text content from a panel",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[@class='suif-panel']\")));\n// TODO: Add specific action for getPanelContents",
+    "xpath": "//div[@class='suif-panel']",
+    "returns": "String (panel content)",
+    "action_type": "getPanelContents",
+    "metadata": {
+      "original_method": "getPanelContents",
+      "prompt_variations": [
+        "retrieve panel information"
+      ]
+    }
+  },
+  {
+    "prompt": "fetch panel data",
+    "category": "Panel Operations",
+    "description": "Get the text content from a panel",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[@class='suif-panel']\")));\n// TODO: Add specific action for getPanelContents",
+    "xpath": "//div[@class='suif-panel']",
+    "returns": "String (panel content)",
+    "action_type": "getPanelContents",
+    "metadata": {
+      "original_method": "getPanelContents",
+      "prompt_variations": [
+        "fetch panel data"
+      ]
+    }
+  },
+  {
+    "prompt": "is panel with {text} present",
+    "category": "Panel Operations",
+    "description": "Check if a panel containing specific text exists",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[contains(@class,'panel') and contains(.,'{TEXT}')]\")));\n// TODO: Add specific action for isPanelFound",
+    "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "action_type": "isPanelFound",
+    "metadata": {
+      "original_method": "isPanelFound",
+      "prompt_variations": [
+        "is panel with {text} present"
+      ]
+    }
+  },
+  {
+    "prompt": "{LAST_NAME}s {text} panel exist",
+    "category": "Panel Operations",
+    "description": "Check if a panel containing specific text exists",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[contains(@class,'panel') and contains(.,'{TEXT}')]\")));\n// TODO: Add specific action for isPanelFound",
+    "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "action_type": "isPanelFound",
+    "metadata": {
+      "original_method": "isPanelFound",
+      "prompt_variations": [
+        "{LAST_NAME}s {text} panel exist"
+      ]
+    }
+  },
+  {
+    "prompt": "find panel containing {text}",
+    "category": "Panel Operations",
+    "description": "Check if a panel containing specific text exists",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[contains(@class,'panel') and contains(.,'{TEXT}')]\")));\n// TODO: Add specific action for isPanelFound",
+    "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "action_type": "isPanelFound",
+    "metadata": {
+      "original_method": "isPanelFound",
+      "prompt_variations": [
+        "find panel containing {text}"
+      ]
+    }
+  },
+  {
+    "prompt": "verify {text} panel",
+    "category": "Panel Operations",
+    "description": "Check if a panel containing specific text exists",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[contains(@class,'panel') and contains(.,'{TEXT}')]\")));\n// TODO: Add specific action for isPanelFound",
+    "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "action_type": "isPanelFound",
+    "metadata": {
+      "original_method": "isPanelFound",
+      "prompt_variations": [
+        "verify {text} panel"
+      ]
+    }
+  },
+  {
+    "prompt": "check for {text} panel",
+    "category": "Panel Operations",
+    "description": "Check if a panel containing specific text exists",
+    "code": "WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(\"//div[contains(@class,'panel') and contains(.,'{TEXT}')]\")));\n// TODO: Add specific action for isPanelFound",
+    "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]",
+    "returns": "boolean (true if found)",
+    "action_type": "isPanelFound",
+    "metadata": {
+      "original_method": "isPanelFound",
+      "prompt_variations": [
+        "check for {text} panel"
+      ]
+    }
+  }
+]

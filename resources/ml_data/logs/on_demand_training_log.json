@@ -1,0 +1,100 @@
+{
+  "last_training": {
+    "timestamp": "2026-04-07T10:24:49.277847",
+    "num_samples": 642,
+    "test_suites_scanned": 1,
+    "best_model": "random_forest",
+    "f1_score": 0.0,
+    "accuracy": 0.0
+  },
+  "history": [
+    {
+      "timestamp": "2026-04-01T18:07:13.823052",
+      "num_samples": 641,
+      "test_suites_scanned": 0,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T15:44:27.849500",
+      "num_samples": 641,
+      "test_suites_scanned": 0,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T15:47:59.828484",
+      "num_samples": 641,
+      "test_suites_scanned": 0,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T15:54:51.936036",
+      "num_samples": 641,
+      "test_suites_scanned": 0,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T16:05:08.041246",
+      "num_samples": 641,
+      "test_suites_scanned": 0,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T16:14:10.159150",
+      "num_samples": 641,
+      "test_suites_scanned": 0,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T16:27:15.700726",
+      "num_samples": 641,
+      "test_suites_scanned": 0,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T16:32:29.445593",
+      "num_samples": 641,
+      "test_suites_scanned": 0,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T16:35:06.461419",
+      "num_samples": 641,
+      "test_suites_scanned": 0,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T16:45:48.316027",
+      "num_samples": 642,
+      "test_suites_scanned": 1,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    },
+    {
+      "timestamp": "2026-04-06T16:49:34.714173",
+      "num_samples": 642,
+      "test_suites_scanned": 1,
+      "best_model": "random_forest",
+      "f1_score": 0.0,
+      "accuracy": 0.0
+    }
+  ]
+}

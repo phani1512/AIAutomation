@@ -1,0 +1,4931 @@
+[
+  {
+    "action": "Navigate to URL",
+    "description": "Navigate to a specific URL",
+    "steps": [
+      {
+        "step": 1,
+        "action": "navigate",
+        "code": "driver.get(\"{URL}\");",
+        "element_type": null,
+        "locator": null,
+        "prompt": "navigate to {URL}"
+      }
+    ],
+    "pattern_type": "navigation"
+  },
+  {
+    "action": "Enter Username",
+    "description": "Enter username in username field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.id(\"username\")).sendKeys(\"{USERNAME}\");",
+        "element_type": "input",
+        "locator": "By.id(\"username\")",
+        "value": "{USERNAME}",
+        "prompt": "enter {USERNAME} in username field"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  {
+    "action": "Click Search Box",
+    "description": "Click search box to focus",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"searchBox\")).click();",
+        "element_type": "input",
+        "locator": "By.id(\"searchBox\")",
+        "prompt": "click search box"
+      }
+    ],
+    "pattern_type": "input_click"
+  },
+  {
+    "action": "Enter Search Query",
+    "description": "Enter search query in search box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.id(\"searchBox\")).sendKeys(\"{SEARCH_QUERY}\");",
+        "element_type": "input",
+        "locator": "By.id(\"searchBox\")",
+        "value": "{SEARCH_QUERY}",
+        "prompt": "enter {SEARCH_QUERY} in search box"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  {
+    "action": "Click Submit Button",
+    "description": "Click the submit button",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.cssSelector(\"button[type='submit']\")).click();",
+        "element_type": "button",
+        "locator": "By.cssSelector(\"button[type='submit']\")",
+        "prompt": "click submit button"
+      }
+    ],
+    "pattern_type": "button_click"
+  },
+  {
+    "action": "Dropdown Selection",
+    "description": "User selects option from dropdown menu",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"country\")).click();",
+        "element_type": "select",
+        "locator": "By.id(\"country\")",
+        "prompt": "click country dropdown"
+      },
+      {
+        "step": 2,
+        "action": "select",
+        "code": "new Select(driver.findElement(By.id(\"country\"))).selectByVisibleText(\"United States\");",
+        "element_type": "select",
+        "locator": "By.id(\"country\")",
+        "value": "United States",
+        "prompt": "select United States from country dropdown"
+      }
+    ],
+    "pattern_type": "dropdown_selection"
+  },
+  {
+    "action": "Checkbox Selection",
+    "description": "User selects multiple checkboxes",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"terms\")).click();",
+        "element_type": "checkbox",
+        "locator": "By.id(\"terms\")",
+        "prompt": "click terms checkbox"
+      },
+      {
+        "step": 2,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"newsletter\")).click();",
+        "element_type": "checkbox",
+        "locator": "By.id(\"newsletter\")",
+        "prompt": "click newsletter checkbox"
+      }
+    ],
+    "pattern_type": "checkbox_selection"
+  },
+  {
+    "action": "Radio Button Selection",
+    "description": "User selects radio button option",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"male\")).click();",
+        "element_type": "radio",
+        "locator": "By.id(\"male\")",
+        "prompt": "select male radio button"
+      }
+    ],
+    "pattern_type": "radio_selection"
+  },
+  {
+    "action": "File Upload",
+    "description": "User uploads a file",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.id(\"fileUpload\")).sendKeys(\"{FILE_PATH}\");",
+        "element_type": "input",
+        "locator": "By.id(\"fileUpload\")",
+        "value": "{FILE_PATH}",
+        "prompt": "upload file {FILE_PATH}"
+      },
+      {
+        "step": 2,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"uploadBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"uploadBtn\")",
+        "prompt": "click upload button"
+      }
+    ],
+    "pattern_type": "file_upload"
+  },
+  {
+    "action": "Modal Dialog Interaction",
+    "description": "User interacts with modal popup",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"openModal\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"openModal\")",
+        "prompt": "click open modal button"
+      },
+      {
+        "step": 2,
+        "action": "wait",
+        "code": "new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id(\"modal\")));",
+        "element_type": "div",
+        "locator": "By.id(\"modal\")",
+        "prompt": "wait for modal to appear"
+      },
+      {
+        "step": 3,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.id(\"modalInput\")).sendKeys(\"{TEXT}\");",
+        "element_type": "input",
+        "locator": "By.id(\"modalInput\")",
+        "value": "{TEXT}",
+        "prompt": "enter {TEXT} in modal input"
+      },
+      {
+        "step": 4,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"confirmBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"confirmBtn\")",
+        "prompt": "click confirm button"
+      }
+    ],
+    "pattern_type": "modal_interaction"
+  },
+  {
+    "action": "Tab Navigation",
+    "description": "User navigates between tabs",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.linkText(\"Open New Tab\")).click();",
+        "element_type": "a",
+        "locator": "By.linkText(\"Open New Tab\")",
+        "prompt": "click open new tab link"
+      },
+      {
+        "step": 2,
+        "action": "switch",
+        "code": "String originalWindow = driver.getWindowHandle(); Set<String> handles = driver.getWindowHandles(); for(String handle : handles) { if(!handle.equals(originalWindow)) { driver.switchTo().window(handle); } }",
+        "element_type": null,
+        "locator": null,
+        "prompt": "switch to new tab"
+      }
+    ],
+    "pattern_type": "window_switching"
+  },
+  {
+    "action": "Alert Handling",
+    "description": "User handles JavaScript alert",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"alertBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"alertBtn\")",
+        "prompt": "click alert button"
+      },
+      {
+        "step": 2,
+        "action": "alert",
+        "code": "Alert alert = driver.switchTo().alert(); alert.accept();",
+        "element_type": null,
+        "locator": null,
+        "prompt": "accept alert"
+      }
+    ],
+    "pattern_type": "alert_handling"
+  },
+  {
+    "action": "Hover Menu Navigation",
+    "description": "User hovers over menu to reveal submenu and clicks",
+    "steps": [
+      {
+        "step": 1,
+        "action": "hover",
+        "code": "WebElement menu = driver.findElement(By.id(\"mainMenu\")); new Actions(driver).moveToElement(menu).perform();",
+        "element_type": "div",
+        "locator": "By.id(\"mainMenu\")",
+        "prompt": "hover over main menu"
+      },
+      {
+        "step": 2,
+        "action": "wait",
+        "code": "new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.id(\"subMenu\")));",
+        "element_type": "div",
+        "locator": "By.id(\"subMenu\")",
+        "prompt": "wait for submenu to appear"
+      },
+      {
+        "step": 3,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"subMenuItem\")).click();",
+        "element_type": "a",
+        "locator": "By.id(\"subMenuItem\")",
+        "prompt": "click submenu item"
+      }
+    ],
+    "pattern_type": "hover_navigation"
+  },
+  {
+    "action": "Error Message Verification",
+    "description": "User verifies validation message",
+    "steps": [
+      {
+        "action": "verify",
+        "code": "String errorMsg = driver.findElement(By.id(\"errorMessage\")).getText(); assert errorMsg.equals(\"Please fill all required fields\");",
+        "element_type": "span",
+        "locator": "By.id(\"errorMessage\")",
+        "prompt": "verify error message"
+      }
+    ],
+    "pattern_type": "validation_check"
+  },
+  {
+    "action": "Scroll to Element",
+    "description": "User scrolls to element and interacts with it",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll",
+        "code": "WebElement element = driver.findElement(By.id(\"footer\")); ((JavascriptExecutor)driver).executeScript(\"arguments[0].scrollIntoView(true);\", element);",
+        "element_type": "div",
+        "locator": "By.id(\"footer\")",
+        "prompt": "scroll to footer"
+      },
+      {
+        "step": 2,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"footerLink\")).click();",
+        "element_type": "a",
+        "locator": "By.id(\"footerLink\")",
+        "prompt": "click footer link"
+      }
+    ],
+    "pattern_type": "scroll_interaction"
+  },
+  {
+    "action": "Dynamic Content Wait",
+    "description": "User waits for dynamic content to load",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"loadDataBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"loadDataBtn\")",
+        "prompt": "click load data button"
+      },
+      {
+        "step": 2,
+        "action": "wait",
+        "code": "new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.presenceOfElementLocated(By.className(\"dataRow\")));",
+        "element_type": "div",
+        "locator": "By.className(\"dataRow\")",
+        "prompt": "wait for data to load"
+      },
+      {
+        "step": 3,
+        "action": "verify",
+        "code": "List<WebElement> rows = driver.findElements(By.className(\"dataRow\")); assert rows.size() > 0;",
+        "element_type": "div",
+        "locator": "By.className(\"dataRow\")",
+        "prompt": "verify data rows exist"
+      }
+    ],
+    "pattern_type": "ajax_wait"
+  },
+  {
+    "action": "Table Data Extraction",
+    "description": "User extracts data from table",
+    "steps": [
+      {
+        "step": 1,
+        "action": "find",
+        "code": "WebElement table = driver.findElement(By.id(\"dataTable\"));",
+        "element_type": "table",
+        "locator": "By.id(\"dataTable\")",
+        "prompt": "find data table"
+      },
+      {
+        "step": 2,
+        "action": "extract",
+        "code": "List<WebElement> rows = table.findElements(By.tagName(\"tr\")); for(WebElement row : rows) { List<WebElement> cells = row.findElements(By.tagName(\"td\")); }",
+        "element_type": "tr",
+        "locator": "By.tagName(\"tr\")",
+        "prompt": "extract table rows"
+      }
+    ],
+    "pattern_type": "table_extraction"
+  },
+  {
+    "action": "Enter First Name",
+    "description": "Enter first name in firstName field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.name(\"firstName\")).sendKeys(\"{FIRST_NAME}\");",
+        "element_type": "input",
+        "locator": "By.name(\"firstName\")",
+        "value": "{FIRST_NAME}",
+        "prompt": "enter {FIRST_NAME} in first name field"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  {
+    "action": "Enter Last Name",
+    "description": "Enter last name in lastName field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.name(\"lastName\")).sendKeys(\"{LAST_NAME}\");",
+        "element_type": "input",
+        "locator": "By.name(\"lastName\")",
+        "value": "{LAST_NAME}",
+        "prompt": "enter {LAST_NAME} in last name field"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  {
+    "action": "Enter Phone Number",
+    "description": "Enter phone number in phone field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "sendKeys",
+        "code": "driver.findElement(By.name(\"phone\")).sendKeys(\"{PHONE}\");",
+        "element_type": "input",
+        "locator": "By.name(\"phone\")",
+        "value": "{PHONE}",
+        "prompt": "enter {PHONE} in phone field"
+      }
+    ],
+    "pattern_type": "input_text"
+  },
+  {
+    "action": "Click Next Button",
+    "description": "Click the next button",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"nextBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"nextBtn\")",
+        "prompt": "click next button"
+      }
+    ],
+    "pattern_type": "button_click"
+  },
+  {
+    "action": "Click Submit Button ID",
+    "description": "Click the submit button with ID",
+    "steps": [
+      {
+        "step": 1,
+        "action": "click",
+        "code": "driver.findElement(By.id(\"submitBtn\")).click();",
+        "element_type": "button",
+        "locator": "By.id(\"submitBtn\")",
+        "prompt": "click submit button ID"
+      }
+    ],
+    "pattern_type": "button_click"
+  },
+  {
+    "action": "Write code to enter a value in a text field using its visible label",
+    "description": "input_field_interaction: Write code to enter a value in a text field using its visible label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "input_field_interaction",
+        "code": "setInputFieldValue(\"Full Name\", \"{FULL_NAME}\");",
+        "prompt": "Enter '{FULL_NAME}' in the 'Full Name' field",
+        "pattern_type": "setInputFieldValue(String labelName, String value)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to verify the value in a field by its label",
+    "description": "input_field_validation: Write code to verify the value in a field by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "input_field_validation",
+        "code": "String email = getInputFieldValue(\"Email Address\");",
+        "prompt": "Get the value from the 'Email Address' field",
+        "pattern_type": "String getInputFieldValue(String labelName)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to check if a field is disabled",
+    "description": "input_field_validation: Write code to check if a field is disabled",
+    "steps": [
+      {
+        "step": 1,
+        "action": "input_field_validation",
+        "code": "boolean isDisabled = isInputFieldDisabled(\"Social Security Number\");",
+        "prompt": "Check if the 'Social Security Number' field is disabled",
+        "pattern_type": "boolean isInputFieldDisabled(String labelName)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to select an option from a dropdown using its label",
+    "description": "dropdown_interaction: Write code to select an option from a dropdown using its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "dropdown_interaction",
+        "code": "setDropdownValue(\"State\", \"{STATE}\");",
+        "prompt": "Select '{STATE}' from the 'State' dropdown",
+        "pattern_type": "setDropdownValue(String labelName, String value)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to retrieve the selected value from a dropdown",
+    "description": "dropdown_validation: Write code to retrieve the selected value from a dropdown",
+    "steps": [
+      {
+        "step": 1,
+        "action": "dropdown_validation",
+        "code": "String country = getSelectedDropdownValue(\"Country\");",
+        "prompt": "Get the selected value from 'Country' dropdown",
+        "pattern_type": "String getSelectedDropdownValue(String labelName)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to check a checkbox by its label",
+    "description": "checkbox_interaction: Write code to check a checkbox by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "checkbox_interaction",
+        "code": "setCheckboxOn(\"I agree to terms and conditions\");",
+        "prompt": "Check the 'I agree to terms and conditions' checkbox",
+        "pattern_type": "setCheckboxOn(String labelName)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to uncheck a checkbox",
+    "description": "checkbox_interaction: Write code to uncheck a checkbox",
+    "steps": [
+      {
+        "step": 1,
+        "action": "checkbox_interaction",
+        "code": "setCheckboxOff(\"Subscribe to newsletter\");",
+        "prompt": "Uncheck the 'Subscribe to newsletter' checkbox",
+        "pattern_type": "setCheckboxOff(String labelName)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to verify if a checkbox is checked",
+    "description": "checkbox_validation: Write code to verify if a checkbox is checked",
+    "steps": [
+      {
+        "step": 1,
+        "action": "checkbox_validation",
+        "code": "boolean isChecked = isCheckboxOn(\"Remember me\");",
+        "prompt": "Verify if 'Remember me' checkbox is checked",
+        "pattern_type": "boolean isCheckboxOn(String labelName)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to select a radio button by its label",
+    "description": "radio_button_interaction: Write code to select a radio button by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "radio_button_interaction",
+        "code": "selectRadioButton(\"Credit Card\");",
+        "prompt": "Select the 'Credit Card' radio button",
+        "pattern_type": "selectRadioButton(String labelName)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to verify if a radio button is selected",
+    "description": "radio_button_validation: Write code to verify if a radio button is selected",
+    "steps": [
+      {
+        "step": 1,
+        "action": "radio_button_validation",
+        "code": "boolean isSelected = isRadioButtonSelected(\"Debit Card\");",
+        "prompt": "Check if 'Debit Card' radio button is selected",
+        "pattern_type": "boolean isRadioButtonSelected(String labelName)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to click a button by its text",
+    "description": "button_interaction: Write code to click a button by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "button_interaction",
+        "code": "clickButton(\"Submit\");",
+        "prompt": "Click the 'Submit' button",
+        "pattern_type": "clickButton(String buttonText)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to click a button in a dialog",
+    "description": "dialog_interaction: Write code to click a button in a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "dialog_interaction",
+        "code": "clickDialogButton(\"Confirm\");",
+        "prompt": "Click 'Confirm' button in the dialog",
+        "pattern_type": "clickDialogButton(String buttonText)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to verify if a button exists",
+    "description": "button_validation: Write code to verify if a button exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "button_validation",
+        "code": "boolean exists = isButtonFound(\"Cancel\");",
+        "prompt": "Check if 'Cancel' button is present",
+        "pattern_type": "boolean isButtonFound(String buttonText)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to click a link by its text",
+    "description": "link_interaction: Write code to click a link by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "link_interaction",
+        "code": "clickLink(\"Forgot Password?\");",
+        "prompt": "Click on 'Forgot Password?' link",
+        "pattern_type": "clickLink(String linkText)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to verify if a link opens in new tab",
+    "description": "link_validation: Write code to verify if a link opens in new tab",
+    "steps": [
+      {
+        "step": 1,
+        "action": "link_validation",
+        "code": "boolean opensNew = isLinkOpeningInNewTab(\"Privacy Policy\");",
+        "prompt": "Check if 'Privacy Policy' link opens in a new tab",
+        "pattern_type": "boolean isLinkOpeningInNewTab(String linkText)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to click a navigation tab",
+    "description": "tab_navigation: Write code to click a navigation tab",
+    "steps": [
+      {
+        "step": 1,
+        "action": "tab_navigation",
+        "code": "clickNavigationTab(\"Settings\");",
+        "prompt": "Click on the 'Settings' tab",
+        "pattern_type": "clickNavigationTab(String tabName)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to verify if a tab is active",
+    "description": "tab_validation: Write code to verify if a tab is active",
+    "steps": [
+      {
+        "step": 1,
+        "action": "tab_validation",
+        "code": "boolean isActive = isTabButtonActive(\"Profile\");",
+        "prompt": "Verify if 'Profile' tab is active",
+        "pattern_type": "boolean isTabButtonActive(String tabName)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to check if a dialog is open",
+    "description": "dialog_validation: Write code to check if a dialog is open",
+    "steps": [
+      {
+        "step": 1,
+        "action": "dialog_validation",
+        "code": "boolean isOpen = isDialogOpen();",
+        "prompt": "Check if a dialog is currently displayed",
+        "pattern_type": "boolean isDialogOpen()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to get dialog content",
+    "description": "dialog_validation: Write code to get dialog content",
+    "steps": [
+      {
+        "step": 1,
+        "action": "dialog_validation",
+        "code": "String content = getDialogContent();",
+        "prompt": "Read the text content from the dialog",
+        "pattern_type": "String getDialogContent()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to close a dialog",
+    "description": "dialog_interaction: Write code to close a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "dialog_interaction",
+        "code": "closeDialog();",
+        "prompt": "Close the currently open dialog",
+        "pattern_type": "closeDialog()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to submit a dialog",
+    "description": "dialog_interaction: Write code to submit a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "dialog_interaction",
+        "code": "clickDialogSubmitButton();",
+        "prompt": "Click the submit button in the dialog",
+        "pattern_type": "clickDialogSubmitButton()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to search within a table",
+    "description": "table_interaction: Write code to search within a table",
+    "steps": [
+      {
+        "step": 1,
+        "action": "table_interaction",
+        "code": "searchTable(\"{FIRST_NAME} {LAST_NAME}\");",
+        "prompt": "Search for '{FIRST_NAME} {LAST_NAME}' in the table",
+        "pattern_type": "searchTable(String criteria)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to count table rows",
+    "description": "table_validation: Write code to count table rows",
+    "steps": [
+      {
+        "step": 1,
+        "action": "table_validation",
+        "code": "int rowCount = getTableRowCount();",
+        "prompt": "Get the number of rows in the table",
+        "pattern_type": "int getTableRowCount()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to check if table has no results",
+    "description": "table_validation: Write code to check if table has no results",
+    "steps": [
+      {
+        "step": 1,
+        "action": "table_validation",
+        "code": "boolean noResults = isSearchTableNoResultsFound();",
+        "prompt": "Verify if the table search returned no results",
+        "pattern_type": "boolean isSearchTableNoResultsFound()",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to select a table row by text",
+    "description": "table_interaction: Write code to select a table row by text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "table_interaction",
+        "code": "setTableRowCheckboxOn(\"Active User\");",
+        "prompt": "Check the checkbox for the row containing 'Active User'",
+        "pattern_type": "setTableRowCheckboxOn(String identifyingText)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to verify table contains text",
+    "description": "table_validation: Write code to verify table contains text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "table_validation",
+        "code": "boolean contains = isTableContains(\"Approved\");",
+        "prompt": "Check if the table contains 'Approved'",
+        "pattern_type": "boolean isTableContains(String text)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to click edit button in a row",
+    "description": "table_row_action: Write code to click edit button in a row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "table_row_action",
+        "code": "clickEditPencilButton();",
+        "prompt": "Click the edit pencil icon",
+        "pattern_type": "clickEditPencilButton()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to click delete button in a row",
+    "description": "table_row_action: Write code to click delete button in a row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "table_row_action",
+        "code": "clickTrashCanButton();",
+        "prompt": "Click the trash can icon to delete",
+        "pattern_type": "clickTrashCanButton()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to read a success message",
+    "description": "message_validation: Write code to read a success message",
+    "steps": [
+      {
+        "step": 1,
+        "action": "message_validation",
+        "code": "String message = getMessageBoxSuccessText();",
+        "prompt": "Get the success message text",
+        "pattern_type": "String getMessageBoxSuccessText()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to read an error message",
+    "description": "message_validation: Write code to read an error message",
+    "steps": [
+      {
+        "step": 1,
+        "action": "message_validation",
+        "code": "String error = getMessageBoxErrorText();",
+        "prompt": "Get the error message displayed",
+        "pattern_type": "String getMessageBoxErrorText()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to read a toast notification",
+    "description": "message_validation: Write code to read a toast notification",
+    "steps": [
+      {
+        "step": 1,
+        "action": "message_validation",
+        "code": "String toast = getToastSuccessText();",
+        "prompt": "Get the success toast message",
+        "pattern_type": "String getToastSuccessText()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to get validation message for a field",
+    "description": "validation_message: Write code to get validation message for a field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "validation_message",
+        "code": "String message = getInputFieldValidationMessage(\"Email\");",
+        "prompt": "Get the validation error for 'Email' field",
+        "pattern_type": "String getInputFieldValidationMessage(String labelName)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to wait for page to load",
+    "description": "wait_operation: Write code to wait for page to load",
+    "steps": [
+      {
+        "step": 1,
+        "action": "wait_operation",
+        "code": "waitForPageLoading();",
+        "prompt": "Wait until the page finishes loading",
+        "pattern_type": "waitForPageLoading()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to wait for processing spinner",
+    "description": "wait_operation: Write code to wait for processing spinner",
+    "steps": [
+      {
+        "step": 1,
+        "action": "wait_operation",
+        "code": "waitForProcessingSpinner();",
+        "prompt": "Wait for the processing spinner to disappear",
+        "pattern_type": "waitForProcessingSpinner()",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to wait for toast notification",
+    "description": "wait_operation: Write code to wait for toast notification",
+    "steps": [
+      {
+        "step": 1,
+        "action": "wait_operation",
+        "code": "waitForToastSuccess();",
+        "prompt": "Wait for success toast to appear and disappear",
+        "pattern_type": "waitForToastSuccess()",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to upload a file",
+    "description": "file_operation: Write code to upload a file",
+    "steps": [
+      {
+        "step": 1,
+        "action": "file_operation",
+        "code": "selectFileToUpload(\"test-document.pdf\");",
+        "prompt": "Upload the file 'test-document.pdf'",
+        "pattern_type": "selectFileToUpload(String... filePaths)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to click a menu item",
+    "description": "menu_navigation: Write code to click a menu item",
+    "steps": [
+      {
+        "step": 1,
+        "action": "menu_navigation",
+        "code": "clickMenu(\"File\");",
+        "prompt": "Click on 'File' menu",
+        "pattern_type": "clickMenu(String menuText)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to click a submenu item",
+    "description": "menu_navigation: Write code to click a submenu item",
+    "steps": [
+      {
+        "step": 1,
+        "action": "menu_navigation",
+        "code": "clickSubmenu(\"Export\");",
+        "prompt": "Click on 'Export' submenu",
+        "pattern_type": "clickSubmenu(String submenuText)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code to scroll element into view",
+    "description": "scroll_operation: Write code to scroll element into view",
+    "steps": [
+      {
+        "step": 1,
+        "action": "scroll_operation",
+        "code": "scrollToView(By.id(\"footer\"));",
+        "prompt": "Scroll to make the footer visible",
+        "pattern_type": "scrollToView(By locator)",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code to check element existence",
+    "description": "element_validation: Write code to check element existence",
+    "steps": [
+      {
+        "step": 1,
+        "action": "element_validation",
+        "code": "boolean exists = isElementFound(By.id(\"header\"));",
+        "prompt": "Check if an element with ID 'header' exists",
+        "pattern_type": "boolean isElementFound(By locator)",
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "action": "Write code for complete form filling workflow",
+    "description": "workflow: Write code for complete form filling workflow",
+    "steps": [
+      {
+        "step": 1,
+        "action": "workflow",
+        "code": "setInputFieldValue(\"First Name\", \"{FIRST_NAME}\");\nsetInputFieldValue(\"Last Name\", \"{LAST_NAME}\");\nselectRadioButton(\"Female\");\nsetCheckboxOn(\"I agree to terms\");\nclickButton(\"Submit\");",
+        "prompt": "Fill out a registration form with first name '{FIRST_NAME}', last name '{LAST_NAME}', select 'Female' gender, check terms, and submit",
+        "pattern_type": "multiple methods",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Write code for table search and edit workflow",
+    "description": "workflow: Write code for table search and edit workflow",
+    "steps": [
+      {
+        "step": 1,
+        "action": "workflow",
+        "code": "searchTable(\"{FULL_NAME}\");\nclickEditPencilButton();",
+        "prompt": "Search for '{FULL_NAME}' in table, then click the edit button",
+        "pattern_type": "multiple methods",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code for dialog interaction workflow",
+    "description": "workflow: Write code for dialog interaction workflow",
+    "steps": [
+      {
+        "step": 1,
+        "action": "workflow",
+        "code": "waitUntilDialogIsOpen(5);\nsetInputFieldValue(\"Name\", \"New Value\");\nclickDialogSubmitButton();",
+        "prompt": "Open dialog, enter 'New Value' in 'Name' field, and submit",
+        "pattern_type": "multiple methods",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write code for validation checking workflow",
+    "description": "workflow: Write code for validation checking workflow",
+    "steps": [
+      {
+        "step": 1,
+        "action": "workflow",
+        "code": "setInputFieldValue(\"Email\", \"invalid\");\nString error = getInputFieldValidationMessage(\"Email\");\nboolean disabled = isSubmitButtonDisabled();",
+        "prompt": "Enter invalid email, check for validation message, then verify submit is disabled",
+        "pattern_type": "multiple methods",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Write code for multi-step navigation and data entry",
+    "description": "workflow: Write code for multi-step navigation and data entry",
+    "steps": [
+      {
+        "step": 1,
+        "action": "workflow",
+        "code": "clickNavigationTab(\"Personal Info\");\nsetInputFieldValue(\"Full Name\", \"{FIRST_NAME} {LAST_NAME}\");\nclickNavigationTab(\"Address\");\nsetInputFieldValue(\"City\", \"{CITY}\");",
+        "prompt": "Click 'Personal Info' tab, enter name, then click 'Address' tab and enter city",
+        "pattern_type": "multiple methods",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Write natural language to code conversion",
+    "description": "natural_language: Write natural language to code conversion",
+    "steps": [
+      {
+        "step": 1,
+        "action": "natural_language",
+        "code": "setInputFieldValue(\"Password\", \"Test123!\");\nString value = getInputFieldValue(\"Password\");\nassertTrue(value.isEmpty() || value.equals(\"••••••\"));",
+        "prompt": "type Test123! into Password field and verify it's not visible",
+        "pattern_type": "multiple methods",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Write natural language to code conversion",
+    "description": "natural_language: Write natural language to code conversion",
+    "steps": [
+      {
+        "step": 1,
+        "action": "natural_language",
+        "code": "boolean initiallyDisabled = isSubmitButtonDisabled();\nsetInputFieldValue(\"Name\", \"Test Name\");\nboolean nowEnabled = !isSubmitButtonDisabled();",
+        "prompt": "make sure the save button is disabled until I fill the required name field",
+        "pattern_type": "multiple methods",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Write natural language to code conversion",
+    "description": "natural_language: Write natural language to code conversion",
+    "steps": [
+      {
+        "step": 1,
+        "action": "natural_language",
+        "code": "setDropdownValue(\"Country\", \"{COUNTRY}\");\nsetDropdownValue(\"State\", \"{STATE}\");",
+        "prompt": "select {COUNTRY} from country dropdown then pick {STATE} from state",
+        "pattern_type": "multiple methods",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write natural language to code conversion",
+    "description": "natural_language: Write natural language to code conversion",
+    "steps": [
+      {
+        "step": 1,
+        "action": "natural_language",
+        "code": "searchTable(\"{FIRST_NAME}@example.com\");\nclickTrashCanButton();",
+        "prompt": "find the row with {FIRST_NAME}@example.com and click the trash icon",
+        "pattern_type": "multiple methods",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Write natural language to code conversion",
+    "description": "natural_language: Write natural language to code conversion",
+    "steps": [
+      {
+        "step": 1,
+        "action": "natural_language",
+        "code": "String message = getMessageBoxSuccessText();\nassertTrue(message.contains(\"Data saved successfully\"));",
+        "prompt": "check if the success message says data saved successfully",
+        "pattern_type": "multiple methods",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Generate test assertion from description",
+    "description": "test_generation: Generate test assertion from description",
+    "steps": [
+      {
+        "step": 1,
+        "action": "test_generation",
+        "code": "setInputFieldValue(\"Phone Number\", \"123\");\nString error = getInputFieldValidationMessage(\"Phone Number\");\nassertFalse(error.isEmpty(), \"Expected validation error for invalid phone\");",
+        "prompt": "Verify that after entering an invalid phone number, the field shows an error message",
+        "pattern_type": "multiple methods with assertions",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Generate test assertion from description",
+    "description": "test_generation: Generate test assertion from description",
+    "steps": [
+      {
+        "step": 1,
+        "action": "test_generation",
+        "code": "boolean initiallyDisabled = isSubmitButtonDisabled();\nsetCheckboxOn(\"I agree to terms and conditions\");\nboolean nowEnabled = !isSubmitButtonDisabled();\nassertTrue(initiallyDisabled && nowEnabled, \"Submit should be enabled after accepting terms\");",
+        "prompt": "Verify the terms checkbox must be checked before submit button is enabled",
+        "pattern_type": "multiple methods with assertions",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Generate test assertion from description",
+    "description": "test_generation: Generate test assertion from description",
+    "steps": [
+      {
+        "step": 1,
+        "action": "test_generation",
+        "code": "boolean isDisabled = isDropdownFieldDisabled(\"Country\");\nassertTrue(isDisabled, \"Country dropdown should be disabled\");\nList<WebElement> options = getDropdownSearchResults();\nassertTrue(options.isEmpty(), \"No options should be available for disabled dropdown\");",
+        "prompt": "Verify that clicking a disabled dropdown {LAST_NAME}s not show any options",
+        "pattern_type": "multiple methods with assertions",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Generate complete test method",
+    "description": "test_generation: Generate complete test method",
+    "steps": [
+      {
+        "step": 1,
+        "action": "test_generation",
+        "code": "@Test\npublic void testSuccessfulRegistration() {\n    setInputFieldValue(\"First Name\", \"{FIRST_NAME}\");\n    setInputFieldValue(\"Last Name\", \"{LAST_NAME}\");\n    setInputFieldValue(\"Email\", \"{FIRST_NAME}.{LAST_NAME}@example.com\");\n    setInputFieldValue(\"Password\", \"SecurePass123!\");\n    setCheckboxOn(\"I agree to terms\");\n    clickButton(\"Register\");\n    waitForToastSuccess();\n    String message = getToastSuccessText();\n    assertTrue(message.contains(\"Registration successful\"));\n}",
+        "prompt": "Create a test that verifies user can successfully register with valid data",
+        "pattern_type": "complete test method",
+        "difficulty": "expert"
+      }
+    ]
+  },
+  {
+    "action": "Generate complete test method",
+    "description": "test_generation: Generate complete test method",
+    "steps": [
+      {
+        "step": 1,
+        "action": "test_generation",
+        "code": "@Test\npublic void testEditUserProfile() {\n    clickNavigationTab(\"Profile\");\n    waitForPageLoading();\n    clickButton(\"Edit\");\n    setInputFieldValue(\"Display Name\", \"{FIRST_NAME}ny D\");\n    setInputFieldValue(\"Bio\", \"Software Engineer\");\n    setDropdownValue(\"Country\", \"{COUNTRY}\");\n    clickButton(\"Save Changes\");\n    waitForToastSuccess();\n    String toast = getToastSuccessText();\n    assertEquals(\"Profile updated successfully\", toast);\n}",
+        "prompt": "Create a test for editing user profile information",
+        "pattern_type": "complete test method",
+        "difficulty": "expert"
+      }
+    ]
+  },
+  {
+    "action": "Handle error scenario",
+    "description": "error_handling: Handle error scenario",
+    "steps": [
+      {
+        "step": 1,
+        "action": "error_handling",
+        "code": "setInputFieldValue(\"Email\", \"\");\nclickButton(\"Submit\");\nString validationMsg = getInputFieldValidationMessage(\"Email\");\nassertEquals(\"Email is required\", validationMsg);\nboolean submitDisabled = isSubmitButtonDisabled();\nassertTrue(submitDisabled);",
+        "prompt": "Write code to handle when a required field validation fails",
+        "pattern_type": "validation workflow",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Handle edge case",
+    "description": "edge_case: Handle edge case",
+    "steps": [
+      {
+        "step": 1,
+        "action": "edge_case",
+        "code": "String longText = \"a\".repeat(1000);\nsetInputFieldValue(\"Name\", longText);\nString actualValue = getInputFieldValue(\"Name\");\nassertTrue(actualValue.length() <= 255, \"Input should be limited to 255 characters\");",
+        "prompt": "Test that extremely long input is truncated or rejected",
+        "pattern_type": "boundary testing",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Handle dynamic content",
+    "description": "dynamic_content: Handle dynamic content",
+    "steps": [
+      {
+        "step": 1,
+        "action": "dynamic_content",
+        "code": "searchTable(\"test\");\nwaitForPageLoading();\nint rowCount = getTableRowCount();\nassertTrue(rowCount > 0, \"Expected search results\");\nboolean contains = isTableContains(\"test\");\nassertTrue(contains);",
+        "prompt": "Wait for table to load after search and verify results",
+        "pattern_type": "async waiting",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Handle conditional logic",
+    "description": "conditional_logic: Handle conditional logic",
+    "steps": [
+      {
+        "step": 1,
+        "action": "conditional_logic",
+        "code": "if (isDropdownFieldFound(\"Country\")) {\n    setDropdownValue(\"Country\", \"{COUNTRY}\");\n    waitForPageLoading();\n    if (isInputFieldFound(\"Address\")) {\n        setInputFieldValue(\"Address\", \"{ADDRESS}\");\n    }\n}",
+        "prompt": "Only fill address if country is selected",
+        "pattern_type": "conditional workflow",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Handle multiple similar elements",
+    "description": "multiple_elements: Handle multiple similar elements",
+    "steps": [
+      {
+        "step": 1,
+        "action": "multiple_elements",
+        "code": "int editCount = getEditPencilButtonCount();\nassertTrue(editCount >= 2, \"Need at least 2 edit buttons\");\nclickEditPencilButton(1); // 0-indexed, so 1 is second",
+        "prompt": "Find and edit the second occurrence of Edit button",
+        "pattern_type": "indexed selection",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Complex workflow with validation",
+    "description": "complex_workflow: Complex workflow with validation",
+    "steps": [
+      {
+        "step": 1,
+        "action": "complex_workflow",
+        "code": "// Step 1: Personal Info\nclickNavigationTab(\"Personal Info\");\nsetInputFieldValue(\"First Name\", \"{FIRST_NAME}\");\nsetInputFieldValue(\"Last Name\", \"{LAST_NAME}\");\nclickButton(\"Next\");\n\n// Step 2: Contact\nclickNavigationTab(\"Contact\");\nsetInputFieldValue(\"Email\", \"{FIRST_NAME}@example.com\");\nsetInputFieldValue(\"Phone\", \"{PHONE}\");\nString emailError = getInputFieldValidationMessage(\"Email\");\nassertTrue(emailError.isEmpty());\nclickButton(\"Next\");\n\n// Step 3: Review & Submit\nclickNavigationTab(\"Review\");\nString panelContent = getPanelContents();\nassertTrue(panelContent.contains(\"{FIRST_NAME}\"));\nassertTrue(panelContent.contains(\"{LAST_NAME}\"));\nclickButton(\"Submit\");\nwaitForToastSuccess();",
+        "prompt": "Complete a multi-step form with validation at each step",
+        "pattern_type": "multi-step with validation",
+        "difficulty": "expert"
+      }
+    ]
+  },
+  {
+    "action": "Data-driven test pattern",
+    "description": "data_driven: Data-driven test pattern",
+    "steps": [
+      {
+        "step": 1,
+        "action": "data_driven",
+        "code": "public void testLogin(String username, String password, boolean shouldSucceed) {\n    setInputFieldValue(\"Username\", username);\n    setInputFieldValue(\"Password\", password);\n    clickButton(\"Login\");\n    \n    if (shouldSucceed) {\n        waitForPageLoading();\n        assertTrue(isElementFound(By.id(\"dashboard\")));\n    } else {\n        String error = getMessageBoxErrorText();\n        assertFalse(error.isEmpty());\n    }\n}",
+        "prompt": "Create a re{COUNTRY}ble method to test login with different credentials",
+        "pattern_type": "parameterized method",
+        "difficulty": "expert"
+      }
+    ]
+  },
+  {
+    "action": "Generate page object method from UI description",
+    "description": "method_generation: Generate page object method from UI description",
+    "steps": [
+      {
+        "step": 1,
+        "action": "method_generation",
+        "code": "public void fillPaymentDetails(String cardNumber, String expiry, String cvv) {\n    setInputFieldValue(\"Card Number\", cardNumber);\n    setInputFieldValue(\"Expiry Date\", expiry);\n    setInputFieldValue(\"CVV\", cvv);\n    setCheckboxOn(\"Save card for future use\");\n}",
+        "prompt": "Create a method to fill a payment form with card details",
+        "pattern_type": "custom helper method",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Generate page object method from UI description",
+    "description": "method_generation: Generate page object method from UI description",
+    "steps": [
+      {
+        "step": 1,
+        "action": "method_generation",
+        "code": "public void filterTable(String searchTerm, String statusFilter) {\n    searchTable(searchTerm);\n    waitForPageLoading();\n    clickButton(\"Filters\");\n    setDropdownValue(\"Status\", statusFilter);\n    clickDialogButton(\"Apply\");\n    waitForPageLoading();\n}",
+        "prompt": "Create a method to filter table by multiple criteria",
+        "pattern_type": "custom helper method",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Refactor repetitive code to use Page Helper methods",
+    "description": "refactoring: Refactor repetitive code to use Page Helper methods",
+    "steps": [
+      {
+        "step": 1,
+        "action": "refactoring",
+        "code": "setInputFieldValue(\"Name\", \"{FIRST_NAME}\");",
+        "prompt": "Refactor: driver.findElement(By.xpath(\"//label[text()='Name']/../input\")).sendKeys(\"{FIRST_NAME}\");",
+        "pattern_type": "code improvement",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Refactor repetitive code to use Page Helper methods",
+    "description": "refactoring: Refactor repetitive code to use Page Helper methods",
+    "steps": [
+      {
+        "step": 1,
+        "action": "refactoring",
+        "code": "setCheckboxOn(\"Terms\");",
+        "prompt": "Refactor: WebElement checkbox = driver.findElement(By.xpath(\"//label[text()='Terms']/input\")); if (!checkbox.isSelected()) checkbox.click();",
+        "pattern_type": "code improvement",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "Complex assertion with multiple validations",
+    "description": "complex_assertion: Complex assertion with multiple validations",
+    "steps": [
+      {
+        "step": 1,
+        "action": "complex_assertion",
+        "code": "clickButton(\"Submit\");\nwaitForToastSuccess();\nString successMsg = getToastSuccessText();\nassertEquals(\"Form submitted successfully\", successMsg);\nwaitForPageLoading();\nboolean isDashboard = isElementFound(By.id(\"dashboard\"));\nassertTrue(isDashboard, \"Should redirect to dashboard after submission\");",
+        "prompt": "Verify form submission shows success and redirects to dashboard",
+        "pattern_type": "multi-step verification",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Handle timeout scenarios",
+    "description": "timeout_handling: Handle timeout scenarios",
+    "steps": [
+      {
+        "step": 1,
+        "action": "timeout_handling",
+        "code": "try {\n    waitUntilDialogIsOpen(10);\n    clickDialogButton(\"OK\");\n} catch (TimeoutException e) {\n    System.out.println(\"Dialog did not appear within timeout\");\n    // Continue with alternative flow\n}",
+        "prompt": "Wait for dialog with custom timeout and handle if it {LAST_NAME}sn't appear",
+        "pattern_type": "exception handling",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Generate accessibility test",
+    "description": "accessibility: Generate accessibility test",
+    "steps": [
+      {
+        "step": 1,
+        "action": "accessibility",
+        "code": "@Test\npublic void testKeyboardNavigation() {\n    assertTrue(isInputFieldFound(\"Name\"));\n    assertTrue(isInputFieldFound(\"Email\"));\n    assertTrue(isDropdownFieldFound(\"Country\"));\n    assertTrue(isCheckboxFound(\"Terms\"));\n    assertTrue(isButtonFound(\"Submit\"));\n    \n    // All interactive elements should be accessible\n    assertFalse(isInputFieldDisabled(\"Name\"));\n    assertFalse(isDropdownFieldDisabled(\"Country\"));\n    assertFalse(isCheckboxDisabled(\"Terms\"));\n}",
+        "prompt": "Verify all form fields can be navigated using keyboard",
+        "pattern_type": "accessibility validation",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "action": "Generate performance validation test",
+    "description": "performance: Generate performance validation test",
+    "steps": [
+      {
+        "step": 1,
+        "action": "performance",
+        "code": "@Test\npublic void testPageLoadPerformance() {\n    long startTime = System.currentTimeMillis();\n    waitForPageLoading();\n    long loadTime = System.currentTimeMillis() - startTime;\n    \n    assertTrue(loadTime < 5000, \"Page should load within 5 seconds\");\n    assertTrue(isInputFieldFound(\"Name\"));\n    assertFalse(isSubmitButtonDisabled());\n}",
+        "prompt": "Verify page loads and form is interactive within acceptable time",
+        "pattern_type": "performance testing",
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "action": "setInputFieldValue",
+    "description": "Set value in an input field by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "enter {value} in {label} field",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "setInputFieldValue",
+    "description": "Set value in an input field by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "set {label} field to {value}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "setInputFieldValue",
+    "description": "Set value in an input field by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "type {value} into {label} input",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "setInputFieldValue",
+    "description": "Set value in an input field by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "fill {label} with {value}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "setInputFieldValue",
+    "description": "Set value in an input field by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "setInputFieldValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "input {value} for {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValue",
+    "description": "Retrieve the current value of an input field by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "String value = getInputFieldValue(\"{LABEL}\");",
+        "prompt": "get value of {label} field",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValue",
+    "description": "Retrieve the current value of an input field by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "String value = getInputFieldValue(\"{LABEL}\");",
+        "prompt": "retrieve {label} input value",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValue",
+    "description": "Retrieve the current value of an input field by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "String value = getInputFieldValue(\"{LABEL}\");",
+        "prompt": "what is the value in {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValue",
+    "description": "Retrieve the current value of an input field by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "String value = getInputFieldValue(\"{LABEL}\");",
+        "prompt": "read {label} field value",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValue",
+    "description": "Retrieve the current value of an input field by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Interaction by Label",
+        "code": "String value = getInputFieldValue(\"{LABEL}\");",
+        "prompt": "fetch value from {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label/span[text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "isInputFieldDisabled",
+    "description": "Check if an input field is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+        "prompt": "is {label} field disabled",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "isInputFieldDisabled",
+    "description": "Check if an input field is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+        "prompt": "check if {label} is disabled",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "isInputFieldDisabled",
+    "description": "Check if an input field is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+        "prompt": "verify {label} field is not editable",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "isInputFieldDisabled",
+    "description": "Check if an input field is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+        "prompt": "is {label} input enabled",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "isInputFieldDisabled",
+    "description": "Check if an input field is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "boolean isDisabled = isInputFieldDisabled(\"{LABEL}\");",
+        "prompt": "can I edit {label} field",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../..//input"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValidationMessage",
+    "description": "Get validation error message displayed for an input field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+        "prompt": "get validation message for {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValidationMessage",
+    "description": "Get validation error message displayed for an input field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+        "prompt": "what is the error message on {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValidationMessage",
+    "description": "Get validation error message displayed for an input field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+        "prompt": "retrieve {label} field error",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValidationMessage",
+    "description": "Get validation error message displayed for an input field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+        "prompt": "read validation text for {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li"
+      }
+    ]
+  },
+  {
+    "action": "getInputFieldValidationMessage",
+    "description": "Get validation error message displayed for an input field",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Input Field Validation",
+        "code": "String message = getInputFieldValidationMessage(\"{LABEL}\");",
+        "prompt": "fetch error message from {label} field",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//span[contains(@class,'suif-label-text') and text()='{LABEL}']/../../../app-validation-messages//li"
+      }
+    ]
+  },
+  {
+    "action": "setDropdownValue",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "select {value} from {label} dropdown",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select"
+      }
+    ]
+  },
+  {
+    "action": "setDropdownValue",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "set {label} dropdown to {value}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select"
+      }
+    ]
+  },
+  {
+    "action": "setDropdownValue",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "choose {value} in {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select"
+      }
+    ]
+  },
+  {
+    "action": "setDropdownValue",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "pick {value} from {label} list",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select"
+      }
+    ]
+  },
+  {
+    "action": "setDropdownValue",
+    "description": "Select a dropdown option by finding the dropdown using its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "setDropdownValue(\"{LABEL}\", \"{VALUE}\");",
+        "prompt": "select {value} for {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//label[contains(normalize-space(), '{LABEL}')]/ancestor::app-select[1]//select"
+      }
+    ]
+  },
+  {
+    "action": "getSelectedDropdownValue",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+        "prompt": "get selected value from {label} dropdown",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "getSelectedDropdownValue",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+        "prompt": "what is selected in {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "getSelectedDropdownValue",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+        "prompt": "retrieve {label} dropdown value",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "getSelectedDropdownValue",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+        "prompt": "read selected option from {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "getSelectedDropdownValue",
+    "description": "Get the currently selected value from a dropdown by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "String selected = getSelectedDropdownValue(\"{LABEL}\");",
+        "prompt": "fetch {label} dropdown selection",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "isDropdownFieldDisabled",
+    "description": "Check if a dropdown is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+        "prompt": "is {label} dropdown disabled",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "isDropdownFieldDisabled",
+    "description": "Check if a dropdown is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+        "prompt": "check if {label} dropdown is enabled",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "isDropdownFieldDisabled",
+    "description": "Check if a dropdown is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+        "prompt": "verify {label} dropdown editability",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "isDropdownFieldDisabled",
+    "description": "Check if a dropdown is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+        "prompt": "can I select from {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "isDropdownFieldDisabled",
+    "description": "Check if a dropdown is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dropdown Interaction by Label",
+        "code": "boolean isDisabled = isDropdownFieldDisabled(\"{LABEL}\");",
+        "prompt": "is {label} dropdown locked",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-select//label[contains(., '{LABEL}')]/../../select"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOn",
+    "description": "Check a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOn(\"{LABEL}\");",
+        "prompt": "check the {label} checkbox",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOn",
+    "description": "Check a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOn(\"{LABEL}\");",
+        "prompt": "select {label} checkbox",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOn",
+    "description": "Check a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOn(\"{LABEL}\");",
+        "prompt": "enable {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOn",
+    "description": "Check a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOn(\"{LABEL}\");",
+        "prompt": "turn on {label} checkbox",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOn",
+    "description": "Check a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOn(\"{LABEL}\");",
+        "prompt": "mark {label} as checked",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOff",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOff(\"{LABEL}\");",
+        "prompt": "uncheck the {label} checkbox",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOff",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOff(\"{LABEL}\");",
+        "prompt": "deselect {label} checkbox",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOff",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOff(\"{LABEL}\");",
+        "prompt": "disable {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOff",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOff(\"{LABEL}\");",
+        "prompt": "turn off {label} checkbox",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "setCheckboxOff",
+    "description": "Uncheck a checkbox by finding it using its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Operations by Label",
+        "code": "setCheckboxOff(\"{LABEL}\");",
+        "prompt": "unmark {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxOn",
+    "description": "Verify if a checkbox is checked by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+        "prompt": "is {label} checkbox checked",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxOn",
+    "description": "Verify if a checkbox is checked by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+        "prompt": "verify {label} is selected",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxOn",
+    "description": "Verify if a checkbox is checked by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+        "prompt": "check if {label} is enabled",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxOn",
+    "description": "Verify if a checkbox is checked by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+        "prompt": "is {label} marked",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxOn",
+    "description": "Verify if a checkbox is checked by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isChecked = isCheckboxOn(\"{LABEL}\");",
+        "prompt": "validate {label} checkbox state",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//label/span[text()='{LABEL}']"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxDisabled",
+    "description": "Check if a checkbox is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+        "prompt": "is {label} checkbox disabled",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxDisabled",
+    "description": "Check if a checkbox is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+        "prompt": "check if {label} can be selected",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxDisabled",
+    "description": "Check if a checkbox is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+        "prompt": "verify {label} checkbox editability",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxDisabled",
+    "description": "Check if a checkbox is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+        "prompt": "is {label} checkbox locked",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "isCheckboxDisabled",
+    "description": "Check if a checkbox is disabled by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Checkbox Validation",
+        "code": "boolean isDisabled = isCheckboxDisabled(\"{LABEL}\");",
+        "prompt": "can I click {label} checkbox",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-checkbox//span[text()='{LABEL}']/../../input[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "selectRadioButton",
+    "description": "Select a radio button by its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Operations by Label",
+        "code": "selectRadioButton(\"{LABEL}\");",
+        "prompt": "select {label} radio button",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]"
+      }
+    ]
+  },
+  {
+    "action": "selectRadioButton",
+    "description": "Select a radio button by its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Operations by Label",
+        "code": "selectRadioButton(\"{LABEL}\");",
+        "prompt": "choose {label} option",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]"
+      }
+    ]
+  },
+  {
+    "action": "selectRadioButton",
+    "description": "Select a radio button by its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Operations by Label",
+        "code": "selectRadioButton(\"{LABEL}\");",
+        "prompt": "pick {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]"
+      }
+    ]
+  },
+  {
+    "action": "selectRadioButton",
+    "description": "Select a radio button by its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Operations by Label",
+        "code": "selectRadioButton(\"{LABEL}\");",
+        "prompt": "click {label} radio",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]"
+      }
+    ]
+  },
+  {
+    "action": "selectRadioButton",
+    "description": "Select a radio button by its label text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Operations by Label",
+        "code": "selectRadioButton(\"{LABEL}\");",
+        "prompt": "set radio to {label}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]"
+      }
+    ]
+  },
+  {
+    "action": "isRadioButtonSelected",
+    "description": "Check if a radio button is selected by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Validation",
+        "code": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+        "prompt": "is {label} radio button selected",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]"
+      }
+    ]
+  },
+  {
+    "action": "isRadioButtonSelected",
+    "description": "Check if a radio button is selected by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Validation",
+        "code": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+        "prompt": "check if {label} is chosen",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]"
+      }
+    ]
+  },
+  {
+    "action": "isRadioButtonSelected",
+    "description": "Check if a radio button is selected by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Validation",
+        "code": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+        "prompt": "verify {label} radio state",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]"
+      }
+    ]
+  },
+  {
+    "action": "isRadioButtonSelected",
+    "description": "Check if a radio button is selected by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Validation",
+        "code": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+        "prompt": "is {label} option selected",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]"
+      }
+    ]
+  },
+  {
+    "action": "isRadioButtonSelected",
+    "description": "Check if a radio button is selected by its label",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Radio Button Validation",
+        "code": "boolean isSelected = isRadioButtonSelected(\"{LABEL}\");",
+        "prompt": "validate {label} radio selection",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-radio//label[contains(., '{LABEL}')]/fa-icon[contains(@class, 'input-checked')]"
+      }
+    ]
+  },
+  {
+    "action": "clickButton",
+    "description": "Click a button by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickButton(\"{BUTTON_TEXT}\");",
+        "prompt": "click {button} button",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickButton",
+    "description": "Click a button by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickButton(\"{BUTTON_TEXT}\");",
+        "prompt": "press {button}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickButton",
+    "description": "Click a button by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickButton(\"{BUTTON_TEXT}\");",
+        "prompt": "click on {button}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickButton",
+    "description": "Click a button by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickButton(\"{BUTTON_TEXT}\");",
+        "prompt": "hit {button} button",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickButton",
+    "description": "Click a button by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickButton(\"{BUTTON_TEXT}\");",
+        "prompt": "select {button}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogButton",
+    "description": "Click a button within a dialog by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickDialogButton(\"{BUTTON_TEXT}\");",
+        "prompt": "click {button} in dialog",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogButton",
+    "description": "Click a button within a dialog by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickDialogButton(\"{BUTTON_TEXT}\");",
+        "prompt": "click {button} on popup",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogButton",
+    "description": "Click a button within a dialog by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickDialogButton(\"{BUTTON_TEXT}\");",
+        "prompt": "press {button} in modal",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogButton",
+    "description": "Click a button within a dialog by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickDialogButton(\"{BUTTON_TEXT}\");",
+        "prompt": "click dialog {button}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogButton",
+    "description": "Click a button within a dialog by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Actions by Text",
+        "code": "clickDialogButton(\"{BUTTON_TEXT}\");",
+        "prompt": "select {button} in popup",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isButtonFound",
+    "description": "Check if a button with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+        "prompt": "is {button} button present",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isButtonFound",
+    "description": "Check if a button with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+        "prompt": "{LAST_NAME}s {button} exist",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isButtonFound",
+    "description": "Check if a button with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+        "prompt": "find {button} button",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isButtonFound",
+    "description": "Check if a button with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+        "prompt": "check for {button}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isButtonFound",
+    "description": "Check if a button with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean exists = isButtonFound(\"{BUTTON_TEXT}\");",
+        "prompt": "verify {button} is displayed",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[normalize-space()='{BUTTON_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isSubmitButtonDisabled",
+    "description": "Check if submit button is disabled",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean isDisabled = isSubmitButtonDisabled();",
+        "prompt": "is submit button disabled",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait-button//button[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "isSubmitButtonDisabled",
+    "description": "Check if submit button is disabled",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean isDisabled = isSubmitButtonDisabled();",
+        "prompt": "can I submit",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait-button//button[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "isSubmitButtonDisabled",
+    "description": "Check if submit button is disabled",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean isDisabled = isSubmitButtonDisabled();",
+        "prompt": "check submit button state",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait-button//button[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "isSubmitButtonDisabled",
+    "description": "Check if submit button is disabled",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean isDisabled = isSubmitButtonDisabled();",
+        "prompt": "verify submit is enabled",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait-button//button[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "isSubmitButtonDisabled",
+    "description": "Check if submit button is disabled",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Button Validation",
+        "code": "boolean isDisabled = isSubmitButtonDisabled();",
+        "prompt": "is form submittable",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait-button//button[@disabled]"
+      }
+    ]
+  },
+  {
+    "action": "clickLink",
+    "description": "Click a link by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Operations",
+        "code": "clickLink(\"{LINK_TEXT}\");",
+        "prompt": "click {link} link",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickLink",
+    "description": "Click a link by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Operations",
+        "code": "clickLink(\"{LINK_TEXT}\");",
+        "prompt": "click on {link}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickLink",
+    "description": "Click a link by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Operations",
+        "code": "clickLink(\"{LINK_TEXT}\");",
+        "prompt": "follow {link}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickLink",
+    "description": "Click a link by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Operations",
+        "code": "clickLink(\"{LINK_TEXT}\");",
+        "prompt": "navigate to {link}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickLink",
+    "description": "Click a link by its visible text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Operations",
+        "code": "clickLink(\"{LINK_TEXT}\");",
+        "prompt": "select {link}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkFound",
+    "description": "Check if a link with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+        "prompt": "is {link} link present",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkFound",
+    "description": "Check if a link with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+        "prompt": "{LAST_NAME}s {link} exist",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkFound",
+    "description": "Check if a link with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+        "prompt": "find {link} link",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkFound",
+    "description": "Check if a link with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+        "prompt": "check for {link}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkFound",
+    "description": "Check if a link with specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean exists = isLinkFound(\"{LINK_TEXT}\");",
+        "prompt": "verify {link} is displayed",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkOpeningInNewTab",
+    "description": "Check if a link opens in a new tab",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+        "prompt": "{LAST_NAME}s {link} open in new tab",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkOpeningInNewTab",
+    "description": "Check if a link opens in a new tab",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+        "prompt": "verify {link} opens new window",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkOpeningInNewTab",
+    "description": "Check if a link opens in a new tab",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+        "prompt": "check if {link} has target blank",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkOpeningInNewTab",
+    "description": "Check if a link opens in a new tab",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+        "prompt": "is {link} external",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']"
+      }
+    ]
+  },
+  {
+    "action": "isLinkOpeningInNewTab",
+    "description": "Check if a link opens in a new tab",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Link Validation",
+        "code": "boolean opensNew = isLinkOpeningInNewTab(\"{LINK_TEXT}\");",
+        "prompt": "{LAST_NAME}s {link} open new tab",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{LINK_TEXT}'][@target='_blank']"
+      }
+    ]
+  },
+  {
+    "action": "clickNavigationTab",
+    "description": "Click a navigation tab by its name",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickNavigationTab(\"{TAB_NAME}\");",
+        "prompt": "click {tab} tab",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//nav//a[text()='{TAB_NAME}']"
+      }
+    ]
+  },
+  {
+    "action": "clickNavigationTab",
+    "description": "Click a navigation tab by its name",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickNavigationTab(\"{TAB_NAME}\");",
+        "prompt": "switch to {tab}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//nav//a[text()='{TAB_NAME}']"
+      }
+    ]
+  },
+  {
+    "action": "clickNavigationTab",
+    "description": "Click a navigation tab by its name",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickNavigationTab(\"{TAB_NAME}\");",
+        "prompt": "navigate to {tab} tab",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//nav//a[text()='{TAB_NAME}']"
+      }
+    ]
+  },
+  {
+    "action": "clickNavigationTab",
+    "description": "Click a navigation tab by its name",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickNavigationTab(\"{TAB_NAME}\");",
+        "prompt": "select {tab} tab",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//nav//a[text()='{TAB_NAME}']"
+      }
+    ]
+  },
+  {
+    "action": "clickNavigationTab",
+    "description": "Click a navigation tab by its name",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickNavigationTab(\"{TAB_NAME}\");",
+        "prompt": "go to {tab}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//nav//a[text()='{TAB_NAME}']"
+      }
+    ]
+  },
+  {
+    "action": "clickTabButton",
+    "description": "Click a tab button within a tabbed interface",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickTabButton(\"{TAB_NAME}\");",
+        "prompt": "click {tab} button",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "clickTabButton",
+    "description": "Click a tab button within a tabbed interface",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickTabButton(\"{TAB_NAME}\");",
+        "prompt": "open {tab} section",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "clickTabButton",
+    "description": "Click a tab button within a tabbed interface",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickTabButton(\"{TAB_NAME}\");",
+        "prompt": "activate {tab}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "clickTabButton",
+    "description": "Click a tab button within a tabbed interface",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickTabButton(\"{TAB_NAME}\");",
+        "prompt": "show {tab} content",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "clickTabButton",
+    "description": "Click a tab button within a tabbed interface",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Navigation",
+        "code": "clickTabButton(\"{TAB_NAME}\");",
+        "prompt": "display {tab}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab']/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "isTabButtonActive",
+    "description": "Check if a tab is currently active",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Validation",
+        "code": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+        "prompt": "is {tab} active",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "isTabButtonActive",
+    "description": "Check if a tab is currently active",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Validation",
+        "code": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+        "prompt": "is {tab} selected",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "isTabButtonActive",
+    "description": "Check if a tab is currently active",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Validation",
+        "code": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+        "prompt": "check if {tab} is current",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "isTabButtonActive",
+    "description": "Check if a tab is currently active",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Validation",
+        "code": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+        "prompt": "verify {tab} is active",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "isTabButtonActive",
+    "description": "Check if a tab is currently active",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Tab Validation",
+        "code": "boolean isActive = isTabButtonActive(\"{TAB_NAME}\");",
+        "prompt": "is {tab} tab open",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[@role='tab' and contains(@class,'suif-tab-active')]/span[contains(.,'{TAB_NAME}')]"
+      }
+    ]
+  },
+  {
+    "action": "isDialogOpen",
+    "description": "Check if a dialog/modal is currently open",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "boolean isOpen = isDialogOpen();",
+        "prompt": "is dialog open",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "isDialogOpen",
+    "description": "Check if a dialog/modal is currently open",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "boolean isOpen = isDialogOpen();",
+        "prompt": "is modal displayed",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "isDialogOpen",
+    "description": "Check if a dialog/modal is currently open",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "boolean isOpen = isDialogOpen();",
+        "prompt": "check if popup is visible",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "isDialogOpen",
+    "description": "Check if a dialog/modal is currently open",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "boolean isOpen = isDialogOpen();",
+        "prompt": "verify dialog is showing",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "isDialogOpen",
+    "description": "Check if a dialog/modal is currently open",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "boolean isOpen = isDialogOpen();",
+        "prompt": "is there a popup",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "getDialogContent",
+    "description": "Get the text content of a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "String content = getDialogContent();",
+        "prompt": "get dialog text",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "getDialogContent",
+    "description": "Get the text content of a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "String content = getDialogContent();",
+        "prompt": "read modal content",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "getDialogContent",
+    "description": "Get the text content of a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "String content = getDialogContent();",
+        "prompt": "what {LAST_NAME}s the dialog say",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "getDialogContent",
+    "description": "Get the text content of a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "String content = getDialogContent();",
+        "prompt": "retrieve popup message",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "getDialogContent",
+    "description": "Get the text content of a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "String content = getDialogContent();",
+        "prompt": "fetch dialog content",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='dialog-body']"
+      }
+    ]
+  },
+  {
+    "action": "closeDialog",
+    "description": "Close an open dialog/modal",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "closeDialog();",
+        "prompt": "close dialog",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'close')]"
+      }
+    ]
+  },
+  {
+    "action": "closeDialog",
+    "description": "Close an open dialog/modal",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "closeDialog();",
+        "prompt": "close modal",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'close')]"
+      }
+    ]
+  },
+  {
+    "action": "closeDialog",
+    "description": "Close an open dialog/modal",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "closeDialog();",
+        "prompt": "dismiss popup",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'close')]"
+      }
+    ]
+  },
+  {
+    "action": "closeDialog",
+    "description": "Close an open dialog/modal",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "closeDialog();",
+        "prompt": "close the window",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'close')]"
+      }
+    ]
+  },
+  {
+    "action": "closeDialog",
+    "description": "Close an open dialog/modal",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Operations",
+        "code": "closeDialog();",
+        "prompt": "exit dialog",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'close')]"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogSubmitButton",
+    "description": "Click the submit/primary button in a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Actions",
+        "code": "clickDialogSubmitButton();",
+        "prompt": "submit dialog",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'btn-primary')]"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogSubmitButton",
+    "description": "Click the submit/primary button in a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Actions",
+        "code": "clickDialogSubmitButton();",
+        "prompt": "confirm dialog",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'btn-primary')]"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogSubmitButton",
+    "description": "Click the submit/primary button in a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Actions",
+        "code": "clickDialogSubmitButton();",
+        "prompt": "click dialog submit",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'btn-primary')]"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogSubmitButton",
+    "description": "Click the submit/primary button in a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Actions",
+        "code": "clickDialogSubmitButton();",
+        "prompt": "accept dialog",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'btn-primary')]"
+      }
+    ]
+  },
+  {
+    "action": "clickDialogSubmitButton",
+    "description": "Click the submit/primary button in a dialog",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Dialog Actions",
+        "code": "clickDialogSubmitButton();",
+        "prompt": "save dialog changes",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-dialog//button[contains(@class,'btn-primary')]"
+      }
+    ]
+  },
+  {
+    "action": "searchTable",
+    "description": "Search within a table using search criteria",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "searchTable(\"{CRITERIA}\");",
+        "prompt": "search table for {criteria}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-list-search//input"
+      }
+    ]
+  },
+  {
+    "action": "searchTable",
+    "description": "Search within a table using search criteria",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "searchTable(\"{CRITERIA}\");",
+        "prompt": "find {criteria} in table",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-list-search//input"
+      }
+    ]
+  },
+  {
+    "action": "searchTable",
+    "description": "Search within a table using search criteria",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "searchTable(\"{CRITERIA}\");",
+        "prompt": "filter table by {criteria}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-list-search//input"
+      }
+    ]
+  },
+  {
+    "action": "searchTable",
+    "description": "Search within a table using search criteria",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "searchTable(\"{CRITERIA}\");",
+        "prompt": "search for {criteria}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-list-search//input"
+      }
+    ]
+  },
+  {
+    "action": "searchTable",
+    "description": "Search within a table using search criteria",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "searchTable(\"{CRITERIA}\");",
+        "prompt": "lookup {criteria} in table",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-list-search//input"
+      }
+    ]
+  },
+  {
+    "action": "getTableRowCount",
+    "description": "Get the number of rows in a table",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "int count = getTableRowCount();",
+        "prompt": "count table rows",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[@class='table-row']"
+      }
+    ]
+  },
+  {
+    "action": "getTableRowCount",
+    "description": "Get the number of rows in a table",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "int count = getTableRowCount();",
+        "prompt": "how many rows in table",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[@class='table-row']"
+      }
+    ]
+  },
+  {
+    "action": "getTableRowCount",
+    "description": "Get the number of rows in a table",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "int count = getTableRowCount();",
+        "prompt": "get table row count",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[@class='table-row']"
+      }
+    ]
+  },
+  {
+    "action": "getTableRowCount",
+    "description": "Get the number of rows in a table",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "int count = getTableRowCount();",
+        "prompt": "number of table entries",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[@class='table-row']"
+      }
+    ]
+  },
+  {
+    "action": "getTableRowCount",
+    "description": "Get the number of rows in a table",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "int count = getTableRowCount();",
+        "prompt": "table size",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[@class='table-row']"
+      }
+    ]
+  },
+  {
+    "action": "isSearchTableNoResultsFound",
+    "description": "Check if table search returned no results",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "boolean noResults = isSearchTableNoResultsFound();",
+        "prompt": "are there no results",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='no-results']"
+      }
+    ]
+  },
+  {
+    "action": "isSearchTableNoResultsFound",
+    "description": "Check if table search returned no results",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "boolean noResults = isSearchTableNoResultsFound();",
+        "prompt": "is table empty",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='no-results']"
+      }
+    ]
+  },
+  {
+    "action": "isSearchTableNoResultsFound",
+    "description": "Check if table search returned no results",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "boolean noResults = isSearchTableNoResultsFound();",
+        "prompt": "check for no results",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='no-results']"
+      }
+    ]
+  },
+  {
+    "action": "isSearchTableNoResultsFound",
+    "description": "Check if table search returned no results",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "boolean noResults = isSearchTableNoResultsFound();",
+        "prompt": "verify no matches found",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='no-results']"
+      }
+    ]
+  },
+  {
+    "action": "isSearchTableNoResultsFound",
+    "description": "Check if table search returned no results",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Operations",
+        "code": "boolean noResults = isSearchTableNoResultsFound();",
+        "prompt": "is search empty",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='no-results']"
+      }
+    ]
+  },
+  {
+    "action": "setTableRowCheckboxOn",
+    "description": "Check a checkbox in a table row identified by text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "setTableRowCheckboxOn(\"{TEXT}\");",
+        "prompt": "select row containing {text}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']"
+      }
+    ]
+  },
+  {
+    "action": "setTableRowCheckboxOn",
+    "description": "Check a checkbox in a table row identified by text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "setTableRowCheckboxOn(\"{TEXT}\");",
+        "prompt": "check row with {text}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']"
+      }
+    ]
+  },
+  {
+    "action": "setTableRowCheckboxOn",
+    "description": "Check a checkbox in a table row identified by text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "setTableRowCheckboxOn(\"{TEXT}\");",
+        "prompt": "mark {text} row",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']"
+      }
+    ]
+  },
+  {
+    "action": "setTableRowCheckboxOn",
+    "description": "Check a checkbox in a table row identified by text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "setTableRowCheckboxOn(\"{TEXT}\");",
+        "prompt": "select {text} in table",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']"
+      }
+    ]
+  },
+  {
+    "action": "setTableRowCheckboxOn",
+    "description": "Check a checkbox in a table row identified by text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "setTableRowCheckboxOn(\"{TEXT}\");",
+        "prompt": "check checkbox for {text}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr[contains(.,'{TEXT}')]//input[@type='checkbox']"
+      }
+    ]
+  },
+  {
+    "action": "clickTableRowDropdownToggle",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "clickTableRowDropdownToggle();",
+        "prompt": "open row menu",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr//button[@class='dropdown-toggle']"
+      }
+    ]
+  },
+  {
+    "action": "clickTableRowDropdownToggle",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "clickTableRowDropdownToggle();",
+        "prompt": "click row actions",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr//button[@class='dropdown-toggle']"
+      }
+    ]
+  },
+  {
+    "action": "clickTableRowDropdownToggle",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "clickTableRowDropdownToggle();",
+        "prompt": "open kebab menu",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr//button[@class='dropdown-toggle']"
+      }
+    ]
+  },
+  {
+    "action": "clickTableRowDropdownToggle",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "clickTableRowDropdownToggle();",
+        "prompt": "show row options",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr//button[@class='dropdown-toggle']"
+      }
+    ]
+  },
+  {
+    "action": "clickTableRowDropdownToggle",
+    "description": "Click the dropdown menu toggle (kebab menu) in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Operations",
+        "code": "clickTableRowDropdownToggle();",
+        "prompt": "click three dots menu",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//tr//button[@class='dropdown-toggle']"
+      }
+    ]
+  },
+  {
+    "action": "clickEditPencilButton",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickEditPencilButton();",
+        "prompt": "edit row",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-pencil']"
+      }
+    ]
+  },
+  {
+    "action": "clickEditPencilButton",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickEditPencilButton();",
+        "prompt": "click edit button",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-pencil']"
+      }
+    ]
+  },
+  {
+    "action": "clickEditPencilButton",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickEditPencilButton();",
+        "prompt": "modify entry",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-pencil']"
+      }
+    ]
+  },
+  {
+    "action": "clickEditPencilButton",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickEditPencilButton();",
+        "prompt": "click pencil icon",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-pencil']"
+      }
+    ]
+  },
+  {
+    "action": "clickEditPencilButton",
+    "description": "Click the edit (pencil icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickEditPencilButton();",
+        "prompt": "update row",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-pencil']"
+      }
+    ]
+  },
+  {
+    "action": "clickTrashCanButton",
+    "description": "Click the delete (trash icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickTrashCanButton();",
+        "prompt": "delete row",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@data-icon='trash-can']"
+      }
+    ]
+  },
+  {
+    "action": "clickTrashCanButton",
+    "description": "Click the delete (trash icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickTrashCanButton();",
+        "prompt": "remove entry",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@data-icon='trash-can']"
+      }
+    ]
+  },
+  {
+    "action": "clickTrashCanButton",
+    "description": "Click the delete (trash icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickTrashCanButton();",
+        "prompt": "click delete button",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@data-icon='trash-can']"
+      }
+    ]
+  },
+  {
+    "action": "clickTrashCanButton",
+    "description": "Click the delete (trash icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickTrashCanButton();",
+        "prompt": "click trash icon",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@data-icon='trash-can']"
+      }
+    ]
+  },
+  {
+    "action": "clickTrashCanButton",
+    "description": "Click the delete (trash icon) button in a table row",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Row Actions",
+        "code": "clickTrashCanButton();",
+        "prompt": "remove record",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@data-icon='trash-can']"
+      }
+    ]
+  },
+  {
+    "action": "isTableContains",
+    "description": "Check if table contains specific text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Validation",
+        "code": "boolean contains = isTableContains(\"{TEXT}\");",
+        "prompt": "{LAST_NAME}s table contain {text}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[contains(.,'{TEXT}')]"
+      }
+    ]
+  },
+  {
+    "action": "isTableContains",
+    "description": "Check if table contains specific text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Validation",
+        "code": "boolean contains = isTableContains(\"{TEXT}\");",
+        "prompt": "is {text} in table",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[contains(.,'{TEXT}')]"
+      }
+    ]
+  },
+  {
+    "action": "isTableContains",
+    "description": "Check if table contains specific text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Validation",
+        "code": "boolean contains = isTableContains(\"{TEXT}\");",
+        "prompt": "find {text} in table",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[contains(.,'{TEXT}')]"
+      }
+    ]
+  },
+  {
+    "action": "isTableContains",
+    "description": "Check if table contains specific text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Validation",
+        "code": "boolean contains = isTableContains(\"{TEXT}\");",
+        "prompt": "verify table has {text}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[contains(.,'{TEXT}')]"
+      }
+    ]
+  },
+  {
+    "action": "isTableContains",
+    "description": "Check if table contains specific text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Table Validation",
+        "code": "boolean contains = isTableContains(\"{TEXT}\");",
+        "prompt": "search table for {text}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//table//tr[contains(.,'{TEXT}')]"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxText",
+    "description": "Get the text from a message box (any type)",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String message = getMessageBoxText();",
+        "prompt": "get message text",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxText",
+    "description": "Get the text from a message box (any type)",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String message = getMessageBoxText();",
+        "prompt": "read message box",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxText",
+    "description": "Get the text from a message box (any type)",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String message = getMessageBoxText();",
+        "prompt": "what {LAST_NAME}s the message say",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxText",
+    "description": "Get the text from a message box (any type)",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String message = getMessageBoxText();",
+        "prompt": "retrieve message content",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxText",
+    "description": "Get the text from a message box (any type)",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String message = getMessageBoxText();",
+        "prompt": "fetch alert text",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxSuccessText",
+    "description": "Get the text from a success message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String success = getMessageBoxSuccessText();",
+        "prompt": "get success message",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='success']"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxSuccessText",
+    "description": "Get the text from a success message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String success = getMessageBoxSuccessText();",
+        "prompt": "read success notification",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='success']"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxSuccessText",
+    "description": "Get the text from a success message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String success = getMessageBoxSuccessText();",
+        "prompt": "what is the success text",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='success']"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxSuccessText",
+    "description": "Get the text from a success message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String success = getMessageBoxSuccessText();",
+        "prompt": "retrieve success message",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='success']"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxSuccessText",
+    "description": "Get the text from a success message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String success = getMessageBoxSuccessText();",
+        "prompt": "fetch confirmation text",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='success']"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxErrorText",
+    "description": "Get the text from an error message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String error = getMessageBoxErrorText();",
+        "prompt": "get error message",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='error']"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxErrorText",
+    "description": "Get the text from an error message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String error = getMessageBoxErrorText();",
+        "prompt": "read error text",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='error']"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxErrorText",
+    "description": "Get the text from an error message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String error = getMessageBoxErrorText();",
+        "prompt": "what is the error",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='error']"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxErrorText",
+    "description": "Get the text from an error message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String error = getMessageBoxErrorText();",
+        "prompt": "retrieve error message",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='error']"
+      }
+    ]
+  },
+  {
+    "action": "getMessageBoxErrorText",
+    "description": "Get the text from an error message box",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String error = getMessageBoxErrorText();",
+        "prompt": "fetch failure text",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-message-box[@level='error']"
+      }
+    ]
+  },
+  {
+    "action": "getToastSuccessText",
+    "description": "Get the text from a success toast notification",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String toast = getToastSuccessText();",
+        "prompt": "get toast message",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "getToastSuccessText",
+    "description": "Get the text from a success toast notification",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String toast = getToastSuccessText();",
+        "prompt": "read success toast",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "getToastSuccessText",
+    "description": "Get the text from a success toast notification",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String toast = getToastSuccessText();",
+        "prompt": "what {LAST_NAME}s the toast say",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "getToastSuccessText",
+    "description": "Get the text from a success toast notification",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String toast = getToastSuccessText();",
+        "prompt": "retrieve toast notification",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "getToastSuccessText",
+    "description": "Get the text from a success toast notification",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Message Validation",
+        "code": "String toast = getToastSuccessText();",
+        "prompt": "fetch toast text",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "waitForPageLoading",
+    "description": "Wait for page loading spinner to disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForPageLoading();",
+        "prompt": "wait for page to load",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait[@class='spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForPageLoading",
+    "description": "Wait for page loading spinner to disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForPageLoading();",
+        "prompt": "wait for loading",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait[@class='spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForPageLoading",
+    "description": "Wait for page loading spinner to disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForPageLoading();",
+        "prompt": "let page finish loading",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait[@class='spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForPageLoading",
+    "description": "Wait for page loading spinner to disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForPageLoading();",
+        "prompt": "wait until ready",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait[@class='spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForPageLoading",
+    "description": "Wait for page loading spinner to disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForPageLoading();",
+        "prompt": "pause for page load",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//app-wait[@class='spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForProcessingSpinner",
+    "description": "Wait for processing spinner to complete",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForProcessingSpinner();",
+        "prompt": "wait for processing",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForProcessingSpinner",
+    "description": "Wait for processing spinner to complete",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForProcessingSpinner();",
+        "prompt": "wait for spinner",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForProcessingSpinner",
+    "description": "Wait for processing spinner to complete",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForProcessingSpinner();",
+        "prompt": "let processing finish",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForProcessingSpinner",
+    "description": "Wait for processing spinner to complete",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForProcessingSpinner();",
+        "prompt": "wait for operation",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForProcessingSpinner",
+    "description": "Wait for processing spinner to complete",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForProcessingSpinner();",
+        "prompt": "pause for processing",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button//fa-icon[@class='fa-spinner']"
+      }
+    ]
+  },
+  {
+    "action": "waitForToastSuccess",
+    "description": "Wait for success toast to appear and disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForToastSuccess();",
+        "prompt": "wait for success toast",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "waitForToastSuccess",
+    "description": "Wait for success toast to appear and disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForToastSuccess();",
+        "prompt": "wait for notification",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "waitForToastSuccess",
+    "description": "Wait for success toast to appear and disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForToastSuccess();",
+        "prompt": "let toast show and hide",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "waitForToastSuccess",
+    "description": "Wait for success toast to appear and disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForToastSuccess();",
+        "prompt": "wait for success message",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "waitForToastSuccess",
+    "description": "Wait for success toast to appear and disappear",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Wait Operations",
+        "code": "waitForToastSuccess();",
+        "prompt": "pause for toast",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='toast-success']"
+      }
+    ]
+  },
+  {
+    "action": "selectFileToUpload",
+    "description": "Select one or more files to upload",
+    "steps": [
+      {
+        "step": 1,
+        "action": "File Upload",
+        "code": "selectFileToUpload(\"{FILEPATH}\");",
+        "prompt": "upload file {filename}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//input[@type='file']"
+      }
+    ]
+  },
+  {
+    "action": "selectFileToUpload",
+    "description": "Select one or more files to upload",
+    "steps": [
+      {
+        "step": 1,
+        "action": "File Upload",
+        "code": "selectFileToUpload(\"{FILEPATH}\");",
+        "prompt": "select file {filename}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//input[@type='file']"
+      }
+    ]
+  },
+  {
+    "action": "selectFileToUpload",
+    "description": "Select one or more files to upload",
+    "steps": [
+      {
+        "step": 1,
+        "action": "File Upload",
+        "code": "selectFileToUpload(\"{FILEPATH}\");",
+        "prompt": "attach {filename}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//input[@type='file']"
+      }
+    ]
+  },
+  {
+    "action": "selectFileToUpload",
+    "description": "Select one or more files to upload",
+    "steps": [
+      {
+        "step": 1,
+        "action": "File Upload",
+        "code": "selectFileToUpload(\"{FILEPATH}\");",
+        "prompt": "choose file {filename}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//input[@type='file']"
+      }
+    ]
+  },
+  {
+    "action": "selectFileToUpload",
+    "description": "Select one or more files to upload",
+    "steps": [
+      {
+        "step": 1,
+        "action": "File Upload",
+        "code": "selectFileToUpload(\"{FILEPATH}\");",
+        "prompt": "upload {filename}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//input[@type='file']"
+      }
+    ]
+  },
+  {
+    "action": "clickMenu",
+    "description": "Click a menu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickMenu(\"{MENU_TEXT}\");",
+        "prompt": "click {menu} menu",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[text()='{MENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickMenu",
+    "description": "Click a menu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickMenu(\"{MENU_TEXT}\");",
+        "prompt": "open {menu}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[text()='{MENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickMenu",
+    "description": "Click a menu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickMenu(\"{MENU_TEXT}\");",
+        "prompt": "select {menu} menu",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[text()='{MENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickMenu",
+    "description": "Click a menu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickMenu(\"{MENU_TEXT}\");",
+        "prompt": "go to {menu}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[text()='{MENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickMenu",
+    "description": "Click a menu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickMenu(\"{MENU_TEXT}\");",
+        "prompt": "click on {menu}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//button[text()='{MENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickSubmenu",
+    "description": "Click a submenu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+        "prompt": "click {submenu} submenu",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{SUBMENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickSubmenu",
+    "description": "Click a submenu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+        "prompt": "select {submenu} option",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{SUBMENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickSubmenu",
+    "description": "Click a submenu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+        "prompt": "choose {submenu}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{SUBMENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickSubmenu",
+    "description": "Click a submenu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+        "prompt": "go to {submenu}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{SUBMENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "clickSubmenu",
+    "description": "Click a submenu item by its text",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Menu Navigation",
+        "code": "clickSubmenu(\"{SUBMENU_TEXT}\");",
+        "prompt": "open {submenu}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//a[text()='{SUBMENU_TEXT}']"
+      }
+    ]
+  },
+  {
+    "action": "scrollToView",
+    "description": "Scroll an element into view",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Scroll Operations",
+        "code": "scrollToView(locator);",
+        "prompt": "scroll to element",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "scrollToView",
+    "description": "Scroll an element into view",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Scroll Operations",
+        "code": "scrollToView(locator);",
+        "prompt": "bring element into view",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "scrollToView",
+    "description": "Scroll an element into view",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Scroll Operations",
+        "code": "scrollToView(locator);",
+        "prompt": "scroll until visible",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "scrollToView",
+    "description": "Scroll an element into view",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Scroll Operations",
+        "code": "scrollToView(locator);",
+        "prompt": "make element visible",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "scrollToView",
+    "description": "Scroll an element into view",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Scroll Operations",
+        "code": "scrollToView(locator);",
+        "prompt": "scroll to show element",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementFound",
+    "description": "Check if an element exists on the page",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean exists = isElementFound(locator);",
+        "prompt": "is element present",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementFound",
+    "description": "Check if an element exists on the page",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean exists = isElementFound(locator);",
+        "prompt": "{LAST_NAME}s element exist",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementFound",
+    "description": "Check if an element exists on the page",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean exists = isElementFound(locator);",
+        "prompt": "find element",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementFound",
+    "description": "Check if an element exists on the page",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean exists = isElementFound(locator);",
+        "prompt": "check for element",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementFound",
+    "description": "Check if an element exists on the page",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean exists = isElementFound(locator);",
+        "prompt": "verify element exists",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementInvisible",
+    "description": "Check if an element is invisible or not present",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean invisible = isElementInvisible(locator);",
+        "prompt": "is element hidden",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementInvisible",
+    "description": "Check if an element is invisible or not present",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean invisible = isElementInvisible(locator);",
+        "prompt": "verify element invisible",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementInvisible",
+    "description": "Check if an element is invisible or not present",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean invisible = isElementInvisible(locator);",
+        "prompt": "check if element not visible",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementInvisible",
+    "description": "Check if an element is invisible or not present",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean invisible = isElementInvisible(locator);",
+        "prompt": "is element gone",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "isElementInvisible",
+    "description": "Check if an element is invisible or not present",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Element Verification",
+        "code": "boolean invisible = isElementInvisible(locator);",
+        "prompt": "element disappeared",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "any element locator"
+      }
+    ]
+  },
+  {
+    "action": "getPanelContents",
+    "description": "Get the text content from a panel",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "String content = getPanelContents();",
+        "prompt": "get panel text",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='suif-panel']"
+      }
+    ]
+  },
+  {
+    "action": "getPanelContents",
+    "description": "Get the text content from a panel",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "String content = getPanelContents();",
+        "prompt": "read panel content",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='suif-panel']"
+      }
+    ]
+  },
+  {
+    "action": "getPanelContents",
+    "description": "Get the text content from a panel",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "String content = getPanelContents();",
+        "prompt": "what {LAST_NAME}s the panel say",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='suif-panel']"
+      }
+    ]
+  },
+  {
+    "action": "getPanelContents",
+    "description": "Get the text content from a panel",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "String content = getPanelContents();",
+        "prompt": "retrieve panel information",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='suif-panel']"
+      }
+    ]
+  },
+  {
+    "action": "getPanelContents",
+    "description": "Get the text content from a panel",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "String content = getPanelContents();",
+        "prompt": "fetch panel data",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[@class='suif-panel']"
+      }
+    ]
+  },
+  {
+    "action": "isPanelFound",
+    "description": "Check if a panel containing specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "boolean exists = isPanelFound(\"{TEXT}\");",
+        "prompt": "is panel with {text} present",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]"
+      }
+    ]
+  },
+  {
+    "action": "isPanelFound",
+    "description": "Check if a panel containing specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "boolean exists = isPanelFound(\"{TEXT}\");",
+        "prompt": "{LAST_NAME}s {text} panel exist",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]"
+      }
+    ]
+  },
+  {
+    "action": "isPanelFound",
+    "description": "Check if a panel containing specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "boolean exists = isPanelFound(\"{TEXT}\");",
+        "prompt": "find panel containing {text}",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]"
+      }
+    ]
+  },
+  {
+    "action": "isPanelFound",
+    "description": "Check if a panel containing specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "boolean exists = isPanelFound(\"{TEXT}\");",
+        "prompt": "verify {text} panel",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]"
+      }
+    ]
+  },
+  {
+    "action": "isPanelFound",
+    "description": "Check if a panel containing specific text exists",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Panel Operations",
+        "code": "boolean exists = isPanelFound(\"{TEXT}\");",
+        "prompt": "check for {text} panel",
+        "pattern_type": "page_helper_pattern",
+        "xpath": "//div[contains(@class,'panel') and contains(.,'{TEXT}')]"
+      }
+    ]
+  }
+]

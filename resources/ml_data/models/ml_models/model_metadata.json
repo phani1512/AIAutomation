@@ -1,0 +1,26 @@
+{
+  "best_model": "random_forest",
+  "scenario_labels": [
+    "boundary_all_options",
+    "boundary_field_length",
+    "boundary_length",
+    "boundary_min_max_length",
+    "compatibility_cross_browser",
+    "compatibility_mobile",
+    "edge_case_rapid_submission",
+    "edge_case_special_chars",
+    "edge_case_unicode",
+    "negative_direct_url",
+    "negative_empty_form",
+    "negative_invalid_email",
+    "negative_invalid_input",
+    "negative_partial_form",
+    "negative_weak_password",
+    "performance_load_time",
+    "variation_different_data",
+    "variation_different_selection",
+    "variation_form_data"
+  ],
+  "feature_count": 25,
+  "model_version": "1.0"
+}

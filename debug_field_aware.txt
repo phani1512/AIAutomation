@@ -1,0 +1,28 @@
+=== 2026-04-11 11:41:09.250034 ===
+CHECKPOINT 1: Endpoint reached
+CHECKPOINT 2: test_case_id=TC002_variant_1
+CHECKPOINT 3: Loading test case...
+  Attempting builder JSON load...
+  Script dir: C:\Users\valaboph\AIAutomation\src\main\python
+  Workspace root: C:\Users\valaboph\AIAutomation
+  Test suites dir: C:\Users\valaboph\AIAutomation\test_suites
+  Dir exists: True
+  Search pattern: builder/TC002_variant_1*.json
+  Found 1 JSON files
+  First file: C:\Users\valaboph\AIAutomation\test_suites\regression\builder\TC002_variant_1_Field Length Boundary Testing.json
+  ✓ Loaded from builder JSON file: C:\Users\valaboph\AIAutomation\test_suites\regression\builder\TC002_variant_1_Field Length Boundary Testing.json
+CHECKPOINT 4: Extracting actions...
+  test_case keys: ['test_case_id', 'name', 'description', 'type', 'generation_type', 'priority', 'confidence', 'actions', 'steps', 'url', 'parent_test_case_id', 'source', 'test_type', 'generated_by', 'variant_type', 'tags', 'saved_at', 'saved_to_suite_at', 'prompt_count', 'prompts', 'generated_code']
+  Found 3 actions
+  First action type: <class 'dict'>
+  First action keys: ['prompt', 'type', 'value', 'description']
+CHECKPOINT 5: Detecting variant type...
+  Variant type: boundary
+  Category filter: boundary
+CHECKPOINT 6: Generating suggestions...
+  Actions to analyze:
+    Action 0: {'prompt': 'enter text in email field', 'type': 'action', 'value': 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'description': 'Field Length Boundary Testing: enter text in email field at boundary'}
+    Action 1: {'prompt': 'enter text in password field', 'type': 'action', 'value': 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'description': 'Field Length Boundary Testing: enter text in password field at boundary'}
+    Action 2: {'prompt': 'click login button', 'type': 'action', 'value': None}
+CHECKPOINT 7: Generated 6 scenarios
+=== SUCCESS ===

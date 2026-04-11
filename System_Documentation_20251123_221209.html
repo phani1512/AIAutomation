@@ -369,7 +369,7 @@
 </code></pre>
 
 <h4 id="3-api-communication">3. API Communication</h4>
-<pre class="codehilite"><code class="language-javascript">const API_URL = 'http://localhost:5000';
+<pre class="codehilite"><code class="language-javascript">const API_URL = 'http://localhost:5002';
 
 async function callAPI(endpoint, method, data) {
     const response = await fetch(`${API_URL}${endpoint}`, {
@@ -869,7 +869,7 @@ localStorage.setItem('userStats', JSON.stringify({
 
 <p><strong>Characteristics:</strong>
 - ✅ Persists across browser sessions
-- ✅ Domain-specific (localhost:5000)
+- ✅ Domain-specific (localhost:5002)
 - ⚠️ ~5-10MB storage limit
 - ⚠️ Cleared when user clears browser data</p>
 <hr />
@@ -892,12 +892,12 @@ pip install flask flask-cors selenium waitress
 # 3. Start server
 python src/main/python/api_server_improved.py
 
-# Server starts on http://localhost:5000
+# Server starts on http://localhost:5002
 </code></pre>
 
 <h3 id="frontend-access">Frontend Access</h3>
 <pre class="codehilite"><code class="language-bash"># Open browser and navigate to:
-http://localhost:5000
+http://localhost:5002
 
 # Or open index.html directly in browser
 # (Some features require backend server)
@@ -1038,7 +1038,7 @@ CORS(app)
 - Check Selenium version compatibility</p>
 <p><strong>Issue:</strong> 404 errors on API calls
 - Verify backend server is running
-- Check API_URL in frontend (should be http://localhost:5000)
+- Check API_URL in frontend (should be http://localhost:5002)
 - Restart server after code changes</p>
 <p><strong>Issue:</strong> Code snippets not appearing
 - Open browser console (F12) for errors
@@ -1103,3 +1103,4 @@ CORS(app)
 <p>For support or questions, please refer to the source code comments or consult the API endpoint documentation within the application.</p>
 </body>
 </html>
+

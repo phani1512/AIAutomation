@@ -55,7 +55,7 @@ web/
 ## 📝 Quick Start
 
 1. **Ensure server is running**: `python src/main/python/api_server_improved.py`
-2. **Open browser**: http://localhost:5000
+2. **Open browser**: http://localhost:5002
 3. **Refresh**: Ctrl+F5 to see changes
 
 ## 🎨 Customize
@@ -67,3 +67,4 @@ web/
 ---
 
 **Status**: ✅ Production Ready | **Version**: 2.0 Modular
+

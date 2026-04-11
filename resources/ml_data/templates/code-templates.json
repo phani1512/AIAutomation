@@ -1,0 +1,291 @@
+{
+  "description": "Comprehensive code templates for all Selenium actions - replaces hardcoded templates in inference_improved.py",
+  "version": "1.0",
+  "templates": {
+    "click": {
+      "simple": {
+        "python": "# Click {element_desc}\ndriver.find_element(By.{by_method}, \"{locator}\").click()",
+        "java": "// Click {element_desc}\ndriver.findElement(By.{by_method}(\"{locator}\")).click();",
+        "javascript": "// Click {element_desc}\nawait driver.findElement(By.{by_method}(\"{locator}\")).click();",
+        "csharp": "// Click {element_desc}\ndriver.FindElement(By.{by_method}(\"{locator}\")).Click();"
+      },
+      "comprehensive": {
+        "python": "# Click {element_desc} with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\n\nwait = WebDriverWait(driver, 10)\nelement = wait.until(EC.element_to_be_clickable((By.{by_constant}, \"{locator}\")))\nelement.click()",
+        "java": "// Click {element_desc} with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.{by_method}(\"{locator}\")));\nelement.click();",
+        "javascript": "// Click {element_desc} with wait\nlet element = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nawait driver.wait(until.elementIsVisible(element), 10000);\nawait element.click();",
+        "csharp": "// Click {element_desc} with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(By.{by_method}(\"{locator}\")));\nelement.Click();"
+      }
+    },
+    "input": {
+      "simple": {
+        "python": "# Enter text in {field_name} field\ndriver.find_element(By.{by_method}, \"{locator}\").clear()\ndriver.find_element(By.{by_method}, \"{locator}\").send_keys(\"{value}\")",
+        "java": "// Enter text in {field_name} field\ndriver.findElement(By.{by_method}(\"{locator}\")).clear();\ndriver.findElement(By.{by_method}(\"{locator}\")).sendKeys(\"{value}\");",
+        "javascript": "// Enter text in {field_name} field\nlet element = await driver.findElement(By.{by_method}(\"{locator}\"));\nawait element.clear();\nawait element.sendKeys(\"{value}\");",
+        "csharp": "// Enter text in {field_name} field\ndriver.FindElement(By.{by_method}(\"{locator}\")).Clear();\ndriver.FindElement(By.{by_method}(\"{locator}\")).SendKeys(\"{value}\");"
+      },
+      "comprehensive": {
+        "python": "# Enter text in {field_name} with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\n\nwait = WebDriverWait(driver, 10)\nelement = wait.until(EC.visibility_of_element_located((By.{by_constant}, \"{locator}\")))\nelement.clear()\nelement.send_keys(\"{value}\")",
+        "java": "// Enter text in {field_name} with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.{by_method}(\"{locator}\")));\nelement.clear();\nelement.sendKeys(\"{value}\");",
+        "javascript": "// Enter text in {field_name} with wait\nlet element = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nawait driver.wait(until.elementIsVisible(element), 10000);\nawait element.clear();\nawait element.sendKeys(\"{value}\");",
+        "csharp": "// Enter text in {field_name} with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(By.{by_method}(\"{locator}\")));\nelement.Clear();\nelement.SendKeys(\"{value}\");"
+      }
+    },
+    "select": {
+      "simple": {
+        "python": "# Select from dropdown\nfrom selenium.webdriver.support.ui import Select\ndropdown = driver.find_element(By.{by_method}, \"{locator}\")\nselect = Select(dropdown)\nselect.select_by_visible_text(\"{option}\")",
+        "java": "// Select from dropdown\nWebElement dropdown = driver.findElement(By.{by_method}(\"{locator}\"));\nSelect select = new Select(dropdown);\nselect.selectByVisibleText(\"{option}\");",
+        "javascript": "// Select from dropdown\nlet dropdown = await driver.findElement(By.{by_method}(\"{locator}\"));\nlet option = await dropdown.findElement(By.xpath(\"//option[text()='{option}']\"));\nawait option.click();",
+        "csharp": "// Select from dropdown\nIWebElement dropdown = driver.FindElement(By.{by_method}(\"{locator}\"));\nSelectElement select = new SelectElement(dropdown);\nselect.SelectByText(\"{option}\");"
+      },
+      "comprehensive": {
+        "python": "# Select from dropdown with wait\nfrom selenium.webdriver.support.ui import WebDriverWait, Select\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\n\nwait = WebDriverWait(driver, 10)\ndropdown = wait.until(EC.element_to_be_clickable((By.{by_constant}, \"{locator}\")))\nselect = Select(dropdown)\nselect.select_by_visible_text(\"{option}\")",
+        "java": "// Select from dropdown with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.{by_method}(\"{locator}\")));\nSelect select = new Select(dropdown);\nselect.selectByVisibleText(\"{option}\");",
+        "javascript": "// Select from dropdown with wait\nlet dropdown = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nawait driver.wait(until.elementIsVisible(dropdown), 10000);\nlet option = await dropdown.findElement(By.xpath(\"//option[text()='{option}']\"));\nawait option.click();",
+        "csharp": "// Select from dropdown with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement dropdown = wait.Until(ExpectedConditions.ElementToBeClickable(By.{by_method}(\"{locator}\")));\nSelectElement select = new SelectElement(dropdown);\nselect.SelectByText(\"{option}\");"
+      }
+    },
+    "verify": {
+      "simple": {
+        "python": "# Verify element\nelement = driver.find_element(By.{by_method}, \"{locator}\")\nassert element.is_displayed()",
+        "java": "// Verify element\nWebElement element = driver.findElement(By.{by_method}(\"{locator}\"));\nAssert.assertTrue(element.isDisplayed());",
+        "javascript": "// Verify element\nlet element = await driver.findElement(By.{by_method}(\"{locator}\"));\nassert(await element.isDisplayed());",
+        "csharp": "// Verify element\nIWebElement element = driver.FindElement(By.{by_method}(\"{locator}\"));\nAssert.IsTrue(element.Displayed);"
+      },
+      "comprehensive": {
+        "python": "# Verify {element_desc} with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\n\nwait = WebDriverWait(driver, 10)\nelement = wait.until(EC.visibility_of_element_located((By.{by_constant}, \"{locator}\")))\nassert element.is_displayed()",
+        "java": "// Verify {element_desc} with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.{by_method}(\"{locator}\")));\nAssert.assertTrue(element.isDisplayed());",
+        "javascript": "// Verify {element_desc} with wait\nlet element = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nawait driver.wait(until.elementIsVisible(element), 10000);\nassert(await element.isDisplayed());",
+        "csharp": "// Verify {element_desc} with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(By.{by_method}(\"{locator}\")));\nAssert.IsTrue(element.Displayed);"
+      }
+    },
+    "navigate": {
+      "simple": {
+        "python": "# Navigate to URL\ndriver.get(\"{url}\")",
+        "java": "// Navigate to URL\ndriver.get(\"{url}\");",
+        "javascript": "// Navigate to URL\nawait driver.get(\"{url}\");",
+        "csharp": "// Navigate to URL\ndriver.Navigate().GoToUrl(\"{url}\");"
+      },
+      "comprehensive": {
+        "python": "# Navigate to URL with wait for page load\nfrom selenium.webdriver.support.ui import WebDriverWait\n\ndriver.get(\"{url}\")\nwait = WebDriverWait(driver, 10)\nwait.until(lambda d: d.execute_script(\"return document.readyState\") == \"complete\")",
+        "java": "// Navigate to URL with wait for page load\ndriver.get(\"{url}\");\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nwait.until(driver -> ((JavascriptExecutor) driver).executeScript(\"return document.readyState\").equals(\"complete\"));",
+        "javascript": "// Navigate to URL with wait for page load\nawait driver.get(\"{url}\");\nawait driver.wait(async () => {\n    let readyState = await driver.executeScript(\"return document.readyState\");\n    return readyState === \"complete\";\n}, 10000);",
+        "csharp": "// Navigate to URL with wait for page load\ndriver.Navigate().GoToUrl(\"{url}\");\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nwait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript(\"return document.readyState\").Equals(\"complete\"));"
+      }
+    },
+    "wait": {
+      "simple": {
+        "python": "# Wait for element\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nwait = WebDriverWait(driver, 10)\nwait.until(EC.visibility_of_element_located((By.{by_method}, \"{locator}\")))",
+        "java": "// Wait for element\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nwait.until(ExpectedConditions.visibilityOfElementLocated(By.{by_method}(\"{locator}\")));",
+        "javascript": "// Wait for element\nawait driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);",
+        "csharp": "// Wait for element\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nwait.Until(ExpectedConditions.ElementIsVisible(By.{by_method}(\"{locator}\")));"
+      },
+      "comprehensive": {
+        "python": "# Wait for element with multiple conditions\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\n\nwait = WebDriverWait(driver, 10)\nelement = wait.until(EC.presence_of_element_located((By.{by_constant}, \"{locator}\")))\nwait.until(EC.visibility_of(element))\nwait.until(EC.element_to_be_clickable((By.{by_constant}, \"{locator}\")))",
+        "java": "// Wait for element with multiple conditions\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.{by_method}(\"{locator}\")));\nwait.until(ExpectedConditions.visibilityOf(element));\nwait.until(ExpectedConditions.elementToBeClickable(By.{by_method}(\"{locator}\")));",
+        "javascript": "// Wait for element with multiple conditions\nlet element = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nawait driver.wait(until.elementIsVisible(element), 10000);\nawait driver.wait(until.elementIsEnabled(element), 10000);",
+        "csharp": "// Wait for element with multiple conditions\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement element = wait.Until(ExpectedConditions.ElementExists(By.{by_method}(\"{locator}\")));\nwait.Until(ExpectedConditions.ElementIsVisible(By.{by_method}(\"{locator}\")));\nwait.Until(ExpectedConditions.ElementToBeClickable(By.{by_method}(\"{locator}\")));"
+      }
+    },
+    "file_upload": {
+      "simple": {
+        "python": "# Upload file\nfile_input = driver.find_element(By.{by_method}, \"{locator}\")\nfile_input.send_keys(\"{file_path}\")",
+        "java": "// Upload file\nWebElement fileInput = driver.findElement(By.{by_method}(\"{locator}\"));\nfileInput.sendKeys(\"{file_path}\");",
+        "javascript": "// Upload file\nlet fileInput = await driver.findElement(By.{by_method}(\"{locator}\"));\nawait fileInput.sendKeys(\"{file_path}\");",
+        "csharp": "// Upload file\nIWebElement fileInput = driver.FindElement(By.{by_method}(\"{locator}\"));\nfileInput.SendKeys(\"{file_path}\");"
+      },
+      "comprehensive": {
+        "python": "# Upload file with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\nimport os\n\nwait = WebDriverWait(driver, 10)\nfile_input = wait.until(EC.presence_of_element_located((By.{by_constant}, \"{locator}\")))\nabsolute_path = os.path.abspath(\"{file_path}\")\nfile_input.send_keys(absolute_path)",
+        "java": "// Upload file with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.{by_method}(\"{locator}\")));\nString absolutePath = new File(\"{file_path}\").getAbsolutePath();\nfileInput.sendKeys(absolutePath);",
+        "javascript": "// Upload file with wait\nlet fileInput = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nlet absolutePath = require('path').resolve(\"{file_path}\");\nawait fileInput.sendKeys(absolutePath);",
+        "csharp": "// Upload file with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement fileInput = wait.Until(ExpectedConditions.ElementExists(By.{by_method}(\"{locator}\")));\nstring absolutePath = Path.GetFullPath(\"{file_path}\");\nfileInput.SendKeys(absolutePath);"
+      }
+    },
+    "search": {
+      "simple": {
+        "python": "# Search for text\nsearch_box = driver.find_element(By.{by_method}, \"{locator}\")\nsearch_box.send_keys(\"{value}\")",
+        "java": "// Search for text\nWebElement searchBox = driver.findElement(By.{by_method}(\"{locator}\"));\nsearchBox.sendKeys(\"{value}\");",
+        "javascript": "// Search for text\nlet searchBox = await driver.findElement(By.{by_method}(\"{locator}\"));\nawait searchBox.sendKeys(\"{value}\");",
+        "csharp": "// Search for text\nIWebElement searchBox = driver.FindElement(By.{by_method}(\"{locator}\"));\nsearchBox.SendKeys(\"{value}\");"
+      },
+      "comprehensive": {
+        "python": "# Search for text with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\n\nwait = WebDriverWait(driver, 10)\nsearch_box = wait.until(EC.visibility_of_element_located((By.{by_constant}, \"{locator}\")))\nsearch_box.clear()\nsearch_box.send_keys(\"{value}\")",
+        "java": "// Search for text with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.{by_method}(\"{locator}\")));\nsearchBox.clear();\nsearchBox.sendKeys(\"{value}\");",
+        "javascript": "// Search for text with wait\nlet searchBox = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nawait driver.wait(until.elementIsVisible(searchBox), 10000);\nawait searchBox.clear();\nawait searchBox.sendKeys(\"{value}\");",
+        "csharp": "// Search for text with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement searchBox = wait.Until(ExpectedConditions.ElementIsVisible(By.{by_method}(\"{locator}\")));\nsearchBox.Clear();\nsearchBox.SendKeys(\"{value}\");"
+      }
+    },
+    "verify_title": {
+      "comprehensive": {
+        "python": "# Verify page title with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\n\nwait = WebDriverWait(driver, 10)\nwait.until(EC.title_contains(\"{expected_title}\"))\nassert driver.title == \"{expected_title}\", f\"Expected '{expected_title}' but got '{{driver.title}}'\"",
+        "java": "// Verify page title with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nwait.until(ExpectedConditions.titleContains(\"{expected_title}\"));\nString actualTitle = driver.getTitle();\nAssert.assertEquals(\"{expected_title}\", actualTitle);",
+        "javascript": "// Verify page title with wait\nawait driver.wait(until.titleContains(\"{expected_title}\"), 10000);\nlet actualTitle = await driver.getTitle();\nassert.strictEqual(actualTitle, \"{expected_title}\");",
+        "csharp": "// Verify page title with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nwait.Until(ExpectedConditions.TitleContains(\"{expected_title}\"));\nstring actualTitle = driver.Title;\nAssert.AreEqual(\"{expected_title}\", actualTitle);"
+      }
+    },
+    "verify_message": {
+      "comprehensive": {
+        "python": "# Verify message with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\n\nwait = WebDriverWait(driver, 10)\nmessage = wait.until(EC.visibility_of_element_located((By.{by_constant}, \"{locator}\")))\nassert message.is_displayed()\nassert \"{expected_text}\" in message.text, f\"Expected text not found in: {{message.text}}\"",
+        "java": "// Verify message with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.{by_method}(\"{locator}\")));\nAssert.assertTrue(message.isDisplayed());\nString text = message.getText();\nAssert.assertTrue(text.contains(\"{expected_text}\"));",
+        "javascript": "// Verify message with wait\nlet message = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nawait driver.wait(until.elementIsVisible(message), 10000);\nassert(await message.isDisplayed());\nlet text = await message.getText();\nassert(text.includes(\"{expected_text}\"));",
+        "csharp": "// Verify message with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement message = wait.Until(ExpectedConditions.ElementIsVisible(By.{by_method}(\"{locator}\")));\nAssert.IsTrue(message.Displayed);\nstring text = message.Text;\nAssert.IsTrue(text.Contains(\"{expected_text}\"));"
+      }
+    },
+    "verify_text": {
+      "comprehensive": {
+        "python": "# Verify element text with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\n\nwait = WebDriverWait(driver, 10)\nelement = wait.until(EC.visibility_of_element_located((By.{by_constant}, \"{locator}\")))\nactual_text = element.text\nassert actual_text == \"{expected_text}\", f\"Expected '{expected_text}' but got '{{actual_text}}'\"",
+        "java": "// Verify element text with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.{by_method}(\"{locator}\")));\nString actualText = element.getText();\nAssert.assertEquals(\"{expected_text}\", actualText);",
+        "javascript": "// Verify element text with wait\nlet element = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nawait driver.wait(until.elementIsVisible(element), 10000);\nlet text = await element.getText();\nassert.strictEqual(text, \"{expected_text}\");",
+        "csharp": "// Verify element text with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(By.{by_method}(\"{locator}\")));\nstring text = element.Text;\nAssert.AreEqual(\"{expected_text}\", text);"
+      }
+    },
+    "scroll": {
+      "comprehensive": {
+        "python": "# Scroll element into view\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\nimport time\n\nwait = WebDriverWait(driver, 10)\nelement = wait.until(EC.presence_of_element_located((By.XPATH, \"//*[contains(text(), '{element_ref}')]\" )))\ndriver.execute_script(\"arguments[0].scrollIntoView({{behavior: 'smooth', block: 'center'}});\", element)\ntime.sleep(0.5)",
+        "java": "// Scroll element into view\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(\"//*[contains(text(), '{element_ref}')]\")));\n((JavascriptExecutor) driver).executeScript(\"arguments[0].scrollIntoView({{behavior: 'smooth', block: 'center'}});\", element);\nThread.sleep(500);",
+        "javascript": "// Scroll element into view\nlet element = await driver.wait(until.elementLocated(By.xpath(\"//*[contains(text(), '{element_ref}')]\")), 10000);\nawait driver.executeScript(\"arguments[0].scrollIntoView({{behavior: 'smooth', block: 'center'}});\", element);\nawait driver.sleep(500);",
+        "csharp": "// Scroll element into view\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement element = wait.Until(ExpectedConditions.ElementExists(By.XPath(\"//*[contains(text(), '{element_ref}')]\")));\n((IJavaScriptExecutor)driver).ExecuteScript(\"arguments[0].scrollIntoView({{behavior: 'smooth', block: 'center'}});\", element);\nThread.Sleep(500);"
+      }
+    },
+    "close_dialog": {
+      "comprehensive": {
+        "python": "# Close dialog/modal with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.by import By\n\nwait = WebDriverWait(driver, 10)\nclose_button = wait.until(EC.element_to_be_clickable((By.{by_constant}, \"{locator}\")))\nclose_button.click()\n# Wait for dialog to disappear\nwait.until(EC.invisibility_of_element_located((By.{by_constant}, \"{locator}\")))",
+        "java": "// Close dialog/modal with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement closeButton = wait.until(ExpectedConditions.elementToBeClickable(By.{by_method}(\"{locator}\")));\ncloseButton.click();\n// Wait for dialog to disappear\nwait.until(ExpectedConditions.invisibilityOfElementLocated(By.{by_method}(\"{locator}\")));",
+        "javascript": "// Close dialog/modal with wait\nlet closeButton = await driver.wait(until.elementLocated(By.{by_method}(\"{locator}\")), 10000);\nawait driver.wait(until.elementIsVisible(closeButton), 10000);\nawait closeButton.click();\n// Wait for dialog to disappear\nawait driver.wait(async () => {\n  try {\n    let elements = await driver.findElements(By.{by_method}(\"{locator}\"));\n    return elements.length === 0;\n  } catch { return true; }\n}, 10000);",
+        "csharp": "// Close dialog/modal with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIWebElement closeButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.{by_method}(\"{locator}\")));\ncloseButton.Click();\n// Wait for dialog to disappear\nwait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.{by_method}(\"{locator}\")));"
+      }
+    },
+    "alert": {
+      "comprehensive": {
+        "python": "# Handle alert with wait\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\n\nwait = WebDriverWait(driver, 10)\nalert = wait.until(EC.alert_is_present())\nalert_text = alert.text\nprint(f\"Alert text: {{alert_text}}\")\nalert.{alert_action}()  # accept() or dismiss()",
+        "java": "// Handle alert with wait\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nAlert alert = wait.until(ExpectedConditions.alertIsPresent());\nString alertText = alert.getText();\nSystem.out.println(\"Alert text: \" + alertText);\nalert.{alert_action}();  // accept() or dismiss()",
+        "javascript": "// Handle alert with wait\nlet alert = await driver.wait(until.alertIsPresent(), 10000);\nlet alertText = await alert.getText();\nconsole.log(`Alert text: ${{alertText}}`);\nawait alert.{alert_action}();  // accept() or dismiss()",
+        "csharp": "// Handle alert with wait\nWebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));\nIAlert alert = wait.Until(ExpectedConditions.AlertIsPresent());\nstring alertText = alert.Text;\nConsole.WriteLine($\"Alert text: {{alertText}}\");\nalert.{alert_action}();  // Accept() or Dismiss()"
+      }
+    }
+  },
+  "prompt_patterns": {
+    "description": "Prompt keyword patterns for automatic action detection - Phase 2 of Option B",
+    "patterns": [
+      {
+        "action": "click",
+        "keywords": ["click", "press", "tap", "select button", "select link", "activate"],
+        "priority": 1,
+        "extraction": {
+          "element": true,
+          "locator": true,
+          "value": false
+        }
+      },
+      {
+        "action": "input",
+        "keywords": ["enter", "type", "input", "fill", "set value"],
+        "priority": 1,
+        "extraction": {
+          "element": true,
+          "locator": true,
+          "value": true
+        }
+      },
+      {
+        "action": "select",
+        "keywords": ["select from", "choose from", "pick from"],
+        "priority": 1,
+        "extraction": {
+          "element": true,
+          "locator": true,
+          "value": true
+        }
+      },
+      {
+        "action": "verify",
+        "keywords": ["verify", "check", "assert", "validate", "confirm", "is displayed", "is visible"],
+        "priority": 1,
+        "extraction": {
+          "element": true,
+          "locator": true,
+          "value": false
+        }
+      },
+      {
+        "action": "verify_title",
+        "keywords": ["verify title", "check title", "assert title"],
+        "priority": 2,
+        "extraction": {
+          "element": false,
+          "locator": false,
+          "value": true
+        }
+      },
+      {
+        "action": "verify_text",
+        "keywords": ["verify text", "check text", "assert text"],
+        "priority": 2,
+        "extraction": {
+          "element": true,
+          "locator": true,
+          "value": true
+        }
+      },
+      {
+        "action": "navigate",
+        "keywords": ["navigate", "go to", "open url", "visit"],
+        "priority": 1,
+        "extraction": {
+          "element": false,
+          "locator": false,
+          "value": true
+        }
+      },
+      {
+        "action": "wait",
+        "keywords": ["wait for", "wait until"],
+        "priority": 1,
+        "extraction": {
+          "element": true,
+          "locator": true,
+          "value": false
+        }
+      },
+      {
+        "action": "file_upload",
+        "keywords": ["upload file", "upload", "attach file"],
+        "priority": 2,
+        "extraction": {
+          "element": true,
+          "locator": true,
+          "value": true
+        }
+      },
+      {
+        "action": "scroll",
+        "keywords": ["scroll to", "scroll", "scroll into view"],
+        "priority": 2,
+        "extraction": {
+          "element": true,
+          "locator": false,
+          "value": false
+        }
+      },
+      {
+        "action": "close_dialog",
+        "keywords": ["close dialog", "close modal", "close popup", "dismiss dialog"],
+        "priority": 3,
+        "extraction": {
+          "element": false,
+          "locator": false,
+          "value": false
+        }
+      },
+      {
+        "action": "alert",
+        "keywords": ["accept alert", "dismiss alert", "handle alert"],
+        "priority": 3,
+        "extraction": {
+          "element": false,
+          "locator": false,
+          "value": false
+        }
+      }
+    ]
+  }
+}

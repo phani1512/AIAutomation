@@ -1,0 +1,217 @@
+[AUTH] Loaded 1 users from disk
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 638 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4446 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 638 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4446 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 638 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4446 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 638 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4446 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[INIT] Server started fresh - recorded_sessions cleared (count: 0)
+[INIT] Server Instance ID: 8f0af69de66eccdff920815307d27631
+[INIT] All previous auth sessions invalidated
+[SERVER] AI model will be loaded on first request...
+
+============================================================
+[SERVER] Selenium SLM API Server (Modular)
+============================================================
+[WEB] Interface: http://localhost:5002
+[WEB] Screenshot AI: http://localhost:5002/screenshot-generator
+
+[API] Endpoints:
+  GET  /health              - Health check
+  POST /generate            - Generate code
+  POST /suggest-locator     - Suggest locator
+  POST /suggest-action      - Suggest action
+
+[BROWSER] Control:
+  POST /browser/initialize  - Initialize
+  POST /browser/execute     - Execute code
+  POST /browser/close       - Close
+
+[RECORDER] Actions:
+  POST /recorder/start      - Start session
+  POST /recorder/navigate   - Navigate & inject script
+  POST /recorder/record-action - Record
+  POST /recorder/stop       - Stop (keeps browser open)
+  POST /recorder/new-test   - Start new test in same browser
+  POST /recorder/generate-test - Generate test
+  POST /recorder/save-generated-test - Save AI generated test
+  GET  /recorder/sessions   - List sessions
+
+[SEMANTIC] Analysis:
+  POST /semantic/analyze-intent    - Analyze test intent
+  POST /semantic/suggest-scenarios - Suggest test scenarios
+  GET  /semantic/cache-stats       - View cache statistics
+  POST /semantic/clear-cache       - Clear cache
+
+[SCREENSHOT] Multi-modal AI:
+  POST /screenshot/analyze        - Detect elements from screenshot
+  POST /screenshot/generate-code  - Generate test from screenshot
+  POST /screenshot/annotate       - Annotate screenshot with elements
+
+[TEST SUITE] Execution:
+  POST /recorder/execute-test - Execute single test
+  POST /recorder/delete-session - Delete specific test case
+  POST /recorder/clear-sessions - Clear all test cases
+============================================================
+
+[SERVER] Starting production server on http://localhost:5002
+[SERVER] Press CTRL+C to quit
+
+[VERIFY-DEBUG] prompt='click login button', is_verification=False
+[VERIFY-DEBUG] with_fallbacks=True, max_fallbacks=3, compact_mode=False
+[ENDPOINT DEBUG] /generate called with prompt: click login button..., language: java, with_fallbacks: True
+[INIT] Loading AI model for first time...
+[COMPREHENSIVE] Loaded 10 pattern categories
+[TEMPLATE ENGINE] Loaded 14 action templates
+[TEMPLATE ENGINE] Loaded 12 prompt patterns
+[DATASET LOAD] Loaded 'close dialog' prompt: click email preview over lay dialog close button -> code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "...
+[DATASET] Loaded 638 unique code patterns from combined-training-dataset-final.json
+[DATASET] Expanded to 4446 unique prompts (with variations)
+[WARNING] Could not load PageHelper patterns dataset: [Errno 2] No such file or directory: 'C:\\Users\\valaboph\\AIAutomation\\src\\resources\\page-helper-patterns-dataset.json'
+[INIT] AI model loaded - Version: 2.0.5-HYBRID
+
+================================================================================
+[18:30:51] DATASET MATCHER CALLED
+Prompt: 'click login button'
+return_alternatives: False
+CALL STACK:
+  File "C:\Users\valaboph\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\valaboph\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Users\valaboph\AIAutomation\src\main\python\api_server_modular.py", line 302, in generate_code
+    dataset_match = gen._find_dataset_match(prompt, return_alternatives=False)
+  File "C:\Users\valaboph\AIAutomation\src\main\python\inference_improved.py", line 248, in _find_dataset_match
+    return self.dataset_matcher.find_dataset_match(prompt, return_alternatives, preserve_placeholder)
+================================================================================
+
+[EXACT MATCH] Found exact match for 'click login button'
+[DATASET CHECK] Match: True, Has: True
+[DATASET FALLBACKS] Found 7 curated fallback selectors in dataset
+[DATASET FALLBACKS] with_fallbacks=True, using dataset fallbacks
+[CODE GEN] Generating java code for prompt: 'click login button' (comprehensive=True, ignore_fallbacks=False, compact=False)
+
+================================================================================
+[18:30:51] DATASET MATCHER CALLED
+Prompt: 'click login button'
+return_alternatives: True
+CALL STACK:
+  File "C:\Users\valaboph\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Users\valaboph\AIAutomation\src\main\python\api_server_modular.py", line 345, in generate_code
+    generated = gen.generate_clean(prompt, max_tokens=max_tokens, temperature=temperature, language=language, comprehensive_mode=comprehensive_mode, ignore_fallbacks=(not with_fallbacks), compact_mode=compact_mode)
+  File "C:\Users\valaboph\AIAutomation\src\main\python\inference_improved.py", line 566, in generate_clean
+    dataset_result = self._find_dataset_match(prompt, return_alternatives=True)
+  File "C:\Users\valaboph\AIAutomation\src\main\python\inference_improved.py", line 248, in _find_dataset_match
+    return self.dataset_matcher.find_dataset_match(prompt, return_alternatives, preserve_placeholder)
+================================================================================
+
+[EXACT MATCH] Found exact match for 'click login button'
+[EXACT MATCH] Also searching for alternatives...
+[TEMPLATE] Extracted {VALUE}='login' from 'click login button'
+[TEMPLATE] Checking 'enter {value} in {field}' - structure similarity: 0.00
+[TEMPLATE] Checking 'type {value} in {field}' - structure similarity: 0.00
+[TEMPLATE] Checking 'input {value} in {field}' - structure similarity: 0.00
+[TEMPLATE] Checking 'fill {value} in {field}' - structure similarity: 0.00
+[TEMPLATE] Checking 'click {value} button' - structure similarity: 1.00
+[TEMPLATE] Checking 'click on {value} button' - structure similarity: 0.67
+[TEMPLATE] Checking 'press {value} button' - structure similarity: 0.50
+[TEMPLATE] Checking 'tap {value} button' - structure similarity: 0.50
+[TEMPLATE] Checking 'click the {value} button' - structure similarity: 0.67
+[TEMPLATE] Checking 'select {value} button' - structure similarity: 0.50
+[TEMPLATE] Γ£à Best match: 'click {value} button' (score: 1.00)
+[TEMPLATE] Γ£à Successfully matched and substituted
+[TEMPLATE] Matched 'click login button' to template pattern
+[TEMPLATE] Also searching for alternatives...
+[FUZZY] Using exact match as primary, finding alternatives from fuzzy matches
+[SEMANTIC FILTER] Prompt: 'click login button', detected action: click
+[SEMANTIC FILTER] Checking 15 candidates for semantic match...
+[SEMANTIC FILTER] Candidate: 'click login button' (score: 100.0%, action: click)
+[SEMANTIC FILTER] Γ£à ACCEPTED: 'click login button'
+[ALTERNATIVES DEBUG] Alternative 'click login button' has 15 variations
+[ALTERNATIVES DEBUG] First 3 variations: ['click producer login button', 'select the producer login button', 'press the producer login button']
+[SEMANTIC FILTER] Candidate: 'press login button' (score: 100.0%, action: click)
+[SEMANTIC FILTER] Γ£à ACCEPTED: 'press login button'
+[ALTERNATIVES DEBUG] Alternative 'press login button' has 15 variations
+[ALTERNATIVES DEBUG] First 3 variations: ['click producer login button', 'select the producer login button', 'press the producer login button']
+[SEMANTIC FILTER] Candidate: 'click on login button' (score: 89.4%, action: click)
+[SEMANTIC FILTER] Γ£à ACCEPTED: 'click on login button'
+[ALTERNATIVES DEBUG] Alternative 'click on login button' has 15 variations
+[ALTERNATIVES DEBUG] First 3 variations: ['click producer login button', 'select the producer login button', 'press the producer login button']
+[ALTERNATIVES] Returning 3 alternatives (primary match: True)
+[18:30:52] ALTERNATIVES STORED
+Storing 3 alternatives in dataset_matcher._last_alternatives:
+  1. [100.0%] click login button
+  2. [100.0%] press login button
+  3. [89.4%] click on login button
+
+[DATASET] Prompt: 'click login button'
+[DATASET] Match found: True
+[DATASET] Locator: .login-row .primary-btn
+[DATASET] Code: wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))
+element.click()
+[DATASET] Action: click
+[ALTERNATIVES DEBUG] Stored 3 alternatives from dataset matcher:
+  1. [100.0%] click login button
+  2. [100.0%] press login button
+  3. [89.4%] click on login button
+[18:30:52] GET_LAST_ALTERNATIVES CALLED
+Returning 3 alternatives:
+  1. [100.0%] click login button
+  2. [100.0%] press login button
+  3. [89.4%] click on login button
+
+[ALTERNATIVES TRACE] DatasetMatcher has 3 alternatives:
+  1. [100.0%] click login button
+  2. [100.0%] press login button
+  3. [89.4%] click on login button
+[DATASET] Code (Python format): wait = WebDriverWait(driver, 10)
+element = wait.until(EC.element_to_be_clickable...
+[DATASET] Target language: java
+[DATASET] Found 7 fallback selectors
+[DATASET] Generating standard code with 7 fallback selectors
+[18:30:52] GET_LAST_ALTERNATIVES CALLED
+Returning 3 alternatives:
+  1. [100.0%] click login button
+  2. [100.0%] press login button
+  3. [89.4%] click on login button
+
+[ALTERNATIVES DEBUG] Called get_last_alternatives()
+[ALTERNATIVES DEBUG] Type: <class 'list'>
+[ALTERNATIVES DEBUG] Length: 3
+[ALTERNATIVES DEBUG] Content: [{'prompt': 'click login button', 'score': 1.0, 'code': 'wait = WebDriverWait(driver, 10)\nelement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))\nelement.click()', 'xpath': '', 'category': 'click', 'prompt_variations': ['click producer login button', 'select the producer login button', 'press the producer login button', 'press the producer login', 'click producer login button field', 'tap the producer login button', 'click producer login', 'choose the producer login button', 'click on the producer login button', 'click login button', 'sign in', 'click login', 'press login button', 'click on login button', 'click sign in button']}, {'prompt': 'press login button', 'score': 1.0, 'code': 'wait = WebDriverWait(driver, 10)\nelement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))\nelement.click()', 'xpath': '', 'category': 'click', 'prompt_variations': ['click producer login button', 'select the producer login button', 'press the producer login button', 'press the producer login', 'click producer login button field', 'tap the producer login button', 'click producer login', 'choose the producer login button', 'click on the producer login button', 'click login button', 'sign in', 'click login', 'press login button', 'click on login button', 'click sign in button']}, {'prompt': 'click on login button', 'score': 0.8942307692307692, 'code': 'wait = WebDriverWait(driver, 10)\nelement = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".login-row .primary-btn")))\nelement.click()', 'xpath': '', 'category': 'click', 'prompt_variations': ['click producer login button', 'select the producer login button', 'press the producer login button', 'press the producer login', 'click producer login button field', 'tap the producer login button', 'click producer login', 'choose the producer login button', 'click on the producer login button', 'click login button', 'sign in', 'click login', 'press login button', 'click on login button', 'click sign in button']}]
+[ALTERNATIVES] Found 3 alternatives from generator
+[ENDPOINT DEBUG] Γ£à Generated code length: 1370 characters
+[ENDPOINT DEBUG] First 200 chars: // click login button - optimized fallback strategy (10-20x faster)
+// Phase 1: Instant check for visible elements
+WebElement element = null;
+String[] selectors = {".login-row .primary-btn", "button",...
+[DEBUG /generate] execute=False, url=''

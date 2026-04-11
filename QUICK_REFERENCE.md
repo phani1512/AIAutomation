@@ -4,7 +4,7 @@
 ```powershell
 python src/main/python/api_server_improved.py
 ```
-**Server URL**: http://localhost:5000
+**Server URL**: http://localhost:5002
 
 ---
 
@@ -42,21 +42,21 @@ python src/main/python/api_server_improved.py
 
 ### Initialize Browser
 ```bash
-curl -X POST http://localhost:5000/browser/initialize \
+curl -X POST http://localhost:5002/browser/initialize \
   -H "Content-Type: application/json" \
   -d '{"browser":"chrome","headless":false}'
 ```
 
 ### Execute Code
 ```bash
-curl -X POST http://localhost:5000/generate \
+curl -X POST http://localhost:5002/generate \
   -H "Content-Type: application/json" \
   -d '{"prompt":"click login","execute":true,"url":"https://example.com"}'
 ```
 
 ### Close Browser
 ```bash
-curl -X POST http://localhost:5000/browser/close
+curl -X POST http://localhost:5002/browser/close
 ```
 
 ---
@@ -76,7 +76,7 @@ curl -X POST http://localhost:5000/browser/close
 ```python
 import requests
 
-API = "http://localhost:5000"
+API = "http://localhost:5002"
 
 # Initialize
 requests.post(f"{API}/browser/initialize", 
@@ -103,9 +103,9 @@ requests.post(f"{API}/browser/close")
 - Install Chrome/Firefox/Edge
 - Check internet (driver download)
 
-**Port 5000 in use?**
+**port 5002 in use?**
 ```powershell
-netstat -ano | findstr :5000
+netstat -ano | findstr :5002
 taskkill /PID <PID> /F
 ```
 
@@ -131,3 +131,4 @@ taskkill /PID <PID> /F
 ---
 
 **Need Help?** See `BROWSER_INTEGRATION_GUIDE.md`
+

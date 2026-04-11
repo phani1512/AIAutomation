@@ -38,6 +38,10 @@
     --radius: 10px;
     --radius-lg: 16px;
     --radius-xl: 24px;
+    
+    --code-bg: #f8f9fa;
+    --code-text: #1e293b;
+    --input-bg: #ffffff;
 }
 
 body.dark-mode {
@@ -57,6 +61,126 @@ body.dark-mode {
     --input-bg: #1e293b;
     --result-bg: #1e293b;
     --stat-bg: #1e293b;
+    
+    --code-bg: #0f172a;
+    --code-text: #e2e8f0;
+}
+
+/* Dark Mode - Execution Results Text Visibility Fix */
+body.dark-mode #executionResultsList,
+body.dark-mode #testRunnerResults,
+body.dark-mode #executionResults {
+    color: var(--text-primary) !important;
+}
+
+/* Override inline styles for execution result messages in dark mode */
+body.dark-mode #executionResultsList div,
+body.dark-mode #testRunnerResults div,
+body.dark-mode .execution-result-item {
+    color: var(--text-primary) !important;
+}
+
+/* Execution Results Headers in Dark Mode */
+body.dark-mode #executionResults h4,
+body.dark-mode #testRunnerResults h4 {
+    color: var(--brand-primary-light) !important; /* Use lighter purple for headers */
+}
+
+/* Status colors in dark mode - brighter for visibility */
+body.dark-mode #executionResultsList div[style*="color: #f59e0b"],
+body.dark-mode #executionResultsList div[style*="color: #fbbf24"] {
+    color: #fcd34d !important; /* Brighter yellow for "executing" status */
+}
+
+body.dark-mode #executionResultsList div[style*="color: #ef4444"],
+body.dark-mode #executionResultsList div[style*="color: #dc2626"] {
+    color: #fca5a5 !important; /* Lighter red for error messages */
+}
+
+body.dark-mode #executionResultsList div[style*="color: #10b981"],
+body.dark-mode #executionResultsList div[style*="color: #059669"] {
+    color: #6ee7b7 !important; /* Lighter green for success messages */
+}
+
+body.dark-mode #executionResultsList div[style*="color: #3b82f6"],
+body.dark-mode #executionResultsList div[style*="color: #2563eb"] {
+    color: #93c5fd !important; /* Lighter blue for info messages */
+}
+
+/* Also apply to testRunnerResults */
+body.dark-mode #testRunnerResults div[style*="color: #f59e0b"],
+body.dark-mode #testRunnerResults div[style*="color: #fbbf24"] {
+    color: #fcd34d !important;
+}
+
+body.dark-mode #testRunnerResults div[style*="color: #ef4444"],
+body.dark-mode #testRunnerResults div[style*="color: #dc2626"] {
+    color: #fca5a5 !important;
+}
+
+body.dark-mode #testRunnerResults div[style*="color: #10b981"],
+body.dark-mode #testRunnerResults div[style*="color: #059669"] {
+    color: #6ee7b7 !important;
+}
+
+body.dark-mode #testRunnerResults div[style*="color: #3b82f6"],
+body.dark-mode #testRunnerResults div[style*="color: #2563eb"] {
+    color: #93c5fd !important;
+}
+
+/* Dark mode - Override common hardcoded heading colors */
+body.dark-mode h4[style*="color: #667eea"],
+body.dark-mode h4[style*="color: #6366f1"],
+body.dark-mode h3[style*="color: #334155"] {
+    color: #a5b4fc !important; /* Lighter purple/blue for readability */
+}
+
+/* Dark mode - Broaden div color overrides for any location */
+body.dark-mode div[style*="color: #f59e0b"],
+body.dark-mode div[style*="color: #fbbf24"] {
+    color: #fcd34d !important; /* Brighter yellow */
+}
+
+body.dark-mode div[style*="color: #ef4444"],
+body.dark-mode div[style*="color: #dc2626"],
+body.dark-mode div[style*="color: #991b1b"] {
+    color: #fca5a5 !important; /* Lighter red */
+}
+
+body.dark-mode div[style*="color: #10b981"],
+body.dark-mode div[style*="color: #059669"] {
+    color: #6ee7b7 !important; /* Lighter green */
+}
+
+body.dark-mode div[style*="color: #3b82f6"],
+body.dark-mode div[style*="color: #2563eb"],
+body.dark-mode div[style*="color: #1e40af"] {
+    color: #93c5fd !important; /* Lighter blue */
+}
+
+/* Dark mode - Override common text colors for paragraphs and spans */
+body.dark-mode p[style*="color: #64748b"],
+body.dark-mode p[style*="color: #6b7280"],
+body.dark-mode span[style*="color: #64748b"],
+body.dark-mode span[style*="color: #667eea"],
+body.dark-mode span[style*="color: #6366f1"] {
+    color: var(--text-secondary) !important;
+}
+
+/* Dark mode - Fix for warning colors (brown/orange) */
+body.dark-mode strong[style*="color: #92400e"],
+body.dark-mode div[style*="color: #92400e"] {
+    color: #fbbf24 !important; /* Bright yellow-orange for warnings */
+}
+
+/* Dark mode - Fix for success indicators in strong tags */
+body.dark-mode strong[style*="color: #065f46"] {
+    color: #6ee7b7 !important; /* Bright green for success */
+}
+
+/* Dark mode - Fix for span colors (green success indicators) */
+body.dark-mode span[style*="color: #10b981"] {
+    color: #6ee7b7 !important;
 }
 
 body {
@@ -150,6 +274,36 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    position: relative;
+}
+
+.password-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.password-toggle-btn:hover {
+    opacity: 1;
+}
+
+.login-input[type="password"],
+.login-input[type="text"].password-field {
+    padding-right: 45px;
 }
 
 .login-label {
@@ -552,6 +706,9 @@ body {
 
 .page-section {
     display: none;
+    padding: var(--space-6, 24px);
+    background: var(--bg-app, var(--bg-secondary));
+    min-height: calc(100vh - 80px);
 }
 
 .page-section.active {
@@ -869,11 +1026,26 @@ pre[class*="language-"] {
     padding: 32px 48px;
     border-radius: 16px;
     box-shadow: var(--shadow-xl);
-    z-index: 2000;
+    z-index: 9999;
+    min-width: 280px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cancel button hover effect */
+#cancelExecutionBtn:hover {
+    background: #dc2626 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4) !important;
+}
+
+#cancelExecutionBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3) !important;
 }
 
 #loading.active {
-    display: block;
+    display: flex;
 }
 
 .spinner {
@@ -883,7 +1055,7 @@ pre[class*="language-"] {
     width: 48px;
     height: 48px;
     animation: spin 1s linear infinite;
-    margin: 0 auto 16px;
+    margin: 0;
 }
 
 @keyframes spin {
@@ -970,13 +1142,69 @@ body:not(.dark-mode) pre[class*="language-"] {
     padding: 24px;
     border-radius: 16px;
     box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     transition: all 0.3s ease;
+}
+
+/* Colored borders for stat cards matching the image */
+.dashboard-card:nth-child(1) {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+}
+
+body.dark-mode .dashboard-card:nth-child(1) {
+    border-color: #60a5fa;
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+}
+
+.dashboard-card:nth-child(2) {
+    border-color: #10b981;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+}
+
+body.dark-mode .dashboard-card:nth-child(2) {
+    border-color: #34d399;
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
+}
+
+.dashboard-card:nth-child(3) {
+    border-color: #ef4444;
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2);
+}
+
+body.dark-mode .dashboard-card:nth-child(3) {
+    border-color: #f87171;
+    box-shadow: 0 8px 32px rgba(239, 68, 68, 0.3);
+}
+
+.dashboard-card:nth-child(4) {
+    border-color: #f59e0b;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+}
+
+body.dark-mode .dashboard-card:nth-child(4) {
+    border-color: #fbbf24;
+    box-shadow: 0 8px 32px rgba(245, 158, 11, 0.3);
 }
 
 .dashboard-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+}
+
+.dashboard-card:nth-child(1):hover {
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+}
+
+.dashboard-card:nth-child(2):hover {
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.4);
+}
+
+.dashboard-card:nth-child(3):hover {
+    box-shadow: 0 8px 32px rgba(239, 68, 68, 0.4);
+}
+
+.dashboard-card:nth-child(4):hover {
+    box-shadow: 0 8px 32px rgba(245, 158, 11, 0.4);
 }
 
 .dashboard-metric {
@@ -993,6 +1221,39 @@ body:not(.dark-mode) pre[class*="language-"] {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* Dashboard card metric values - specific colors */
+.dashboard-card:nth-child(1) .dashboard-metric-value {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dashboard-card:nth-child(2) .dashboard-metric-value {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dashboard-card:nth-child(3) .dashboard-metric-value {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dashboard-card:nth-child(4) .dashboard-metric-value {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body:not(.dark-mode) .dashboard-card {
+    background: rgba(255, 255, 255, 0.95) !important;
 }
 
 .dashboard-metric-label {
@@ -1614,6 +1875,14 @@ body.dark-mode .login-input {
     background: #0f172a;
     border-color: #334155;
     color: #f1f5f9;
+}
+
+body.dark-mode .password-toggle-btn {
+    color: #94a3b8;
+}
+
+body.dark-mode .password-toggle-btn:hover {
+    opacity: 1;
 }
 
 body.dark-mode .login-footer {

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback System Diagnostic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #1e1e1e;
+            color: #e0e0e0;
+        }
+        .diagnostic-box {
+            background: #2d2d2d;
+            border-left: 4px solid #7C3AED;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .pass { color: #22c55e; font-weight: bold; }
+        .fail { color: #ef4444; font-weight: bold; }
+        .warning { color: #f59e0b; font-weight: bold; }
+        button {
+            padding: 10px 20px;
+            background: #7C3AED;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #6366f1;
+        }
+        pre {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Feedback System Diagnostic</h1>
+    <p>Run this diagnostic to check why feedback features aren't showing up.</p>
+    
+    <button onclick="runDiagnostic()">▶️ Run Diagnostic</button>
+    <button onclick="clearCache()">🗑️ Clear Cache & Reload</button>
+    <button onclick="testFeedbackModule()">🧪 Test Feedback Module</button>
+    
+    <div id="results"></div>
+    
+    <script>
+        function runDiagnostic() {
+            const results = document.getElementById('results');
+            let html = '<div class="diagnostic-box"><h2>Diagnostic Results</h2>';
+            
+            // Check 1: FeedbackManager loaded
+            html += '<h3>1. FeedbackManager Module</h3>';
+            if (typeof window.feedbackManager !== 'undefined') {
+                html += '<div class="pass">✅ PASS: window.feedbackManager is defined</div>';
+                html += `<pre><code>${JSON.stringify(Object.keys(window.feedbackManager || {}), null, 2)}</code></pre>`;
+            } else {
+                html += '<div class="fail">❌ FAIL: window.feedbackManager is undefined</div>';
+                html += '<div class="warning">⚠️ Solution: Hard refresh (Ctrl + Shift + F5) to reload JavaScript</div>';
+            }
+            
+            // Check 2: Field-Aware Suggestions Module
+            html += '<h3>2. Field-Aware Suggestions Module</h3>';
+            if (typeof window.fieldAwareSuggestions !== 'undefined') {
+                html += '<div class="pass">✅ PASS: window.fieldAwareSuggestions is defined</div>';
+            } else {
+                html += '<div class="fail">❌ FAIL: window.fieldAwareSuggestions is undefined</div>';
+            }
+            
+            // Check 3: Check script tags
+            html += '<h3>3. Script Tags in HTML</h3>';
+            const feedbackScript = Array.from(document.querySelectorAll('script')).find(s => 
+                s.src.includes('feedback-system.js')
+            );
+            if (feedbackScript) {
+                html += '<div class="pass">✅ PASS: feedback-system.js script tag found</div>';
+                html += `<pre><code>${feedbackScript.outerHTML}</code></pre>`;
+            } else {
+                html += '<div class="fail">❌ FAIL: feedback-system.js script tag not found in DOM</div>';
+            }
+            
+            // Check 4: Test Suite JS loaded
+            html += '<h3>4. Test Suite Module</h3>';
+            if (typeof window.loadTestCases === 'function') {
+                html += '<div class="pass">✅ PASS: test-suite.js loaded (loadTestCases exists)</div>';
+            } else {
+                html += '<div class="fail">❌ FAIL: test-suite.js not loaded properly</div>';
+            }
+            
+            // Check 5: Browser Console Errors
+            html += '<h3>5. Console Errors</h3>';
+            html += '<div class="warning">⚠️ Open Browser Console (F12) and check for JavaScript errors</div>';
+            html += '<div>Look for errors mentioning: feedback-system, semantic-suggestions, or test-suite</div>';
+            
+            // Check 6: Cache Version
+            html += '<h3>6. Cache Version Check</h3>';
+            const allScripts = Array.from(document.querySelectorAll('script[src*="v="]'));
+            html += `<div>Found ${allScripts.length} scripts with version numbers:</div>`;
+            html += '<pre><code>';
+            allScripts.forEach(s => {
+                const match = s.src.match(/v=(\d+)/);
+                if (match) {
+                    html += `${s.src.split('/').pop()} - v${match[1]}\\n`;
+                }
+            });
+            html += '</code></pre>';
+            html += '<div class="warning">Expected version: v=20260407030</div>';
+            
+            // Check 7: Feedback Stats Button
+            html += '<h3>7. Feedback Stats Button</h3>';
+            html += '<div>Checking if button exists in DOM...</div>';
+            // This would need to be checked after navigating to Test Suite page
+            html += '<div class="warning">⚠️ Navigate to Test Suite tab and look for "📊 Feedback Stats" button</div>';
+            
+            html += '</div>';
+            results.innerHTML = html;
+        }
+        
+        function clearCache() {
+            if (confirm('This will reload the page and clear browser cache. Continue?')) {
+                // Clear localStorage version marker
+                localStorage.removeItem('test_suite_version');
+                
+                // Force hard reload
+                location.reload(true);
+            }
+        }
+        
+        function testFeedbackModule() {
+            const results = document. getElementById('results');
+            let html = '<div class="diagnostic-box"><h2>Feedback Module Test</h2>';
+            
+            if (typeof window.feedbackManager === 'undefined') {
+                html += '<div class="fail">❌ Cannot test: feedbackManager not loaded</div>';
+                html += '<div class="warning">⚠️ Run main diagnostic first</div>';
+            } else {
+                html += '<div class="pass">✅ feedbackManager is available</div>';
+                
+                // Test rendering rating buttons
+                html += '<h3>Test: Rating Buttons</h3>';
+                try {
+                    const buttonsHtml = window.feedbackManager.renderRatingButtons('test_sugg_1', 'test_scenario', 'TC_TEST');
+                    html += '<div class="pass">✅ Rating buttons rendered successfully</div>';
+                    html += '<div style="background: white; padding: 15px; border-radius: 6px; margin: 10px 0;">';
+                    html += buttonsHtml;
+                    html += '</div>';
+                } catch (error) {
+                    html += `<div class="fail">❌ Error rendering rating buttons: ${error.message}</div>`;
+                }
+                
+                // Test showing toast
+                html += '<h3>Test: Toast Notification</h3>';
+                try {
+                    html += '<button onclick="window.feedbackManager.showToast(\'Test notification\', \'success\')">Show Test Toast</button>';
+                    html += '<div class="pass">✅ Toast method available - click button to test</div>';
+                } catch (error) {
+                    html += `<div class="fail">❌ Error: ${error.message}</div>`;
+                }
+                
+                // Test methods available
+                html += '<h3>Available Methods</h3>';
+                html += '<pre><code>';
+                const methods = Object.getOwnPropertyNames(Object.getPrototypeOf(window.feedbackManager))
+                    .filter(name => typeof window.feedbackManager[name] === 'function');
+                methods.forEach(method => {
+                    html += `• ${method}()\\n`;
+                });
+                html += '</code></pre>';
+            }
+            
+            html += '</div>';
+            results.innerHTML = html;
+        }
+        
+        // Auto-run on load
+        window.addEventListener('load', () => {
+            runDiagnostic();
+        });
+    </script>
+</body>
+</html>

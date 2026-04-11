@@ -1,42 +1,145 @@
 <!-- Test Suite Page -->
 <section id="testcasesPage" class="page-section">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px 20px 20px;">
-        <div class="section-row">
-            <div class="card">
-                <h3 class="section-header">📋 Test Suite Management</h3>
-                
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="moduleFilter">Filter by Module:</label>
-                    <select id="moduleFilter" onchange="filterTestsByModule()">
-                        <option value="">All Modules</option>
-                    </select>
+    <div style="padding: 24px 40px; width: 100%; max-width: 100%;">
+        <div class="card" style="width: 100%; max-width: 100%; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="card-title-icon">📋</span>
+                        Test Suite Management
+                    </h3>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn" onclick="loadTestCases()" style="padding: 10px 18px; font-size: 13px;" title="Refresh test list">
+                            🔄 Refresh
+                        </button>
+                        <button class="btn" onclick="clearTestSuite()" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); padding: 10px 18px; font-size: 13px;" title="Clear all tests">
+                            🗑️ Clear All
+                        </button>
+                        <button class="btn" onclick="if (window.feedbackManager) feedbackManager.showFeedbackDashboard(); else alert('Feedback system not loaded');" style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); padding: 10px 18px; font-size: 13px;" title="View ML feedback statistics">
+                            📊 Feedback Stats
+                        </button>
+                    </div>
                 </div>
                 
-                <div style="display: flex; gap: 10px; margin-bottom: 15px; align-items: center; padding: 10px; background: var(--bg-secondary); border-radius: 6px;">
-                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                        <input type="checkbox" id="selectAllTests" onchange="toggleSelectAllTests()" style="cursor: pointer; width: 18px; height: 18px;">
+                <!-- Advanced Test Runner Section (Collapsible) -->
+                <div style="margin-bottom: 20px; border: 2px solid var(--border-color); border-radius: 8px; overflow: hidden;">
+                    <button onclick="toggleTestRunnerSection()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600;">
+                        <span>⚙️ Advanced Test Runner Configuration</span>
+                        <span id="testRunnerToggleIcon">▼</span>
+                    </button>
+                    <div id="testRunnerSection" style="display: none; padding: 20px; background: var(--bg-secondary);">
+                        <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.95em;">
+                            Configure external test runners (JUnit, pytest, etc.) to execute your exported test code</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                            <div class="form-group">
+                                <label for="testRunner">Test Runner:</label>
+                                <select id="testRunner" onchange="updateTestRunnerConfig()">
+                                    <option value="junit">JUnit (Java)</option>
+                                    <option value="testng">TestNG (Java)</option>
+                                    <option value="pytest">pytest (Python)</option>
+                                    <option value="unittest">unittest (Python)</option>
+                                    <option value="jest">Jest (JavaScript)</option>
+                                    <option value="mocha">Mocha (JavaScript)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="testFilePath">Test File Path:</label>
+                                <input type="text" id="testFilePath" placeholder="e.g., src/test/java/TestClass.java" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="testMethod">Test Method (optional):</label>
+                                <input type="text" id="testMethod" placeholder="e.g., testLogin" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="runnerArgs">Additional Arguments:</label>
+                                <input type="text" id="runnerArgs" placeholder="e.g., -v --html=report.html" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                            <button class="btn" onclick="runTestWithRunner()" style="flex: 1;">
+                                ▶️ Run with Runner
+                            </button>
+                            <button class="btn" onclick="generateRunCommand()" style="flex: 1; background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
+                                📋 Generate Command
+                            </button>
+                        </div>
+
+                        <div id="testRunnerConfig" style="background: var(--bg-tertiary); border: 2px solid var(--border-color); border-radius: 8px; padding: 15px; margin-bottom: 15px; display: none;">
+                            <strong style="color: var(--text-primary);">Generated Command:</strong>
+                            <pre id="runnerConfigText" style="margin-top: 10px; padding: 10px; background: var(--result-bg); border-radius: 6px; overflow-x: auto; font-size: 0.9em; color: var(--text-primary); white-space: pre-wrap;"></pre>
+                        </div>
+
+                        <div id="testRunnerResults" style="display: none; background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 15px;">
+                            <h4 style="color: var(--text-primary); margin-bottom: 10px;">📊 Execution Results:</h4>
+                            <div id="testRunnerOutput" style="font-family: 'JetBrains Mono', monospace; white-space: pre-wrap; font-size: 0.9em; color: var(--text-primary);"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div class="form-group">
+                        <label for="testSourceFilter">Filter by Source:</label>
+                        <select id="testSourceFilter" onchange="filterTestsBySource()" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary); cursor: pointer;">
+                            <option value="all">🔄 All Sources</option>
+                            <option value="recorder">🎬 Test Recorder</option>
+                            <option value="builder">🧪 Test Builder</option>
+                            <option value="semantic">✨ AI-Generated (Semantic)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="moduleFilter">Filter by Module:</label>
+                        <select id="moduleFilter" onchange="filterTestsByModule()" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary); cursor: pointer;">
+                            <option value="">All Modules</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="browserSelect">🌐 Execute on Browser:</label>
+                        <select id="browserSelect" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary); cursor: pointer; font-weight: 500;">
+                            <option value="chrome" selected>🔵 Google Chrome</option>
+                            <option value="firefox">🦊 Mozilla Firefox</option>
+                            <option value="edge">🟦 Microsoft Edge</option>
+                            <option value="safari" disabled>🍎 Safari (Mac only)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="healingModeSelect" title="Choose self-healing version">🔧 Self-Healing Mode:</label>
+                        <select id="healingModeSelect" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary); cursor: pointer; font-weight: 500;">
+                            <option value="v1" selected>⚡ Standard (v1)</option>
+                            <option value="v2">✨ Advanced (v2 Beta)</option>
+                        </select>
+                        <small style="color: var(--text-secondary); font-size: 0.85em; display: block; margin-top: 4px;">
+                            v2: Confidence scores & element identity
+                        </small>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; margin-bottom: 15px; align-items: center; padding: 8px 12px; background: var(--bg-secondary); border-radius: 6px; flex-wrap: wrap;">
+                    <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 13px;">
+                        <input type="checkbox" id="selectAllTests" onchange="toggleSelectAllTests()" style="cursor: pointer; width: 16px; height: 16px;">
                         <span style="color: var(--text-primary); font-weight: 500;">Select All</span>
                     </label>
-                    <button id="deleteSelectedTestsBtn" class="btn" onclick="deleteSelectedTests()" style="background: var(--error); display: none; margin-left: auto;">
+                    <button id="deleteSelectedTestsBtn" class="btn" onclick="deleteSelectedTests()" style="background: #ef4444; display: none; margin-left: auto; padding: 8px 16px !important; font-size: 13px !important; white-space: nowrap;">
                         🗑️ Delete Selected
                     </button>
                 </div>
 
-                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                    <button class="btn" onclick="loadTestCases()" style="flex: 1;">
-                        🔄 Refresh
-                    </button>
-                    <button class="btn" onclick="executeTestSuite()" style="background: #10b981; flex: 1;">
-                        ▶️ Execute
-                    </button>
-                    <button class="btn" onclick="clearTestSuite()" style="background: #ef4444; flex: 1;">
-                        🗑️ Clear All
+                <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                    <button class="btn" onclick="executeTestSuite()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); flex: 1; min-width: 150px; padding: 12px 24px; font-size: 14px;">
+                        ▶️ Execute All
                     </button>
                 </div>
 
                 <div id="testCasesList" style="max-height: 400px; overflow-y: auto;">
-                    <div style="padding: 20px; text-align: center; color: var(--text-secondary);">
-                        No test cases yet. Use the Recorder to create tests!
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎬</div>
+                        <div class="empty-state-title">No test cases yet</div>
+                        <div class="empty-state-description">
+                            Use the Test Recorder to create your first test!
+                        </div>
                     </div>
                 </div>
 
@@ -54,38 +157,26 @@
                 </div>
 
                 <div id="executionResults" style="margin-top: 20px; display: none;">
-                    <h4 style="color: #667eea; margin-bottom: 10px;">Execution Results:</h4>
-                    <div id="executionResultsList" style="background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 15px; max-height: 200px; overflow-y: auto;">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card" id="testSuiteCodeViewer">
-                <h3 class="section-header">📄 Generated Test Code</h3>
-                <div style="margin-bottom: 15px;">
-                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                        <button class="btn" onclick="copyTestSuiteCode()" id="copyTestSuiteBtn" style="display: none; flex: 1;">
-                            📋 Copy Code
-                        </button>
-                        <button class="btn" onclick="exportTestSuiteCode()" id="exportTestSuiteBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
-                            💾 Export
-                        </button>
-                        <button class="btn" onclick="saveTestSuiteSnippet()" id="saveTestSuiteSnippetBtn" style="display: none; flex: 1; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                            💾 Save as Snippet
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; cursor: pointer;" onclick="toggleExecutionResults()">
+                        <h4 style="color: #667eea; margin: 0;">
+                            <span id="executionResultsToggle">▼</span> Execution Results
+                        </h4>
+                        <button onclick="event.stopPropagation(); clearExecutionResults()" 
+                                style="padding: 6px 12px; background: #f5f3f3; color: rgb(239, 82, 82); border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;">
+                            Clear
                         </button>
                     </div>
-                </div>
-                
-                <div id="testSuiteCodeContainer" style="background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 0; max-height: 450px; overflow: auto;">
-                    <pre style="margin: 0; padding: 20px;"><code id="testSuiteCodeContent" class="language-java" style="display: block; white-space: pre-wrap; word-wrap: break-word; color: var(--text-secondary); font-size: 0.9em;">Select a test case from the list to view its code here...</code></pre>
+                    <div id="executionResultsList" style="background: var(--result-bg); border-radius: 8px; padding: 15px; max-height: 600px; overflow-y: auto;">
+                    </div>
                 </div>
             </div>
         </div>
         
+        <!-- Full-Width Edit Section -->
         <div id="testSuiteCodeEditor" style="display: none; margin-top: 20px;">
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                    <h3 class="section-header">✏️ Edit Test Code</h3>
+                    <h3 class="section-header"><span class="emoji-icon">✏️</span> Edit Test Code</h3>
                     <div style="display: flex; gap: 10px;">
                         <button class="btn" onclick="saveEditedTestCode()" style="background: #10b981;">
                             ✅ Save Changes
@@ -95,7 +186,7 @@
                         </button>
                     </div>
                 </div>
-                <textarea id="testSuiteCodeEditArea" style="width: 100%; min-height: 400px; padding: 15px; border: 2px solid var(--border-color); border-radius: 8px; background: var(--input-bg); color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 0.9em; resize: vertical;"></textarea>
+                <textarea id="testSuiteCodeEditArea" style="width: 100%; height: 700px; min-height: 600px; padding: 20px; border: 2px solid var(--border-color); border-radius: 8px; background: #0f172a; color: #e2e8f0; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.95em; line-height: 1.6; resize: vertical; box-sizing: border-box;"></textarea></textarea>
             </div>
         </div>
     </div>

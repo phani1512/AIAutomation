@@ -1,38 +1,48 @@
 <!-- Code Snippets Page -->
 <section id="snippetsPage" class="page-section">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px 20px 20px;">
+    <div class="container" style="padding-top: var(--space-6); padding-bottom: var(--space-8);">
         <div class="card">
-            <h3 class="section-header">📚 Code Snippet Library</h3>
+            <div class="card-header">
+                <h3 class="card-title">
+                    <span class="card-title-icon">📚</span>
+                    Code Snippet Library
+                </h3>
+            </div>
+            <div class="card-body">
             
-            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
-                <input type="text" id="snippetSearch" placeholder="🔍 Search snippets..." oninput="filterSnippets()" style="flex: 1; min-width: 200px; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
-                <select id="snippetFilter" onchange="filterSnippets()" style="padding: 10px; min-width: 150px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center;">
+                <input type="text" id="snippetSearch" placeholder="🔍 Search snippets..." oninput="filterSnippets()" style="flex: 1; min-width: 200px; padding: 9px 12px; font-size: 13px;">
+                <select id="snippetFilter" onchange="filterSnippets()" style="padding: 9px 12px; min-width: 140px; font-size: 13px;">
                     <option value="all">All Languages</option>
                     <option value="java">Java</option>
                     <option value="python">Python</option>
                     <option value="javascript">JavaScript</option>
                     <option value="csharp">C#</option>
                 </select>
-                <button class="btn" onclick="showAddSnippetModal()" style="white-space: nowrap; flex-shrink: 0;">
+                <button class="btn" onclick="showAddSnippetModal()" style="white-space: nowrap; padding: 9px 20px !important; font-size: 13px !important;">
                     ➕ Add Snippet
                 </button>
             </div>
             
-            <div style="display: flex; gap: 10px; margin-bottom: 15px; align-items: center; padding: 10px; background: var(--bg-secondary); border-radius: 6px;">
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                    <input type="checkbox" id="selectAllSnippets" onchange="toggleSelectAllSnippets()" style="cursor: pointer; width: 18px; height: 18px;">
+            <div style="display: flex; gap: 8px; margin-bottom: 16px; align-items: center; padding: 8px 12px; background: var(--bg-secondary); border-radius: 8px;">
+                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 13px;">
+                    <input type="checkbox" id="selectAllSnippets" onchange="toggleSelectAllSnippets()" style="cursor: pointer; width: 16px; height: 16px;">
                     <span style="color: var(--text-primary); font-weight: 500;">Select All</span>
                 </label>
-                <button id="deleteSelectedBtn" class="btn" onclick="deleteSelectedSnippets()" style="background: var(--error); display: none; margin-left: auto;">
-                    🗑️ Delete Selected
+                <button id="deleteSelectedBtn" class="btn" onclick="deleteSelectedSnippets()" style="background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%) !important; display: none; margin-left: auto; padding: 6px 12px !important; font-size: 12px !important; max-width: 120px !important;">
+                    🗑️ Delete
                 </button>
             </div>
 
             <div id="snippetsList" style="max-height: 400px; overflow-y: auto;">
-                <!-- Snippets will be loaded here -->
-                <div style="padding: 20px; text-align: center; color: var(--text-secondary);">
-                    No snippets yet. Save your first snippet!
+                <div class="empty-state">
+                    <div class="empty-state-icon">📚</div>
+                    <div class="empty-state-title">No snippets yet</div>
+                    <div class="empty-state-description">
+                        Save your first snippet to get started!
+                    </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

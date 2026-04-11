@@ -45,6 +45,13 @@ function showLoginPage() {
     console.log('[UI] Showing login page');
     document.getElementById('loginPage').style.display = 'flex';
     document.getElementById('appContainer').style.display = 'none';
+    
+    // Mark form as ready after showing login page
+    setTimeout(() => {
+        window.loginFormReady = true;
+        window.pageFullyLoaded = true;
+        console.log('[AUTH] Login form ready');
+    }, 100);
 }
 
 function showMainApp() {
@@ -354,4 +361,13 @@ document.addEventListener('click', function(event) {
     if (userProfile && userMenu && !userProfile.contains(event.target)) {
         userMenu.style.display = 'none';
     }
+});
+
+// Initialize login form readiness on page load
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        window.pageFullyLoaded = true;
+        window.loginFormReady = true;
+        console.log('[AUTH] Page fully loaded, login form ready');
+    }, 200);
 });

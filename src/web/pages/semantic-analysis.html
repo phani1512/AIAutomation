@@ -1,14 +1,20 @@
 <!-- Semantic Analysis Page -->
 <section id="semanticPage" class="page-section">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px 20px 20px;">
+    <div class="container" style="padding-top: var(--space-6); padding-bottom: var(--space-8);">
         <div class="card">
-            <h3 class="section-header">🧠 Semantic Test Analysis</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 20px;">Analyze test intent and get AI-powered suggestions for comprehensive test scenarios including negative tests, boundary cases, and edge cases.</p>
+            <div class="card-header">
+                <h3 class="card-title">
+                    <span class="card-title-icon">🧠</span>
+                    Semantic Test Analysis
+                </h3>
+                <p class="card-subtitle">Analyze test intent and get AI-powered suggestions for comprehensive test scenarios including negative tests, boundary cases, and edge cases.</p>
+            </div>
+            <div class="card-body">
             
             <div class="form-group">
-                <label for="semanticSessionSelect">Select Test Session:</label>
+                <label for="semanticSessionSelect">Select Test Case from Test Suite:</label>
                 <select id="semanticSessionSelect" onchange="onSemanticSessionChange()" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
-                    <option value="">-- Select a recorded test session --</option>
+                    <option value="">-- Select a saved test case --</option>
                 </select>
             </div>
             
@@ -16,26 +22,110 @@
                 <button class="btn" onclick="loadSemanticAnalysis()" style="padding: 10px 20px; font-size: 0.9em; flex: 0 0 auto; width: auto;">
                     🔍 Analyze Intent
                 </button>
-                <button class="btn" onclick="generateSuggestions()" style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); padding: 10px 20px; font-size: 0.9em; flex: 0 0 auto; width: auto;">
-                    💡 Get Suggestions
+                <button class="btn" onclick="generateTestCases()" style="background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); padding: 10px 20px; font-size: 0.9em; flex: 0 0 auto; width: auto;">
+                    🚀 Get Suggestions (Fast)
                 </button>
                 <button class="btn" onclick="refreshSemanticSessions()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 10px 20px; font-size: 0.9em; flex: 0 0 auto; width: auto;">
-                    🔄 Refresh Sessions
+                    🔄 Refresh Test Cases
                 </button>
                 <button class="btn" onclick="clearSemanticAnalysis()" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); padding: 10px 20px; font-size: 0.9em; flex: 0 0 auto; width: auto;">
                     🗑️ Clear Analysis
+                </button>
+                
+                <!-- Advanced: Retrain Model (Slow) -->
+                <div style="flex: 1 1 100%; margin-top: 10px; padding: 12px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 8px; display: none;" id="advancedOptions">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9em; color: var(--text-secondary);">
+                        <input type="checkbox" id="retrainModelCheckbox" style="cursor: pointer; width: 18px; height: 18px;">
+                        <span>🐌 <strong>Advanced:</strong> Retrain ML model with this test <em>(slow, usually not needed)</em></span>
+                        <span style="background: #f59e0b; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">SLOW</span>
+                    </label>
+                    <div style="margin-top: 6px; padding-left: 26px; font-size: 0.8em; color: var(--text-secondary); opacity: 0.8;">
+                        ℹ️ Only enable if you want to train the model with your specific test patterns. Uses existing trained model by default.
+                    </div>
+                </div>
+                
+                <!-- Show/Hide Advanced Options -->
+                <button onclick="document.getElementById('advancedOptions').style.display = document.getElementById('advancedOptions').style.display === 'none' ? 'block' : 'none'" style="background: transparent; border: 1px dashed var(--border-color); color: var(--text-secondary); padding: 6px 12px; border-radius: 6px; font-size: 0.85em; cursor: pointer; margin-top: 5px;">
+                    ⚙️ Advanced Options
                 </button>
             </div>
             
             <div id="semanticIntentDisplay" style="display: none; margin-top: 20px;"></div>
         </div>
         
-        <div class="card" style="margin-top: 20px;">
-            <h3 class="section-header">💡 Suggested Test Scenarios</h3>
+        <div class="card mt-6">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <span class="card-title-icon">�</span>
+                    Generated Test Cases
+                </h3>
+            </div>
+            <div class="card-body">
             <div id="semanticSuggestionsDisplay">
-                <div style="padding: 40px; text-align: center; color: var(--text-secondary);">
-                    Select a test session and click "Get Suggestions" to see AI-generated test scenarios
+                <div class="empty-state">
+                    <div class="empty-state-icon">💡</div>
+                    <div class="empty-state-title">No test scenarios generated yet</div>
+                    <div class="empty-state-description">
+                        Select a test case and click "Get Suggestions (Fast)" to generate:<br>
+                        <strong>📊 20-40 ML-Powered Test Scenarios</strong><br>
+                        <br>
+                        <strong>Comprehensive Coverage:</strong><br>
+                        🔴 <strong>5+</strong> Negative Test Scenarios (invalid inputs, edge cases)<br>
+                        📏 <strong>4+</strong> Boundary Test Scenarios (min/max limits, boundaries)<br>
+                        ⚡ <strong>3+</strong> Edge Case Scenarios (special chars, rapid actions)<br>
+                        🌐 <strong>2+</strong> Compatibility Scenarios (cross-browser, mobile)<br>
+                        ⚙️ <strong>2+</strong> Performance & Variation Scenarios<br>
+                        <br>
+                        💡 <strong>Tip:</strong> Enable "Advanced: Retrain" only if you want model to learn your specific patterns
+                    </div>
                 </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Save Generated Tests Modal -->
+    <div id="saveGeneratedTestsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(3px); z-index: 10000; align-items: center; justify-content: center;">
+        <div class="modal-content" style="max-width: 550px; width: 90%; background: var(--card-bg); border-radius: 16px; box-shadow: 0 25px 70px rgba(0,0,0,0.6); padding: 28px; border: 1px solid var(--border-color);">
+            <div class="modal-header" style="padding: 0 0 24px 0; border-bottom: 2px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0; color: var(--text-primary); font-size: 1.5em; display: flex; align-items: center; gap: 10px;">
+                    💾 Save ML-Generated Tests
+                </h3>
+                <button onclick="closeSaveGeneratedTestsModal()" style="font-size: 32px; color: var(--text-secondary); cursor: pointer; line-height: 1; padding: 0; background: none; border: none; transition: color 0.2s;" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-secondary)'">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 24px 0;">
+                <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 8px; padding: 12px; margin-bottom: 24px;">
+                    <div style="font-size: 0.9em; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        ✓ <span id="selectedTestCount">0</span> test case(s) selected
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-primary); font-size: 0.95em;">🎯 Test Type Classification:</label>
+                    <select id="generatedTestType" style="width: 100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 8px; background: var(--input-bg); color: var(--text-primary); font-size: 0.95em; cursor: pointer;">
+                        <option value="regression" selected>🔄 Regression - Verify existing functionality</option>
+                        <option value="smoke">💨 Smoke - Quick critical path validation</option>
+                        <option value="integration">🔗 Integration - Multi-component testing</option>
+                        <option value="performance">⚡ Performance - Speed and resource tests</option>
+                        <option value="security">🔒 Security - Vulnerability testing</option>
+                        <option value="exploratory">🔍 Exploratory - Ad-hoc exploration</option>
+                        <option value="general">📋 General - Default category</option>
+                    </select>
+                </div>
+                
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 12px;">
+                    <div style="font-size: 0.85em; color: var(--text-secondary); line-height: 1.6;">
+                        ℹ️ <strong>Note:</strong> Tests will be saved to <code style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px;">test_suites/{type}/{source}/</code> and appear in the appropriate test lists (Recorder or Builder).
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="padding: 24px 0 0 0; border-top: 2px solid var(--border-color); display: flex; gap: 12px; justify-content: flex-end;">
+                <button onclick="closeSaveGeneratedTestsModal()" style="padding: 12px 28px; background: #6b7280; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95em; transition: all 0.2s;" onmouseover="this.style.background='#4b5563'" onmouseout="this.style.background='#6b7280'">
+                    Cancel
+                </button>
+                <button onclick="confirmSaveGeneratedTests()" style="padding: 12px 28px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95em; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)'">
+                    💾 Save Tests
+                </button>
             </div>
         </div>
     </div>

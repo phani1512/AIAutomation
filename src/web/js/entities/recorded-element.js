@@ -381,6 +381,46 @@ class RecordedElement {
     }
 
     /**
+     * Get best locator as an object with type and value properties
+     * Used for code generation where we need to construct locators programmatically
+     * 
+     * @returns {Object} Object with 'type' (e.g., 'ID', 'XPATH', 'CSS_SELECTOR') and 'value' properties
+     */
+    getBestLocatorObject() {
+        // Priority order: prefer more stable locators
+        if (this.locators.dataTestId) {
+            return { type: 'CSS_SELECTOR', value: `[data-testid="${this.locators.dataTestId}"]` };
+        }
+        
+        if (this.attributes.id) {
+            return { type: 'ID', value: this.attributes.id };
+        }
+        
+        if (this.attributes.ariaLabel) {
+            return { type: 'CSS_SELECTOR', value: `[aria-label="${this.escapeString(this.attributes.ariaLabel)}"]` };
+        }
+        
+        if (this.attributes.name) {
+            return { type: 'NAME', value: this.attributes.name };
+        }
+        
+        if (this.locators.linkText) {
+            return { type: 'LINK_TEXT', value: this.locators.linkText };
+        }
+        
+        if (this.locators.className) {
+            return { type: 'CLASS_NAME', value: this.locators.className };
+        }
+        
+        if (this.cssSelector) {
+            return { type: 'CSS_SELECTOR', value: this.cssSelector };
+        }
+        
+        // Fallback to XPath
+        return { type: 'XPATH', value: this.xpath || '//*' };
+    }
+
+    /**
      * Get a human-readable description
      */
     getDescription() {

@@ -67,6 +67,31 @@ def clear_all_sessions():
 # Load users when module is imported
 load_users_db()
 
+# Create default admin user if no users exist
+def init_default_user():
+    """Create default admin user for testing if database is empty"""
+    if not users_db:
+        default_username = 'admin'
+        default_password = 'admin123'
+        users_db[default_username] = {
+            'password_hash': hash_password(default_password),
+            'email': 'admin@example.com',
+            'created_at': datetime.now().isoformat(),
+            'sessions': {},
+            'snippets': [],
+            'stats': {
+                'total_requests': 0,
+                'tests_passed': 0,
+                'tests_failed': 0
+            }
+        }
+        save_users_db()
+        logging.info(f"[AUTH] Created default admin user (username: {default_username}, password: {default_password})")
+        print(f"[AUTH] ✓ Default user created - Username: {default_username}, Password: {default_password}")
+
+# Initialize default user
+init_default_user()
+
 def hash_password(password):
     """Hash password using SHA-256"""
     return hashlib.sha256(password.encode()).hexdigest()

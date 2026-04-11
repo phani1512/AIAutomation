@@ -204,7 +204,7 @@ document.addEventListener('click', function(e) {
 
 ### **2. Sent to Backend**
 ```javascript
-fetch('http://localhost:5000/recorder/record-action', {
+fetch('http://localhost:5002/recorder/record-action', {
     method: 'POST',
     body: JSON.stringify({
         action_type: 'click',

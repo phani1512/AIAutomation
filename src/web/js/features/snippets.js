@@ -4,39 +4,44 @@ function showAddSnippetModal(code = '') {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
     modal.innerHTML = `
-        <div class="modal-content" style="max-width: 700px;">
-            <h3 style="margin-bottom: 20px;">💾 Save Code Snippet</h3>
-            <div class="form-group">
-                <label for="snippetTitle">Title:</label>
-                <input type="text" id="snippetTitle" placeholder="Enter snippet title" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+        <div class="modal" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 class="modal-title">💾 Save Code Snippet</h3>
+                <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
             </div>
-            <div class="form-group" style="margin-top: 15px;">
-                <label for="snippetLanguage">Language:</label>
-                <select id="snippetLanguage" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
-                    <option value="java">Java</option>
-                    <option value="python">Python</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="csharp">C#</option>
-                </select>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="snippetTitle">Title:</label>
+                    <input type="text" id="snippetTitle" placeholder="Enter snippet title" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="snippetLanguage">Language:</label>
+                    <select id="snippetLanguage" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                        <option value="java">Java</option>
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="csharp">C#</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="snippetTags">Tags (comma-separated):</label>
+                    <input type="text" id="snippetTags" placeholder="test, selenium, automation" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
+                </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="snippetDescription">Description:</label>
+                    <textarea id="snippetDescription" rows="2" placeholder="Optional description" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);"></textarea>
+                </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label for="snippetCode">Code:</label>
+                    <textarea id="snippetCode" rows="10" placeholder="Paste or type your code here" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary); font-family: 'Courier New', monospace;">${code}</textarea>
+                </div>
             </div>
-            <div class="form-group" style="margin-top: 15px;">
-                <label for="snippetTags">Tags (comma-separated):</label>
-                <input type="text" id="snippetTags" placeholder="test, selenium, automation" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);">
-            </div>
-            <div class="form-group" style="margin-top: 15px;">
-                <label for="snippetDescription">Description:</label>
-                <textarea id="snippetDescription" rows="2" placeholder="Optional description" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary);"></textarea>
-            </div>
-            <div class="form-group" style="margin-top: 15px;">
-                <label for="snippetCode">Code:</label>
-                <textarea id="snippetCode" rows="10" placeholder="Paste or type your code here" style="width: 100%; padding: 10px; border: 2px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-primary); font-family: 'Courier New', monospace;">${code}</textarea>
-            </div>
-            <div style="display: flex; gap: 10px; margin-top: 20px;">
-                <button class="btn btn-primary" onclick="saveSnippet()" style="flex: 1;">
-                    💾 Save Snippet
-                </button>
-                <button class="btn btn-secondary" onclick="this.closest('.modal-overlay').remove()" style="flex: 1;">
+            <div class="modal-footer">
+                <button class="btn" style="background: var(--color-gray-500); flex: 1;" onclick="this.closest('.modal-overlay').remove()">
                     Cancel
+                </button>
+                <button class="btn" style="background: var(--color-primary-600); flex: 1;" onclick="saveSnippet()">
+                    💾 Save Snippet
                 </button>
             </div>
         </div>
@@ -191,30 +196,32 @@ function viewSnippet(id) {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
     modal.innerHTML = `
-        <div class="modal-content" style="max-width: 800px; max-height: 80vh; overflow: auto;">
-            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+        <div class="modal modal-lg" style="max-width: 800px;">
+            <div class="modal-header">
                 <div>
-                    <h3 style="margin: 0;">${snippet.title}</h3>
+                    <h3 class="modal-title">${snippet.title}</h3>
                     <div style="margin-top: 8px; display: flex; gap: 10px; align-items: center; font-size: 0.9em; color: var(--text-tertiary);">
                         <span style="background: var(--primary); color: white; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; font-size: 0.8em;">${snippet.language}</span>
                         <span>📅 ${snippet.date}</span>
                     </div>
                 </div>
-                <button onclick="this.closest('.modal-overlay').remove()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-secondary);">×</button>
+                <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
             </div>
-            ${snippet.description ? `<p style="color: var(--text-secondary); margin-bottom: 15px;">${snippet.description}</p>` : ''}
-            ${snippet.tags.length > 0 ? `
-                <div style="margin-bottom: 15px; display: flex; gap: 5px; flex-wrap: wrap;">
-                    ${snippet.tags.map(tag => `<span style="background: var(--bg-secondary); color: var(--text-secondary); padding: 4px 10px; border-radius: 4px; font-size: 0.85em;">#${tag}</span>`).join('')}
-                </div>
-            ` : ''}
-            <pre style="background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 15px; overflow-x: auto;"><code class="language-${snippet.language}">${escapeHtml(snippet.code)}</code></pre>
-            <div style="display: flex; gap: 10px; margin-top: 20px;">
-                <button class="btn" onclick="useSnippet(${snippet.id}); this.closest('.modal-overlay').remove();" style="flex: 1;">
-                    📝 Use This Snippet
-                </button>
-                <button class="btn-secondary" onclick="copySnippetCode(${snippet.id})" style="flex: 1;">
+            <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
+                ${snippet.description ? `<p style="color: var(--text-secondary); margin-bottom: 15px;">${snippet.description}</p>` : ''}
+                ${snippet.tags.length > 0 ? `
+                    <div style="margin-bottom: 15px; display: flex; gap: 5px; flex-wrap: wrap;">
+                        ${snippet.tags.map(tag => `<span style="background: var(--bg-secondary); color: var(--text-secondary); padding: 4px 10px; border-radius: 4px; font-size: 0.85em;">#${tag}</span>`).join('')}
+                    </div>
+                ` : ''}
+                <pre style="background: var(--result-bg); border: 2px solid var(--border-color); border-radius: 8px; padding: 15px; overflow-x: auto;"><code class="language-${snippet.language}">${escapeHtml(snippet.code)}</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" style="background: var(--color-gray-500); flex: 1;" onclick="copySnippetCode(${snippet.id})">
                     📋 Copy Code
+                </button>
+                <button class="btn" style="background: var(--color-primary-600); flex: 1;" onclick="useSnippet(${snippet.id}); this.closest('.modal-overlay').remove();">
+                    📝 Use This Snippet
                 </button>
             </div>
         </div>

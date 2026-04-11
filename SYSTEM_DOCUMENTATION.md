@@ -221,7 +221,7 @@ function toggleDarkMode() {
 
 #### 3. API Communication
 ```javascript
-const API_URL = 'http://localhost:5000';
+const API_URL = 'http://localhost:5002';
 
 async function callAPI(endpoint, method, data) {
     const response = await fetch(`${API_URL}${endpoint}`, {
@@ -789,7 +789,7 @@ localStorage.setItem('userStats', JSON.stringify({
 
 **Characteristics:**
 - ✅ Persists across browser sessions
-- ✅ Domain-specific (localhost:5000)
+- ✅ Domain-specific (localhost:5002)
 - ⚠️ ~5-10MB storage limit
 - ⚠️ Cleared when user clears browser data
 
@@ -817,13 +817,13 @@ pip install flask flask-cors selenium waitress
 # 3. Start server
 python src/main/python/api_server_improved.py
 
-# Server starts on http://localhost:5000
+# Server starts on http://localhost:5002
 ```
 
 ### Frontend Access
 ```bash
 # Open browser and navigate to:
-http://localhost:5000
+http://localhost:5002
 
 # Or open index.html directly in browser
 # (Some features require backend server)
@@ -832,7 +832,7 @@ http://localhost:5000
 ### Configuration
 ```python
 # api_server_improved.py
-PORT = 5000
+PORT = 5002
 HOST = '0.0.0.0'
 MODEL_PATH = 'selenium_ngram_model.pkl'
 
@@ -926,7 +926,7 @@ CORS(app)
 
 **Issue:** 404 errors on API calls
 - Verify backend server is running
-- Check API_URL in frontend (should be http://localhost:5000)
+- Check API_URL in frontend (should be http://localhost:5002)
 - Restart server after code changes
 
 **Issue:** Code snippets not appearing

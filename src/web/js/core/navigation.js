@@ -36,12 +36,11 @@ async function navigateTo(page) {
         'locator': 'locator-suggestions',
         'action': 'action-suggestions',
         'recorder': 'test-recorder',
-        'browser': 'browser-control',
         'semantic': 'semantic-analysis',
         'testcases': 'test-suite',
         'snippets': 'code-snippets',
         'screenshot': 'screenshot-ai',
-        'testrunner': 'test-runner'
+        'testBuilder': 'test-builder'
     };
     
     const pageFileName = pageFileMap[page];
@@ -101,12 +100,11 @@ async function navigateTo(page) {
         'locator': 'Locator Suggestions',
         'action': 'Action Suggestions',
         'recorder': 'Test Recorder',
-        'browser': 'Browser Control',
         'semantic': 'Semantic Analysis',
         'testcases': 'Test Suite',
         'snippets': 'Code Snippets',
         'screenshot': 'Screenshot AI',
-        'testrunner': 'Test Runner'
+        'testBuilder': 'Test Builder'
     };
     const titleElement = document.getElementById('currentPageTitle');
     if (titleElement && pageTitles[page]) {
@@ -157,6 +155,14 @@ async function navigateTo(page) {
         setTimeout(() => refreshSemanticSessions(), 100);
     } else if (page === 'testcases') {
         setTimeout(() => loadTestCases(), 100);
+    } else if (page === 'testBuilder') {
+        // Initialize Test Builder when navigating to it
+        setTimeout(() => {
+            if (typeof window.TestBuilder !== 'undefined' && typeof window.TestBuilder.init === 'function') {
+                console.log('[Navigation] Initializing Test Builder');
+                window.TestBuilder.init();
+            }
+        }, 100);
     }
     
     // Re-apply syntax highlighting if Prism is available
@@ -172,21 +178,10 @@ async function navigateTo(page) {
     console.log(`[NAVIGATION] Navigated to ${page} (${pageFileName})`);
 }
 
+// Sidebar toggle - now handled by sidebar-collapse-simple.js
+// This function is overridden by the new implementation
 function toggleSidebar() {
-    console.log('[NAVIGATION] toggleSidebar called');
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.querySelector('.main-content');
-    const toggleIcon = document.getElementById('toggleIcon');
-    
-    sidebar.classList.toggle('collapsed');
-    mainContent.classList.toggle('expanded');
-    
-    // Change arrow direction
-    if (sidebar.classList.contains('collapsed')) {
-        toggleIcon.textContent = '▶'; // Right arrow when collapsed
-    } else {
-        toggleIcon.textContent = '◀'; // Left arrow when expanded
-    }
+    console.log('[NAVIGATION] toggleSidebar placeholder - will be overridden');
 }
 
 // Dark mode toggle

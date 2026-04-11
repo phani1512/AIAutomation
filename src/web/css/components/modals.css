@@ -25,7 +25,8 @@
     max-width: 600px;
     width: 100%;
     max-height: 90vh;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -46,6 +47,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--text-primary);
+}
+
+.modal-header h3 {
+    color: var(--text-primary);
 }
 
 .modal-title {
@@ -80,6 +86,34 @@
     padding: 24px;
     overflow-y: auto;
     flex: 1;
+    color: var(--text-primary);
+}
+
+/* Modal Body Form Elements - Light/Dark mode support */
+.modal-body label {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.modal-body input,
+.modal-body textarea,
+.modal-body select {
+    color: var(--text-primary);
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+}
+
+.modal-body input::placeholder,
+.modal-body textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+.modal-body h3,
+.modal-body h4,
+.modal-body h5,
+.modal-body p {
+    color: var(--text-primary);
 }
 
 /* Modal Footer */
@@ -365,5 +399,213 @@
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================================================ */
+/* ALTERNATIVES MODAL - HYBRID Mode "Did you mean?" UI */
+/* ============================================================================ */
+
+.alternatives-modal-content {
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.alternatives-modal-content .modal-header {
+    flex-shrink: 0;
+}
+
+.alternatives-modal-content .modal-body {
+    overflow-y: auto;
+    flex: 1;
+    padding: 20px;
+    min-height: 0; /* Important for Firefox flexbox scrolling */
+}
+
+.alternatives-modal-content .modal-footer {
+    flex-shrink: 0;
+}
+
+.alternatives-info {
+    background: var(--bg-secondary, #f8f9fa);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color, #e9ecef);
+}
+
+.alternatives-info p {
+    margin: 8px 0;
+    color: var(--text-primary, #212529);
+}
+
+.alternatives-info strong {
+    color: var(--text-primary, #495057);
+    font-weight: 600;
+}
+
+.alternatives-info pre {
+    margin: 10px 0 0 0;
+    background: var(--code-bg, #1e1e1e);
+    border: 1px solid var(--border-color, #dee2e6);
+    border-radius: 4px;
+    padding: 12px;
+    max-height: 300px;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.alternatives-info pre code {
+    background: none !important;
+    padding: 0 !important;
+    color: var(--code-text, #d4d4d4);
+    font-size: 13px;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.alternatives-section {
+    margin-top: 20px;
+}
+
+.alternatives-section h4 {
+    color: var(--text-primary, #495057);
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#alternativesList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.alternative-item {
+    border: 2px solid var(--border-color, #e9ecef);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: var(--card-bg, white);
+    transition: all 0.2s ease;
+}
+
+.alternative-item:hover {
+    border-color: var(--primary, #007bff);
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.alternative-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.alternative-score {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    min-width: 55px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.alternative-prompt {
+    color: var(--text-primary, #495057);
+    font-weight: 500;
+    flex: 1;
+    font-size: 14px;
+}
+
+.alternative-code {
+    background: var(--code-bg, #f8f9fa);
+    border: 1px solid var(--border-color, #dee2e6);
+    border-radius: 4px;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 13px;
+    max-height: 400px;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.alternative-code code {
+    background: none !important;
+    padding: 0 !important;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 13px;
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.btn-use-alternative {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+
+.btn-use-alternative:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.btn-use-alternative:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background: var(--bg-secondary, #6c757d);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--bg-hover, #5a6268);
+}
+
+/* Responsive adjustments for alternatives modal */
+@media (max-width: 768px) {
+    .alternatives-modal-content {
+        max-width: 100%;
+        margin: 10px;
+    }
+    
+    .alternative-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .alternative-score {
+        align-self: flex-start;
     }
 }

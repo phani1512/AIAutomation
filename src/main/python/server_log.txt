@@ -1,0 +1,57 @@
+ERROR:local_ai_vision:[LOCAL-AI] Γ¥î Could not load trained model: [Errno 2] No such file or directory: 'src/resources/selenium_ngram_model.pkl'
+WARNING:multimodal_generator:[MULTIMODAL] Could not load trained model: [Errno 2] No such file or directory: 'src/resources/selenium_ngram_model.pkl'
+ERROR:local_ai_vision:[LOCAL-AI] Γ¥î Could not load trained model: [Errno 2] No such file or directory: 'src/resources/selenium_ngram_model.pkl'
+WARNING:multimodal_generator:[MULTIMODAL] Could not load trained model: [Errno 2] No such file or directory: 'src/resources/selenium_ngram_model.pkl'
+[AUTH] No existing users database found, starting fresh
+[INIT] Server started fresh - recorded_sessions cleared (count: 0)
+[INIT] Server Instance ID: 9545316b5d969bdcfae98151f588eead
+[INIT] All previous auth sessions invalidated
+[SERVER] AI model will be loaded on first request...
+
+============================================================
+[SERVER] Selenium SLM API Server (Modular)
+============================================================
+[WEB] Interface: http://localhost:5002
+[WEB] Screenshot AI: http://localhost:5002/screenshot-generator
+
+[API] Endpoints:
+  GET  /health              - Health check
+  POST /generate            - Generate code
+  POST /suggest-locator     - Suggest locator
+  POST /suggest-action      - Suggest action
+
+[BROWSER] Control:
+  POST /browser/initialize  - Initialize
+  POST /browser/execute     - Execute code
+  POST /browser/close       - Close
+
+[RECORDER] Actions:
+  POST /recorder/start      - Start session
+  POST /recorder/navigate   - Navigate & inject script
+  POST /recorder/record-action - Record
+  POST /recorder/stop       - Stop (keeps browser open)
+  POST /recorder/new-test   - Start new test in same browser
+  POST /recorder/generate-test - Generate test
+  POST /recorder/save-generated-test - Save AI generated test
+  GET  /recorder/sessions   - List sessions
+
+[SEMANTIC] Analysis:
+  POST /semantic/analyze-intent    - Analyze test intent
+  POST /semantic/suggest-scenarios - Suggest test scenarios
+  GET  /semantic/cache-stats       - View cache statistics
+  POST /semantic/clear-cache       - Clear cache
+
+[SCREENSHOT] Multi-modal AI:
+  POST /screenshot/analyze        - Detect elements from screenshot
+  POST /screenshot/generate-code  - Generate test from screenshot
+  POST /screenshot/annotate       - Annotate screenshot with elements
+
+[TEST SUITE] Execution:
+  POST /recorder/execute-test - Execute single test
+  POST /recorder/delete-session - Delete specific test case
+  POST /recorder/clear-sessions - Clear all test cases
+============================================================
+
+[SERVER] Starting production server on http://localhost:5002
+[SERVER] Press CTRL+C to quit
+

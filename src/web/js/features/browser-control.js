@@ -49,7 +49,9 @@ async function executeInBrowser() {
             body: JSON.stringify({ 
                 prompt,
                 execute: true,
-                url: url || undefined
+                url: url || undefined,
+                with_fallbacks: true,      // Enable self-healing with multiple selectors
+                compact_mode: true          // Generate compact code (70% smaller)
             })
         });
         

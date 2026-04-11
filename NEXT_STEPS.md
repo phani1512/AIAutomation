@@ -58,21 +58,21 @@ pip install flask
 python src/main/python/api_server.py
 ```
 
-The server will start on `http://localhost:5000`
+The server will start on `http://localhost:5002`
 
 ### Step 2: Test the API
 
 ```powershell
 # Health check
-curl http://localhost:5000/health
+curl http://localhost:5002/health
 
 # Generate code
-curl -X POST http://localhost:5000/generate `
+curl -X POST http://localhost:5002/generate `
   -H "Content-Type: application/json" `
   -d '{"prompt": "action: click\nelement_type: button", "max_tokens": 50}'
 
 # Suggest locator
-curl -X POST http://localhost:5000/suggest-locator `
+curl -X POST http://localhost:5002/suggest-locator `
   -H "Content-Type: application/json" `
   -d '{"element_type": "input", "action": "sendKeys", "attributes": {"id": "username"}}'
 ```
@@ -356,3 +356,4 @@ After implementation, you should achieve:
 5. Iterate and improve
 
 The model is trained and ready - now it's time to put it to work! 🚀
+

@@ -1,137 +1,222 @@
 # Web UI Module Structure
 
 ## Overview
-The web interface is now properly modularized into separate component files for better maintainability and organization.
+The web interface is now properly modularized into separate component files for better maintainability and organization. JavaScript files are organized into three logical categories: **core** (foundational utilities), **entities** (data models), and **features** (application features).
 
 ## Directory Structure
 
 ```
-src/web/
-├── index.html                          # Main HTML (UI structure only)
-├── css/
-│   └── enhanced-ui.css                 # All UI styles
-├── js/
-│   ├── config.js                       # Configuration constants
-│   ├── utils.js                        # Utility functions
-│   ├── auth.js                         # Authentication module
-│   ├── navigation.js                   # Navigation & routing
-│   ├── dashboard.js                    # Dashboard features
-│   ├── snippets.js                     # Code snippets library
-│   └── features/                       # Feature modules
-│       ├── screenshot-ai.js            # Screenshot AI (NEW - just created!)
-│       ├── semantic-analysis.js        # Semantic analysis
-│       ├── test-suite.js               # Test suite manager
-│       ├── test-recorder.js            # Test recorder
+web/
+├── index-new.html                      # Main application HTML
+├── pages/                              # Individual page HTML files
+│   ├── dashboard.html
+│   ├── test-builder.html
+│   ├── test-recorder.html
+│   ├── test-suite.html
+│   ├── generate-code.html
+│   ├── semantic-analysis.html
+│   ├── screenshot-ai.html
+│   ├── locator-suggestions.html
+│   ├── action-suggestions.html
+│   └── code-snippets.html
+├── components/                         # Reusable UI components
+│   ├── recorder-widget.html
+│   └── recorder-live-panel.html
+├── css/                                # Stylesheets
+│   └── enhanced-ui.css
+├── js/                                 # JavaScript modules
+│   ├── core/                           # 🔧 Core utilities & infrastructure
+│   │   ├── api.js                      # API communication layer
+│   │   ├── authentication.js           # Login/logout, session management
+│   │   ├── dashboard.js                # Dashboard functionality
+│   │   ├── navigation.js               # Page routing & navigation
+│   │   ├── ui.js                       # UI helpers & notifications
+│   │   ├── utils.js                    # Common utility functions
+│   │   └── sidebar-collapse-simple.js  # Sidebar UI component
+│   ├── entities/                       # 📦 Data models & domain objects
+│   │   ├── recorded-element.js         # Element data structure
+│   │   ├── recorder-action.js          # Action event model
+│   │   └── recorder-session.js         # Recording session state
+│   └── features/                       # ⚡ Application features
+│       ├── test-builder.js             # Multi-prompt test builder
+│       ├── test-recorder.js            # Test recording engine
+│       ├── test-suite.js               # Test suite management
 │       ├── code-generation.js          # Code generation
-│       ├── locator-suggestions.js      # Locator suggestions
-│       ├── action-suggestions.js       # Action suggestions
-│       ├── browser-control.js          # Browser control
-│       └── validation.js               # Code validation
-└── recorder-inject.js                  # Browser injection script
+│       ├── screenshot-ai.js            # Screenshot AI analysis
+│       ├── semantic-analysis.js        # Semantic analysis
+│       ├── locator-suggestions.js      # Locator recommendations
+│       ├── action-suggestions.js       # Action recommendations
+│       ├── browser-control.js          # Browser automation
+│       ├── healing-ui.js               # Self-healing UI
+│       ├── validation.js               # Code validation
+│       ├── snippets.js                 # Code snippets library
+│       ├── visual-feedback.js          # Visual feedback system
+│       ├── smart-action-detector.js    # Smart action detection
+│       ├── recorder-inject.js          # Browser injection script
+│       ├── recorder-player.js          # Test playback engine
+│       ├── recorder-template.js        # Recording templates
+│       └── recorder-live-monitor.js    # Live recording monitor
+└── README.md                           # Documentation
 ```
 
-## Module Responsibilities
+## Module Organization
 
-### Core Modules
+### 🔧 Core Modules (`js/core/`)
+**Purpose**: Foundational utilities and infrastructure that other modules depend on
 
-#### `index.html`
-- **Purpose**: Main HTML structure and layout
-- **Size**: Reduced from 5600+ lines to ~2000 lines
-- **Loads**: All external CSS and JS modules
-- **Contains**: Only UI structure (no business logic)
+- **api.js** - Centralized API communication with backend
+- **authentication.js** - User authentication and session management
+- **dashboard.js** - Dashboard page functionality
+- **navigation.js** - Single-page routing and navigation
+- **ui.js** - UI helpers, notifications, dialogs
+- **utils.js** - Common utilities (string manipulation, formatting, etc.)
+- **sidebar-collapse-simple.js** - Collapsible sidebar component
 
-#### `css/enhanced-ui.css`
-- **Purpose**: All application styles
-- **Contains**: Variables, themes, component styles
-- **Features**: Dark mode, animations, responsive design
+### 📦 Entity Modules (`js/entities/`)
+**Purpose**: Data models and domain objects representing business concepts
 
-### Feature Modules
+- **recorded-element.js** - Represents a recorded DOM element
+- **recorder-action.js** - Represents a user action (click, type, etc.)
+- **recorder-session.js** - Manages recording session state and data
 
-#### `js/features/screenshot-ai.js` ✨ NEW
-- **Purpose**: Screenshot analysis and code generation
-- **Functions**:
-  - `initializeScreenshotAI()` - Setup event listeners
-  - `analyzeScreenshotAI()` - Analyze uploaded screenshot
-  - `displayScreenshotAnalysis()` - Display detected elements
-  - `displayCompleteTestSuite()` - Show generated test code
-  - `displayTestData()` - Show test data for fields
-  - `generateScreenshotCode()` - Generate test code
-  - `generatePOMCode()` - Generate Page Object Model
-  - `resetScreenshotForm()` - Reset form state
-  - `copyScreenshotCode()` - Copy to clipboard
-  - `copyPOMCode()` - Copy POM to clipboard
-- **Dependencies**: 
-  - `authenticatedFetch()` from main app
-  - `showNotification()` from main app
-  - API_URL constant
+### ⚡ Feature Modules (`js/features/`)
+**Purpose**: Application features and user-facing functionality
 
-#### `js/features/semantic-analysis.js`
-- **Purpose**: AI-powered test intent analysis
-- **Functions**: Analyze test intent, suggest scenarios, manage cache
+#### Test Creation & Recording
+- **test-builder.js** - Multi-prompt test case builder (Phase 0)
+- **test-recorder.js** - Live test recording engine
+- **recorder-inject.js** - Client-side script injected into browser for recording
+- **recorder-player.js** - Test playback and execution
+- **recorder-template.js** - Recording templates and patterns
+- **recorder-live-monitor.js** - Real-time recording status monitor
 
-#### `js/features/test-suite.js`
-- **Purpose**: Test case management
-- **Functions**: CRUD operations, execution, storage
+#### Code Generation
+- **code-generation.js** - Test code generation from prompts
+- **screenshot-ai.js** - AI-powered screenshot analysis and code generation
 
-#### `js/snippets.js`
-- **Purpose**: Code snippet library
-- **Functions**: Save, load, search, categorize snippets
+#### Analysis & Intelligence
+- **semantic-analysis.js** - AI-powered test intent analysis
+- **locator-suggestions.js** - Smart locator recommendations
+- **action-suggestions.js** - Suggested next actions
+- **smart-action-detector.js** - Intelligent action pattern detection
+
+#### Test Management
+- **test-suite.js** - Test suite creation and management
+- **validation.js** - Code validation and linting
+
+#### Browser & UI
+- **browser-control.js** - Browser automation controls
+- **healing-ui.js** - Self-healing locator UI (Phase 4 & 5)
+- **visual-feedback.js** - Visual feedback and highlighting
+- **snippets.js** - Code snippet library and management
 
 ## Loading Order
 
-The modules are loaded in this specific order in `index.html`:
+The modules are loaded in this specific order in `index-new.html`:
 
 ```html
-<!-- 1. External Libraries -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<!-- 1. Core Modules - Load First (infrastructure) -->
+<script src="/web/js/core/api.js"></script>
+<script src="/web/js/core/ui.js"></script>
+<script src="/web/js/core/dashboard.js"></script>
+<script src="/web/js/core/navigation.js"></script>
+<script src="/web/js/core/sidebar-collapse-simple.js"></script>
+<script src="/web/js/core/authentication.js"></script>
 
-<!-- 2. Core Functions (inline in index.html) -->
-<!-- - authenticatedFetch() -->
-<!-- - checkConnection() -->
-<!-- - navigateTo() -->
-<!-- - showNotification() -->
+<!-- 2. Entity Classes - Load Before Features (data models) -->
+<script src="/web/js/entities/recorded-element.js"></script>
+<script src="/web/js/entities/recorder-action.js"></script>
+<script src="/web/js/entities/recorder-session.js"></script>
 
-<!-- 3. Feature Modules -->
-<script src="/web/js/features/semantic-analysis.js"></script>
+<!-- 3. Feature Modules - Load Last (application features) -->
+<script src="/web/js/features/code-generation.js"></script>
+<script src="/web/js/features/validation.js"></script>
+<script src="/web/js/features/locator-suggestions.js"></script>
+<script src="/web/js/features/action-suggestions.js"></script>
+<script src="/web/js/features/smart-action-detector.js"></script>
+<script src="/web/js/features/visual-feedback.js"></script>
+<script src="/web/js/features/recorder-player.js"></script>
+<script src="/web/js/features/recorder-template.js"></script>
+<script src="/web/js/features/test-recorder.js"></script>
+<script src="/web/js/features/recorder-live-monitor.js"></script>
 <script src="/web/js/features/test-suite.js"></script>
-<script src="/web/js/snippets.js"></script>
+<script src="/web/js/features/healing-ui.js"></script>
+<script src="/web/js/features/browser-control.js"></script>
+<script src="/web/js/features/semantic-analysis.js"></script>
+<script src="/web/js/features/snippets.js"></script>
 <script src="/web/js/features/screenshot-ai.js"></script>
-
-<!-- 4. Initialization (inline) -->
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    initializeScreenshotAI();  // Initialize Screenshot AI
-    // ... other initializations
-  });
-</script>
+<script src="/web/js/features/test-builder.js"></script>
+<script src="/web/js/core/utils.js"></script>
 ```
+
+**Why this order?**
+1. **Core modules first** - Provide foundational utilities (API, UI helpers, authentication)
+2. **Entities second** - Define data structures that features will use
+3. **Features last** - Application features that depend on core and entities
 
 ## How to Add New Modules
 
-1. **Create the module file** in appropriate directory:
-   ```javascript
-   // js/features/my-feature.js
-   function initializeMyFeature() {
-     console.log('[MY-FEATURE] Module initialized');
-   }
-   
-   // Export for global access
-   if (typeof window !== 'undefined') {
-     window.initializeMyFeature = initializeMyFeature;
-   }
-   ```
+### 1. **Determine Module Category**
 
-2. **Add script tag** to `index.html`:
-   ```html
-   <script src="/web/js/features/my-feature.js"></script>
-   ```
+Choose the appropriate directory based on purpose:
 
-3. **Initialize in DOMContentLoaded**:
-   ```javascript
-   window.addEventListener('DOMContentLoaded', () => {
-     initializeMyFeature();
-   });
-   ```
+- **`js/core/`** - For foundational utilities (authentication, API, UI helpers)
+- **`js/entities/`** - For data models and domain objects
+- **`js/features/`** - For user-facing features and functionality
+
+### 2. **Create the Module File**
+
+```javascript
+// Example: js/features/my-feature.js
+
+/**
+ * My Feature Module
+ * Description of what this feature does
+ */
+
+function initializeMyFeature() {
+  console.log('[MY-FEATURE] Module initialized');
+  
+  // Setup event listeners
+  document.getElementById('my-button')?.addEventListener('click', handleMyAction);
+}
+
+function handleMyAction() {
+  // Feature logic here
+  console.log('[MY-FEATURE] Action triggered');
+}
+
+// Export for global access
+if (typeof window !== 'undefined') {
+  window.initializeMyFeature = initializeMyFeature;
+  window.handleMyAction = handleMyAction;
+}
+```
+
+### 3. **Add Script Tag to `index-new.html`**
+
+Add in the appropriate section based on category:
+
+```html
+<!-- For core modules -->
+<script src="/web/js/core/my-utility.js"></script>
+
+<!-- For entities -->
+<script src="/web/js/entities/my-model.js"></script>
+
+<!-- For features -->
+<script src="/web/js/features/my-feature.js"></script>
+```
+
+### 4. **Initialize if Needed**
+
+If your module needs initialization on page load:
+
+```javascript
+window.addEventListener('DOMContentLoaded', () => {
+  initializeMyFeature();
+});
+```
 
 ## Benefits of Modular Structure
 
@@ -160,24 +245,51 @@ The modules are loaded in this specific order in `index.html`:
 - ✅ Easy to enable/disable features
 - ✅ Better console logging organization
 
-## Migration Status
+## Organization Status
 
-### ✅ Completed
-- Screenshot AI Module (`screenshot-ai.js`)
-- Semantic Analysis (`semantic-analysis.js`)
-- Test Suite Manager (`test-suite.js`)
-- Code Snippets (`snippets.js`)
-- Enhanced UI Styles (`enhanced-ui.css`)
+### ✅ Fully Organized (March 2026)
 
-### 🔄 In Progress
-- Test Recorder (partially extracted)
-- Browser Control (partially extracted)
-- Code Generation (partially extracted)
+**All JavaScript files are now properly organized into modular structure:**
 
-### 📋 Todo
-- Extract authentication module
-- Extract navigation module
-- Extract dashboard module
+#### Core Modules (7 files)
+- ✅ `api.js` - API communication
+- ✅ `authentication.js` - Login/session management
+- ✅ `dashboard.js` - Dashboard functionality
+- ✅ `navigation.js` - Page routing
+- ✅ `ui.js` - UI helpers & notifications
+- ✅ `utils.js` - Common utilities
+- ✅ `sidebar-collapse-simple.js` - Sidebar component
+
+#### Entity Models (3 files)
+- ✅ `recorded-element.js` - Element data structure
+- ✅ `recorder-action.js` - Action event model
+- ✅ `recorder-session.js` - Session state
+
+#### Feature Modules (18 files)
+- ✅ `test-builder.js` - Multi-prompt test builder
+- ✅ `test-recorder.js` - Recording engine
+- ✅ `test-suite.js` - Test suite management
+- ✅ `code-generation.js` - Code generation
+- ✅ `screenshot-ai.js` - Screenshot AI analysis
+- ✅ `semantic-analysis.js` - Semantic analysis
+- ✅ `locator-suggestions.js` - Locator recommendations
+- ✅ `action-suggestions.js` - Action recommendations
+- ✅ `browser-control.js` - Browser automation
+- ✅ `healing-ui.js` - Self-healing UI
+- ✅ `validation.js` - Code validation
+- ✅ `snippets.js` - Code snippets library
+- ✅ `visual-feedback.js` - Visual feedback
+- ✅ `smart-action-detector.js` - Smart detection
+- ✅ `recorder-inject.js` - Browser injection script
+- ✅ `recorder-player.js` - Test playback
+- ✅ `recorder-template.js` - Recording templates
+- ✅ `recorder-live-monitor.js` - Live monitoring
+
+### 📊 Summary
+- **Total Files Organized**: 28 JavaScript files
+- **Categories**: 3 (core, entities, features)
+- **Structure**: Clean, maintainable, scalable
+- **Status**: ✅ Production Ready
 - Extract utils module
 - Create config module
 

@@ -1,0 +1,100 @@
+{
+  "scenario_ratings": [
+    {
+      "id": "TC002_variant_2_email_i18n_1_1775632666.613273",
+      "test_case_id": "TC002_variant_2",
+      "scenario_key": "email_i18n_1",
+      "rating": "not_relevant",
+      "features": {},
+      "timestamp": "2026-04-08T12:47:46.613354"
+    }
+  ],
+  "test_results": [],
+  "user_suggestions": [],
+  "metadata": {
+    "total_feedback": 9,
+    "last_updated": "2026-04-09T10:55:36.623017"
+  },
+  "field_suggestion_usage": [
+    {
+      "id": "field_TC002_variant_1_0_1775660897.300526",
+      "test_case_id": "TC002_variant_1",
+      "field_index": 0,
+      "field_type": "text",
+      "suggestion_category": "boundary",
+      "suggestion_value": "",
+      "suggestion_description": "Empty string",
+      "timestamp": "2026-04-08T20:38:17.300556"
+    },
+    {
+      "id": "field_TC002_variant_1_0_1775660902.111496",
+      "test_case_id": "TC002_variant_1",
+      "field_index": 0,
+      "field_type": "text",
+      "suggestion_category": "boundary",
+      "suggestion_value": "a",
+      "suggestion_description": "Single character",
+      "timestamp": "2026-04-08T20:38:22.111569"
+    },
+    {
+      "id": "field_TC002_variant_1_0_1775661626.101318",
+      "test_case_id": "TC002_variant_1",
+      "field_index": 0,
+      "field_type": "text",
+      "suggestion_category": "boundary",
+      "suggestion_value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "suggestion_description": "Very long text (1000 chars)",
+      "timestamp": "2026-04-08T20:50:26.101377"
+    },
+    {
+      "id": "field_TC001_variant_1_1_1775709895.902814",
+      "test_case_id": "TC001_variant_1",
+      "field_index": 1,
+      "field_type": "password",
+      "suggestion_category": "edge_case",
+      "suggestion_value": "Pass word1!",
+      "suggestion_description": "Contains space",
+      "timestamp": "2026-04-09T10:14:55.902848"
+    },
+    {
+      "id": "field_TC001_variant_1_0_1775710626.842301",
+      "test_case_id": "TC001_variant_1",
+      "field_index": 0,
+      "field_type": "email",
+      "suggestion_category": "boundary",
+      "suggestion_value": "a@b.c",
+      "suggestion_description": "Minimal valid email",
+      "timestamp": "2026-04-09T10:27:06.842340"
+    },
+    {
+      "id": "field_TC001_variant_1_0_1775711080.918263",
+      "test_case_id": "TC001_variant_1",
+      "field_index": 0,
+      "field_type": "email",
+      "suggestion_category": "boundary",
+      "suggestion_value": "a@b.c",
+      "suggestion_description": "Minimal valid email",
+      "timestamp": "2026-04-09T10:34:40.918295"
+    },
+    {
+      "id": "field_TC001_variant_1_0_1775711774.82048",
+      "test_case_id": "TC001_variant_1",
+      "field_index": 0,
+      "field_type": "email",
+      "suggestion_category": "boundary",
+      "suggestion_value": "a@b.c",
+      "suggestion_description": "Minimal valid email",
+      "timestamp": "2026-04-09T10:46:14.820506"
+    },
+    {
+      "id": "field_TC001_variant_1_0_1775712336.622975",
+      "test_case_id": "TC001_variant_1",
+      "field_index": 0,
+      "field_type": "email",
+      "suggestion_category": "boundary",
+      "suggestion_value": "a@b.c",
+      "suggestion_description": "Minimal valid email",
+      "timestamp": "2026-04-09T10:55:36.622995"
+    }
+  ]
+}

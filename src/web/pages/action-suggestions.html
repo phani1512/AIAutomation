@@ -1,9 +1,15 @@
 <!-- Action Suggestions Page -->
 <section id="actionPage" class="page-section">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 20px;">
+    <div class="container" style="padding-top: var(--space-6); padding-bottom: var(--space-8);">
         <div class="section-row">
             <div class="card">
-                <h3 class="section-header">💡 Action Suggestions </h3>
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <span class="card-title-icon">💡</span>
+                        Action Suggestions
+                    </h3>
+                </div>
+                <div class="card-body">
                 <div id="actionTab" class="tab-content">
                     <div class="form-group">
                         <label for="elementType">Element Type:</label>
@@ -69,10 +75,17 @@
                     </button>
                 </div>
             </div>
+        </div>
 
-            <!-- Action Output -->
-            <div class="card">
-                <h3 class="section-header">📊 Comprehensive Analysis & Suggestions</h3>
+        <!-- Action Output -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <span class="card-title-icon">📊</span>
+                    Comprehensive Analysis & Suggestions
+                </h3>
+            </div>
+            <div class="card-body">
                 
                 <div class="result-box" id="actionResultBox">
                     <pre><code id="actionResultContent" class="language-java">Select an element type and click "Get Enhanced Suggestions" to see:

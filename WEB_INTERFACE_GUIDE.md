@@ -11,7 +11,7 @@ python src/main/python/api_server.py
 ```
 
 ### 2. Open in Browser
-Navigate to: **http://localhost:5000**
+Navigate to: **http://localhost:5002**
 
 The web interface will automatically connect to the API and display the connection status.
 
@@ -120,12 +120,12 @@ The web interface connects to these API endpoints:
 
 ### Health Check
 ```javascript
-GET http://localhost:5000/health
+GET http://localhost:5002/health
 ```
 
 ### Generate Code
 ```javascript
-POST http://localhost:5000/generate
+POST http://localhost:5002/generate
 {
   "prompt": "your prompt here",
   "max_tokens": 50,
@@ -135,7 +135,7 @@ POST http://localhost:5000/generate
 
 ### Suggest Locator
 ```javascript
-POST http://localhost:5000/suggest-locator
+POST http://localhost:5002/suggest-locator
 {
   "html": "<your HTML element>"
 }
@@ -143,7 +143,7 @@ POST http://localhost:5000/suggest-locator
 
 ### Suggest Action
 ```javascript
-POST http://localhost:5000/suggest-action
+POST http://localhost:5002/suggest-action
 {
   "element_type": "button",
   "context": "login form"
@@ -157,7 +157,7 @@ POST http://localhost:5000/suggest-action
 ### Change API URL
 Edit in `index.html`:
 ```javascript
-const API_URL = 'http://localhost:5000';
+const API_URL = 'http://localhost:5002';
 ```
 
 ### Modify Styling
@@ -186,7 +186,7 @@ Update the example buttons in the HTML:
 python src/main/python/api_server.py
 
 # Verify it's running
-curl http://localhost:5000/health
+curl http://localhost:5002/health
 ```
 
 ### CORS Errors
@@ -314,7 +314,7 @@ For issues or questions:
 ## Quick Start Checklist
 
 - [ ] Start API server: `python src/main/python/api_server.py`
-- [ ] Open browser to http://localhost:5000
+- [ ] Open browser to http://localhost:5002
 - [ ] Verify green status dot (connected)
 - [ ] Try example prompts
 - [ ] Check statistics update
@@ -323,3 +323,4 @@ For issues or questions:
 ---
 
 **Enjoy AI-powered test automation! 🚀**
+

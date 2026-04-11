@@ -1,0 +1,120 @@
+const { test, expect } = require('@playwright/test');
+
+test('refactor', async ({ page }) => {
+    // Navigate to application
+    await page.goto('https://platform.sircontest.non-prod.sircon.com/#/login');
+    await page.waitForTimeout(2000);
+
+    // Close sticky popup - simple direct approach
+    try {
+        const closeBtn = await page.locator("#sticky-close");
+        if (await closeBtn.isVisible()) {
+            await closeBtn.evaluate(el => el.click());
+            await page.waitForTimeout(1000);
+        }
+    } catch (e) {
+        // Popup might not exist
+    }
+
+    // Close any sticky popups that might interfere with actions
+    try {
+        const closeBtn = await page.locator("#sticky-close");
+        if (await closeBtn.isVisible()) {
+            await closeBtn.evaluate(el => el.click());
+            await page.waitForTimeout(500);
+        }
+    } catch (e) {
+        // Popup might not exist
+    }
+
+    // Step 1: enter text in email field
+    // Phase 1: Instant check for visible elements
+WebElement element = null;
+String[] selectors = {"input[id='producer-email']", "input[id='producerEmail']", "input[id='producer_email']", "input[id='username']", "input[id='email']", "[data-test='email-input']", "[data-testid='email']", "input[name='producer-email']", "input[name='producerEmail']", "input[type='email']"};
+for (String selector : selectors) {
+    try {
+        List<WebElement> elements = driver.findElements(By.cssSelector(selector));
+        for (WebElement el : elements) {
+            if (el.isDisplayed() && el.isEnabled()) {
+                element = el;
+                break;
+            }
+        }
+        if (element != null) break;
+    } catch (Exception e) {
+        continue;
+    }
+}
+
+if (element == null) {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    for (String selector : selectors) {
+        try {
+            element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(selector)));
+            break;
+        } catch (Exception e) {
+            continue;
+        }
+    }
+}
+
+if (element != null) {
+    // Scroll element into view (consistent with recorder)
+    try {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", element);
+        Thread.sleep(300);
+    } catch (Exception e) {
+        // Scroll not critical
+    }
+    element.clear();
+    element).fill("{VALUE};
+} else {
+    throw new Exception("Could not find element;
+}
+
+    // Step 2: enter text in password field
+    // Phase 1: Instant check for visible elements
+WebElement element = null;
+String[] selectors = {"input[id='producer-password']", "input[id='producerPassword']", "input[id='producer_password']", "input[id='password']", "[data-test='password-input']", "[data-testid='password']", "input[name='producer-password']", "input[name='producerPassword']", "input[type='password']", "input[name='password']"};
+for (String selector : selectors) {
+    try {
+        List<WebElement> elements = driver.findElements(By.cssSelector(selector));
+        for (WebElement el : elements) {
+            if (el.isDisplayed() && el.isEnabled()) {
+                element = el;
+                break;
+            }
+        }
+        if (element != null) break;
+    } catch (Exception e) {
+        continue;
+    }
+}
+
+if (element == null) {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    for (String selector : selectors) {
+        try {
+            element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(selector)));
+            break;
+        } catch (Exception e) {
+            continue;
+        }
+    }
+}
+
+if (element != null) {
+    // Scroll element into view (consistent with recorder)
+    try {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", element);
+        Thread.sleep(300);
+    } catch (Exception e) {
+        // Scroll not critical
+    }
+    element.clear();
+    element).fill("{VALUE};
+} else {
+    throw new Exception("Could not find element;
+}
+
+});

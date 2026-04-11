@@ -45,8 +45,20 @@ async function suggestAction() {
         console.log('[Action Suggestions] Response:', data);
         
         const endTime = Date.now();
+        const duration = endTime - startTime;
         
-        displayEnhancedActionResult(data, endTime - startTime);
+        displayEnhancedActionResult(data, duration);
+        
+        // Log to activity timeline
+        if (typeof window.addActivityLog === 'function') {
+            const elementType = document.getElementById('elementType')?.value || 'element';
+            window.addActivityLog(
+                `Action suggestion: ${elementType}`,
+                'action_suggestion',
+                duration,
+                `Generated ${data.total_actions || 0} actions for ${elementType}`
+            );
+        }
     } catch (error) {
         console.error('[Action Suggestions] Error:', error);
         displayActionError('Failed to suggest action: ' + error.message);
